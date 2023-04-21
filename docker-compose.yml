@@ -1,0 +1,227 @@
+version: "3.4"
+
+services:
+
+  # Database
+  digilinq-mysql-db:
+    image: mysql:5.7
+    container_name: digilinq-mysql-db
+    hostname: digilinq-mysql-db
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'digilinq_db'
+      MYSQL_USER: 'digilinqDBA'
+      MYSQL_PASSWORD: 'PaSSworD'
+      MYSQL_ROOT_PASSWORD: 'r00tPaSSworD'
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    volumes:
+      - digilinq-db-volume:/var/lib/mysql
+    networks:
+      - digilinq-app-network
+
+  # Core services
+  digilinq-consul-discovery:
+    hostname: digilinq-consul-discovery
+    image: consul
+    container_name: digilinq-consul-discovery
+    restart: always
+    ports:
+      - "8500:8500"
+    networks:
+      - digilinq-app-network
+
+  digilinq-zuul-api-gateway-server:
+    build:
+      context: ./digilinq-api-gateway-service
+      args:
+        JAR_FILE: digilinq-api-gateway-service-0.0.1-SNAPSHOT.jar
+      dockerfile: Dockerfile
+    image: digilinq-zuul-api-gateway-server
+    container_name: digilinq-zuul-api-gateway-server
+    hostname: digilinq-zuul-api-gateway-server
+    ports:
+      - "8765:8765"
+    networks:
+      - digilinq-app-network
+    environment:
+      - SERVER_PORT=8765
+      - ZIPKIN_HOST=digilinq-zipkin:9411
+      - SPRING_PROFILES_ACTIVE=docker
+
+  digilinq-account-service:
+    build:
+      context: ./digilinq-account-service
+      args:
+        JAR_FILE: digilinq-account-service-0.0.1-SNAPSHOT.jar
+      dockerfile: Dockerfile
+    image: digilinq-account-service
+    container_name: digilinq-account-service
+    hostname: digilinq-account-service
+    ports:
+      - "4001:4001"
+    networks:
+      - digilinq-app-network
+    environment:
+      - SERVER_PORT=4001
+      - ZIPKIN_HOST=digilinq-zipkin:9411
+      - SPRING_PROFILES_ACTIVE=docker
+
+  digilinq-billing-service:
+    build:
+      context: ./digilinq-billing-service
+      args:
+        JAR_FILE: digilinq-billing-service-0.0.1-SNAPSHOT.jar
+      dockerfile: Dockerfile
+    image: digilinq-billing-service
+    container_name: digilinq-billing-service
+    hostname: digilinq-billing-service
+    ports:
+      - "5001:5001"
+    networks:
+      - digilinq-app-network
+    environment:
+      - SERVER_PORT=5001
+      - ZIPKIN_HOST=digilinq-zipkin:9411
+      - SPRING_PROFILES_ACTIVE=docker
+
+  digilinq-catalog-service:
+    build:
+      context: ./digilinq-catalog-service
+      args:
+        JAR_FILE: digilinq-catalog-service-0.0.1-SNAPSHOT.jar
+      dockerfile: Dockerfile
+    image: digilinq-catalog-service
+    container_name: digilinq-catalog-service
+    hostname: digilinq-catalog-service
+    ports:
+      - "6001:6001"
+    networks:
+      - digilinq-app-network
+    environment:
+      - SERVER_PORT=6001
+      - ZIPKIN_HOST=digilinq-zipkin:9411
+      - SPRING_PROFILES_ACTIVE=docker
+
+  digilinq-order-service:
+    build:
+      context: ./digilinq-order-service
+      args:
+        JAR_FILE: digilinq-order-service-0.0.1-SNAPSHOT.jar
+      dockerfile: Dockerfile
+    image: digilinq-order-service
+    container_name: digilinq-order-service
+    hostname: digilinq-order-service
+    ports:
+      - "7001:7001"
+    networks:
+      - digilinq-app-network
+    environment:
+      - SERVER_PORT=7001
+      - ZIPKIN_HOST=digilinq-zipkin:9411
+      - SPRING_PROFILES_ACTIVE=docker
+
+  # Tracing service
+  digilinq-zipkin:
+    image: openzipkin/zipkin
+    container_name: digilinq-zipkin
+    hostname: digilinq-zipkin
+    ports:
+      - "9411:9411"
+    networks:
+      - digilinq-app-network
+
+  # Monitoring Services
+  digilinq-prometheus:
+    build:
+      context: ./digilinq-prometheus
+      dockerfile: Dockerfile
+    image: digilinq-prometheus
+    container_name: digilinq-prometheus
+    hostname: digilinq-prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - digilinq-app-network
+
+  digilinq-grafana:
+    build:
+      context: ./digilinq-graphana
+      dockerfile: Dockerfile
+    image: graphana
+    container_name: digilinq-graphana
+    hostname: digilinq-graphana
+    ports:
+      - "3030:3000"
+    volumes:
+      - digilinq-graphana-volume:/var/lib/grafana
+    networks:
+      - digilinq-app-network
+
+  # Monitoring using TICK stack.
+  digilinq-telegraf:
+    build:
+      context: ./digilinq-telegraph
+      dockerfile: Dockerfile
+    image: digilinq-telegraf
+    container_name: digilinq-telegraf
+    hostname: digilinq-telegraf
+    environment:
+      HOSTNAME: "digilinq-telegraf"
+    ports:
+      - "8125:8125/udp"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - digilinq-app-network
+
+  digilinq-influxdb:
+    image: influxdb
+    container_name: digilinq-influxdb
+    hostname: digilinq-influxdb
+    volumes:
+      - digilinq-influxdb-volume:/var/lib/influxdb
+    ports:
+      - "8086:8086"
+    networks:
+      - digilinq-app-network
+
+  digilinq-chronograf:
+    image: chronograf:1.7.3
+    container_name: digilinq-chronograf
+    hostname: digilinq-chronograf
+    environment:
+      INFLUXDB_URL: http://digilinq-influxdb:8086
+      KAPACITOR_URL: http://digilinq-kapacitor:9092
+    volumes:
+      - digilinq-chronograf-volume:/var/lib/chronograf
+    ports:
+      - "8888:8888"
+    restart: always
+    networks:
+      - digilinq-app-network
+
+  digilinq-kapacitor:
+    image: kapacitor
+    container_name: digilinq-kapacitor
+    hostname: digilinq-kapacitor
+    environment:
+      KAPACITOR_HOSTNAME: digilinq-kapacitor
+      KAPACITOR_INFLUXDB_0_URLS_0: http://digilinq-influxdb:8086
+    ports:
+      - "9092:9092"
+    networks:
+      - digilinq-app-network
+
+volumes:
+  digilinq-db-volume:
+  digilinq-graphana-volume:
+  digilinq-telegraph-volume:
+  digilinq-influxdb-volume:
+  digilinq-chronograf-volume:
+
+networks:
+  digilinq-app-network:
+    driver: bridge
