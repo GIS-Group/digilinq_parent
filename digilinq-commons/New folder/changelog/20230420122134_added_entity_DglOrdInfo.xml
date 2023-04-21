@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity DglOrdInfo.
+    -->
+    <changeSet id="20230420122134-1" author="jhipster">
+        <createTable tableName="dgl_ord_info">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="ord_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="ord_unq_id" type="integer">
+                <constraints nullable="false" unique="true" uniqueConstraintName="ux_dgl_ord_info__ord_unq_id" />
+            </column>
+            <column name="rel_mno_id" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="ord_value" type="varchar(100)">
+                <constraints nullable="false" />
+            </column>
+            <column name="ord_dt_of_ord" type="date">
+                <constraints nullable="false" />
+            </column>
+            <column name="rel_ord_cust_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="ord_delivery_add" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="ord_tot_qty" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="ord_proof_of_del_url" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="ord_cust_currency" type="varchar(100)">
+                <constraints nullable="false" />
+            </column>
+            <column name="ord_cust_time_zone" type="varchar(8)">
+                <constraints nullable="false" />
+            </column>
+            <column name="ord_status" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="ord_cart_tot_amount" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="ord_cart_tax_amt" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="ord_cart_shiping_chargers" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="ord_pay_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="ord_pay_dttime" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="ord_pay_status" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="ord_pay_mode_of_pay" type="varchar(100)">
+                <constraints nullable="false" />
+            </column>
+            <column name="ord_pay_tot_amt" type="varchar(100)">
+                <constraints nullable="false" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="dgl_ord_info" columnName="ord_pay_dttime" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20230420122134-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/dgl_ord_info.csv"
+                  separator=";"
+                  tableName="dgl_ord_info"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="ord_id" type="numeric"/>
+            <column name="ord_unq_id" type="numeric"/>
+            <column name="rel_mno_id" type="string"/>
+            <column name="ord_value" type="string"/>
+            <column name="ord_dt_of_ord" type="date"/>
+            <column name="rel_ord_cust_id" type="numeric"/>
+            <column name="ord_delivery_add" type="string"/>
+            <column name="ord_tot_qty" type="numeric"/>
+            <column name="ord_proof_of_del_url" type="string"/>
+            <column name="ord_cust_currency" type="string"/>
+            <column name="ord_cust_time_zone" type="string"/>
+            <column name="ord_status" type="string"/>
+            <column name="ord_cart_tot_amount" type="numeric"/>
+            <column name="ord_cart_tax_amt" type="numeric"/>
+            <column name="ord_cart_shiping_chargers" type="numeric"/>
+            <column name="ord_pay_id" type="numeric"/>
+            <column name="ord_pay_dttime" type="date"/>
+            <column name="ord_pay_status" type="string"/>
+            <column name="ord_pay_mode_of_pay" type="string"/>
+            <column name="ord_pay_tot_amt" type="string"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

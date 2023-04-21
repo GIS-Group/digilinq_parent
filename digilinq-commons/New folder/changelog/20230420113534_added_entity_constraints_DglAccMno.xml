@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity DglAccMno.
+    -->
+    <changeSet id="20230420113534-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="acc_parent_id"
+                                 baseTableName="dgl_acc_mno"
+                                 constraintName="fk_dgl_acc_mno__acc_parent_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dgl_acc_mno"/>
+
+        <addForeignKeyConstraint baseColumnNames="acc_mno_parent_id"
+                                 baseTableName="dgl_acc_mno"
+                                 constraintName="fk_dgl_acc_mno__acc_mno_parent_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dgl_acc_mno"/>
+    </changeSet>
+</databaseChangeLog>

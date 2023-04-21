@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity DglCustCustomFields.
+    -->
+    <changeSet id="20230420115434-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="cust_id"
+                                 baseTableName="dgl_cust_custom_fields"
+                                 constraintName="fk_dgl_cust_custom_fields__cust_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dgl_customer"/>
+    </changeSet>
+</databaseChangeLog>
