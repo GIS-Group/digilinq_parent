@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity DglItemsPrice.
+    -->
+    <changeSet id="20230420120534-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="solution_id"
+                                 baseTableName="dgl_items_price"
+                                 constraintName="fk_dgl_items_price__solution_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dgl_cat_sol_info"/>
+
+        <addForeignKeyConstraint baseColumnNames="sol_item_id"
+                                 baseTableName="dgl_items_price"
+                                 constraintName="fk_dgl_items_price__sol_item_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dgl_cat_sol_items"/>
+
+        <addForeignKeyConstraint baseColumnNames="sol_item_var_id"
+                                 baseTableName="dgl_items_price"
+                                 constraintName="fk_dgl_items_price__sol_item_var_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dgl_cat_item_var"/>
+
+        <addForeignKeyConstraint baseColumnNames="cust_cat_id"
+                                 baseTableName="dgl_items_price"
+                                 constraintName="fk_dgl_items_price__cust_cat_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dgl_md_cust_cat"/>
+    </changeSet>
+</databaseChangeLog>

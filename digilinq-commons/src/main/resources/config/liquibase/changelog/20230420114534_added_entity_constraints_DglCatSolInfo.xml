@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity DglCatSolInfo.
+    -->
+    <changeSet id="20230420114534-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="rel_prod_cat_id"
+                                 baseTableName="dgl_cat_sol_info"
+                                 constraintName="fk_dgl_cat_sol_info__rel_prod_cat_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dgl_md_prod_cat"/>
+    </changeSet>
+</databaseChangeLog>

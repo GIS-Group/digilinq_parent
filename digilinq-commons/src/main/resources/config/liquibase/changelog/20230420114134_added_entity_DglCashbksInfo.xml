@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity DglCashbksInfo.
+    -->
+    <changeSet id="20230420114134-1" author="jhipster">
+        <createTable tableName="dgl_cashbks_info">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="cashbk_id" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="cashbk_unq_id" type="integer">
+                <constraints nullable="false" unique="true" uniqueConstraintName="ux_dgl_cashbks_info__cashbk_unq_id" />
+            </column>
+            <column name="cashbk_name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="cashbk_start_date" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="cashbk_end_date" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="cashbk_code" type="varchar(100)">
+                <constraints nullable="false" />
+            </column>
+            <column name="cashbk_max_cpns_applcbl" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="cashbk_timeperiod" type="varchar(100)">
+                <constraints nullable="false" />
+            </column>
+            <column name="cashbk_no_of_cpns" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="rel_cashbk_prod_cat" type="varchar(100)">
+                <constraints nullable="false" />
+            </column>
+            <column name="rel_cashbk_cust_cat" type="varchar(100)">
+                <constraints nullable="false" />
+            </column>
+            <column name="cashbk_type_fxd_amnt" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="cashbk_value" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="operator_bearer" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="provider_bearer" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="cashbk_desc" type="varchar(65535)">
+                <constraints nullable="false" />
+            </column>
+            <column name="cshbk_status" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="dgl_cashbks_info" columnName="cashbk_start_date" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="dgl_cashbks_info" columnName="cashbk_end_date" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20230420114134-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/dgl_cashbks_info.csv"
+                  separator=";"
+                  tableName="dgl_cashbks_info"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="cashbk_id" type="numeric"/>
+            <column name="cashbk_unq_id" type="numeric"/>
+            <column name="cashbk_name" type="string"/>
+            <column name="cashbk_start_date" type="date"/>
+            <column name="cashbk_end_date" type="date"/>
+            <column name="cashbk_code" type="string"/>
+            <column name="cashbk_max_cpns_applcbl" type="numeric"/>
+            <column name="cashbk_timeperiod" type="string"/>
+            <column name="cashbk_no_of_cpns" type="numeric"/>
+            <column name="rel_cashbk_prod_cat" type="string"/>
+            <column name="rel_cashbk_cust_cat" type="string"/>
+            <column name="cashbk_type_fxd_amnt" type="boolean"/>
+            <column name="cashbk_value" type="numeric"/>
+            <column name="operator_bearer" type="numeric"/>
+            <column name="provider_bearer" type="numeric"/>
+            <column name="cashbk_desc" type="string"/>
+            <column name="cshbk_status" type="string"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>
