@@ -27,7 +27,7 @@ public class DglMdTaxCompDTO implements Serializable {
     @Size(max = 255)
     private String appModules;
 
-    @NotNull
+//    @NotNull
     private Integer taxId;
 
     @NotNull

@@ -27,7 +27,7 @@ public class DglMdCurDTO implements Serializable {
     @Size(max = 100)
     private String curConvRate;
 
-    @NotNull
+//    @NotNull
     private Integer curId;
 
     @NotNull
