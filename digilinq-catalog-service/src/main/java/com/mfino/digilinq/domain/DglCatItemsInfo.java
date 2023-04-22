@@ -2,11 +2,14 @@ package com.mfino.digilinq.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -41,8 +44,8 @@ public class DglCatItemsInfo implements Serializable {
 //    @Column(name = "id")
 //    private Long id;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@NotNull
     @Column(name = "item_id", nullable = false)
     private Integer itemId;
 
@@ -94,7 +97,9 @@ public class DglCatItemsInfo implements Serializable {
     @Column(name = "time_period", length = 255)
     private String timePeriod;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false,cascade=CascadeType.ALL,fetch=FetchType.LAZY,targetEntity = DglCatTpInfo.class)
+    @JoinColumn(name = "TP_ID", referencedColumnName = "TP_ID")
+    @JoinColumn(name = "tp_tp_id", referencedColumnName = "TP_ID")
     @NotNull
     private DglCatTpInfo tp;
 
