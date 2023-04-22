@@ -11,11 +11,24 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 /**
  * A DglMdCur.
  */
 @Entity
 @Table(name = "dgl_md_cur")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@ToString
 //@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 //@SuppressWarnings("common-java:DuplicatedBlocks")
 public class DglMdCur implements Serializable {
@@ -47,8 +60,8 @@ public class DglMdCur implements Serializable {
     private String curConvRate;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @NotNull
     @Column(name = "cur_id", nullable = false)
     private Integer curId;
 

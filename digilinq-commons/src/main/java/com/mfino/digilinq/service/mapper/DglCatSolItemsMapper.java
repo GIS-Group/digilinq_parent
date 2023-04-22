@@ -18,5 +18,14 @@ public interface DglCatSolItemsMapper extends EntityMapper<DglCatSolItemsDTO, Dg
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "solId", source = "solId")
     @Mapping(target = "solUnqId", source = "solUnqId")
+    @Mapping(target = "solTitle", source = "solTitle")
+    @Mapping(target = "solDesc", source = "solDesc")
+    @Mapping(target = "solKeywords", source = "solKeywords")
+    @Mapping(target = "solTextBanner", source = "solTextBanner")
+    @Mapping(target = "solImgUrl", source = "solImgUrl")
+    @Mapping(target = "solGeoTag", source = "solGeoTag")
+    @Mapping(target = "solThumbnail", source = "solThumbnail")
+    @Mapping(target = "solStatus", source = "solStatus")
+    @Mapping(target = "relProdCat", source = "relProdCat")
     DglCatSolInfoDTO toDtoDglCatSolInfoSolUnqId(DglCatSolInfo dglCatSolInfo);
 }

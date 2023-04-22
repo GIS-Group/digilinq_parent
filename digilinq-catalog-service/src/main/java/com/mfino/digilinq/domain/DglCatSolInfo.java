@@ -2,11 +2,15 @@ package com.mfino.digilinq.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -41,8 +45,8 @@ public class DglCatSolInfo implements Serializable {
 //    @Column(name = "id")
 //    private Long id;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.AUTO)
+  //  @NotNull
     @Column(name = "sol_id", nullable = false)
     private Integer solId;
 
@@ -89,8 +93,12 @@ public class DglCatSolInfo implements Serializable {
     @Column(name = "sol_status", length = 255, nullable = false)
     private String solStatus;
 
-    @ManyToOne(optional = false)
-    @NotNull
+    @ManyToOne(optional = false,cascade = CascadeType.ALL,fetch = FetchType.LAZY,targetEntity =DglMdProdCat.class)
+  //  @NotNull
+    @JoinColumns({
+    @JoinColumn(name = "REL_PROD_CAT", referencedColumnName = "prod_cat_id"),
+    @JoinColumn(name = "relProdCat_prod_cat_id", referencedColumnName = "prod_cat_id")
+    })
     private DglMdProdCat relProdCat;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

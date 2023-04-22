@@ -14,7 +14,7 @@ public class DglOrdInfoDTO implements Serializable {
 
     private Long id;
 
-    @NotNull
+    //@NotNull
     private Integer ordId;
 
     @NotNull
@@ -50,8 +50,8 @@ public class DglOrdInfoDTO implements Serializable {
     private String ordCustCurrency;
 
     @NotNull
-    @Size(min = 8, max = 8)
-    @Pattern(regexp = "^(([0-1]\\d)|(2[0-3])):([0-5]\\d):([0-5]\\d)$")
+    //@Size(min = 8, max = 8)
+    //@Pattern(regexp = "^(([0-1]\\d)|(2[0-3])):([0-5]\\d):([0-5]\\d)$")
     private String ordCustTimeZone;
 
     @NotNull

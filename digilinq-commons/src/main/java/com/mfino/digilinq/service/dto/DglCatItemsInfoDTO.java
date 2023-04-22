@@ -10,9 +10,9 @@ import javax.validation.constraints.*;
 @SuppressWarnings("common-java:DuplicatedBlocks")
 public class DglCatItemsInfoDTO implements Serializable {
 
-    private Long id;
+    private Integer id;
 
-    @NotNull
+    //@NotNull
     private Integer itemId;
 
     @NotNull
@@ -54,11 +54,11 @@ public class DglCatItemsInfoDTO implements Serializable {
 
     private DglCatTpInfoDTO tp;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
