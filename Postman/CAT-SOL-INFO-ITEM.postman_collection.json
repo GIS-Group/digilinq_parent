@@ -1,0 +1,380 @@
+{
+	"info": {
+		"_postman_id": "992705a4-23e9-4422-aa5a-f6e8a5b11fcf",
+		"name": "CAT-SOL-INFO/ITEM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9224995"
+	},
+	"item": [
+		{
+			"name": "CAT-SOL-INFO & SOL_ITEMS",
+			"item": [
+				{
+					"name": "create-cat-sol-infos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{token}}.eyJzY29wZSI6WyJyZWFkIiwid3JpdGUiLCJ0cnVzdCJdLCJleHAiOjE2MTMwMjU5NTMsImp0aSI6IjNlZDJlNjY4LTE4YjktNDg5Ni04NWZmLTNkNzJhNzNhNzIxOSIsImNsaWVudF9pZCI6IlIyZHB4UTN2UHJ0ZmdGNzIifQ.Obxib3jAOdItPQ9buwOOscNo902u6lkV9M1rXy0njppnkpiF5bya8CjULzT1t75wCW6hDBTTWtai7ceCfKEtDgJnE8-EaD3bntowQfxplAz-2CP76vvywopFNxXezGu1UxkEFSCChDQ608WMJTq5JZp5AKGQB6xqLzY3qPwoW5ujeW3Rqs7O8hxYvKXlECvei33Tqp6vAQmfYYQgSO8rI8CYdRCYaTc2Nx8foMjERti_y4arDoVZyCrj3NPXtCBDJfXJ_SDVedk-5GS1am6VzkJDO4eS21GcJTt4NP1vi8oOG4qLl9C5FhIFV81bvJvck73-jy9vW_zd0cQOByldiA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"solUnqId\":\"55555\",\"solTitle\":\"TESTING-SOL55\",\"solDesc\":\"TestingDesc55\",\"solKeywords\":\"Keywords555\",\"solTextBanner\":\"banner555\",\"solImgUrl\":\"/app/digilink/image-0.0555.jpeg\",\"solGeoTag\":\"tag3\",\"solThumbnail\":\"YES\",\"solStatus\":\"SUCCESS\",\"relProdCat\":{\"prodCatTitle\":\"Prod-Catalog55\",\"prodCatDesc\":\"Testing ProdCatalog55\",\"prodCatImgUrl\":\"/app/digilink/image-0.0555.jpeg\",\"mdProCatStatus\":\"SUCSESS\"}}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{catalogServiceAPIGatewayUrl}}/dgl-cat-sol-infos",
+							"host": [
+								"{{catalogServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"dgl-cat-sol-infos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-cat-sol-infos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{token}}.eyJzY29wZSI6WyJyZWFkIiwid3JpdGUiLCJ0cnVzdCJdLCJleHAiOjE2MTMwMjU5NTMsImp0aSI6IjNlZDJlNjY4LTE4YjktNDg5Ni04NWZmLTNkNzJhNzNhNzIxOSIsImNsaWVudF9pZCI6IlIyZHB4UTN2UHJ0ZmdGNzIifQ.Obxib3jAOdItPQ9buwOOscNo902u6lkV9M1rXy0njppnkpiF5bya8CjULzT1t75wCW6hDBTTWtai7ceCfKEtDgJnE8-EaD3bntowQfxplAz-2CP76vvywopFNxXezGu1UxkEFSCChDQ608WMJTq5JZp5AKGQB6xqLzY3qPwoW5ujeW3Rqs7O8hxYvKXlECvei33Tqp6vAQmfYYQgSO8rI8CYdRCYaTc2Nx8foMjERti_y4arDoVZyCrj3NPXtCBDJfXJ_SDVedk-5GS1am6VzkJDO4eS21GcJTt4NP1vi8oOG4qLl9C5FhIFV81bvJvck73-jy9vW_zd0cQOByldiA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"solId\":\"9\",\"solUnqId\":\"55551\",\"solTitle\":\"TESTING-SOL31\",\"solDesc\":\"TestingDesc31\",\"solKeywords\":\"Keywords\",\"solTextBanner\":\"banner\",\"solImgUrl\":\"/app/digilink/image-0.031.jpeg\",\"solGeoTag\":\"tag3\",\"solThumbnail\":\"YES\",\"solStatus\":\"SUCCESS\",\"relProdCat\":{\"prodCatTitle\":\"Prod-Catalog31\",\"prodCatDesc\":\"Testing ProdCatalog31\",\"prodCatImgUrl\":\"/app/digilink/image-0.031.jpeg\",\"mdProCatStatus\":\"SUCCSESS\"}}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{catalogServiceAPIGatewayUrl}}/dgl-cat-sol-infos/9",
+							"host": [
+								"{{catalogServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"dgl-cat-sol-infos",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "partial-Update-dgl-cat-sol-infos(Status)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{token}}.eyJzY29wZSI6WyJyZWFkIiwid3JpdGUiLCJ0cnVzdCJdLCJleHAiOjE2MTMwMjU5NTMsImp0aSI6IjNlZDJlNjY4LTE4YjktNDg5Ni04NWZmLTNkNzJhNzNhNzIxOSIsImNsaWVudF9pZCI6IlIyZHB4UTN2UHJ0ZmdGNzIifQ.Obxib3jAOdItPQ9buwOOscNo902u6lkV9M1rXy0njppnkpiF5bya8CjULzT1t75wCW6hDBTTWtai7ceCfKEtDgJnE8-EaD3bntowQfxplAz-2CP76vvywopFNxXezGu1UxkEFSCChDQ608WMJTq5JZp5AKGQB6xqLzY3qPwoW5ujeW3Rqs7O8hxYvKXlECvei33Tqp6vAQmfYYQgSO8rI8CYdRCYaTc2Nx8foMjERti_y4arDoVZyCrj3NPXtCBDJfXJ_SDVedk-5GS1am6VzkJDO4eS21GcJTt4NP1vi8oOG4qLl9C5FhIFV81bvJvck73-jy9vW_zd0cQOByldiA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"solId\":\"9\",\"solUnqId\":\"55551\",\"solTitle\":\"TESTING-SOL31\",\"solDesc\":\"TestingDesc31\",\"solKeywords\":\"Keywords\",\"solTextBanner\":\"banner\",\"solImgUrl\":\"/app/digilink/image-0.031.jpeg\",\"solGeoTag\":\"tag3\",\"solThumbnail\":\"YES\",\"solStatus\":\"PARTIAL_SUCCESS\",\"relProdCat\":{\"prodCatTitle\":\"Prod-Catalog31\",\"prodCatDesc\":\"Testing ProdCatalog31\",\"prodCatImgUrl\":\"/app/digilink/image-0.031.jpeg\",\"mdProCatStatus\":\"SUCCSESS\",\"prodCatId\":\"11\"}}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{catalogServiceAPIGatewayUrl}}/dgl-cat-sol-infos/9",
+							"host": [
+								"{{catalogServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"dgl-cat-sol-infos",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch(All)-dgl-cat-sol-infos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{token}}.eyJzY29wZSI6WyJyZWFkIiwid3JpdGUiLCJ0cnVzdCJdLCJleHAiOjE2MTMwMjU5NTMsImp0aSI6IjNlZDJlNjY4LTE4YjktNDg5Ni04NWZmLTNkNzJhNzNhNzIxOSIsImNsaWVudF9pZCI6IlIyZHB4UTN2UHJ0ZmdGNzIifQ.Obxib3jAOdItPQ9buwOOscNo902u6lkV9M1rXy0njppnkpiF5bya8CjULzT1t75wCW6hDBTTWtai7ceCfKEtDgJnE8-EaD3bntowQfxplAz-2CP76vvywopFNxXezGu1UxkEFSCChDQ608WMJTq5JZp5AKGQB6xqLzY3qPwoW5ujeW3Rqs7O8hxYvKXlECvei33Tqp6vAQmfYYQgSO8rI8CYdRCYaTc2Nx8foMjERti_y4arDoVZyCrj3NPXtCBDJfXJ_SDVedk-5GS1am6VzkJDO4eS21GcJTt4NP1vi8oOG4qLl9C5FhIFV81bvJvck73-jy9vW_zd0cQOByldiA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{catalogServiceAPIGatewayUrl}}/dgl-cat-sol-infos",
+							"host": [
+								"{{catalogServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"dgl-cat-sol-infos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch-dgl-cat-sol-infos-By(ID)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{catalogServiceAPIGatewayUrl}}/dgl-cat-sol-infos/5",
+							"host": [
+								"{{catalogServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"dgl-cat-sol-infos",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Sol-Items(dgl-cat-sol-items)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{token}}.eyJzY29wZSI6WyJyZWFkIiwid3JpdGUiLCJ0cnVzdCJdLCJleHAiOjE2MTMwMjU5NTMsImp0aSI6IjNlZDJlNjY4LTE4YjktNDg5Ni04NWZmLTNkNzJhNzNhNzIxOSIsImNsaWVudF9pZCI6IlIyZHB4UTN2UHJ0ZmdGNzIifQ.Obxib3jAOdItPQ9buwOOscNo902u6lkV9M1rXy0njppnkpiF5bya8CjULzT1t75wCW6hDBTTWtai7ceCfKEtDgJnE8-EaD3bntowQfxplAz-2CP76vvywopFNxXezGu1UxkEFSCChDQ608WMJTq5JZp5AKGQB6xqLzY3qPwoW5ujeW3Rqs7O8hxYvKXlECvei33Tqp6vAQmfYYQgSO8rI8CYdRCYaTc2Nx8foMjERti_y4arDoVZyCrj3NPXtCBDJfXJ_SDVedk-5GS1am6VzkJDO4eS21GcJTt4NP1vi8oOG4qLl9C5FhIFV81bvJvck73-jy9vW_zd0cQOByldiA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"solItemType\":\"solItemType00002\",\"solItemTitle\":\"solItemTitle00002\",\"solDisplayItemPrice\":100.04,\"solItemParentItem\":\"solItemParentItem00002\",\"solItemIsDep\":true,\"isPaidProvider\":true,\"sol\":{\"solUnqId\":\"00002\",\"solTitle\":\"TESTING-SOL00002\",\"solDesc\":\"TestingDesc00002\",\"solKeywords\":\"Keywords00002\",\"solTextBanner\":\"banner00002\",\"solImgUrl\":\"/app/digilink/image-0.00002.jpeg\",\"solGeoTag\":\"tag00002\",\"solThumbnail\":\"YES\",\"solStatus\":\"COMPLETED\",\"relProdCat\":{\"prodCatTitle\":\"Prod-Catalog00001\",\"prodCatDesc\":\"Testing ProdCatalog00002\",\"prodCatImgUrl\":\"/app/digilink/image-0.00002.jpeg\",\"mdProCatStatus\":\"COMPLETED\"}}}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{catalogServiceAPIGatewayUrl}}/dgl-cat-sol-items",
+							"host": [
+								"{{catalogServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"dgl-cat-sol-items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update-dgl-cat-sol-items",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{token}}.eyJzY29wZSI6WyJyZWFkIiwid3JpdGUiLCJ0cnVzdCJdLCJleHAiOjE2MTMwMjU5NTMsImp0aSI6IjNlZDJlNjY4LTE4YjktNDg5Ni04NWZmLTNkNzJhNzNhNzIxOSIsImNsaWVudF9pZCI6IlIyZHB4UTN2UHJ0ZmdGNzIifQ.Obxib3jAOdItPQ9buwOOscNo902u6lkV9M1rXy0njppnkpiF5bya8CjULzT1t75wCW6hDBTTWtai7ceCfKEtDgJnE8-EaD3bntowQfxplAz-2CP76vvywopFNxXezGu1UxkEFSCChDQ608WMJTq5JZp5AKGQB6xqLzY3qPwoW5ujeW3Rqs7O8hxYvKXlECvei33Tqp6vAQmfYYQgSO8rI8CYdRCYaTc2Nx8foMjERti_y4arDoVZyCrj3NPXtCBDJfXJ_SDVedk-5GS1am6VzkJDO4eS21GcJTt4NP1vi8oOG4qLl9C5FhIFV81bvJvck73-jy9vW_zd0cQOByldiA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":null,\"solItemsId\":14,\"solItemType\":\"solItemType00001\",\"solItemTitle\":\"solItemTitle00001\",\"solDisplayItemPrice\":90.04,\"solItemParentItem\":\"solItemParentItem000014\",\"solItemIsDep\":true,\"isPaidProvider\":true,\"sol\":{\"id\":null,\"solId\":15,\"solUnqId\":1,\"solTitle\":\"TESTING-SOL00001\",\"solDesc\":\"TestingDesc00001\",\"solKeywords\":\"Keywords00001\",\"solTextBanner\":\"banner00001\",\"solImgUrl\":\"/app/digilink/image-0.03.jpeg\",\"solGeoTag\":\"tag000015\",\"solThumbnail\":\"YES\",\"solStatus\":\"SUCCESS\",\"relProdCat\":{\"id\":null,\"prodCatTitle\":\"Prod-Catalog00001\",\"prodCatDesc\":\"Testing ProdCatalog000016\",\"prodCatImgUrl\":\"/app/digilink/image-0.03.jpeg\",\"prodCatId\":16,\"mdProCatStatus\":\"SUCCESS\"}}}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{catalogServiceAPIGatewayUrl}}/dgl-cat-sol-items/14",
+							"host": [
+								"{{catalogServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"dgl-cat-sol-items",
+								"14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PartialUpdate-dgl-cat-sol-items",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{token}}.eyJzY29wZSI6WyJyZWFkIiwid3JpdGUiLCJ0cnVzdCJdLCJleHAiOjE2MTMwMjU5NTMsImp0aSI6IjNlZDJlNjY4LTE4YjktNDg5Ni04NWZmLTNkNzJhNzNhNzIxOSIsImNsaWVudF9pZCI6IlIyZHB4UTN2UHJ0ZmdGNzIifQ.Obxib3jAOdItPQ9buwOOscNo902u6lkV9M1rXy0njppnkpiF5bya8CjULzT1t75wCW6hDBTTWtai7ceCfKEtDgJnE8-EaD3bntowQfxplAz-2CP76vvywopFNxXezGu1UxkEFSCChDQ608WMJTq5JZp5AKGQB6xqLzY3qPwoW5ujeW3Rqs7O8hxYvKXlECvei33Tqp6vAQmfYYQgSO8rI8CYdRCYaTc2Nx8foMjERti_y4arDoVZyCrj3NPXtCBDJfXJ_SDVedk-5GS1am6VzkJDO4eS21GcJTt4NP1vi8oOG4qLl9C5FhIFV81bvJvck73-jy9vW_zd0cQOByldiA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":null,\"solItemsId\":14,\"solItemType\":\"solItemType00001\",\"solItemTitle\":\"solItemTitle00001\",\"solDisplayItemPrice\":90.04,\"solItemParentItem\":\"solItemParentItem000014\",\"solItemIsDep\":true,\"isPaidProvider\":true,\"sol\":{\"id\":null,\"solId\":15,\"solUnqId\":1,\"solTitle\":\"TESTING-SOL00001\",\"solDesc\":\"TestingDesc00001\",\"solKeywords\":\"Keywords00001\",\"solTextBanner\":\"banner00001\",\"solImgUrl\":\"/app/digilink/image-0.03.jpeg\",\"solGeoTag\":\"tag000015\",\"solThumbnail\":\"YES\",\"solStatus\":\"COMPLETED\",\"relProdCat\":{\"id\":null,\"prodCatTitle\":\"Prod-Catalog00001\",\"prodCatDesc\":\"Testing ProdCatalog000016\",\"prodCatImgUrl\":\"/app/digilink/image-0.03.jpeg\",\"prodCatId\":16,\"mdProCatStatus\":\"COMPLETED\"}}}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{catalogServiceAPIGatewayUrl}}/dgl-cat-sol-items/14",
+							"host": [
+								"{{catalogServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"dgl-cat-sol-items",
+								"14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch(All)-dgl-cat-sol-items",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{token}}.eyJzY29wZSI6WyJyZWFkIiwid3JpdGUiLCJ0cnVzdCJdLCJleHAiOjE2MTMwMjU5NTMsImp0aSI6IjNlZDJlNjY4LTE4YjktNDg5Ni04NWZmLTNkNzJhNzNhNzIxOSIsImNsaWVudF9pZCI6IlIyZHB4UTN2UHJ0ZmdGNzIifQ.Obxib3jAOdItPQ9buwOOscNo902u6lkV9M1rXy0njppnkpiF5bya8CjULzT1t75wCW6hDBTTWtai7ceCfKEtDgJnE8-EaD3bntowQfxplAz-2CP76vvywopFNxXezGu1UxkEFSCChDQ608WMJTq5JZp5AKGQB6xqLzY3qPwoW5ujeW3Rqs7O8hxYvKXlECvei33Tqp6vAQmfYYQgSO8rI8CYdRCYaTc2Nx8foMjERti_y4arDoVZyCrj3NPXtCBDJfXJ_SDVedk-5GS1am6VzkJDO4eS21GcJTt4NP1vi8oOG4qLl9C5FhIFV81bvJvck73-jy9vW_zd0cQOByldiA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{catalogServiceAPIGatewayUrl}}/dgl-cat-sol-items",
+							"host": [
+								"{{catalogServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"dgl-cat-sol-items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch-dgl-cat-sol-items-BY(ID)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{token}}.eyJzY29wZSI6WyJyZWFkIiwid3JpdGUiLCJ0cnVzdCJdLCJleHAiOjE2MTMwMjU5NTMsImp0aSI6IjNlZDJlNjY4LTE4YjktNDg5Ni04NWZmLTNkNzJhNzNhNzIxOSIsImNsaWVudF9pZCI6IlIyZHB4UTN2UHJ0ZmdGNzIifQ.Obxib3jAOdItPQ9buwOOscNo902u6lkV9M1rXy0njppnkpiF5bya8CjULzT1t75wCW6hDBTTWtai7ceCfKEtDgJnE8-EaD3bntowQfxplAz-2CP76vvywopFNxXezGu1UxkEFSCChDQ608WMJTq5JZp5AKGQB6xqLzY3qPwoW5ujeW3Rqs7O8hxYvKXlECvei33Tqp6vAQmfYYQgSO8rI8CYdRCYaTc2Nx8foMjERti_y4arDoVZyCrj3NPXtCBDJfXJ_SDVedk-5GS1am6VzkJDO4eS21GcJTt4NP1vi8oOG4qLl9C5FhIFV81bvJvck73-jy9vW_zd0cQOByldiA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{catalogServiceAPIGatewayUrl}}/dgl-cat-sol-items/14",
+							"host": [
+								"{{catalogServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"dgl-cat-sol-items",
+								"14"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
