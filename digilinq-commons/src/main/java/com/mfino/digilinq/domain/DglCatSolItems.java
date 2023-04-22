@@ -2,11 +2,15 @@ package com.mfino.digilinq.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -44,8 +48,8 @@ public class DglCatSolItems implements Serializable {
 //    private Long id;
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @NotNull
     @Column(name = "sol_items_id", nullable = false)
     private Integer solItemsId;
 
@@ -75,8 +79,12 @@ public class DglCatSolItems implements Serializable {
     @Column(name = "is_paid_provider", nullable = false)
     private Boolean isPaidProvider;
 
-    @ManyToOne(optional = false)
-    @NotNull
+    @ManyToOne(optional = false,cascade = CascadeType.ALL,fetch = FetchType.LAZY,targetEntity =DglCatSolInfo.class)
+ //   @NotNull
+    @JoinColumns({
+    @JoinColumn(name = "SOL_ID", referencedColumnName = "sol_id"),
+    @JoinColumn(name = "sol_sol_id", referencedColumnName = "sol_id")
+    })
     @JsonIgnoreProperties(value = { "relProdCat" }, allowSetters = true)
     private DglCatSolInfo sol;
 
