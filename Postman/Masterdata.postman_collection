@@ -1,0 +1,149 @@
+{
+	"info": {
+		"_postman_id": "0f15ed49-a125-40de-9c98-7c8e65d42087",
+		"name": "Digilinq",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "17700657"
+	},
+	"item": [
+		{
+			"name": "Tax-component",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsid2ViIl0sInVzZXJfbmFtZSI6ImFkbWluLmFkbWluIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTY4MjE2NTA3NCwiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkRfVVNFUiIsIkFETUlOX1VTRVIiXSwianRpIjoiMDhjNjhhY2MtMGU3MC00MGI2LThkYTItYTMxNDRiZDM5YTRjIiwiY2xpZW50X2lkIjoiOTNlZDQ1M2UtYjdhYy00MTkyLWE2ZDQtYzQ1ZmFlMGQ5OWFjIn0.Ix0FNfroIIMB_I8uV5k5RsmKpWlZy2YNW5H6oC4hdPZVkvlgw6xvHKqRAmbAx5KKW6qGn-s1B44PfMN8LRUqrSd7DFDtoqsHYIb1wCtSOGCg26jA5PwI0nF4cic89X3s5A4x8vqMGTh3Fdp-mFP7XdE-0CLGrj4kG4hkkKlvrSaZ-Rppbv-7dUbMVmLfVCGeJtg8CHqMRoBWjZ38lUCgxAC_fAsZ0lW5jkiVWiXbkKnTf-KgQXYcBN779ZjYhbkuRIMX1HkV8ZsiuV3jxQWnydMRExcWcSs9HFtKdPCuc-BkZz_E3_sVK9rj5n9nZF5PHxY6lU_sIXCz_NdE1K4tjg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \r\n  \"taxCompTitle\": \"sampletitle\",\r\n  \"taxCompDedType\": \"taxCompDedType\",\r\n  \"taxValue\": 10.0,\r\n  \"taxCompDesc\": \"testdescription\",\r\n  \"appModules\": \"1,2\",\r\n  \"mdTaxStatus\":\"mdTaxStatus\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{accountServiceAPIGatewayUrl}}/dgl-md-tax-comps"
+					},
+					"response": []
+				},
+				{
+					"name": "fetch",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsid2ViIl0sInVzZXJfbmFtZSI6ImFkbWluLmFkbWluIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTY4MjE2NTA3NCwiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkRfVVNFUiIsIkFETUlOX1VTRVIiXSwianRpIjoiMDhjNjhhY2MtMGU3MC00MGI2LThkYTItYTMxNDRiZDM5YTRjIiwiY2xpZW50X2lkIjoiOTNlZDQ1M2UtYjdhYy00MTkyLWE2ZDQtYzQ1ZmFlMGQ5OWFjIn0.Ix0FNfroIIMB_I8uV5k5RsmKpWlZy2YNW5H6oC4hdPZVkvlgw6xvHKqRAmbAx5KKW6qGn-s1B44PfMN8LRUqrSd7DFDtoqsHYIb1wCtSOGCg26jA5PwI0nF4cic89X3s5A4x8vqMGTh3Fdp-mFP7XdE-0CLGrj4kG4hkkKlvrSaZ-Rppbv-7dUbMVmLfVCGeJtg8CHqMRoBWjZ38lUCgxAC_fAsZ0lW5jkiVWiXbkKnTf-KgQXYcBN779ZjYhbkuRIMX1HkV8ZsiuV3jxQWnydMRExcWcSs9HFtKdPCuc-BkZz_E3_sVK9rj5n9nZF5PHxY6lU_sIXCz_NdE1K4tjg",
+								"type": "text"
+							}
+						],
+						"url": "{{accountServiceAPIGatewayUrl}}/dgl-md-tax-comps"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsid2ViIl0sInVzZXJfbmFtZSI6ImFkbWluLmFkbWluIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTY4MjIwMTk1MywiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkRfVVNFUiIsIkFETUlOX1VTRVIiXSwianRpIjoiZGE3ZWQ4NjYtY2YyZC00MjM0LWFhYTctYTlhM2Q1YjI3ZDMwIiwiY2xpZW50X2lkIjoiOTNlZDQ1M2UtYjdhYy00MTkyLWE2ZDQtYzQ1ZmFlMGQ5OWFjIn0.Wt-3qVzZDcAXB-n-9Qsxq1dJSMXU12SStXgY6TXgdlIPMEoF3JIr66IMG3ZgcRNHg-X0VsmpD4iX1uRCsSjtWWz0agsTHNv9JKJaS_pr5SPxAFpj4y49pWTC7Mk4VcXvlx2WfjXfHA5vXWVNv38lNhBD8ICy4poIpTA3w5cbm0SbQEfN1ldXQGd0qXQf7lEUp0q5UUbUQfvrRlmcQOoxKHSChv5GMQsDOGUd8l-kEdOsaFNBie9-ZT9obPnMWdHIqMqc1rr1uv8vtfUhjExR9F4G-ARwFNi3-3Ws8rYQvDphxM5wFmiVPvZOcbiIUbjnLYKDl6sRUjBR5yE7e4AHSw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"taxCompTitle\": \"sampletitle\",\r\n  \"taxCompDedType\": \"taxCompDedType\",\r\n  \"taxCompDesc\": \"testdescription\",\r\n  \"appModules\": \"1,2\",\r\n  \"taxId\": 3,\r\n  \"taxValue\": 10.0,\r\n  \"mdTaxStatus\": \"Acctive\"\r\n}\r\n\r\n  ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{accountServiceAPIGatewayUrl}}/dgl-md-tax-comps/3"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Currency",
+			"item": [
+				{
+					"name": "Create currency",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsid2ViIl0sInVzZXJfbmFtZSI6ImFkbWluLmFkbWluIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTY4MjIwMTk1MywiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkRfVVNFUiIsIkFETUlOX1VTRVIiXSwianRpIjoiZGE3ZWQ4NjYtY2YyZC00MjM0LWFhYTctYTlhM2Q1YjI3ZDMwIiwiY2xpZW50X2lkIjoiOTNlZDQ1M2UtYjdhYy00MTkyLWE2ZDQtYzQ1ZmFlMGQ5OWFjIn0.Wt-3qVzZDcAXB-n-9Qsxq1dJSMXU12SStXgY6TXgdlIPMEoF3JIr66IMG3ZgcRNHg-X0VsmpD4iX1uRCsSjtWWz0agsTHNv9JKJaS_pr5SPxAFpj4y49pWTC7Mk4VcXvlx2WfjXfHA5vXWVNv38lNhBD8ICy4poIpTA3w5cbm0SbQEfN1ldXQGd0qXQf7lEUp0q5UUbUQfvrRlmcQOoxKHSChv5GMQsDOGUd8l-kEdOsaFNBie9-ZT9obPnMWdHIqMqc1rr1uv8vtfUhjExR9F4G-ARwFNi3-3Ws8rYQvDphxM5wFmiVPvZOcbiIUbjnLYKDl6sRUjBR5yE7e4AHSw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"isDefault\": true,\r\n  \"mdCurrStatus\": \"Active\",\r\n  \"curTitle\": \"Indian Rupee\",\r\n  \"curSymbol\": \"INR\",\r\n  \"curConvRate\": \"1.50\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{accountServiceUrl}}/dgl-md-curs"
+					},
+					"response": []
+				},
+				{
+					"name": "fetch currency",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsid2ViIl0sInVzZXJfbmFtZSI6ImFkbWluLmFkbWluIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTY4MjIwMTk1MywiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkRfVVNFUiIsIkFETUlOX1VTRVIiXSwianRpIjoiZGE3ZWQ4NjYtY2YyZC00MjM0LWFhYTctYTlhM2Q1YjI3ZDMwIiwiY2xpZW50X2lkIjoiOTNlZDQ1M2UtYjdhYy00MTkyLWE2ZDQtYzQ1ZmFlMGQ5OWFjIn0.Wt-3qVzZDcAXB-n-9Qsxq1dJSMXU12SStXgY6TXgdlIPMEoF3JIr66IMG3ZgcRNHg-X0VsmpD4iX1uRCsSjtWWz0agsTHNv9JKJaS_pr5SPxAFpj4y49pWTC7Mk4VcXvlx2WfjXfHA5vXWVNv38lNhBD8ICy4poIpTA3w5cbm0SbQEfN1ldXQGd0qXQf7lEUp0q5UUbUQfvrRlmcQOoxKHSChv5GMQsDOGUd8l-kEdOsaFNBie9-ZT9obPnMWdHIqMqc1rr1uv8vtfUhjExR9F4G-ARwFNi3-3Ws8rYQvDphxM5wFmiVPvZOcbiIUbjnLYKDl6sRUjBR5yE7e4AHSw",
+								"type": "text"
+							}
+						],
+						"url": "{{accountServiceUrl}}/dgl-md-curs"
+					},
+					"response": []
+				},
+				{
+					"name": "fetch currency Copy",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsid2ViIl0sInVzZXJfbmFtZSI6ImFkbWluLmFkbWluIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTY4MjIwMTk1MywiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkRfVVNFUiIsIkFETUlOX1VTRVIiXSwianRpIjoiZGE3ZWQ4NjYtY2YyZC00MjM0LWFhYTctYTlhM2Q1YjI3ZDMwIiwiY2xpZW50X2lkIjoiOTNlZDQ1M2UtYjdhYy00MTkyLWE2ZDQtYzQ1ZmFlMGQ5OWFjIn0.Wt-3qVzZDcAXB-n-9Qsxq1dJSMXU12SStXgY6TXgdlIPMEoF3JIr66IMG3ZgcRNHg-X0VsmpD4iX1uRCsSjtWWz0agsTHNv9JKJaS_pr5SPxAFpj4y49pWTC7Mk4VcXvlx2WfjXfHA5vXWVNv38lNhBD8ICy4poIpTA3w5cbm0SbQEfN1ldXQGd0qXQf7lEUp0q5UUbUQfvrRlmcQOoxKHSChv5GMQsDOGUd8l-kEdOsaFNBie9-ZT9obPnMWdHIqMqc1rr1uv8vtfUhjExR9F4G-ARwFNi3-3Ws8rYQvDphxM5wFmiVPvZOcbiIUbjnLYKDl6sRUjBR5yE7e4AHSw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": null,\r\n        \"isDefault\": true,\r\n        \"curTitle\": \"Indian Rupee\",\r\n        \"curSymbol\": \"INR\",\r\n        \"curConvRate\": \"1.50\",\r\n        \"curId\": 13,\r\n        \"mdCurrStatus\": \"Close\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{accountServiceUrl}}/dgl-md-curs/13"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
