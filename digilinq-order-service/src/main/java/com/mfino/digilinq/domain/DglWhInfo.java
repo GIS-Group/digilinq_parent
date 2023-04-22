@@ -41,8 +41,8 @@ public class DglWhInfo implements Serializable {
 //    private Long id;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@NotNull
     @Column(name = "wh_info_id", nullable = false)
     private Integer whInfoId;
 
