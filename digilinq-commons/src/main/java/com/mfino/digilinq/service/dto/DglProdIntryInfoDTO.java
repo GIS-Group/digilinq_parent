@@ -12,7 +12,7 @@ public class DglProdIntryInfoDTO implements Serializable {
 
     private Long id;
 
-    @NotNull
+    //@NotNull
     private Integer prodIntryInfoId;
 
     @NotNull
