@@ -16,7 +16,7 @@ public interface DglDocPolMapper extends EntityMapper<DglDocPolDTO, DglDocPol> {
 
     @Named("dglAccMnoAccUnqId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "accId", source = "accId")
     @Mapping(target = "accUnqId", source = "accUnqId")
     DglAccMnoDTO toDtoDglAccMnoAccUnqId(DglAccMno dglAccMno);
 }

@@ -16,7 +16,7 @@ public interface DglCatSolConfigMapper extends EntityMapper<DglCatSolConfigDTO, 
 
     @Named("dglCatSolInfoSolUnqId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "solId", source = "solId")
     @Mapping(target = "solUnqId", source = "solUnqId")
     DglCatSolInfoDTO toDtoDglCatSolInfoSolUnqId(DglCatSolInfo dglCatSolInfo);
 }

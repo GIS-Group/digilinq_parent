@@ -16,7 +16,7 @@ public interface DglCustContractConfigMapper extends EntityMapper<DglCustContrac
 
     @Named("dglCustContractsContractUnqId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "contractId", source = "contractId")
     @Mapping(target = "contractUnqId", source = "contractUnqId")
     DglCustContractsDTO toDtoDglCustContractsContractUnqId(DglCustContracts dglCustContracts);
 }

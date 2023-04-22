@@ -19,13 +19,13 @@ public interface DglWoInfoMapper extends EntityMapper<DglWoInfoDTO, DglWoInfo> {
 
     @Named("dglOrdInfoOrdUnqId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "ordId", source = "ordId")
     @Mapping(target = "ordUnqId", source = "ordUnqId")
     DglOrdInfoDTO toDtoDglOrdInfoOrdUnqId(DglOrdInfo dglOrdInfo);
 
     @Named("dglWhInfoWhUnqId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "whInfoId", source = "whInfoId")
     @Mapping(target = "whUnqId", source = "whUnqId")
     DglWhInfoDTO toDtoDglWhInfoWhUnqId(DglWhInfo dglWhInfo);
 }

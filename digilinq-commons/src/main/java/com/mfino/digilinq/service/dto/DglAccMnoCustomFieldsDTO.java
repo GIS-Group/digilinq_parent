@@ -23,7 +23,7 @@ public class DglAccMnoCustomFieldsDTO implements Serializable {
     @Size(max = 255)
     private String fieldValue;
 
-    private DglAccMnoDTO accMno;
+    private String accMno;
 
     public Long getId() {
         return id;
@@ -57,15 +57,15 @@ public class DglAccMnoCustomFieldsDTO implements Serializable {
         this.fieldValue = fieldValue;
     }
 
-    public DglAccMnoDTO getAccMno() {
-        return accMno;
-    }
+    public String getAccMno() {
+		return accMno;
+	}
 
-    public void setAccMno(DglAccMnoDTO accMno) {
-        this.accMno = accMno;
-    }
+	public void setAccMno(String accMno) {
+		this.accMno = accMno;
+	}
 
-    @Override
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;

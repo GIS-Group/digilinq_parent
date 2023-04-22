@@ -16,6 +16,6 @@ public interface DglNotificationsLogMapper extends EntityMapper<DglNotifications
 
     @Named("dglNotificationsId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "ntfId", source = "ntfId")
     DglNotificationsDTO toDtoDglNotificationsId(DglNotifications dglNotifications);
 }

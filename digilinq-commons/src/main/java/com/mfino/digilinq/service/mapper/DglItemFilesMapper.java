@@ -16,7 +16,7 @@ public interface DglItemFilesMapper extends EntityMapper<DglItemFilesDTO, DglIte
 
     @Named("dglCatItemsInfoItemUnqId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "itemId", source = "itemId")
     @Mapping(target = "itemUnqId", source = "itemUnqId")
     DglCatItemsInfoDTO toDtoDglCatItemsInfoItemUnqId(DglCatItemsInfo dglCatItemsInfo);
 }

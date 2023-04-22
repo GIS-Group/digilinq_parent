@@ -22,18 +22,18 @@ public interface DglItemsEmiMapper extends EntityMapper<DglItemsEmiDTO, DglItems
 
     @Named("dglCatSolInfoSolUnqId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "solId", source = "solId")
     @Mapping(target = "solUnqId", source = "solUnqId")
     DglCatSolInfoDTO toDtoDglCatSolInfoSolUnqId(DglCatSolInfo dglCatSolInfo);
 
     @Named("dglCatSolItemsId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "solItemsId", source = "solItemsId")
     DglCatSolItemsDTO toDtoDglCatSolItemsId(DglCatSolItems dglCatSolItems);
 
     @Named("dglCatItemVarVariantUnqId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "itemVarId", source = "itemVarId")
     @Mapping(target = "variantUnqId", source = "variantUnqId")
     DglCatItemVarDTO toDtoDglCatItemVarVariantUnqId(DglCatItemVar dglCatItemVar);
 }

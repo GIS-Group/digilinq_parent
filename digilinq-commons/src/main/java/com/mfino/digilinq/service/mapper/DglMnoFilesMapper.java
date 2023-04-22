@@ -19,13 +19,13 @@ public interface DglMnoFilesMapper extends EntityMapper<DglMnoFilesDTO, DglMnoFi
 
     @Named("dglDocPolPolicyId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "docPolId", source = "docPolId")
     @Mapping(target = "policyId", source = "policyId")
     DglDocPolDTO toDtoDglDocPolPolicyId(DglDocPol dglDocPol);
 
     @Named("dglAccMnoAccUnqId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "accId", source = "accId")
     @Mapping(target = "accUnqId", source = "accUnqId")
     DglAccMnoDTO toDtoDglAccMnoAccUnqId(DglAccMno dglAccMno);
 }

@@ -154,9 +154,9 @@ public class DglAccMnoDTO implements Serializable {
     @Size(max = 255)
     private String accType;
 
-    private DglAccMnoDTO accParent;
+    private String accParent;
 
-    private DglAccMnoDTO accMnoParent;
+    private String accMnoParent;
 
     public Long getId() {
         return id;
@@ -470,23 +470,24 @@ public class DglAccMnoDTO implements Serializable {
         this.accType = accType;
     }
 
-    public DglAccMnoDTO getAccParent() {
-        return accParent;
-    }
+   
+    public String getAccParent() {
+		return accParent;
+	}
 
-    public void setAccParent(DglAccMnoDTO accParent) {
-        this.accParent = accParent;
-    }
+	public void setAccParent(String accParent) {
+		this.accParent = accParent;
+	}
 
-    public DglAccMnoDTO getAccMnoParent() {
-        return accMnoParent;
-    }
+	public String getAccMnoParent() {
+		return accMnoParent;
+	}
 
-    public void setAccMnoParent(DglAccMnoDTO accMnoParent) {
-        this.accMnoParent = accMnoParent;
-    }
+	public void setAccMnoParent(String accMnoParent) {
+		this.accMnoParent = accMnoParent;
+	}
 
-    @Override
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;

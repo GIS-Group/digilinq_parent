@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
 
 import com.mfino.digilinq.commons.security.GlobalResourceServerConfig;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 
 /**
@@ -18,6 +19,7 @@ import com.mfino.digilinq.commons.security.GlobalResourceServerConfig;
     @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = GlobalResourceServerConfig.class)})
 @EnableFeignClients
 @EnableDiscoveryClient
+@EntityScan("com.mfino.digilinq") 	
 public class DigilinqAccountServiceApplication {
 
   public static void main(String[] args) {

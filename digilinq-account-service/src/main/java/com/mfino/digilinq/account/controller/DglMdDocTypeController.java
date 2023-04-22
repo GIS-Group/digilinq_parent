@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -24,8 +25,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mfino.digilinq.account.repository.DglMdDocTypeRepository;
 import com.mfino.digilinq.account.service.impl.DglMdDocTypeService;
-import com.mfino.digilinq.repository.DglMdDocTypeRepository;
 import com.mfino.digilinq.service.dto.DglMdDocTypeDTO;
 import com.mfino.digilinq.web.rest.errors.BadRequestAlertException;
 
@@ -35,15 +36,15 @@ import com.mfino.digilinq.web.rest.errors.BadRequestAlertException;
  * REST controller for managing {@link com.mfino.digilinq.domain.DglMdDocType}.
  */
 @RestController
-@RequestMapping("/api")
+//@RequestMapping("/api")
 public class DglMdDocTypeController {
 
     private final Logger log = LoggerFactory.getLogger(DglMdDocTypeController.class);
 
     private static final String ENTITY_NAME = "dglMdDocType";
 
-    @Value("${jhipster.clientApp.name}")
-    private String applicationName;
+    //@Value("${jhipster.clientApp.name}")
+    private String applicationName="Digilinq";
 
     private final DglMdDocTypeService dglMdDocTypeService;
 
@@ -62,15 +63,16 @@ public class DglMdDocTypeController {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/dgl-md-doc-types")
+    @PreAuthorize("hasAuthority('STANDARD_USER') or hasAuthority('ADMIN_USER')" )
     public ResponseEntity<DglMdDocTypeDTO> createDglMdDocType(@Valid @RequestBody DglMdDocTypeDTO dglMdDocTypeDTO)
         throws URISyntaxException {
         log.debug("REST request to save DglMdDocType : {}", dglMdDocTypeDTO);
-        if (dglMdDocTypeDTO.getId() != null) {
+        if (dglMdDocTypeDTO.getDocTypeId() != null) {
             throw new BadRequestAlertException("A new dglMdDocType cannot already have an ID", ENTITY_NAME, "idexists");
         }
         DglMdDocTypeDTO result = dglMdDocTypeService.save(dglMdDocTypeDTO);
         return ResponseEntity
-            .created(new URI("/api/dgl-md-doc-types/" + result.getId()))
+            .created(new URI("/api/dgl-md-doc-types/" + result.getDocTypeId()))
             .headers(new HttpHeaders())
             .body(result);
     }

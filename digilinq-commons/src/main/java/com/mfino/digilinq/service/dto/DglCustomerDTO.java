@@ -109,7 +109,7 @@ public class DglCustomerDTO implements Serializable {
     @NotNull
     private Float creditLimit;
 
-    private DglCustomerDTO custParent;
+    private String custParent;
 
     private DglAccMnoDTO accMnoParent;
 
@@ -337,15 +337,15 @@ public class DglCustomerDTO implements Serializable {
         this.creditLimit = creditLimit;
     }
 
-    public DglCustomerDTO getCustParent() {
-        return custParent;
-    }
+    public String getCustParent() {
+		return custParent;
+	}
 
-    public void setCustParent(DglCustomerDTO custParent) {
-        this.custParent = custParent;
-    }
+	public void setCustParent(String custParent) {
+		this.custParent = custParent;
+	}
 
-    public DglAccMnoDTO getAccMnoParent() {
+	public DglAccMnoDTO getAccMnoParent() {
         return accMnoParent;
     }
 

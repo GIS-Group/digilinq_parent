@@ -19,12 +19,12 @@ public interface DglTaxSettleTransMapper extends EntityMapper<DglTaxSettleTransD
 
     @Named("dglOrdInfoOrdUnqId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "ordId", source = "ordId")
     @Mapping(target = "ordUnqId", source = "ordUnqId")
     DglOrdInfoDTO toDtoDglOrdInfoOrdUnqId(DglOrdInfo dglOrdInfo);
 
     @Named("dglOrdItemsId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "ordItemsId", source = "ordItemsId")
     DglOrdItemsDTO toDtoDglOrdItemsId(DglOrdItems dglOrdItems);
 }

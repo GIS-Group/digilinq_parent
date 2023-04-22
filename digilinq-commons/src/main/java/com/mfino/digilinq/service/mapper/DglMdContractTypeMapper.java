@@ -16,6 +16,6 @@ public interface DglMdContractTypeMapper extends EntityMapper<DglMdContractTypeD
 
     @Named("dglMdCustCatId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "custCatId", source = "custCatId")
     DglMdCustCatDTO toDtoDglMdCustCatId(DglMdCustCat dglMdCustCat);
 }

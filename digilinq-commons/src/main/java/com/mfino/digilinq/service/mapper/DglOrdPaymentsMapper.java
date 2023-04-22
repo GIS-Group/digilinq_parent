@@ -19,12 +19,12 @@ public interface DglOrdPaymentsMapper extends EntityMapper<DglOrdPaymentsDTO, Dg
 
     @Named("dglOrdInfoOrdUnqId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "ordId", source = "ordId")
     @Mapping(target = "ordUnqId", source = "ordUnqId")
     DglOrdInfoDTO toDtoDglOrdInfoOrdUnqId(DglOrdInfo dglOrdInfo);
 
     @Named("dglBillingId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "billingId", source = "billingId")
     DglBillingDTO toDtoDglBillingId(DglBilling dglBilling);
 }

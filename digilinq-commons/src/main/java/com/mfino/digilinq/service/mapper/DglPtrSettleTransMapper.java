@@ -16,7 +16,7 @@ public interface DglPtrSettleTransMapper extends EntityMapper<DglPtrSettleTransD
 
     @Named("dglOrdInfoOrdUnqId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "ordId", source = "ordId")
     @Mapping(target = "ordUnqId", source = "ordUnqId")
     DglOrdInfoDTO toDtoDglOrdInfoOrdUnqId(DglOrdInfo dglOrdInfo);
 }

@@ -19,13 +19,13 @@ public interface DglAccUsersMapper extends EntityMapper<DglAccUsersDTO, DglAccUs
 
     @Named("dglRolesRoleUnqId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "roleId", source = "roleId")
     @Mapping(target = "roleUnqId", source = "roleUnqId")
     DglRolesDTO toDtoDglRolesRoleUnqId(DglRoles dglRoles);
 
     @Named("dglAccMnoAccUnqId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "accId", source = "accId")
     @Mapping(target = "accUnqId", source = "accUnqId")
     DglAccMnoDTO toDtoDglAccMnoAccUnqId(DglAccMno dglAccMno);
 }

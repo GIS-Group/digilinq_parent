@@ -2,27 +2,46 @@ package com.mfino.digilinq.domain;
 
 import java.io.Serializable;
 import java.time.Instant;
-import javax.persistence.*;
-import javax.validation.constraints.*;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  * A DglBilling.
  */
 @Entity
 @Table(name = "dgl_billing")
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@SuppressWarnings("common-java:DuplicatedBlocks")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@ToString
+//@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+//@SuppressWarnings("common-java:DuplicatedBlocks")
 public class DglBilling implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "id")
+//    private Long id;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
-
     @NotNull
     @Column(name = "billing_id", nullable = false)
     private Integer billingId;
@@ -62,171 +81,171 @@ public class DglBilling implements Serializable {
     @Column(name = "bill_status", length = 255, nullable = false)
     private String billStatus;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
-
-    public Long getId() {
-        return this.id;
-    }
-
-    public DglBilling id(Long id) {
-        this.setId(id);
-        return this;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Integer getBillingId() {
-        return this.billingId;
-    }
-
-    public DglBilling billingId(Integer billingId) {
-        this.setBillingId(billingId);
-        return this;
-    }
-
-    public void setBillingId(Integer billingId) {
-        this.billingId = billingId;
-    }
-
-    public Integer getRelAccMnoId() {
-        return this.relAccMnoId;
-    }
-
-    public DglBilling relAccMnoId(Integer relAccMnoId) {
-        this.setRelAccMnoId(relAccMnoId);
-        return this;
-    }
-
-    public void setRelAccMnoId(Integer relAccMnoId) {
-        this.relAccMnoId = relAccMnoId;
-    }
-
-    public Integer getRelCustId() {
-        return this.relCustId;
-    }
-
-    public DglBilling relCustId(Integer relCustId) {
-        this.setRelCustId(relCustId);
-        return this;
-    }
-
-    public void setRelCustId(Integer relCustId) {
-        this.relCustId = relCustId;
-    }
-
-    public Instant getCreatedDate() {
-        return this.createdDate;
-    }
-
-    public DglBilling createdDate(Instant createdDate) {
-        this.setCreatedDate(createdDate);
-        return this;
-    }
-
-    public void setCreatedDate(Instant createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public String getInvoicesInfo() {
-        return this.invoicesInfo;
-    }
-
-    public DglBilling invoicesInfo(String invoicesInfo) {
-        this.setInvoicesInfo(invoicesInfo);
-        return this;
-    }
-
-    public void setInvoicesInfo(String invoicesInfo) {
-        this.invoicesInfo = invoicesInfo;
-    }
-
-    public Float getAmount() {
-        return this.amount;
-    }
-
-    public DglBilling amount(Float amount) {
-        this.setAmount(amount);
-        return this;
-    }
-
-    public void setAmount(Float amount) {
-        this.amount = amount;
-    }
-
-    public Instant getReceiptDate() {
-        return this.receiptDate;
-    }
-
-    public DglBilling receiptDate(Instant receiptDate) {
-        this.setReceiptDate(receiptDate);
-        return this;
-    }
-
-    public void setReceiptDate(Instant receiptDate) {
-        this.receiptDate = receiptDate;
-    }
-
-    public String getComments() {
-        return this.comments;
-    }
-
-    public DglBilling comments(String comments) {
-        this.setComments(comments);
-        return this;
-    }
-
-    public void setComments(String comments) {
-        this.comments = comments;
-    }
-
-    public String getBillStatus() {
-        return this.billStatus;
-    }
-
-    public DglBilling billStatus(String billStatus) {
-        this.setBillStatus(billStatus);
-        return this;
-    }
-
-    public void setBillStatus(String billStatus) {
-        this.billStatus = billStatus;
-    }
-
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof DglBilling)) {
-            return false;
-        }
-        return id != null && id.equals(((DglBilling) o).id);
-    }
-
-    @Override
-    public int hashCode() {
-        // see https://vladmihalcea.com/how-to-implement-equals-and-hashcode-using-the-jpa-entity-identifier/
-        return getClass().hashCode();
-    }
-
-    // prettier-ignore
-    @Override
-    public String toString() {
-        return "DglBilling{" +
-            "id=" + getId() +
-            ", billingId=" + getBillingId() +
-            ", relAccMnoId=" + getRelAccMnoId() +
-            ", relCustId=" + getRelCustId() +
-            ", createdDate='" + getCreatedDate() + "'" +
-            ", invoicesInfo='" + getInvoicesInfo() + "'" +
-            ", amount=" + getAmount() +
-            ", receiptDate='" + getReceiptDate() + "'" +
-            ", comments='" + getComments() + "'" +
-            ", billStatus='" + getBillStatus() + "'" +
-            "}";
-    }
+//    // jhipster-needle-entity-add-field - JHipster will add fields here
+//
+//    public Long getId() {
+//        return this.id;
+//    }
+//
+//    public DglBilling id(Long id) {
+//        this.setId(id);
+//        return this;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
+//
+//    public Integer getBillingId() {
+//        return this.billingId;
+//    }
+//
+//    public DglBilling billingId(Integer billingId) {
+//        this.setBillingId(billingId);
+//        return this;
+//    }
+//
+//    public void setBillingId(Integer billingId) {
+//        this.billingId = billingId;
+//    }
+//
+//    public Integer getRelAccMnoId() {
+//        return this.relAccMnoId;
+//    }
+//
+//    public DglBilling relAccMnoId(Integer relAccMnoId) {
+//        this.setRelAccMnoId(relAccMnoId);
+//        return this;
+//    }
+//
+//    public void setRelAccMnoId(Integer relAccMnoId) {
+//        this.relAccMnoId = relAccMnoId;
+//    }
+//
+//    public Integer getRelCustId() {
+//        return this.relCustId;
+//    }
+//
+//    public DglBilling relCustId(Integer relCustId) {
+//        this.setRelCustId(relCustId);
+//        return this;
+//    }
+//
+//    public void setRelCustId(Integer relCustId) {
+//        this.relCustId = relCustId;
+//    }
+//
+//    public Instant getCreatedDate() {
+//        return this.createdDate;
+//    }
+//
+//    public DglBilling createdDate(Instant createdDate) {
+//        this.setCreatedDate(createdDate);
+//        return this;
+//    }
+//
+//    public void setCreatedDate(Instant createdDate) {
+//        this.createdDate = createdDate;
+//    }
+//
+//    public String getInvoicesInfo() {
+//        return this.invoicesInfo;
+//    }
+//
+//    public DglBilling invoicesInfo(String invoicesInfo) {
+//        this.setInvoicesInfo(invoicesInfo);
+//        return this;
+//    }
+//
+//    public void setInvoicesInfo(String invoicesInfo) {
+//        this.invoicesInfo = invoicesInfo;
+//    }
+//
+//    public Float getAmount() {
+//        return this.amount;
+//    }
+//
+//    public DglBilling amount(Float amount) {
+//        this.setAmount(amount);
+//        return this;
+//    }
+//
+//    public void setAmount(Float amount) {
+//        this.amount = amount;
+//    }
+//
+//    public Instant getReceiptDate() {
+//        return this.receiptDate;
+//    }
+//
+//    public DglBilling receiptDate(Instant receiptDate) {
+//        this.setReceiptDate(receiptDate);
+//        return this;
+//    }
+//
+//    public void setReceiptDate(Instant receiptDate) {
+//        this.receiptDate = receiptDate;
+//    }
+//
+//    public String getComments() {
+//        return this.comments;
+//    }
+//
+//    public DglBilling comments(String comments) {
+//        this.setComments(comments);
+//        return this;
+//    }
+//
+//    public void setComments(String comments) {
+//        this.comments = comments;
+//    }
+//
+//    public String getBillStatus() {
+//        return this.billStatus;
+//    }
+//
+//    public DglBilling billStatus(String billStatus) {
+//        this.setBillStatus(billStatus);
+//        return this;
+//    }
+//
+//    public void setBillStatus(String billStatus) {
+//        this.billStatus = billStatus;
+//    }
+//
+//    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+//
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) {
+//            return true;
+//        }
+//        if (!(o instanceof DglBilling)) {
+//            return false;
+//        }
+//        return id != null && id.equals(((DglBilling) o).id);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        // see https://vladmihalcea.com/how-to-implement-equals-and-hashcode-using-the-jpa-entity-identifier/
+//        return getClass().hashCode();
+//    }
+//
+//    // prettier-ignore
+//    @Override
+//    public String toString() {
+//        return "DglBilling{" +
+//            "id=" + getId() +
+//            ", billingId=" + getBillingId() +
+//            ", relAccMnoId=" + getRelAccMnoId() +
+//            ", relCustId=" + getRelCustId() +
+//            ", createdDate='" + getCreatedDate() + "'" +
+//            ", invoicesInfo='" + getInvoicesInfo() + "'" +
+//            ", amount=" + getAmount() +
+//            ", receiptDate='" + getReceiptDate() + "'" +
+//            ", comments='" + getComments() + "'" +
+//            ", billStatus='" + getBillStatus() + "'" +
+//            "}";
+//    }
 }
