@@ -2,11 +2,14 @@ package com.mfino.digilinq.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -42,8 +45,8 @@ public class DglProdIntryInfo implements Serializable {
 //    private Long id;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@NotNull
     @Column(name = "prod_intry_info_id", nullable = false)
     private Integer prodIntryInfoId;
 
@@ -96,8 +99,10 @@ public class DglProdIntryInfo implements Serializable {
     @Column(name = "prod_intry_manuf", length = 100, nullable = false)
     private String prodIntryManuf;
 
-    @ManyToOne(optional = false)
-    @NotNull
+    @ManyToOne(optional = false,cascade=CascadeType.ALL,fetch=FetchType.LAZY,targetEntity = DglWhInfo.class)
+    //@NotNull
+    @JoinColumn(name = "WH_ID",referencedColumnName = "wh_info_id")
+    @JoinColumn(name = "wh_wh_info_id",referencedColumnName = "wh_info_id")
     private DglWhInfo wh;
 
 }

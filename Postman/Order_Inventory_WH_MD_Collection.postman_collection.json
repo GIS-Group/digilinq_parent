@@ -1,0 +1,520 @@
+{
+	"info": {
+		"_postman_id": "31889e6f-031b-4751-abde-74a0ada260a7",
+		"name": "Order_Inventory_WH_MD_Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "sample",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgyMTE3OTE1LCJpYXQiOjE2ODIxMTQ5MTZ9.LB3sPA2LVAY35dkiPEk-1cjKbnXC1Y13Adg9ybXJ1rE6Ef1_EWG9EBGVYeKftZ6XAH8jORyrXLwh6-1J4WrBymAX5XcUTzpZ6oDokNUJeU8xy8qVxacIcgI1n_zqgSDQ6pnzdZHsO_l4A21IEftUMd8P0mPGmsAMGu3rSyhIw1cBUDa5CWinzcM5KTMJvN56ptoq5F93-73oxMcMJgaiVpFJWm1pjA1AEliwkw72EZz_Enl47BoQgXrhRx-OimyQ0IChrogOJ1KR9kRGs7lZH2pPsLSk988csIYgVNdMa9oCf2tf2IaHbdGnzghSwi-qojzp0rnkFcjPL8LOJAo07w",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"docTypeTitle\":\"sample\",\"allowFileFormat\":\"pdf\",\"docTypeDesc\":\"test\",\"docTypeId\":\"1\",\"mdDocStatus\":\"NEW\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{accountServiceAPIGatewayUrl}}/dgl-md-doc-types",
+					"host": [
+						"{{accountServiceAPIGatewayUrl}}"
+					],
+					"path": [
+						"dgl-md-doc-types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "local_db_doctype_masterdata",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgyMTE3OTE1LCJpYXQiOjE2ODIxMTQ5MTZ9.LB3sPA2LVAY35dkiPEk-1cjKbnXC1Y13Adg9ybXJ1rE6Ef1_EWG9EBGVYeKftZ6XAH8jORyrXLwh6-1J4WrBymAX5XcUTzpZ6oDokNUJeU8xy8qVxacIcgI1n_zqgSDQ6pnzdZHsO_l4A21IEftUMd8P0mPGmsAMGu3rSyhIw1cBUDa5CWinzcM5KTMJvN56ptoq5F93-73oxMcMJgaiVpFJWm1pjA1AEliwkw72EZz_Enl47BoQgXrhRx-OimyQ0IChrogOJ1KR9kRGs7lZH2pPsLSk988csIYgVNdMa9oCf2tf2IaHbdGnzghSwi-qojzp0rnkFcjPL8LOJAo07w",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{accountServiceAPIGatewayUrl}}/dgl-md-doc-types/",
+					"host": [
+						"{{accountServiceAPIGatewayUrl}}"
+					],
+					"path": [
+						"dgl-md-doc-types",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateOrderInfo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsid2ViIl0sInVzZXJfbmFtZSI6ImFkbWluLmFkbWluIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTY4MjIwMjQ3OSwiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkRfVVNFUiIsIkFETUlOX1VTRVIiXSwianRpIjoiOTJjZGFmNGItMWY0My00NjhiLTljOGEtNDI4OTI4NGVkZTA5IiwiY2xpZW50X2lkIjoiOTNlZDQ1M2UtYjdhYy00MTkyLWE2ZDQtYzQ1ZmFlMGQ5OWFjIn0.FJqpBzDfQRldnp_687P-AiQz7pfrDcCobTMKN_qVflByERihMCmbC_jeD3BzIFxx9STkAQJn_6dxYORT4u9LjVyn-JGTjguQ3u_D9JRcNwzIWJI5_M-F2X0TmbxcGm-bs28ZQ8MJ5Qa5ZwohmVaFzLAHNA6eBRkX9LE9jAHdTTAjeIOem3wGIrKobW9aTW-PFrHC0q2uhiVeigi6NW6Y_H-C0WP04PY4E2vyExqsZCfhQ8Sg0lzUfocWjLWsgjB5Co5cSS4pKxkDkX5ffTW4LEeC8pAC-YvqpodtMa62TURqFEux3HMtkwFfh9JNfZ74rn_vwfKfBhgGj2vsYmo84g",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"ordUnqId\":6237,\"relMnoId\":123,\"ordValue\":\"customer 1\",\"ordDtOfOrd\":\"2023-04-22\",\"relOrdCustId\":123,\"ordDeliveryAdd\":\"8-20 MapleCelestia\",\"ordTotQty\":\"1\",\"ordProofOfDelUrl\":\"http://localhost:8080/\",\"ordCustCurrency\":\"INR\",\"ordCustTimeZone\":\"1\",\"ordStatus\":\"PLACED\",\"ordCartTotAmount\":500.00,\"ordCartTaxAmt\":20.00,\"ordCartShipingChargers\":50.00,\"ordPayId\":\"123456\",\"ordPayDttime\":\"1970-01-01T00:00:00Z\",\"ordPayStatus\":\"SUCCESS\",\"ordPayModeOfPay\":\"CARD\",\"ordPayTotAmt\":580.00}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{orderServiceAPIGatewayUrl}}/dgl-ord-infos",
+					"host": [
+						"{{orderServiceAPIGatewayUrl}}"
+					],
+					"path": [
+						"dgl-ord-infos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllOrdersInfo",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsid2ViIl0sInVzZXJfbmFtZSI6ImFkbWluLmFkbWluIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTY4MjIwMjQ3OSwiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkRfVVNFUiIsIkFETUlOX1VTRVIiXSwianRpIjoiOTJjZGFmNGItMWY0My00NjhiLTljOGEtNDI4OTI4NGVkZTA5IiwiY2xpZW50X2lkIjoiOTNlZDQ1M2UtYjdhYy00MTkyLWE2ZDQtYzQ1ZmFlMGQ5OWFjIn0.FJqpBzDfQRldnp_687P-AiQz7pfrDcCobTMKN_qVflByERihMCmbC_jeD3BzIFxx9STkAQJn_6dxYORT4u9LjVyn-JGTjguQ3u_D9JRcNwzIWJI5_M-F2X0TmbxcGm-bs28ZQ8MJ5Qa5ZwohmVaFzLAHNA6eBRkX9LE9jAHdTTAjeIOem3wGIrKobW9aTW-PFrHC0q2uhiVeigi6NW6Y_H-C0WP04PY4E2vyExqsZCfhQ8Sg0lzUfocWjLWsgjB5Co5cSS4pKxkDkX5ffTW4LEeC8pAC-YvqpodtMa62TURqFEux3HMtkwFfh9JNfZ74rn_vwfKfBhgGj2vsYmo84g",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{orderServiceAPIGatewayUrl}}/dgl-ord-infos",
+					"host": [
+						"{{orderServiceAPIGatewayUrl}}"
+					],
+					"path": [
+						"dgl-ord-infos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateOrder",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsid2ViIl0sInVzZXJfbmFtZSI6ImFkbWluLmFkbWluIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTY4MjIwMjQ3OSwiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkRfVVNFUiIsIkFETUlOX1VTRVIiXSwianRpIjoiOTJjZGFmNGItMWY0My00NjhiLTljOGEtNDI4OTI4NGVkZTA5IiwiY2xpZW50X2lkIjoiOTNlZDQ1M2UtYjdhYy00MTkyLWE2ZDQtYzQ1ZmFlMGQ5OWFjIn0.FJqpBzDfQRldnp_687P-AiQz7pfrDcCobTMKN_qVflByERihMCmbC_jeD3BzIFxx9STkAQJn_6dxYORT4u9LjVyn-JGTjguQ3u_D9JRcNwzIWJI5_M-F2X0TmbxcGm-bs28ZQ8MJ5Qa5ZwohmVaFzLAHNA6eBRkX9LE9jAHdTTAjeIOem3wGIrKobW9aTW-PFrHC0q2uhiVeigi6NW6Y_H-C0WP04PY4E2vyExqsZCfhQ8Sg0lzUfocWjLWsgjB5Co5cSS4pKxkDkX5ffTW4LEeC8pAC-YvqpodtMa62TURqFEux3HMtkwFfh9JNfZ74rn_vwfKfBhgGj2vsYmo84g",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"ordInfo\":{\"ordUnqId\":6240,\"relMnoId\":123,\"ordValue\":\"customer 1\",\"ordDtOfOrd\":\"2023-04-22\",\"relOrdCustId\":123,\"ordDeliveryAdd\":\"8-20 MapleCelestia\",\"ordTotQty\":\"1\",\"ordProofOfDelUrl\":\"http://localhost:8080/\",\"ordCustCurrency\":\"INR\",\"ordCustTimeZone\":\"1\",\"ordStatus\":\"PLACED\",\"ordCartTotAmount\":500.00,\"ordCartTaxAmt\":20.00,\"ordCartShipingChargers\":50.00,\"ordPayId\":\"123456\",\"ordPayDttime\":\"1970-01-01T00:00:00Z\",\"ordPayStatus\":\"SUCCESS\",\"ordPayModeOfPay\":\"CARD\",\"ordPayTotAmt\":580.00},\"ordSolAmt\":0,\"ordSolPrice\":0,\"ordSolQty\":0,\"ordSolTaxAmt\":0,\"relItemIfo\":\"{\\\"ordUnqId\\\":6239,\\\"relMnoId\\\":123,\\\"ordValue\\\":\\\"customer1\\\",\\\"ordDtOfOrd\\\":\\\"2023-04-22\\\",\\\"relOrdCustId\\\":123,\\\"ordDeliveryAdd\\\":\\\"8-20MapleCelestia\\\",\\\"ordTotQty\\\":\\\"1\\\",\\\"ordProofOfDelUrl\\\":\\\"http://localhost:8080/\\\",\\\"ordCustCurrency\\\":\\\"INR\\\",\\\"ordCustTimeZone\\\":\\\"1\\\",\\\"ordStatus\\\":\\\"PLACED\\\",\\\"ordCartTotAmount\\\":500.00,\\\"ordCartTaxAmt\\\":20.00,\\\"ordCartShipingChargers\\\":50.00,\\\"ordPayId\\\":\\\"123456\\\",\\\"ordPayDttime\\\":\\\"1970-01-01T00:00:00Z\\\",\\\"ordPayStatus\\\":\\\"SUCCESS\\\",\\\"ordPayModeOfPay\\\":\\\"CARD\\\",\\\"ordPayTotAmt\\\":580.00}\",\"relOrdSolId\":0}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{orderServiceAPIGatewayUrl}}/dgl-ord-items",
+					"host": [
+						"{{orderServiceAPIGatewayUrl}}"
+					],
+					"path": [
+						"dgl-ord-items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllOrders",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsid2ViIl0sInVzZXJfbmFtZSI6ImFkbWluLmFkbWluIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTY4MjIwMjQ3OSwiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkRfVVNFUiIsIkFETUlOX1VTRVIiXSwianRpIjoiOTJjZGFmNGItMWY0My00NjhiLTljOGEtNDI4OTI4NGVkZTA5IiwiY2xpZW50X2lkIjoiOTNlZDQ1M2UtYjdhYy00MTkyLWE2ZDQtYzQ1ZmFlMGQ5OWFjIn0.FJqpBzDfQRldnp_687P-AiQz7pfrDcCobTMKN_qVflByERihMCmbC_jeD3BzIFxx9STkAQJn_6dxYORT4u9LjVyn-JGTjguQ3u_D9JRcNwzIWJI5_M-F2X0TmbxcGm-bs28ZQ8MJ5Qa5ZwohmVaFzLAHNA6eBRkX9LE9jAHdTTAjeIOem3wGIrKobW9aTW-PFrHC0q2uhiVeigi6NW6Y_H-C0WP04PY4E2vyExqsZCfhQ8Sg0lzUfocWjLWsgjB5Co5cSS4pKxkDkX5ffTW4LEeC8pAC-YvqpodtMa62TURqFEux3HMtkwFfh9JNfZ74rn_vwfKfBhgGj2vsYmo84g",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{orderServiceAPIGatewayUrl}}/dgl-ord-items",
+					"host": [
+						"{{orderServiceAPIGatewayUrl}}"
+					],
+					"path": [
+						"dgl-ord-items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CheckInventory",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsid2ViIl0sInVzZXJfbmFtZSI6ImFkbWluLmFkbWluIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTY4MjIwMjQ3OSwiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkRfVVNFUiIsIkFETUlOX1VTRVIiXSwianRpIjoiOTJjZGFmNGItMWY0My00NjhiLTljOGEtNDI4OTI4NGVkZTA5IiwiY2xpZW50X2lkIjoiOTNlZDQ1M2UtYjdhYy00MTkyLWE2ZDQtYzQ1ZmFlMGQ5OWFjIn0.FJqpBzDfQRldnp_687P-AiQz7pfrDcCobTMKN_qVflByERihMCmbC_jeD3BzIFxx9STkAQJn_6dxYORT4u9LjVyn-JGTjguQ3u_D9JRcNwzIWJI5_M-F2X0TmbxcGm-bs28ZQ8MJ5Qa5ZwohmVaFzLAHNA6eBRkX9LE9jAHdTTAjeIOem3wGIrKobW9aTW-PFrHC0q2uhiVeigi6NW6Y_H-C0WP04PY4E2vyExqsZCfhQ8Sg0lzUfocWjLWsgjB5Co5cSS4pKxkDkX5ffTW4LEeC8pAC-YvqpodtMa62TURqFEux3HMtkwFfh9JNfZ74rn_vwfKfBhgGj2vsYmo84g",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{orderServiceAPIGatewayUrl}}/dgl-prod-intry-infos/check-inventory?relItemId=34&relItemVariantId=25&prodIntryQty=1",
+					"host": [
+						"{{orderServiceAPIGatewayUrl}}"
+					],
+					"path": [
+						"dgl-prod-intry-infos",
+						"check-inventory"
+					],
+					"query": [
+						{
+							"key": "relItemId",
+							"value": "34"
+						},
+						{
+							"key": "relItemVariantId",
+							"value": "25"
+						},
+						{
+							"key": "prodIntryQty",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "inventory create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsid2ViIl0sInVzZXJfbmFtZSI6ImFkbWluLmFkbWluIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTY4MjE5NDM1NSwiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkRfVVNFUiIsIkFETUlOX1VTRVIiXSwianRpIjoiMzcyNDkyZTUtNDllMy00NzcwLWE5NTItYzM5Njg3YThmZTY5IiwiY2xpZW50X2lkIjoiOTNlZDQ1M2UtYjdhYy00MTkyLWE2ZDQtYzQ1ZmFlMGQ5OWFjIn0.0Vic3uGHZ6IBzPHY7wRe_ivdJ03uzVlZMggSshVxS9bC8IP0DpRmFl5Be0ii1jsrYFA9bsGRCKng3ifo-DhYFq5nt7yfdgv_2QH77y5BOwKpXOqtCm4l1fxoi41mMeKSxnxuKkIsmgATrNroDUbjpm5NQfGchQ0HCdZZ1scMSJBz99nxhmyVqYSN1tPcC8M1RUaJzjHN0495zfMkBM3QSsJQ5pIJF1Uf0_X8_1wMsXohGqa5T6tdKsMg6M8xPSenGR3WWf5OHr74IT9_LGdIk_2ZRIllqU0-3rouyO8CZetbl9nl1GK5Dylk_WJsBfDepnGFFQaaVcm-uGAx4JFhJQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"prodIntryBin\": \"bin\",\r\n  \"prodIntryManuf\": \"manf\",\r\n  \"prodIntryQty\": 5,\r\n  \"prodIntryShelfArea\": \"area\",\r\n  \"prodIntryShelfCode\": \"code\",\r\n  \"prodIntryShelfLocation\": \"location\",\r\n  \"prodIntrySkuCode\": \"skucode\",\r\n  \"prodIntryUnit\": \"unit\",\r\n  \"relItemId\": \"34\",\r\n  \"relItemVariantId\": \"25\",\r\n  \"wh\": {\r\n    \"whAddLine1\": \"line1\",\r\n    \"whAddLine2\": \"line2\",\r\n    \"whAlotCapacity\": \"capacity\",\r\n    \"whAltPhNum\": \"9827863733\",\r\n    \"whCity\": \"city\",\r\n    \"whContPerson\": \"person\",\r\n    \"whCountry\": \"country\",\r\n    \"whDescription\": \"desc\",\r\n    \"whEmailId\": \"test@gmail.com\",\r\n    \"whLocation\": \"location\",\r\n    \"whPhNum\": \"987836722\",\r\n    \"whState\": \"state\",\r\n    \"whStatus\": \"active\",\r\n    \"whTitle\": \"title\",\r\n    \"whTotCapacity\": \"25\",\r\n    \"whUnqId\": 1,\r\n    \"whZipcode\": \"1100\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{orderServiceAPIGatewayUrl}}/dgl-prod-intry-infos",
+					"host": [
+						"{{orderServiceAPIGatewayUrl}}"
+					],
+					"path": [
+						"dgl-prod-intry-infos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get inventory",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsid2ViIl0sInVzZXJfbmFtZSI6ImFkbWluLmFkbWluIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTY4MjIwMjQ3OSwiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkRfVVNFUiIsIkFETUlOX1VTRVIiXSwianRpIjoiOTJjZGFmNGItMWY0My00NjhiLTljOGEtNDI4OTI4NGVkZTA5IiwiY2xpZW50X2lkIjoiOTNlZDQ1M2UtYjdhYy00MTkyLWE2ZDQtYzQ1ZmFlMGQ5OWFjIn0.FJqpBzDfQRldnp_687P-AiQz7pfrDcCobTMKN_qVflByERihMCmbC_jeD3BzIFxx9STkAQJn_6dxYORT4u9LjVyn-JGTjguQ3u_D9JRcNwzIWJI5_M-F2X0TmbxcGm-bs28ZQ8MJ5Qa5ZwohmVaFzLAHNA6eBRkX9LE9jAHdTTAjeIOem3wGIrKobW9aTW-PFrHC0q2uhiVeigi6NW6Y_H-C0WP04PY4E2vyExqsZCfhQ8Sg0lzUfocWjLWsgjB5Co5cSS4pKxkDkX5ffTW4LEeC8pAC-YvqpodtMa62TURqFEux3HMtkwFfh9JNfZ74rn_vwfKfBhgGj2vsYmo84g",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{orderServiceAPIGatewayUrl}}/dgl-prod-intry-infos",
+					"host": [
+						"{{orderServiceAPIGatewayUrl}}"
+					],
+					"path": [
+						"dgl-prod-intry-infos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update inventory",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsid2ViIl0sInVzZXJfbmFtZSI6ImFkbWluLmFkbWluIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTY4MjIwMjQ3OSwiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkRfVVNFUiIsIkFETUlOX1VTRVIiXSwianRpIjoiOTJjZGFmNGItMWY0My00NjhiLTljOGEtNDI4OTI4NGVkZTA5IiwiY2xpZW50X2lkIjoiOTNlZDQ1M2UtYjdhYy00MTkyLWE2ZDQtYzQ1ZmFlMGQ5OWFjIn0.FJqpBzDfQRldnp_687P-AiQz7pfrDcCobTMKN_qVflByERihMCmbC_jeD3BzIFxx9STkAQJn_6dxYORT4u9LjVyn-JGTjguQ3u_D9JRcNwzIWJI5_M-F2X0TmbxcGm-bs28ZQ8MJ5Qa5ZwohmVaFzLAHNA6eBRkX9LE9jAHdTTAjeIOem3wGIrKobW9aTW-PFrHC0q2uhiVeigi6NW6Y_H-C0WP04PY4E2vyExqsZCfhQ8Sg0lzUfocWjLWsgjB5Co5cSS4pKxkDkX5ffTW4LEeC8pAC-YvqpodtMa62TURqFEux3HMtkwFfh9JNfZ74rn_vwfKfBhgGj2vsYmo84g",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\": null,\r\n        \"prodIntryInfoId\": 37,\r\n        \"relItemId\": \"34\",\r\n        \"relItemVariantId\": \"25\",\r\n        \"prodIntrySkuCode\": \"skucode\",\r\n        \"prodIntryShelfCode\": \"code\",\r\n        \"prodIntryShelfArea\": \"area\",\r\n        \"prodIntryShelfLocation\": \"location\",\r\n        \"prodIntryQty\": 5,\r\n        \"prodIntryBin\": \"bin\",\r\n        \"prodIntryUnit\": \"unit\",\r\n        \"prodIntryManuf\": \"manf\",\r\n        \"wh\": {\r\n            \"id\": null,\r\n            \"whInfoId\": 36,\r\n            \"whTitle\": \"title\",\r\n            \"whUnqId\": 1,\r\n            \"whLocation\": \"location\",\r\n            \"whAddLine1\": \"line1\",\r\n            \"whAddLine2\": \"line2\",\r\n            \"whCity\": \"city\",\r\n            \"whState\": \"state\",\r\n            \"whCountry\": \"country\",\r\n            \"whZipcode\": \"1100\",\r\n            \"whContPerson\": \"person\",\r\n            \"whEmailId\": \"test@gmail.com\",\r\n            \"whPhNum\": \"987836722\",\r\n            \"whAltPhNum\": \"9827863733\",\r\n            \"whTotCapacity\": \"25\",\r\n            \"whAlotCapacity\": \"capacity\",\r\n            \"whDescription\": \"desc\",\r\n            \"whStatus\": \"active\"\r\n        }\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{orderServiceAPIGatewayUrl}}/dgl-prod-intry-infos/37",
+					"host": [
+						"{{orderServiceAPIGatewayUrl}}"
+					],
+					"path": [
+						"dgl-prod-intry-infos",
+						"37"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Warehouses",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code should be 200\", function () { pm.response.to.have.status(200); });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsid2ViIl0sInVzZXJfbmFtZSI6ImFkbWluLmFkbWluIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTY4MjE5NDM1NSwiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkRfVVNFUiIsIkFETUlOX1VTRVIiXSwianRpIjoiMzcyNDkyZTUtNDllMy00NzcwLWE5NTItYzM5Njg3YThmZTY5IiwiY2xpZW50X2lkIjoiOTNlZDQ1M2UtYjdhYy00MTkyLWE2ZDQtYzQ1ZmFlMGQ5OWFjIn0.0Vic3uGHZ6IBzPHY7wRe_ivdJ03uzVlZMggSshVxS9bC8IP0DpRmFl5Be0ii1jsrYFA9bsGRCKng3ifo-DhYFq5nt7yfdgv_2QH77y5BOwKpXOqtCm4l1fxoi41mMeKSxnxuKkIsmgATrNroDUbjpm5NQfGchQ0HCdZZ1scMSJBz99nxhmyVqYSN1tPcC8M1RUaJzjHN0495zfMkBM3QSsJQ5pIJF1Uf0_X8_1wMsXohGqa5T6tdKsMg6M8xPSenGR3WWf5OHr74IT9_LGdIk_2ZRIllqU0-3rouyO8CZetbl9nl1GK5Dylk_WJsBfDepnGFFQaaVcm-uGAx4JFhJQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{orderServiceAPIGatewayUrl}}/dgl-wh-infos",
+					"host": [
+						"{{orderServiceAPIGatewayUrl}}"
+					],
+					"path": [
+						"dgl-wh-infos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change Warehouse Status(Partial Update)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code should be 200\", function () { pm.response.to.have.status(200); });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsid2ViIl0sInVzZXJfbmFtZSI6ImFkbWluLmFkbWluIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTY4MjE5NDM1NSwiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkRfVVNFUiIsIkFETUlOX1VTRVIiXSwianRpIjoiMzcyNDkyZTUtNDllMy00NzcwLWE5NTItYzM5Njg3YThmZTY5IiwiY2xpZW50X2lkIjoiOTNlZDQ1M2UtYjdhYy00MTkyLWE2ZDQtYzQ1ZmFlMGQ5OWFjIn0.0Vic3uGHZ6IBzPHY7wRe_ivdJ03uzVlZMggSshVxS9bC8IP0DpRmFl5Be0ii1jsrYFA9bsGRCKng3ifo-DhYFq5nt7yfdgv_2QH77y5BOwKpXOqtCm4l1fxoi41mMeKSxnxuKkIsmgATrNroDUbjpm5NQfGchQ0HCdZZ1scMSJBz99nxhmyVqYSN1tPcC8M1RUaJzjHN0495zfMkBM3QSsJQ5pIJF1Uf0_X8_1wMsXohGqa5T6tdKsMg6M8xPSenGR3WWf5OHr74IT9_LGdIk_2ZRIllqU0-3rouyO8CZetbl9nl1GK5Dylk_WJsBfDepnGFFQaaVcm-uGAx4JFhJQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"whTitle\":\"New Warehouse 1\",\"whUnqId\":3,\"whLocation\":\"Hyd\",\"whAddLine1\":\"line 1\",\"whAddLine2\":\"line 2\",\"whCity\":\"Hyderabad\",\"whState\":\"TS\",\"whCountry\":\"IND\",\"whZipcode\":\"500032\",\"whContPerson\":\"Test\",\"whEmailId\":\"test@gmail.com\",\"whPhNum\":\"9999999999\",\"whAltPhNum\":\"9999999999\",\"whTotCapacity\":\"10000\",\"whAlotCapacity\":\"4000\",\"whDescription\":\"test description\",\"whStatus\":\"Active\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{orderServiceAPIGatewayUrl}}/dgl-wh-infos",
+					"host": [
+						"{{orderServiceAPIGatewayUrl}}"
+					],
+					"path": [
+						"dgl-wh-infos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Warehouse",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code should be 200\", function () { pm.response.to.have.status(200); });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsid2ViIl0sInVzZXJfbmFtZSI6ImFkbWluLmFkbWluIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTY4MjE5NDM1NSwiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkRfVVNFUiIsIkFETUlOX1VTRVIiXSwianRpIjoiMzcyNDkyZTUtNDllMy00NzcwLWE5NTItYzM5Njg3YThmZTY5IiwiY2xpZW50X2lkIjoiOTNlZDQ1M2UtYjdhYy00MTkyLWE2ZDQtYzQ1ZmFlMGQ5OWFjIn0.0Vic3uGHZ6IBzPHY7wRe_ivdJ03uzVlZMggSshVxS9bC8IP0DpRmFl5Be0ii1jsrYFA9bsGRCKng3ifo-DhYFq5nt7yfdgv_2QH77y5BOwKpXOqtCm4l1fxoi41mMeKSxnxuKkIsmgATrNroDUbjpm5NQfGchQ0HCdZZ1scMSJBz99nxhmyVqYSN1tPcC8M1RUaJzjHN0495zfMkBM3QSsJQ5pIJF1Uf0_X8_1wMsXohGqa5T6tdKsMg6M8xPSenGR3WWf5OHr74IT9_LGdIk_2ZRIllqU0-3rouyO8CZetbl9nl1GK5Dylk_WJsBfDepnGFFQaaVcm-uGAx4JFhJQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"whInfoId\": 6,\"whStatus\":\"InActive\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{orderServiceAPIGatewayUrl}}/dgl-wh-infos/6",
+					"host": [
+						"{{orderServiceAPIGatewayUrl}}"
+					],
+					"path": [
+						"dgl-wh-infos",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Warehouse",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code should be 200\", function () { pm.response.to.have.status(200); });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsid2ViIl0sInVzZXJfbmFtZSI6ImFkbWluLmFkbWluIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTY4MjE5NDM1NSwiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkRfVVNFUiIsIkFETUlOX1VTRVIiXSwianRpIjoiMzcyNDkyZTUtNDllMy00NzcwLWE5NTItYzM5Njg3YThmZTY5IiwiY2xpZW50X2lkIjoiOTNlZDQ1M2UtYjdhYy00MTkyLWE2ZDQtYzQ1ZmFlMGQ5OWFjIn0.0Vic3uGHZ6IBzPHY7wRe_ivdJ03uzVlZMggSshVxS9bC8IP0DpRmFl5Be0ii1jsrYFA9bsGRCKng3ifo-DhYFq5nt7yfdgv_2QH77y5BOwKpXOqtCm4l1fxoi41mMeKSxnxuKkIsmgATrNroDUbjpm5NQfGchQ0HCdZZ1scMSJBz99nxhmyVqYSN1tPcC8M1RUaJzjHN0495zfMkBM3QSsJQ5pIJF1Uf0_X8_1wMsXohGqa5T6tdKsMg6M8xPSenGR3WWf5OHr74IT9_LGdIk_2ZRIllqU0-3rouyO8CZetbl9nl1GK5Dylk_WJsBfDepnGFFQaaVcm-uGAx4JFhJQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"whInfoId\":6,\"whTitle\":\"Updated Warehouse 1\",\"whUnqId\":2,\"whLocation\":\"Hyd\",\"whAddLine1\":\"line 1\",\"whAddLine2\":\"line 3\",\"whCity\":\"Hyderabad\",\"whState\":\"TS\",\"whCountry\":\"IND\",\"whZipcode\":\"500032\",\"whContPerson\":\"Test\",\"whEmailId\":\"test@gmail.com\",\"whPhNum\":\"9999999999\",\"whAltPhNum\":\"9999999999\",\"whTotCapacity\":\"10000\",\"whAlotCapacity\":\"4000\",\"whDescription\":\"test description\",\"whStatus\":\"InActive\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{orderServiceAPIGatewayUrl}}/dgl-wh-infos/6",
+					"host": [
+						"{{orderServiceAPIGatewayUrl}}"
+					],
+					"path": [
+						"dgl-wh-infos",
+						"6"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -23,9 +23,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mfino.digilinq.order.controller.DglWhInfoController.ApiReponse;
 import com.mfino.digilinq.order.repository.DglOrdItemsRepository;
 import com.mfino.digilinq.order.service.impl.DglOrdItemsService;
 import com.mfino.digilinq.service.dto.DglOrdItemsDTO;
+import com.mfino.digilinq.service.dto.DglWhInfoDTO;
 import com.mfino.digilinq.web.rest.errors.BadRequestAlertException;
 
 /**
@@ -59,16 +61,17 @@ public class DglOrdItemsController {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/dgl-ord-items")
-    public ResponseEntity<DglOrdItemsDTO> createDglOrdItems(@Valid @RequestBody DglOrdItemsDTO dglOrdItemsDTO) throws URISyntaxException {
+    public ResponseEntity<?> createDglOrdItems(@Valid @RequestBody DglOrdItemsDTO dglOrdItemsDTO) throws URISyntaxException {
         log.debug("REST request to save DglOrdItems : {}", dglOrdItemsDTO);
         if (dglOrdItemsDTO.getId() != null) {
             throw new BadRequestAlertException("A new dglOrdItems cannot already have an ID", ENTITY_NAME, "idexists");
         }
         DglOrdItemsDTO result = dglOrdItemsService.save(dglOrdItemsDTO);
-        return ResponseEntity
-            .created(new URI("/api/dgl-ord-items/" + result.getId()))
-            .headers(new HttpHeaders())
-            .body(result);
+		/*
+		 * return ResponseEntity .created(new URI("/api/dgl-ord-items/" +
+		 * result.getId())) .headers(new HttpHeaders()) .body(result);
+		 */
+        return ResponseEntity.ok(new ApiReponse<DglOrdItemsDTO>(result, true, "Operation completed succussfully"));
     }
 
     /**
@@ -150,9 +153,10 @@ public class DglOrdItemsController {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of dglOrdItems in body.
      */
     @GetMapping("/dgl-ord-items")
-    public List<DglOrdItemsDTO> getAllDglOrdItems(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+    public ResponseEntity<?> getAllDglOrdItems(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get all DglOrdItems");
-        return dglOrdItemsService.findAll();
+        //return dglOrdItemsService.findAll();
+        return ResponseEntity.ok(new ApiReponse<List<DglOrdItemsDTO>>(dglOrdItemsService.findAll(), true, "Operation completed succussfully"));
     }
 
     /**
@@ -186,4 +190,44 @@ public class DglOrdItemsController {
 		 */
         return null;
     }
+    
+    public class ApiReponse<T> {
+		
+		private T response;
+		
+		private boolean success = true;
+		
+		private String message;
+
+		public T getResponse() {
+			return response;
+		}
+
+		public void setResponse(T response) {
+			this.response = response;
+		}
+
+		public boolean isSuccess() {
+			return success;
+		}
+
+		public void setSuccess(boolean success) {
+			this.success = success;
+		}
+
+		public String getMessage() {
+			return message;
+		}
+
+		public void setMessage(String message) {
+			this.message = message;
+		}
+
+		public ApiReponse(T response, boolean success, String message) {
+			super();
+			this.response = response;
+			this.success = success;
+			this.message = message;
+		}
+	}
 }
