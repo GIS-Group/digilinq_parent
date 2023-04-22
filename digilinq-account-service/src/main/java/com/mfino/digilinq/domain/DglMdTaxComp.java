@@ -60,8 +60,8 @@ public class DglMdTaxComp implements Serializable {
     private String appModules;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@NotNull
     @Column(name = "tax_id", nullable = false)
     private Integer taxId;
 
