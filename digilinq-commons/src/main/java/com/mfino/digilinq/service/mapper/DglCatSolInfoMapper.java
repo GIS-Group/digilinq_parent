@@ -17,5 +17,9 @@ public interface DglCatSolInfoMapper extends EntityMapper<DglCatSolInfoDTO, DglC
     @Named("dglMdProdCatId")
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "prodCatId", source = "prodCatId")
+    @Mapping(target = "prodCatTitle", source = "prodCatTitle")
+    @Mapping(target = "prodCatDesc", source = "prodCatDesc")
+    @Mapping(target = "prodCatImgUrl", source = "prodCatImgUrl")
+    @Mapping(target = "mdProCatStatus", source = "mdProCatStatus")
     DglMdProdCatDTO toDtoDglMdProdCatId(DglMdProdCat dglMdProdCat);
 }

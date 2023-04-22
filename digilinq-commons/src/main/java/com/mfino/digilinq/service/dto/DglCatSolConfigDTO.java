@@ -12,7 +12,7 @@ public class DglCatSolConfigDTO implements Serializable {
 
     private Long id;
 
-    @NotNull
+   // @NotNull
     private Integer solConfigId;
 
     @NotNull
