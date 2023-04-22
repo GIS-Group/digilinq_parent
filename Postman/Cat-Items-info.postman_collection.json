@@ -1,0 +1,159 @@
+{
+	"info": {
+		"_postman_id": "f7ef4496-d183-4e9b-b438-dd9ba3d6daca",
+		"name": "Cat-Items-info",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1898287"
+	},
+	"item": [
+		{
+			"name": "create cat item",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsid2ViIl0sInVzZXJfbmFtZSI6ImFkbWluLmFkbWluIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTY4MjE5NDM1NSwiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkRfVVNFUiIsIkFETUlOX1VTRVIiXSwianRpIjoiMzcyNDkyZTUtNDllMy00NzcwLWE5NTItYzM5Njg3YThmZTY5IiwiY2xpZW50X2lkIjoiOTNlZDQ1M2UtYjdhYy00MTkyLWE2ZDQtYzQ1ZmFlMGQ5OWFjIn0.0Vic3uGHZ6IBzPHY7wRe_ivdJ03uzVlZMggSshVxS9bC8IP0DpRmFl5Be0ii1jsrYFA9bsGRCKng3ifo-DhYFq5nt7yfdgv_2QH77y5BOwKpXOqtCm4l1fxoi41mMeKSxnxuKkIsmgATrNroDUbjpm5NQfGchQ0HCdZZ1scMSJBz99nxhmyVqYSN1tPcC8M1RUaJzjHN0495zfMkBM3QSsJQ5pIJF1Uf0_X8_1wMsXohGqa5T6tdKsMg6M8xPSenGR3WWf5OHr74IT9_LGdIk_2ZRIllqU0-3rouyO8CZetbl9nl1GK5Dylk_WJsBfDepnGFFQaaVcm-uGAx4JFhJQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"relProdCat\":\"fs\",\r\n\"tpStrucInfo\":\"dg\",\r\n\"itemTitle\":\"data plan\",\r\n\"itemActualPrice\":500,\r\n\"itemType\":\"product\",\r\n\"itemStatus\":1,\r\n\"itemUnqId\":342,\r\n\"tp\":{\r\n    \"tpUnqId\":3,\r\n    \"relProdCat\":\"prod1\",\r\n    \"tpTitle\":\"tptile2\",\r\n    \"tpType\":\"tptype3\",\r\n    \"tpStruc\":\"tpStruc4\",\r\n    \"tpStatus\":2\r\n}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{catalogServiceAPIGatewayUrl}}/dgl-cat-items-infos",
+					"host": [
+						"{{catalogServiceAPIGatewayUrl}}"
+					],
+					"path": [
+						"dgl-cat-items-infos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get cat items",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsid2ViIl0sInVzZXJfbmFtZSI6ImFkbWluLmFkbWluIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTY4MjE5NDM1NSwiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkRfVVNFUiIsIkFETUlOX1VTRVIiXSwianRpIjoiMzcyNDkyZTUtNDllMy00NzcwLWE5NTItYzM5Njg3YThmZTY5IiwiY2xpZW50X2lkIjoiOTNlZDQ1M2UtYjdhYy00MTkyLWE2ZDQtYzQ1ZmFlMGQ5OWFjIn0.0Vic3uGHZ6IBzPHY7wRe_ivdJ03uzVlZMggSshVxS9bC8IP0DpRmFl5Be0ii1jsrYFA9bsGRCKng3ifo-DhYFq5nt7yfdgv_2QH77y5BOwKpXOqtCm4l1fxoi41mMeKSxnxuKkIsmgATrNroDUbjpm5NQfGchQ0HCdZZ1scMSJBz99nxhmyVqYSN1tPcC8M1RUaJzjHN0495zfMkBM3QSsJQ5pIJF1Uf0_X8_1wMsXohGqa5T6tdKsMg6M8xPSenGR3WWf5OHr74IT9_LGdIk_2ZRIllqU0-3rouyO8CZetbl9nl1GK5Dylk_WJsBfDepnGFFQaaVcm-uGAx4JFhJQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{catalogServiceAPIGatewayUrl}}/dgl-cat-items-infos",
+					"host": [
+						"{{catalogServiceAPIGatewayUrl}}"
+					],
+					"path": [
+						"dgl-cat-items-infos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "change cat item status",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsid2ViIl0sInVzZXJfbmFtZSI6ImFkbWluLmFkbWluIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTY4MjE5NDM1NSwiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkRfVVNFUiIsIkFETUlOX1VTRVIiXSwianRpIjoiMzcyNDkyZTUtNDllMy00NzcwLWE5NTItYzM5Njg3YThmZTY5IiwiY2xpZW50X2lkIjoiOTNlZDQ1M2UtYjdhYy00MTkyLWE2ZDQtYzQ1ZmFlMGQ5OWFjIn0.0Vic3uGHZ6IBzPHY7wRe_ivdJ03uzVlZMggSshVxS9bC8IP0DpRmFl5Be0ii1jsrYFA9bsGRCKng3ifo-DhYFq5nt7yfdgv_2QH77y5BOwKpXOqtCm4l1fxoi41mMeKSxnxuKkIsmgATrNroDUbjpm5NQfGchQ0HCdZZ1scMSJBz99nxhmyVqYSN1tPcC8M1RUaJzjHN0495zfMkBM3QSsJQ5pIJF1Uf0_X8_1wMsXohGqa5T6tdKsMg6M8xPSenGR3WWf5OHr74IT9_LGdIk_2ZRIllqU0-3rouyO8CZetbl9nl1GK5Dylk_WJsBfDepnGFFQaaVcm-uGAx4JFhJQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":21,\r\n    \"itemId\":21,\r\n    \"itemStatus\":6\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{catalogServiceAPIGatewayUrl}}/dgl-cat-items-infos/21",
+					"host": [
+						"{{catalogServiceAPIGatewayUrl}}"
+					],
+					"path": [
+						"dgl-cat-items-infos",
+						"21"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update cat item",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsid2ViIl0sInVzZXJfbmFtZSI6ImFkbWluLmFkbWluIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTY4MjE5NDM1NSwiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkRfVVNFUiIsIkFETUlOX1VTRVIiXSwianRpIjoiMzcyNDkyZTUtNDllMy00NzcwLWE5NTItYzM5Njg3YThmZTY5IiwiY2xpZW50X2lkIjoiOTNlZDQ1M2UtYjdhYy00MTkyLWE2ZDQtYzQ1ZmFlMGQ5OWFjIn0.0Vic3uGHZ6IBzPHY7wRe_ivdJ03uzVlZMggSshVxS9bC8IP0DpRmFl5Be0ii1jsrYFA9bsGRCKng3ifo-DhYFq5nt7yfdgv_2QH77y5BOwKpXOqtCm4l1fxoi41mMeKSxnxuKkIsmgATrNroDUbjpm5NQfGchQ0HCdZZ1scMSJBz99nxhmyVqYSN1tPcC8M1RUaJzjHN0495zfMkBM3QSsJQ5pIJF1Uf0_X8_1wMsXohGqa5T6tdKsMg6M8xPSenGR3WWf5OHr74IT9_LGdIk_2ZRIllqU0-3rouyO8CZetbl9nl1GK5Dylk_WJsBfDepnGFFQaaVcm-uGAx4JFhJQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"id\":21,\r\n  \"itemActualPrice\": \"250\",\r\n  \"itemDesc\": \"desc\",\r\n  \"itemId\": 21,\r\n  \"itemSopUrl\": \"url\",\r\n  \"itemStatus\": 0,\r\n  \"itemTitle\": \"data plan\",\r\n  \"itemType\": \"product\",\r\n  \"itemUnqId\": 300,\r\n  \"relApiConfigId\": 0,\r\n  \"relProdCat\": \"prodcat\",\r\n  \"timePeriod\": \"period\",\r\n  \"tp\": {\r\n    \"id\": 0,\r\n    \"relProdCat\": \"prodcat\",\r\n    \"tpDesc\": \"desc\",\r\n    \"tpId\": 28,\r\n    \"tpStatus\": 0,\r\n    \"tpStruc\": \"struc\",\r\n    \"tpTitle\": \"title\",\r\n    \"tpType\": \"type\",\r\n    \"tpUnqId\": 7\r\n  },\r\n  \"tpStrucInfo\": \"strucinfo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{catalogServiceAPIGatewayUrl}}/dgl-cat-items-infos/21",
+					"host": [
+						"{{catalogServiceAPIGatewayUrl}}"
+					],
+					"path": [
+						"dgl-cat-items-infos",
+						"21"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
