@@ -2,7 +2,9 @@ package com.mfino.digilinq.service.dto;
 
 import java.io.Serializable;
 import java.util.Objects;
-import javax.validation.constraints.*;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * A DTO for the {@link com.mfino.digilinq.domain.DglWhInfo} entity.
@@ -10,9 +12,9 @@ import javax.validation.constraints.*;
 @SuppressWarnings("common-java:DuplicatedBlocks")
 public class DglWhInfoDTO implements Serializable {
 
-    private Long id;
+    private Integer id;
 
-    @NotNull
+//    @NotNull
     private Integer whInfoId;
 
     @NotNull
@@ -82,11 +84,11 @@ public class DglWhInfoDTO implements Serializable {
     @Size(max = 255)
     private String whStatus;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -12,7 +12,7 @@ public class DglOrdItemsDTO implements Serializable {
 
     private Long id;
 
-    @NotNull
+    //@NotNull
     private Integer ordItemsId;
 
     @NotNull
