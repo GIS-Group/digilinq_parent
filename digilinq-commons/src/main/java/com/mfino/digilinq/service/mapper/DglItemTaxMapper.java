@@ -19,12 +19,12 @@ public interface DglItemTaxMapper extends EntityMapper<DglItemTaxDTO, DglItemTax
 
     @Named("dglMdTaxCompId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "taxId", source = "taxId")
     DglMdTaxCompDTO toDtoDglMdTaxCompId(DglMdTaxComp dglMdTaxComp);
 
     @Named("dglCatItemsInfoItemUnqId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "itemId", source = "itemId")
     @Mapping(target = "itemUnqId", source = "itemUnqId")
     DglCatItemsInfoDTO toDtoDglCatItemsInfoItemUnqId(DglCatItemsInfo dglCatItemsInfo);
 }

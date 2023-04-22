@@ -16,7 +16,7 @@ public interface DglInvoicesMapper extends EntityMapper<DglInvoicesDTO, DglInvoi
 
     @Named("dglOrdInfoOrdUnqId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "ordId", source = "ordId")
     @Mapping(target = "ordUnqId", source = "ordUnqId")
     DglOrdInfoDTO toDtoDglOrdInfoOrdUnqId(DglOrdInfo dglOrdInfo);
 }

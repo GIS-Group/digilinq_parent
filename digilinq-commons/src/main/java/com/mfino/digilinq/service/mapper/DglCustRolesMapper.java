@@ -16,7 +16,7 @@ public interface DglCustRolesMapper extends EntityMapper<DglCustRolesDTO, DglCus
 
     @Named("dglCustomerCustUnqId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "customerId", source = "customerId")
     @Mapping(target = "custUnqId", source = "custUnqId")
     DglCustomerDTO toDtoDglCustomerCustUnqId(DglCustomer dglCustomer);
 }

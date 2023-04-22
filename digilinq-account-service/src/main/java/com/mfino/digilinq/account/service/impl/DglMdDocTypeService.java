@@ -10,8 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.mfino.digilinq.account.repository.DglMdDocTypeRepository;
 import com.mfino.digilinq.domain.DglMdDocType;
-import com.mfino.digilinq.repository.DglMdDocTypeRepository;
 import com.mfino.digilinq.service.dto.DglMdDocTypeDTO;
 import com.mfino.digilinq.service.mapper.DglMdDocTypeMapper;
 

@@ -16,7 +16,7 @@ public interface DglCustCustomFieldsMapper extends EntityMapper<DglCustCustomFie
 
     @Named("dglCustomerCustUnqId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "customerId", source = "customerId")
     @Mapping(target = "custUnqId", source = "custUnqId")
     DglCustomerDTO toDtoDglCustomerCustUnqId(DglCustomer dglCustomer);
 }

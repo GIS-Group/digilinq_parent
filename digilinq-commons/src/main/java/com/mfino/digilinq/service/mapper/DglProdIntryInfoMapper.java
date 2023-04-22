@@ -16,7 +16,7 @@ public interface DglProdIntryInfoMapper extends EntityMapper<DglProdIntryInfoDTO
 
     @Named("dglWhInfoWhUnqId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "whInfoId", source = "whInfoId")
     @Mapping(target = "whUnqId", source = "whUnqId")
     DglWhInfoDTO toDtoDglWhInfoWhUnqId(DglWhInfo dglWhInfo);
 }

@@ -16,7 +16,7 @@ public interface DglCashbksConfigMapper extends EntityMapper<DglCashbksConfigDTO
 
     @Named("dglCashbksInfoCashbkUnqId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "cashbkId", source = "cashbkId")
     @Mapping(target = "cashbkUnqId", source = "cashbkUnqId")
     DglCashbksInfoDTO toDtoDglCashbksInfoCashbkUnqId(DglCashbksInfo dglCashbksInfo);
 }

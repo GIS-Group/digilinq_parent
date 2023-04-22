@@ -1,26 +1,44 @@
 package com.mfino.digilinq.domain;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import javax.validation.constraints.*;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  * A DglMdProdCat.
  */
 @Entity
 @Table(name = "dgl_md_prod_cat")
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@SuppressWarnings("common-java:DuplicatedBlocks")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@ToString
+//@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+//@SuppressWarnings("common-java:DuplicatedBlocks")
 public class DglMdProdCat implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "id")
+//    private Long id;
 
     @NotNull
     @Size(max = 100)
@@ -36,6 +54,8 @@ public class DglMdProdCat implements Serializable {
     @Column(name = "prod_cat_img_url", length = 255, nullable = false)
     private String prodCatImgUrl;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
     @Column(name = "prod_cat_id", nullable = false)
     private Integer prodCatId;
@@ -45,115 +65,4 @@ public class DglMdProdCat implements Serializable {
     @Column(name = "md_pro_cat_status", length = 255, nullable = false)
     private String mdProCatStatus;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
-
-    public Long getId() {
-        return this.id;
-    }
-
-    public DglMdProdCat id(Long id) {
-        this.setId(id);
-        return this;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getProdCatTitle() {
-        return this.prodCatTitle;
-    }
-
-    public DglMdProdCat prodCatTitle(String prodCatTitle) {
-        this.setProdCatTitle(prodCatTitle);
-        return this;
-    }
-
-    public void setProdCatTitle(String prodCatTitle) {
-        this.prodCatTitle = prodCatTitle;
-    }
-
-    public String getProdCatDesc() {
-        return this.prodCatDesc;
-    }
-
-    public DglMdProdCat prodCatDesc(String prodCatDesc) {
-        this.setProdCatDesc(prodCatDesc);
-        return this;
-    }
-
-    public void setProdCatDesc(String prodCatDesc) {
-        this.prodCatDesc = prodCatDesc;
-    }
-
-    public String getProdCatImgUrl() {
-        return this.prodCatImgUrl;
-    }
-
-    public DglMdProdCat prodCatImgUrl(String prodCatImgUrl) {
-        this.setProdCatImgUrl(prodCatImgUrl);
-        return this;
-    }
-
-    public void setProdCatImgUrl(String prodCatImgUrl) {
-        this.prodCatImgUrl = prodCatImgUrl;
-    }
-
-    public Integer getProdCatId() {
-        return this.prodCatId;
-    }
-
-    public DglMdProdCat prodCatId(Integer prodCatId) {
-        this.setProdCatId(prodCatId);
-        return this;
-    }
-
-    public void setProdCatId(Integer prodCatId) {
-        this.prodCatId = prodCatId;
-    }
-
-    public String getMdProCatStatus() {
-        return this.mdProCatStatus;
-    }
-
-    public DglMdProdCat mdProCatStatus(String mdProCatStatus) {
-        this.setMdProCatStatus(mdProCatStatus);
-        return this;
-    }
-
-    public void setMdProCatStatus(String mdProCatStatus) {
-        this.mdProCatStatus = mdProCatStatus;
-    }
-
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof DglMdProdCat)) {
-            return false;
-        }
-        return id != null && id.equals(((DglMdProdCat) o).id);
-    }
-
-    @Override
-    public int hashCode() {
-        // see https://vladmihalcea.com/how-to-implement-equals-and-hashcode-using-the-jpa-entity-identifier/
-        return getClass().hashCode();
-    }
-
-    // prettier-ignore
-    @Override
-    public String toString() {
-        return "DglMdProdCat{" +
-            "id=" + getId() +
-            ", prodCatTitle='" + getProdCatTitle() + "'" +
-            ", prodCatDesc='" + getProdCatDesc() + "'" +
-            ", prodCatImgUrl='" + getProdCatImgUrl() + "'" +
-            ", prodCatId=" + getProdCatId() +
-            ", mdProCatStatus='" + getMdProCatStatus() + "'" +
-            "}";
-    }
 }

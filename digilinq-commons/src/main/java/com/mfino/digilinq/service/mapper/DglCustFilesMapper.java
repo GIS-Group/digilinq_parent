@@ -19,13 +19,13 @@ public interface DglCustFilesMapper extends EntityMapper<DglCustFilesDTO, DglCus
 
     @Named("dglDocPolPolicyId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "docPolId", source = "docPolId")
     @Mapping(target = "policyId", source = "policyId")
     DglDocPolDTO toDtoDglDocPolPolicyId(DglDocPol dglDocPol);
 
     @Named("dglCustomerCustUnqId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "customerId", source = "customerId")
     @Mapping(target = "custUnqId", source = "custUnqId")
     DglCustomerDTO toDtoDglCustomerCustUnqId(DglCustomer dglCustomer);
 }

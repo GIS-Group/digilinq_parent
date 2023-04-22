@@ -17,13 +17,13 @@ public interface DglCustomerMapper extends EntityMapper<DglCustomerDTO, DglCusto
 
     @Named("dglCustomerCustUnqId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "customerId", source = "customerId")
     @Mapping(target = "custUnqId", source = "custUnqId")
     DglCustomerDTO toDtoDglCustomerCustUnqId(DglCustomer dglCustomer);
 
     @Named("dglAccMnoAccUnqId")
     @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
+    @Mapping(target = "accId", source = "accId")
     @Mapping(target = "accUnqId", source = "accUnqId")
     DglAccMnoDTO toDtoDglAccMnoAccUnqId(DglAccMno dglAccMno);
 }
