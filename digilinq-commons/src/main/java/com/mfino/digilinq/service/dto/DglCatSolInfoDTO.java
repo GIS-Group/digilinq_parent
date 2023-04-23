@@ -12,10 +12,10 @@ public class DglCatSolInfoDTO implements Serializable {
 
     private Long id;
 
-    @NotNull
+   // @NotNull
     private Integer solId;
 
-    @NotNull
+ //   @NotNull
     private Integer solUnqId;
 
     @NotNull

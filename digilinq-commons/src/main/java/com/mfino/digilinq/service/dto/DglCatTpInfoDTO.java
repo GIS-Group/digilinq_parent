@@ -12,7 +12,7 @@ public class DglCatTpInfoDTO implements Serializable {
 
     private Long id;
 
-    @NotNull
+    //@NotNull
     private Integer tpId;
 
     @NotNull

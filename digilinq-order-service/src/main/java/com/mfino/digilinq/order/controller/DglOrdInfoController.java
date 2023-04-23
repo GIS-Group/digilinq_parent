@@ -22,9 +22,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mfino.digilinq.order.controller.DglOrdItemsController.ApiReponse;
 import com.mfino.digilinq.order.repository.DglOrdInfoRepository;
 import com.mfino.digilinq.order.service.impl.DglOrdInfoService;
 import com.mfino.digilinq.service.dto.DglOrdInfoDTO;
+import com.mfino.digilinq.service.dto.DglOrdItemsDTO;
 import com.mfino.digilinq.web.rest.errors.BadRequestAlertException;
 
 /**
@@ -59,16 +61,17 @@ public class DglOrdInfoController {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/dgl-ord-infos")
-    public ResponseEntity<DglOrdInfoDTO> createDglOrdInfo(@Valid @RequestBody DglOrdInfoDTO dglOrdInfoDTO) throws URISyntaxException {
+    public ResponseEntity<?> createDglOrdInfo(@Valid @RequestBody DglOrdInfoDTO dglOrdInfoDTO) throws URISyntaxException {
         log.debug("REST request to save DglOrdInfo : {}", dglOrdInfoDTO);
         if (dglOrdInfoDTO.getId() != null) {
             throw new BadRequestAlertException("A new dglOrdInfo cannot already have an ID", ENTITY_NAME, "idexists");
         }
         DglOrdInfoDTO result = dglOrdInfoService.save(dglOrdInfoDTO);
-        return ResponseEntity
-            .created(new URI("/api/dgl-ord-infos/" + result.getId()))
-            .headers(new HttpHeaders())
-            .body(result);
+		/*
+		 * return ResponseEntity .created(new URI("/api/dgl-ord-infos/" +
+		 * result.getId())) .headers(new HttpHeaders()) .body(result);
+		 */
+        return ResponseEntity.ok(new ApiReponse<DglOrdInfoDTO>(result, true, "Operation completed succussfully"));
     }
 
     /**
@@ -149,9 +152,10 @@ public class DglOrdInfoController {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of dglOrdInfos in body.
      */
     @GetMapping("/dgl-ord-infos")
-    public List<DglOrdInfoDTO> getAllDglOrdInfos() {
+    public ResponseEntity<?> getAllDglOrdInfos() {
         log.debug("REST request to get all DglOrdInfos");
-        return dglOrdInfoService.findAll();
+        //return dglOrdInfoService.findAll();
+        return ResponseEntity.ok(new ApiReponse<List<DglOrdInfoDTO>>(dglOrdInfoService.findAll(), true, "Operation completed succussfully"));
     }
 
     /**
@@ -183,4 +187,44 @@ public class DglOrdInfoController {
             .headers(new HttpHeaders())
             .build();
     }
+    
+public class ApiReponse<T> {
+		
+		private T response;
+		
+		private boolean success = true;
+		
+		private String message;
+
+		public T getResponse() {
+			return response;
+		}
+
+		public void setResponse(T response) {
+			this.response = response;
+		}
+
+		public boolean isSuccess() {
+			return success;
+		}
+
+		public void setSuccess(boolean success) {
+			this.success = success;
+		}
+
+		public String getMessage() {
+			return message;
+		}
+
+		public void setMessage(String message) {
+			this.message = message;
+		}
+
+		public ApiReponse(T response, boolean success, String message) {
+			super();
+			this.response = response;
+			this.success = success;
+			this.message = message;
+		}
+	}
 }

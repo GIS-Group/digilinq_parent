@@ -40,8 +40,8 @@ public class DglCatTpInfo implements Serializable {
 //    @Column(name = "id")
 //    private Long id;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@NotNull
     @Column(name = "tp_id", nullable = false)
     private Integer tpId;
 
