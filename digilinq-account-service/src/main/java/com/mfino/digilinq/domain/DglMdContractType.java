@@ -2,11 +2,15 @@ package com.mfino.digilinq.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -66,8 +70,11 @@ public class DglMdContractType implements Serializable {
     @Column(name = "is_event", nullable = false)
     private Boolean isEvent;
 
-    @ManyToOne(optional = false)
-    @NotNull
+    @ManyToOne(optional = false,cascade=CascadeType.ALL,fetch=FetchType.LAZY,targetEntity = DglMdCustCat.class)
+    @JoinColumns({
+        @JoinColumn(name = "CUST_CAT", referencedColumnName = "cust_cat_id"),
+        @JoinColumn(name = "custCat_cust_cat_id", referencedColumnName = "cust_cat_id")
+        })
     private DglMdCustCat custCat;
 
 }

@@ -56,7 +56,7 @@ public class DglMdCustCat implements Serializable {
     private String custCatType;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
     @Column(name = "cust_cat_id", nullable = false)
     private Integer custCatId;
