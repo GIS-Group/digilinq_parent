@@ -10,4 +10,4 @@ import com.mfino.digilinq.domain.DglMdDocType;
  */
 @SuppressWarnings("unused")
 @Repository
-public interface DglMdDocTypeRepository extends JpaRepository<DglMdDocType, Long> {}
+public interface DglMdDocTypeRepository extends JpaRepository<DglMdDocType, Integer> {}

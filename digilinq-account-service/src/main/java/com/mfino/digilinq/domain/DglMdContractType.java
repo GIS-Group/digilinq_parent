@@ -52,7 +52,7 @@ public class DglMdContractType implements Serializable {
     private String contractTypeDesc;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
     @Column(name = "contract_type_id", nullable = false)
     private Integer contractTypeId;
