@@ -2,6 +2,7 @@ package com.mfino.digilinq.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -44,7 +45,7 @@ public class DglCatSolConfig implements Serializable {
 //    private Long id;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
+//    @NotNull
     @Column(name = "sol_config_id", nullable = false)
     private Integer solConfigId;
 
@@ -58,8 +59,8 @@ public class DglCatSolConfig implements Serializable {
     @Column(name = "sol_config_details", length = 65535, nullable = false)
     private String solConfigDetails;
 
-    @ManyToOne(optional = false)
-    @NotNull
+    @ManyToOne(optional = false,cascade = CascadeType.ALL)
+ //   @NotNull
     @JsonIgnoreProperties(value = { "relProdCat" }, allowSetters = true)
     private DglCatSolInfo sol;
 

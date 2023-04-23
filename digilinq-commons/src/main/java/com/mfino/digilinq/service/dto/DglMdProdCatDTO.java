@@ -23,7 +23,8 @@ public class DglMdProdCatDTO implements Serializable {
     @Size(max = 255)
     private String prodCatImgUrl;
 
-    //@NotNull
+
+  //  @NotNull
     private Integer prodCatId;
 
     @NotNull

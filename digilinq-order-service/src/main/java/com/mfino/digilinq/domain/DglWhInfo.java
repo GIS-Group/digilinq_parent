@@ -62,12 +62,12 @@ public class DglWhInfo implements Serializable {
 
     @NotNull
     @Size(max = 255)
-    @Column(name = "wh_add_line_1", length = 255, nullable = false)
+    @Column(name = "wh_add_line1", length = 255, nullable = false)
     private String whAddLine1;
 
     @NotNull
     @Size(max = 255)
-    @Column(name = "wh_add_line_2", length = 255, nullable = false)
+    @Column(name = "wh_add_line2", length = 255, nullable = false)
     private String whAddLine2;
 
     @NotNull
