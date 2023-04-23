@@ -55,7 +55,7 @@ public class DglMdProdCat implements Serializable {
     private String prodCatImgUrl;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
     @Column(name = "prod_cat_id", nullable = false)
     private Integer prodCatId;

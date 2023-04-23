@@ -20,7 +20,7 @@ public class DglMdContractTypeDTO implements Serializable {
     @Size(max = 255)
     private String contractTypeDesc;
 
-    @NotNull
+   // @NotNull
     private Integer contractTypeId;
 
     @NotNull
