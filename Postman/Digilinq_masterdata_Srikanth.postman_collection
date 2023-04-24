@@ -1,0 +1,260 @@
+{
+	"info": {
+		"_postman_id": "2701ac10-821f-490f-a0b5-d4fc39f74357",
+		"name": "Digilinq",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "17500593",
+		"_collection_link": "https://universal-shuttle-481052.postman.co/workspace/My-Workspace~279d3c4e-89b6-49d2-86cc-0ed942d10327/collection/17500593-2701ac10-821f-490f-a0b5-d4fc39f74357?action=share&creator=17500593&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "DocType",
+			"item": [
+				{
+					"name": "DocType create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgyMTk0NjAzLCJpYXQiOjE2ODIxOTE2MDN9.MsYywz8R58fG7tKS9ZueVq6MVaJgpxWvtaWGxPQWkZ0FcDkFr8MWqFjqnmM3jR2MXnXIqrPC4CMossxhJaQgGuHjsU9O1UGBZ-_-Zu4o2QswpN6lOhZ8TZKUpk-EWm7idtIQUrg-ImCFfhxk86JpdQNWzt06O8uty-vE25xIN4Pl5jdBZEzsiBn47q7YzNaGoNv_7wnN0jP268EkWzNWlxdzNQlbulQrvLs4o4Ckh9DnV68qTlm0sS4vyHZSwSUPZL86u2DWGsQFCnA_jW-aMbl06HGsTPq-zdUlWeTYf7wWllmu16FUxMGu1maOkJTfySqp8J3eBEAmE8zatL7zHA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"docTypeTitle\":\"sample\",\"allowFileFormat\":\"pdf\",\"docTypeDesc\":\"test\",\"mdDocStatus\":\"NEW\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{accountServiceAPIGatewayUrl}}/dgl-md-doc-types"
+					},
+					"response": []
+				},
+				{
+					"name": "DocTypeGetAll",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgyMTk0NjAzLCJpYXQiOjE2ODIxOTE2MDN9.MsYywz8R58fG7tKS9ZueVq6MVaJgpxWvtaWGxPQWkZ0FcDkFr8MWqFjqnmM3jR2MXnXIqrPC4CMossxhJaQgGuHjsU9O1UGBZ-_-Zu4o2QswpN6lOhZ8TZKUpk-EWm7idtIQUrg-ImCFfhxk86JpdQNWzt06O8uty-vE25xIN4Pl5jdBZEzsiBn47q7YzNaGoNv_7wnN0jP268EkWzNWlxdzNQlbulQrvLs4o4Ckh9DnV68qTlm0sS4vyHZSwSUPZL86u2DWGsQFCnA_jW-aMbl06HGsTPq-zdUlWeTYf7wWllmu16FUxMGu1maOkJTfySqp8J3eBEAmE8zatL7zHA",
+								"type": "text"
+							}
+						],
+						"url": "{{accountServiceAPIGatewayUrl}}/dgl-md-doc-types/"
+					},
+					"response": []
+				},
+				{
+					"name": "DocTypeById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgyMjE0MjI3LCJpYXQiOjE2ODIyMTEyMjd9.Ix-_NspYDV1-6wTqy-apzpwwOzMDgxQasURSjT0slSj1z0DK3o7d9WttsHY9bG5VhNQ9c-hpqi4-u64ttdm4jx3HjTfVyI8W5mn_9q00F-gBNXLEXTJMW1wQnaUaJgev-aiJ7QgGb6bzfaWUVSpoGg42XzYTz_BUAlQv4jCT7wKHq6eadGo3JIoJ-WkTOlCWaBMt4tcmDMfzmYd-gWAYs9sOUf-aug3XVorr_tErq5QKnipjlrIh4x2FQxmqsviPtBB_AhIk68oiGc1Y2RwhRSwqQDQr8wEOnYQwvY71OGeSYahFp5nqhwgWbX_YyDdr8_cqxb0UESbswDGRHPHOMA",
+								"type": "text"
+							}
+						],
+						"url": "{{accountServiceAPIGatewayUrl}}/dgl-md-doc-types/2"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgyMjE0MjI3LCJpYXQiOjE2ODIyMTEyMjd9.Ix-_NspYDV1-6wTqy-apzpwwOzMDgxQasURSjT0slSj1z0DK3o7d9WttsHY9bG5VhNQ9c-hpqi4-u64ttdm4jx3HjTfVyI8W5mn_9q00F-gBNXLEXTJMW1wQnaUaJgev-aiJ7QgGb6bzfaWUVSpoGg42XzYTz_BUAlQv4jCT7wKHq6eadGo3JIoJ-WkTOlCWaBMt4tcmDMfzmYd-gWAYs9sOUf-aug3XVorr_tErq5QKnipjlrIh4x2FQxmqsviPtBB_AhIk68oiGc1Y2RwhRSwqQDQr8wEOnYQwvY71OGeSYahFp5nqhwgWbX_YyDdr8_cqxb0UESbswDGRHPHOMA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"docTypeTitle\":\"sample\",\"allowFileFormat\":\"pdf\",\"docTypeDesc\":\"test\",\"docTypeId\":\"1\",\"mdDocStatus\":\"ACTIVE\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{accountServiceAPIGatewayUrl}}/dgl-md-doc-types/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ProdCategory",
+			"item": [
+				{
+					"name": "ProdCate create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgyMjIwNzY1LCJpYXQiOjE2ODIyMTc3NjZ9.ghPk9vl7ZPW62KbrSwGHrR9d4RAQTtnn52ZPd0oDG2ojhHRnA59u72Rju9-lT_xq9F0TtIV4RukRSkGrY1DVv14JFivPGZg3JVA_8avqSgzXSg6NPLRybSW_g6qfgil5LHH87M2E6TqqixMkVOv1bbJcXR6aaVZrITttL2daqeKeBHDtuQl9xHaBBhkE55heicO8o7DM7W-pgugMAHoyRAyFkxGXZrOUmX6R_A3kphKwm_zbGDwUQtdkNkAWgHDYxmNLmVQPpLJE7hYX7Lspr4oORyFr8u2ARRXaRoP6416O-fbi8SC8_9ecupazSQwbr653xxKjUNohYFAUz5So4Q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"prodCatTitle\":\"sample\",\"prodCatDesc\":\"desccc\",\"prodCatImgUrl\":\"http:new\",\"mdProCatStatus\":\"NEW\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{accountServiceAPIGatewayUrl}}/dgl-md-prod-cats"
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllProdTyes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgyMjE0MjI3LCJpYXQiOjE2ODIyMTEyMjd9.Ix-_NspYDV1-6wTqy-apzpwwOzMDgxQasURSjT0slSj1z0DK3o7d9WttsHY9bG5VhNQ9c-hpqi4-u64ttdm4jx3HjTfVyI8W5mn_9q00F-gBNXLEXTJMW1wQnaUaJgev-aiJ7QgGb6bzfaWUVSpoGg42XzYTz_BUAlQv4jCT7wKHq6eadGo3JIoJ-WkTOlCWaBMt4tcmDMfzmYd-gWAYs9sOUf-aug3XVorr_tErq5QKnipjlrIh4x2FQxmqsviPtBB_AhIk68oiGc1Y2RwhRSwqQDQr8wEOnYQwvY71OGeSYahFp5nqhwgWbX_YyDdr8_cqxb0UESbswDGRHPHOMA",
+								"type": "text"
+							}
+						],
+						"url": "{{accountServiceAPIGatewayUrl}}/dgl-md-prod-cats/"
+					},
+					"response": []
+				},
+				{
+					"name": "GetProdTyeById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgyMjE0MjI3LCJpYXQiOjE2ODIyMTEyMjd9.Ix-_NspYDV1-6wTqy-apzpwwOzMDgxQasURSjT0slSj1z0DK3o7d9WttsHY9bG5VhNQ9c-hpqi4-u64ttdm4jx3HjTfVyI8W5mn_9q00F-gBNXLEXTJMW1wQnaUaJgev-aiJ7QgGb6bzfaWUVSpoGg42XzYTz_BUAlQv4jCT7wKHq6eadGo3JIoJ-WkTOlCWaBMt4tcmDMfzmYd-gWAYs9sOUf-aug3XVorr_tErq5QKnipjlrIh4x2FQxmqsviPtBB_AhIk68oiGc1Y2RwhRSwqQDQr8wEOnYQwvY71OGeSYahFp5nqhwgWbX_YyDdr8_cqxb0UESbswDGRHPHOMA",
+								"type": "text"
+							}
+						],
+						"url": "{{accountServiceAPIGatewayUrl}}/dgl-md-prod-cats/3"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgyMjE0MjI3LCJpYXQiOjE2ODIyMTEyMjd9.Ix-_NspYDV1-6wTqy-apzpwwOzMDgxQasURSjT0slSj1z0DK3o7d9WttsHY9bG5VhNQ9c-hpqi4-u64ttdm4jx3HjTfVyI8W5mn_9q00F-gBNXLEXTJMW1wQnaUaJgev-aiJ7QgGb6bzfaWUVSpoGg42XzYTz_BUAlQv4jCT7wKHq6eadGo3JIoJ-WkTOlCWaBMt4tcmDMfzmYd-gWAYs9sOUf-aug3XVorr_tErq5QKnipjlrIh4x2FQxmqsviPtBB_AhIk68oiGc1Y2RwhRSwqQDQr8wEOnYQwvY71OGeSYahFp5nqhwgWbX_YyDdr8_cqxb0UESbswDGRHPHOMA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"prodCatTitle\":\"sample\",\"prodCatDesc\":\"desccc\",\"prodCatImgUrl\":\"http:new\",\"mdProCatStatus\":\"ACTIVE\",\"prodCatId\":\"3\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{accountServiceAPIGatewayUrl}}/dgl-md-prod-cats/3"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CustContractTypes",
+			"item": [
+				{
+					"name": "CustContractType create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgyMjI0MTY2LCJpYXQiOjE2ODIyMjExNjd9.ZiG6J3vYsF9ohZkFJGGbK78sneM5p6KZjlT1dpkoKJTOEzDF2P8417MiVnQpJbDjt3UsIpU_YJE43sOWLxDYWUTQkAi62Ff13RdEUpezN2BhLFsATWf9wb1Y0Kj2DXKko5kbQOkaeDaSbYVS-lJPe8FDuVQuz7cbTz42GTrzk8WPlBX3S-TmRz9JaPVGN-bb0psvJs5HR-i6Dq1CCr0O50GDA5v20aZOeAQd1Aw_OAZEFLR4JGmWLYLGZv1yDSKA4hkN2gkwczOWO-o4nEBg36yHz4JLzcEWpSG25Mctfe_WaxTFbBA4DAKQBIMxgnH-Q9GjC8EmrM6lWKTL_eCZBQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"contractTypeTitle\":\"sample\",\"contractTypeDesc\":\"pddsfdsf\",\"mdContrStatus\":\"NEW\",\"isEvent\":true,\"custCat\":{\"prodCatTitle\":\"prodCat\",\"custCatDesc\":\"sadsad\",\"custCatType\":\"sample\",\"mdCusStatus\":\"NEW\"}}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{accountServiceAPIGatewayUrl}}/dgl-md-contract-types"
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllCustContractType",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgyMjI0MTY2LCJpYXQiOjE2ODIyMjExNjd9.ZiG6J3vYsF9ohZkFJGGbK78sneM5p6KZjlT1dpkoKJTOEzDF2P8417MiVnQpJbDjt3UsIpU_YJE43sOWLxDYWUTQkAi62Ff13RdEUpezN2BhLFsATWf9wb1Y0Kj2DXKko5kbQOkaeDaSbYVS-lJPe8FDuVQuz7cbTz42GTrzk8WPlBX3S-TmRz9JaPVGN-bb0psvJs5HR-i6Dq1CCr0O50GDA5v20aZOeAQd1Aw_OAZEFLR4JGmWLYLGZv1yDSKA4hkN2gkwczOWO-o4nEBg36yHz4JLzcEWpSG25Mctfe_WaxTFbBA4DAKQBIMxgnH-Q9GjC8EmrM6lWKTL_eCZBQ",
+								"type": "text"
+							}
+						],
+						"url": "{{accountServiceAPIGatewayUrl}}/dgl-md-contract-types/"
+					},
+					"response": []
+				},
+				{
+					"name": "GetCustContractType ById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgyMjI0MTY2LCJpYXQiOjE2ODIyMjExNjd9.ZiG6J3vYsF9ohZkFJGGbK78sneM5p6KZjlT1dpkoKJTOEzDF2P8417MiVnQpJbDjt3UsIpU_YJE43sOWLxDYWUTQkAi62Ff13RdEUpezN2BhLFsATWf9wb1Y0Kj2DXKko5kbQOkaeDaSbYVS-lJPe8FDuVQuz7cbTz42GTrzk8WPlBX3S-TmRz9JaPVGN-bb0psvJs5HR-i6Dq1CCr0O50GDA5v20aZOeAQd1Aw_OAZEFLR4JGmWLYLGZv1yDSKA4hkN2gkwczOWO-o4nEBg36yHz4JLzcEWpSG25Mctfe_WaxTFbBA4DAKQBIMxgnH-Q9GjC8EmrM6lWKTL_eCZBQ",
+								"type": "text"
+							}
+						],
+						"url": "{{accountServiceAPIGatewayUrl}}/dgl-md-contract-types/3"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgyMjI0MTY2LCJpYXQiOjE2ODIyMjExNjd9.ZiG6J3vYsF9ohZkFJGGbK78sneM5p6KZjlT1dpkoKJTOEzDF2P8417MiVnQpJbDjt3UsIpU_YJE43sOWLxDYWUTQkAi62Ff13RdEUpezN2BhLFsATWf9wb1Y0Kj2DXKko5kbQOkaeDaSbYVS-lJPe8FDuVQuz7cbTz42GTrzk8WPlBX3S-TmRz9JaPVGN-bb0psvJs5HR-i6Dq1CCr0O50GDA5v20aZOeAQd1Aw_OAZEFLR4JGmWLYLGZv1yDSKA4hkN2gkwczOWO-o4nEBg36yHz4JLzcEWpSG25Mctfe_WaxTFbBA4DAKQBIMxgnH-Q9GjC8EmrM6lWKTL_eCZBQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": null,\r\n        \"contractTypeTitle\": \"sample\",\r\n        \"contractTypeDesc\": \"pddsfdsf\",\r\n        \"contractTypeId\": 3,\r\n        \"mdContrStatus\": \"ACTIVE\",\r\n        \"isEvent\": true,\r\n        \"custCat\": {\"prodCatTitle\":\"prodCat\",\"custCatDesc\":\"sadsad\",\"custCatType\":\"sample\",\"mdCusStatus\":\"NEW\",\"custCatId\":\"4\"}\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{accountServiceAPIGatewayUrl}}/dgl-md-contract-types/3"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

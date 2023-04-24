@@ -23,7 +23,7 @@ public class DglMdDocTypeDTO implements Serializable {
     @Size(max = 255)
     private String docTypeDesc;
 
-    @NotNull
+    //@NotNull
     private Integer docTypeId;
 
     @NotNull

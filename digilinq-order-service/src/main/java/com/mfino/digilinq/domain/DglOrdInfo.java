@@ -44,8 +44,8 @@ public class DglOrdInfo implements Serializable {
 //    private Long id;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@NotNull
     @Column(name = "ord_id", nullable = false)
     private Integer ordId;
 
@@ -91,8 +91,8 @@ public class DglOrdInfo implements Serializable {
     private String ordCustCurrency;
 
     @NotNull
-    @Size(min = 8, max = 8)
-    @Pattern(regexp = "^(([0-1]\\d)|(2[0-3])):([0-5]\\d):([0-5]\\d)$")
+    //@Size(min = 8, max = 8)
+    //@Pattern(regexp = "^(([0-1]\\d)|(2[0-3])):([0-5]\\d):([0-5]\\d)$")
     @Column(name = "ord_cust_time_zone", length = 8, nullable = false)
     private String ordCustTimeZone;
 

@@ -12,7 +12,7 @@ public class DglCatSolItemsDTO implements Serializable {
 
     private Long id;
 
-    @NotNull
+ //   @NotNull
     private Integer solItemsId;
 
     @NotNull

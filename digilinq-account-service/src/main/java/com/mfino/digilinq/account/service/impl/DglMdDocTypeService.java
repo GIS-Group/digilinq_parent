@@ -69,7 +69,7 @@ public class DglMdDocTypeService {
         log.debug("Request to partially update DglMdDocType : {}", dglMdDocTypeDTO);
 
         return dglMdDocTypeRepository
-            .findById(dglMdDocTypeDTO.getId())
+            .findById(dglMdDocTypeDTO.getDocTypeId())
             .map(existingDglMdDocType -> {
                 dglMdDocTypeMapper.partialUpdate(existingDglMdDocType, dglMdDocTypeDTO);
 
@@ -97,7 +97,7 @@ public class DglMdDocTypeService {
      * @return the entity.
      */
     @Transactional(readOnly = true)
-    public Optional<DglMdDocTypeDTO> findOne(Long id) {
+    public Optional<DglMdDocTypeDTO> findOne(Integer id) {
         log.debug("Request to get DglMdDocType : {}", id);
         return dglMdDocTypeRepository.findById(id).map(dglMdDocTypeMapper::toDto);
     }
@@ -107,7 +107,7 @@ public class DglMdDocTypeService {
      *
      * @param id the id of the entity.
      */
-    public void delete(Long id) {
+    public void delete(Integer id) {
         log.debug("Request to delete DglMdDocType : {}", id);
         dglMdDocTypeRepository.deleteById(id);
     }
