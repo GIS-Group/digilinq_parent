@@ -58,7 +58,6 @@ public class DglRoles implements Serializable {
     @Column(name = "status", nullable = false)
     private Integer status;
 
-    @NotNull
     @Column(name = "role_unq_id", nullable = false, unique = true)
     private Integer roleUnqId;
 
