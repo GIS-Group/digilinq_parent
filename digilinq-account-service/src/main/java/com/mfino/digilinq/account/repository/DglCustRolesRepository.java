@@ -1,6 +1,7 @@
 package com.mfino.digilinq.account.repository;
 
 import com.mfino.digilinq.domain.DglCustRoles;
+import com.mfino.digilinq.domain.DglCustomer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -39,4 +40,6 @@ public interface DglCustRolesRepository extends JpaRepository<DglCustRoles, Long
 
     @Query("select dglCustRoles from DglCustRoles dglCustRoles left join fetch dglCustRoles.cust where dglCustRoles.id =:id")
     Optional<DglCustRoles> findOneWithToOneRelationships(@Param("id") Long id);
+
+    Optional<DglCustRoles> findByCust(DglCustomer dglCustomer);
 }

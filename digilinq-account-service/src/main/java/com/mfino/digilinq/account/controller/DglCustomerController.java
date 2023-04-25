@@ -125,9 +125,9 @@ public class DglCustomerController {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of dglCustomers in body.
      */
     @GetMapping("/dgl-customers")
-    public List<DglCustomerDTO> getAllDglCustomers(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+    public List<DglCustomerDTO> getAllDglCustomers(@RequestParam(required = true) String customerType) {
         log.debug("REST request to get all DglCustomers");
-        return dglCustomerService.findAll();
+        return dglCustomerService.findAll(customerType);
     }
 
     /**

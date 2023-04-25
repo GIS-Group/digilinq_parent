@@ -240,7 +240,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJGYXJ1ayIsImF1dGhvcml0aWVzIjpbIlNUQU5EQVJEX1VTRVIiXSwiYXVkIjpbIndlYiJdLCJleHAiOjE2ODI0NDM1MzcsImlhdCI6MTY4MjQ0MDUzN30.aMTGBmVrFJCfZ6nU-ZPWMfSkVwLexn_UVOhKNwT9oiH1yeMQce6MW19Xh3pCxKTttxLK1L9YXhQEzS9aTC076D4WIkvZ9CNnh6QRgLoV73ZrPAd0EUc5XwHFUzuqCbhvFXI9AI3a0hGPGaG9CR3lK_CioOBGZLMFOQYsdJCSWOoy8GoP1c7eU6Q8-iWS52kfbBdbcoAzKX6028Vx3JvgwPs9udynDAQ0Mld4yApu9GQ0IOYXhI43kOUm5yloXX0Bj59LTXfuGiQEgcObt5LapmCueSHmqNbHRxWn15PlgE0T8ODoHfUofGnt6llPRYgSP6fUwWfEvRrrODPelKBnZA",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJGYXJ1ayIsImF1dGhvcml0aWVzIjpbIlNUQU5EQVJEX1VTRVIiXSwiYXVkIjpbIndlYiJdLCJleHAiOjE2ODI0NDk0NDMsImlhdCI6MTY4MjQ0NjQ0M30.FChzVxu5HWXMv4pGcN9oa_UR5DzBB2-oYgvMs4qIwjya2vssbKAozCRONXuUUzlD_kNJyr8enjAchAw3u_YUuHE3VbWu7Lic_uk-dfoN3PXKRccl3yZ1Ny25QX1Vo28OBTtIwOV5PAdsdXKnr4HHhHlActDI-X6fHRjFvrmxUE38H0_C4NaTkCciLfK6UTacLIvVEx62GE6K3tH3OYXEUc9OjteSTCFzdhdHrBostbj_MtET_JBLGatDBot-aumtNOeQUaMt_qysqq9kZV0dyg9QLIX9BG7S5zemCHLn5JDuhmu5m7yKyXWRRS45J6XwaktBCBnY8O3rb76tOFcAMA",
 									"type": "string"
 								},
 								{
@@ -269,6 +269,56 @@
 							"path": [
 								"dgl-customers",
 								"121"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-all-by-customer-type",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJGYXJ1ayIsImF1dGhvcml0aWVzIjpbIlNUQU5EQVJEX1VTRVIiXSwiYXVkIjpbIndlYiJdLCJleHAiOjE2ODI0NDk0NDMsImlhdCI6MTY4MjQ0NjQ0M30.FChzVxu5HWXMv4pGcN9oa_UR5DzBB2-oYgvMs4qIwjya2vssbKAozCRONXuUUzlD_kNJyr8enjAchAw3u_YUuHE3VbWu7Lic_uk-dfoN3PXKRccl3yZ1Ny25QX1Vo28OBTtIwOV5PAdsdXKnr4HHhHlActDI-X6fHRjFvrmxUE38H0_C4NaTkCciLfK6UTacLIvVEx62GE6K3tH3OYXEUc9OjteSTCFzdhdHrBostbj_MtET_JBLGatDBot-aumtNOeQUaMt_qysqq9kZV0dyg9QLIX9BG7S5zemCHLn5JDuhmu5m7yKyXWRRS45J6XwaktBCBnY8O3rb76tOFcAMA",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{token}}.eyJzY29wZSI6WyJyZWFkIiwid3JpdGUiLCJ0cnVzdCJdLCJleHAiOjE2MTMwMjU5NTMsImp0aSI6IjNlZDJlNjY4LTE4YjktNDg5Ni04NWZmLTNkNzJhNzNhNzIxOSIsImNsaWVudF9pZCI6IlIyZHB4UTN2UHJ0ZmdGNzIifQ.Obxib3jAOdItPQ9buwOOscNo902u6lkV9M1rXy0njppnkpiF5bya8CjULzT1t75wCW6hDBTTWtai7ceCfKEtDgJnE8-EaD3bntowQfxplAz-2CP76vvywopFNxXezGu1UxkEFSCChDQ608WMJTq5JZp5AKGQB6xqLzY3qPwoW5ujeW3Rqs7O8hxYvKXlECvei33Tqp6vAQmfYYQgSO8rI8CYdRCYaTc2Nx8foMjERti_y4arDoVZyCrj3NPXtCBDJfXJ_SDVedk-5GS1am6VzkJDO4eS21GcJTt4NP1vi8oOG4qLl9C5FhIFV81bvJvck73-jy9vW_zd0cQOByldiA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/dgl-customers?customerType=CUSTROMER",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"dgl-customers"
+							],
+							"query": [
+								{
+									"key": "customerType",
+									"value": "CUSTROMER"
+								}
 							]
 						}
 					},

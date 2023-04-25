@@ -1,6 +1,7 @@
 package com.mfino.digilinq.account.repository;
 
 import com.mfino.digilinq.domain.DglCustUsers;
+import com.mfino.digilinq.domain.DglCustomer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -38,9 +39,10 @@ public interface DglCustUsersRepository extends JpaRepository<DglCustUsers, Long
     List<DglCustUsers> findAllWithToOneRelationships();
 
     @Query(
-        "select dglCustUsers from DglCustUsers dglCustUsers left join fetch dglCustUsers.role left join fetch dglCustUsers.acc where dglCustUsers.id =:id"
+        "select dglCustUsers from DglCustUsers dglCustUsers left join fetch dglCustUsers.role left join fetch dglCustUsers.acc where dglCustUsers.custUserId =:id"
     )
     Optional<DglCustUsers> findOneWithToOneRelationships(@Param("id") Long id);
 
-    Optional<DglCustUsers> findByAcc(Long customerId);
+    Optional<DglCustUsers> findByAcc(DglCustomer customerId);
+    List<DglCustUsers> findAllByCustType(String customerType);
 }

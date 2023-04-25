@@ -1,6 +1,7 @@
 package com.mfino.digilinq.account.repository;
 
 import com.mfino.digilinq.domain.DglCustContracts;
+import com.mfino.digilinq.domain.DglCustomer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -43,4 +44,6 @@ public interface DglCustContractsRepository extends JpaRepository<DglCustContrac
         "select dglCustContracts from DglCustContracts dglCustContracts left join fetch dglCustContracts.accMno left join fetch dglCustContracts.receivingParty where dglCustContracts.id =:id"
     )
     Optional<DglCustContracts> findOneWithToOneRelationships(@Param("id") Long id);
+
+    Optional<DglCustContracts> findByCustomerReceivingParty(DglCustomer dglCustomer);
 }

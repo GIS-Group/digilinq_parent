@@ -13,9 +13,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -254,9 +256,55 @@ public class DglCustomerService {
      * @return the list of entities.
      */
     @Transactional(readOnly = true)
-    public List<DglCustomerDTO> findAll() {
+    public List<DglCustomerDTO> findAll(String customerType) {
         log.debug("Request to get all DglCustomers");
-        return dglCustomerRepository.findAll().stream().map(dglCustomerMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
+
+        List<DglCustUsers> dglCustUsers = dglCustUsersRepository.findAllByCustType(customerType);
+
+        if (!ObjectUtils.isEmpty(dglCustUsers)) {
+           return dglCustUsers.stream().map(dglCustUser -> {
+                DglCustomer dglCustomer = dglCustUser.getAcc();
+                DglCustomerDTO customerDTO = dglCustomerMapper.toDto(dglCustomer);
+                DglCustRoles custRoles = dglCustRolesRepository.findByCust(dglCustomer).orElse(DglCustRoles.builder().build());
+                DglRoles dglRoles = dglCustUser.getRole();
+                DglCustContracts dglCustContracts = dglCustContractsRepository.findByCustomerReceivingParty(dglCustomer).orElse(DglCustContracts.builder().build());
+                customerDTO.setCustomerType(dglCustUser.getCustType());
+                customerDTO.setAccMnoParentId(dglCustomer.getAccMnoParent().getAccId());
+
+                DglCustomerDTO.CustUserInfo custUserInfo = DglCustomerDTO.CustUserInfo.builder()
+                        .custId(dglCustUser.getCustUserId())
+                        .custRoleId(custRoles.getRoleId())
+                        .roleId(dglRoles.getRoleId())
+                        .roleUnqId(custRoles.getRoleUnqId())
+                        .status(custRoles.getStatus())
+                        .lastName(dglCustUser.getLastName())
+                        .firstName(dglCustUser.getFirstName())
+                        .emailId(dglCustUser.getEmail())
+                        .phoneNumber(dglCustUser.getPhone())
+                        .roleName(custRoles.getRoleName())
+                        .roleDesc(custRoles.getRoleDesc())
+                        .permissions(custRoles.getPermissions())
+                        .build();
+                customerDTO.setCustUserInfo(custUserInfo);
+
+                DglCustomerDTO.CustContractInfo custContractInfo = DglCustomerDTO.CustContractInfo.builder()
+                        .contractId(dglCustContracts.getContractId())
+                        .contractName(dglCustContracts.getContractName())
+                        .contractUnqId(dglCustContracts.getContractUnqId())
+                        .status(dglCustContracts.getStatus())
+                        .contractFile(dglCustContracts.getContractFile())
+                        .signedDate(dglCustContracts.getSignedDate())
+                        .enforceDate(dglCustContracts.getEnforceDate())
+                        .terminateDate(dglCustContracts.getTerminateDate())
+                        .contractDesc(dglCustContracts.getContrDesc())
+                        .contractType(dglCustContracts.getContrType())
+                        .build();
+                customerDTO.setCustContractInfo(custContractInfo);
+                return customerDTO;
+            }).collect(Collectors.toList());
+        } else {
+            return List.of();
+        }
     }
 
     /**
@@ -278,13 +326,49 @@ public class DglCustomerService {
     public Optional<DglCustomerDTO> findOne(Long id) {
         log.debug("Request to get DglCustomer : {}", id);
         DglCustomer dglCustomer = dglCustomerRepository.findById(id.intValue()).orElseThrow();
-
         DglCustomerDTO customerDTO = dglCustomerMapper.toDto(dglCustomer);
+        DglCustRoles custRoles = dglCustRolesRepository.findByCust(dglCustomer).orElse(DglCustRoles.builder().build());
 
-        DglCustUsers dglCustUsers = dglCustUsersRepository.findByAcc(dglCustomer.getCustomerId().longValue()).orElseThrow();
+        DglCustUsers dglCustUsers = dglCustUsersRepository.findByAcc(dglCustomer).orElse(DglCustUsers.builder().build());
         DglRoles dglRoles = dglCustUsers.getRole();
 
-        return dglCustomerRepository.findOneWithEagerRelationships(id.intValue()).map(dglCustomerMapper::toDto);
+        DglCustContracts dglCustContracts = dglCustContractsRepository.findByCustomerReceivingParty(dglCustomer).orElse(DglCustContracts.builder().build());
+
+        customerDTO.setCustomerType(dglCustUsers.getCustType());
+        customerDTO.setAccMnoParentId(dglCustomer.getAccMnoParent().getAccId());
+
+        DglCustomerDTO.CustUserInfo custUserInfo = DglCustomerDTO.CustUserInfo.builder()
+                .custId(dglCustUsers.getCustUserId())
+                .custRoleId(custRoles.getRoleId())
+                .roleId(dglRoles.getRoleId())
+                .roleUnqId(custRoles.getRoleUnqId())
+                .status(custRoles.getStatus())
+                .lastName(dglCustUsers.getLastName())
+                .firstName(dglCustUsers.getFirstName())
+                .emailId(dglCustUsers.getEmail())
+                .phoneNumber(dglCustUsers.getPhone())
+                .roleName(custRoles.getRoleName())
+                .roleDesc(custRoles.getRoleDesc())
+                .permissions(custRoles.getPermissions())
+                .build();
+        customerDTO.setCustUserInfo(custUserInfo);
+
+        DglCustomerDTO.CustContractInfo custContractInfo = DglCustomerDTO.CustContractInfo.builder()
+                .contractId(dglCustContracts.getContractId())
+                .contractName(dglCustContracts.getContractName())
+                .contractUnqId(dglCustContracts.getContractUnqId())
+                .status(dglCustContracts.getStatus())
+                .contractFile(dglCustContracts.getContractFile())
+                .signedDate(dglCustContracts.getSignedDate())
+                .enforceDate(dglCustContracts.getEnforceDate())
+                .terminateDate(dglCustContracts.getTerminateDate())
+                .contractDesc(dglCustContracts.getContrDesc())
+                .contractType(dglCustContracts.getContrType())
+                .build();
+        customerDTO.setCustContractInfo(custContractInfo);
+
+
+        return Optional.of(customerDTO);
     }
 
     /**
