@@ -2,13 +2,7 @@ package com.mfino.digilinq.domain;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -37,16 +31,16 @@ import lombok.ToString;
 public class DglAccUsers implements Serializable {
 
     private static final long serialVersionUID = 1L;
-//
+    //
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    @Column(name = "id")
 //    private Long id;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
     @Column(name = "acc_user_id", nullable = false)
-    private Integer accUserId;
+    private Long accUserId;
 
     @NotNull
     @Column(name = "acc_user_unq_id", nullable = false, unique = true)
@@ -106,15 +100,31 @@ public class DglAccUsers implements Serializable {
     @Column(name = "status", nullable = false)
     private Integer status;
 
-    @ManyToOne(optional = false)
     @NotNull
-    @JsonIgnoreProperties(value = { "accMno" }, allowSetters = true)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "ROLE_ID", nullable = false)
     private DglRoles role;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "role_role_id", nullable = false)
+    private DglRoles roleRole;
+
+    @Size(max = 255)
     @NotNull
-    @JsonIgnoreProperties(value = { "accParent", "accMnoParent" }, allowSetters = true)
+    @Column(name = "ADD_LINE1", nullable = false)
+    private String addLine11;
+
+    @Size(max = 255)
+    @Column(name = "ADD_LINE2")
+    private String addLine21;
+
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "ACC_ID", nullable = false)
     private DglAccMno acc;
 
-   
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "acc_acc_id", nullable = false)
+    private DglAccMno accAccMno;
+
 }

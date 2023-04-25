@@ -44,10 +44,10 @@ public class DglRoles implements Serializable {
 //    private Long id;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
     @Column(name = "role_id", nullable = false)
-    private Integer roleId;
+    private Long roleId;
 
     @NotNull
     @Size(max = 255)
