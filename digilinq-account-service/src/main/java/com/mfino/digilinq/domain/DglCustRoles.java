@@ -2,13 +2,7 @@ package com.mfino.digilinq.domain;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -43,8 +37,7 @@ public class DglCustRoles implements Serializable {
 //    @Column(name = "id")
 //    private Long id;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "role_id", nullable = false)
     private Integer roleId;
 
@@ -57,7 +50,6 @@ public class DglCustRoles implements Serializable {
     @Column(name = "status", nullable = false)
     private Integer status;
 
-    @NotNull
     @Column(name = "role_unq_id", nullable = false, unique = true)
     private Integer roleUnqId;
 
@@ -73,145 +65,12 @@ public class DglCustRoles implements Serializable {
 
     @ManyToOne(optional = false)
     @NotNull
-    @JsonIgnoreProperties(value = { "custParent", "accMnoParent" }, allowSetters = true)
+    @JoinColumn(name = "CUST_ID", nullable = false)
     private DglCustomer cust;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
+    @ManyToOne(optional = false)
+    @NotNull
+    @JoinColumn(name = "cust_customer_id", nullable = false)
+    private DglCustomer customer;
 
-//    public Long getId() {
-//        return this.id;
-//    }
-//
-//    public DglCustRoles id(Long id) {
-//        this.setId(id);
-//        return this;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-//
-//    public Integer getRoleId() {
-//        return this.roleId;
-//    }
-//
-//    public DglCustRoles roleId(Integer roleId) {
-//        this.setRoleId(roleId);
-//        return this;
-//    }
-//
-//    public void setRoleId(Integer roleId) {
-//        this.roleId = roleId;
-//    }
-//
-//    public String getRoleName() {
-//        return this.roleName;
-//    }
-//
-//    public DglCustRoles roleName(String roleName) {
-//        this.setRoleName(roleName);
-//        return this;
-//    }
-//
-//    public void setRoleName(String roleName) {
-//        this.roleName = roleName;
-//    }
-//
-//    public Integer getStatus() {
-//        return this.status;
-//    }
-//
-//    public DglCustRoles status(Integer status) {
-//        this.setStatus(status);
-//        return this;
-//    }
-//
-//    public void setStatus(Integer status) {
-//        this.status = status;
-//    }
-//
-//    public Integer getRoleUnqId() {
-//        return this.roleUnqId;
-//    }
-//
-//    public DglCustRoles roleUnqId(Integer roleUnqId) {
-//        this.setRoleUnqId(roleUnqId);
-//        return this;
-//    }
-//
-//    public void setRoleUnqId(Integer roleUnqId) {
-//        this.roleUnqId = roleUnqId;
-//    }
-//
-//    public String getRoleDesc() {
-//        return this.roleDesc;
-//    }
-//
-//    public DglCustRoles roleDesc(String roleDesc) {
-//        this.setRoleDesc(roleDesc);
-//        return this;
-//    }
-//
-//    public void setRoleDesc(String roleDesc) {
-//        this.roleDesc = roleDesc;
-//    }
-//
-//    public String getPermissions() {
-//        return this.permissions;
-//    }
-//
-//    public DglCustRoles permissions(String permissions) {
-//        this.setPermissions(permissions);
-//        return this;
-//    }
-//
-//    public void setPermissions(String permissions) {
-//        this.permissions = permissions;
-//    }
-//
-//    public DglCustomer getCust() {
-//        return this.cust;
-//    }
-//
-//    public void setCust(DglCustomer dglCustomer) {
-//        this.cust = dglCustomer;
-//    }
-//
-//    public DglCustRoles cust(DglCustomer dglCustomer) {
-//        this.setCust(dglCustomer);
-//        return this;
-//    }
-//
-//    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
-//
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) {
-//            return true;
-//        }
-//        if (!(o instanceof DglCustRoles)) {
-//            return false;
-//        }
-//        return id != null && id.equals(((DglCustRoles) o).id);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        // see https://vladmihalcea.com/how-to-implement-equals-and-hashcode-using-the-jpa-entity-identifier/
-//        return getClass().hashCode();
-//    }
-//
-//    // prettier-ignore
-//    @Override
-//    public String toString() {
-//        return "DglCustRoles{" +
-//            "id=" + getId() +
-//            ", roleId=" + getRoleId() +
-//            ", roleName='" + getRoleName() + "'" +
-//            ", status=" + getStatus() +
-//            ", roleUnqId=" + getRoleUnqId() +
-//            ", roleDesc='" + getRoleDesc() + "'" +
-//            ", permissions='" + getPermissions() + "'" +
-//            "}";
-//    }
 }

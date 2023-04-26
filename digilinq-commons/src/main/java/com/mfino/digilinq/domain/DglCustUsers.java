@@ -2,13 +2,7 @@ package com.mfino.digilinq.domain;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -38,13 +32,12 @@ public class DglCustUsers implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-//    @Id
+    //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    @Column(name = "id")
 //    private Long id;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "cust_user_id", nullable = false)
     private Integer custUserId;
 
@@ -86,6 +79,15 @@ public class DglCustUsers implements Serializable {
     @Column(name = "add_line_2", length = 255)
     private String addLine2;
 
+    @NotNull
+    @Size(max = 255)
+    @Column(name = "ADD_LINE1", length = 255, nullable = false)
+    private String addLine11;
+
+    @Size(max = 255)
+    @Column(name = "ADD_LINE2", length = 255)
+    private String addLine22;
+
     @Size(max = 255)
     @Column(name = "city", length = 255)
     private String city;
@@ -113,13 +115,23 @@ public class DglCustUsers implements Serializable {
 
     @ManyToOne(optional = false)
     @NotNull
-    @JsonIgnoreProperties(value = { "accMno" }, allowSetters = true)
+    @JoinColumn(name = "ROLE_ID", nullable = false)
     private DglRoles role;
 
     @ManyToOne(optional = false)
     @NotNull
-    @JsonIgnoreProperties(value = { "custParent", "accMnoParent" }, allowSetters = true)
+    @JoinColumn(name = "role_role_id", nullable = false)
+    private DglRoles roleRole;
+
+    @ManyToOne(optional = false)
+    @NotNull
+    @JoinColumn(name = "ACC_ID", nullable = false)
     private DglCustomer acc;
+
+    @ManyToOne(optional = false)
+    @NotNull
+    @JoinColumn(name = "acc_customer_id", nullable = false)
+    private DglCustomer accCustomer;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
