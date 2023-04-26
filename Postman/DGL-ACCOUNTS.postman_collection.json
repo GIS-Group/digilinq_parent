@@ -142,6 +142,189 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "customer",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJGYXJ1ayIsImF1dGhvcml0aWVzIjpbIlNUQU5EQVJEX1VTRVIiXSwiYXVkIjpbIndlYiJdLCJleHAiOjE2ODI0MzkxODksImlhdCI6MTY4MjQzNjE4OX0.IlvJcRDcA8SHwW7hBE2Sdu9KP0bfXdEg55vytZOYegOkXnuPU86OXAbPk8pWuAHQpntlPJ61uJwBaM15-zKMHEOO7nYI3VeY6y0f3HSUOIXW4EpWF8IBgu3c71WqC3b09PacgHanSHLIqJaSNbd5gH-7eLzBmlnss8tO-qyenYbpC_RzT0OHh0s5TS6uSJpDG-Z1DzgWxYL_yDHJWorkUVyp14TP0_KdzMOp8lVG0UXBSwdnzp5bdM_xLVlfbXnrNDIEkVvnkyC8-OmHcDYgTZyuj4bF8mSjLZo5I5K_uu2sEwSlic2kfpktZOsEDTf0nBa-KzwASBkjjN61fXmuPQ",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{token}}.eyJzY29wZSI6WyJyZWFkIiwid3JpdGUiLCJ0cnVzdCJdLCJleHAiOjE2MTMwMjU5NTMsImp0aSI6IjNlZDJlNjY4LTE4YjktNDg5Ni04NWZmLTNkNzJhNzNhNzIxOSIsImNsaWVudF9pZCI6IlIyZHB4UTN2UHJ0ZmdGNzIifQ.Obxib3jAOdItPQ9buwOOscNo902u6lkV9M1rXy0njppnkpiF5bya8CjULzT1t75wCW6hDBTTWtai7ceCfKEtDgJnE8-EaD3bntowQfxplAz-2CP76vvywopFNxXezGu1UxkEFSCChDQ608WMJTq5JZp5AKGQB6xqLzY3qPwoW5ujeW3Rqs7O8hxYvKXlECvei33Tqp6vAQmfYYQgSO8rI8CYdRCYaTc2Nx8foMjERti_y4arDoVZyCrj3NPXtCBDJfXJ_SDVedk-5GS1am6VzkJDO4eS21GcJTt4NP1vi8oOG4qLl9C5FhIFV81bvJvck73-jy9vW_zd0cQOByldiA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"custName\": \"test-1\",\r\n    \"custCompName\": \"test-2\",\r\n    \"custIncorpDt\": \"2017-08-14T12:17:47.720Z\",\r\n    \"custTaxId\": \"1\",\r\n    \"custCurrency\": 1,\r\n    \"custLang\": 1,\r\n    \"custTimeZone\": 1,\r\n    \"custOrient\": false,\r\n    \"custPrimCont\": \"1\",\r\n    \"custEmailId\": \"test@gmail.com\",\r\n    \"custAltCont\": \"23232832\",\r\n    \"custFax\": \"3232\",\r\n    \"custWebUrl\": \"www.google.com\",\r\n    \"custAddL1\": \"line-1\",\r\n    \"custAddL2\": \"line-2\",\r\n    \"custCity\": \"city\",\r\n    \"custState\": \"state\",\r\n    \"custCountry\": \"country\",\r\n    \"custZipcode\": \"34334\",\r\n    \"custPrefPg\": 0,\r\n    \"custStatus\": \"\",\r\n    \"_comment\": \"custUnqId should be unique for each create create request\",\r\n    \"custUnqId\": 5,\r\n    \"billCycle\": \"\",\r\n    \"billDate\": \"2017-08-14T12:17:47.720Z\",\r\n    \"billDueTenor\": \"\",\r\n    \"creditLimit\": 0.00,\r\n    \"custParent\": null,\r\n    \"accMnoParentId\": 25,\r\n    \"customerType\": \"CUSTROMER\",\r\n    \"custUserInfo\": {\r\n        \"roleId\": 1,\r\n        \"_comment\": \"roleUnqId should be unique for each create create request\",\r\n        \"roleUnqId\": 4,\r\n        \"status\": 1,\r\n        \"firstName\": \"f1\",\r\n        \"lastName\": \"l1\",\r\n        \"emailId\": \"g@gail.com\",\r\n        \"phoneNumber\": \"24343\",\r\n        \"roleName\": \"test-1\",\r\n        \"roleDesc\": \"test-2\",\r\n        \"permissions\": \"1,2\"\r\n    },\r\n    \"custContractInfo\": {\r\n        \"contractName\": \"name\",\r\n        \"contractUnqId\": 2,\r\n        \"status\": 1,\r\n        \"contractFile\": \"temp\",\r\n        \"signedDate\": \"2017-08-14T12:17:47.720Z\",\r\n        \"enforceDate\": \"2017-08-14T12:17:47.720Z\",\r\n        \"terminateDate\": \"2017-08-14T12:17:47.720Z\",\r\n        \"contractDesc\": \"desc\",\r\n        \"contractType\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/dgl-customers",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"dgl-customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJGYXJ1ayIsImF1dGhvcml0aWVzIjpbIlNUQU5EQVJEX1VTRVIiXSwiYXVkIjpbIndlYiJdLCJleHAiOjE2ODI0NDIyNDUsImlhdCI6MTY4MjQzOTI0NX0.aPE69_wuGgKEqXl89lmwfQZPZrDv_H4b7aNYT3E0s6y6nx2O-DNNfkMvo-tuGJmY8KgpkWMYITtBnyDjU_Atw3fTV7IrKEgiuoGpIDTw76gWUaIsURQQn0H8-75WPbEwmC6U4156rCOc21nUR2oR7-m3-66R97LeqUCEBv7ZQ2nUkEUGH3bBkClSu5TYNKwR_FHzggr9HuJyVITT6KvChgrw5Siikvil_XXK0ImKwhvU_0K8z--cLCfe4kNxIeG3OS2NYiPsZbHmNHB06qrHHJMv_XPNQy_IWGp9d80EvelB5is08X3sV50xQvpea4giPah61Y_ZsYqSjP839eBtkA",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{token}}.eyJzY29wZSI6WyJyZWFkIiwid3JpdGUiLCJ0cnVzdCJdLCJleHAiOjE2MTMwMjU5NTMsImp0aSI6IjNlZDJlNjY4LTE4YjktNDg5Ni04NWZmLTNkNzJhNzNhNzIxOSIsImNsaWVudF9pZCI6IlIyZHB4UTN2UHJ0ZmdGNzIifQ.Obxib3jAOdItPQ9buwOOscNo902u6lkV9M1rXy0njppnkpiF5bya8CjULzT1t75wCW6hDBTTWtai7ceCfKEtDgJnE8-EaD3bntowQfxplAz-2CP76vvywopFNxXezGu1UxkEFSCChDQ608WMJTq5JZp5AKGQB6xqLzY3qPwoW5ujeW3Rqs7O8hxYvKXlECvei33Tqp6vAQmfYYQgSO8rI8CYdRCYaTc2Nx8foMjERti_y4arDoVZyCrj3NPXtCBDJfXJ_SDVedk-5GS1am6VzkJDO4eS21GcJTt4NP1vi8oOG4qLl9C5FhIFV81bvJvck73-jy9vW_zd0cQOByldiA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerId\": 121,\r\n    \"custName\": \"test-1\",\r\n    \"custCompName\": \"test-2\",\r\n    \"custIncorpDt\": \"2017-08-14T12:17:47.720Z\",\r\n    \"custTaxId\": \"1\",\r\n    \"custCurrency\": 1,\r\n    \"custLang\": 1,\r\n    \"custTimeZone\": 1,\r\n    \"custOrient\": false,\r\n    \"custPrimCont\": \"1\",\r\n    \"custEmailId\": \"test@gmail.com\",\r\n    \"custAltCont\": \"23232832\",\r\n    \"custFax\": \"3232\",\r\n    \"custWebUrl\": \"www.google.com\",\r\n    \"custAddL1\": \"line-1\",\r\n    \"custAddL2\": \"line-2\",\r\n    \"custCity\": \"city\",\r\n    \"custState\": \"state\",\r\n    \"custCountry\": \"country\",\r\n    \"custZipcode\": \"34334\",\r\n    \"custPrefPg\": 0,\r\n    \"custStatus\": \"\",\r\n    \"custUnqId\": 5,\r\n    \"billCycle\": \"\",\r\n    \"billDate\": \"2017-08-14T12:17:47.720Z\",\r\n    \"billDueTenor\": \"\",\r\n    \"creditLimit\": 0.0,\r\n    \"custParent\": null,\r\n    \"accMnoParentId\": 25,\r\n    \"custUserUnqid\": null,\r\n    \"custUserInfo\": {\r\n        \"custId\": 123,\r\n        \"custRoleId\": 122,\r\n        \"roleId\": 1,\r\n        \"roleUnqId\": 4,\r\n        \"status\": 1,\r\n        \"firstName\": \"f1\",\r\n        \"lastName\": \"l1\",\r\n        \"emailId\": \"g@gail.com\",\r\n        \"phoneNumber\": \"24343\",\r\n        \"roleName\": \"test-1\",\r\n        \"roleDesc\": \"test-2\",\r\n        \"permissions\": \"1,2\"\r\n    },\r\n    \"custContractInfo\": {\r\n        \"contractId\": 124,\r\n        \"contractName\": \"name\",\r\n        \"contractUnqId\": 2,\r\n        \"status\": 1,\r\n        \"contractFile\": \"temp\",\r\n        \"signedDate\": \"2017-08-14T12:17:47.720Z\",\r\n        \"enforceDate\": \"2017-08-14T12:17:47.720Z\",\r\n        \"terminateDate\": \"2017-08-14T12:17:47.720Z\",\r\n        \"contractDesc\": \"desc\",\r\n        \"contractType\": 1\r\n    },\r\n    \"customerType\": \"CUSTROMER\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/dgl-customers/121",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"dgl-customers",
+								"121"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-one",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJGYXJ1ayIsImF1dGhvcml0aWVzIjpbIlNUQU5EQVJEX1VTRVIiXSwiYXVkIjpbIndlYiJdLCJleHAiOjE2ODI0NDk0NDMsImlhdCI6MTY4MjQ0NjQ0M30.FChzVxu5HWXMv4pGcN9oa_UR5DzBB2-oYgvMs4qIwjya2vssbKAozCRONXuUUzlD_kNJyr8enjAchAw3u_YUuHE3VbWu7Lic_uk-dfoN3PXKRccl3yZ1Ny25QX1Vo28OBTtIwOV5PAdsdXKnr4HHhHlActDI-X6fHRjFvrmxUE38H0_C4NaTkCciLfK6UTacLIvVEx62GE6K3tH3OYXEUc9OjteSTCFzdhdHrBostbj_MtET_JBLGatDBot-aumtNOeQUaMt_qysqq9kZV0dyg9QLIX9BG7S5zemCHLn5JDuhmu5m7yKyXWRRS45J6XwaktBCBnY8O3rb76tOFcAMA",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{token}}.eyJzY29wZSI6WyJyZWFkIiwid3JpdGUiLCJ0cnVzdCJdLCJleHAiOjE2MTMwMjU5NTMsImp0aSI6IjNlZDJlNjY4LTE4YjktNDg5Ni04NWZmLTNkNzJhNzNhNzIxOSIsImNsaWVudF9pZCI6IlIyZHB4UTN2UHJ0ZmdGNzIifQ.Obxib3jAOdItPQ9buwOOscNo902u6lkV9M1rXy0njppnkpiF5bya8CjULzT1t75wCW6hDBTTWtai7ceCfKEtDgJnE8-EaD3bntowQfxplAz-2CP76vvywopFNxXezGu1UxkEFSCChDQ608WMJTq5JZp5AKGQB6xqLzY3qPwoW5ujeW3Rqs7O8hxYvKXlECvei33Tqp6vAQmfYYQgSO8rI8CYdRCYaTc2Nx8foMjERti_y4arDoVZyCrj3NPXtCBDJfXJ_SDVedk-5GS1am6VzkJDO4eS21GcJTt4NP1vi8oOG4qLl9C5FhIFV81bvJvck73-jy9vW_zd0cQOByldiA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/dgl-customers/121",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"dgl-customers",
+								"121"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-all-by-customer-type",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJGYXJ1ayIsImF1dGhvcml0aWVzIjpbIlNUQU5EQVJEX1VTRVIiXSwiYXVkIjpbIndlYiJdLCJleHAiOjE2ODI0NDk0NDMsImlhdCI6MTY4MjQ0NjQ0M30.FChzVxu5HWXMv4pGcN9oa_UR5DzBB2-oYgvMs4qIwjya2vssbKAozCRONXuUUzlD_kNJyr8enjAchAw3u_YUuHE3VbWu7Lic_uk-dfoN3PXKRccl3yZ1Ny25QX1Vo28OBTtIwOV5PAdsdXKnr4HHhHlActDI-X6fHRjFvrmxUE38H0_C4NaTkCciLfK6UTacLIvVEx62GE6K3tH3OYXEUc9OjteSTCFzdhdHrBostbj_MtET_JBLGatDBot-aumtNOeQUaMt_qysqq9kZV0dyg9QLIX9BG7S5zemCHLn5JDuhmu5m7yKyXWRRS45J6XwaktBCBnY8O3rb76tOFcAMA",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{token}}.eyJzY29wZSI6WyJyZWFkIiwid3JpdGUiLCJ0cnVzdCJdLCJleHAiOjE2MTMwMjU5NTMsImp0aSI6IjNlZDJlNjY4LTE4YjktNDg5Ni04NWZmLTNkNzJhNzNhNzIxOSIsImNsaWVudF9pZCI6IlIyZHB4UTN2UHJ0ZmdGNzIifQ.Obxib3jAOdItPQ9buwOOscNo902u6lkV9M1rXy0njppnkpiF5bya8CjULzT1t75wCW6hDBTTWtai7ceCfKEtDgJnE8-EaD3bntowQfxplAz-2CP76vvywopFNxXezGu1UxkEFSCChDQ608WMJTq5JZp5AKGQB6xqLzY3qPwoW5ujeW3Rqs7O8hxYvKXlECvei33Tqp6vAQmfYYQgSO8rI8CYdRCYaTc2Nx8foMjERti_y4arDoVZyCrj3NPXtCBDJfXJ_SDVedk-5GS1am6VzkJDO4eS21GcJTt4NP1vi8oOG4qLl9C5FhIFV81bvJvck73-jy9vW_zd0cQOByldiA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/dgl-customers?customerType=CUSTROMER",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"dgl-customers"
+							],
+							"query": [
+								{
+									"key": "customerType",
+									"value": "CUSTROMER"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

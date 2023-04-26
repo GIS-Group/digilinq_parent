@@ -206,6 +206,12 @@ public class DglAccMnoService {
         });
     }
 
+    @Transactional(readOnly = true)
+    public Optional<DglAccMno> findDglAccMno(Long id) {
+        log.debug("Request to get DglAccMno : {}", id);
+        return dglAccMnoRepository.findById(id);
+    }
+
     /**
      * Delete the dglAccMno by id.
      *
