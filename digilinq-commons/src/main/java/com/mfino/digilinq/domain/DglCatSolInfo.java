@@ -93,7 +93,7 @@ public class DglCatSolInfo implements Serializable {
     @Column(name = "sol_status", length = 255, nullable = false)
     private String solStatus;
 
-    @ManyToOne(optional = false,cascade = CascadeType.ALL,fetch = FetchType.LAZY,targetEntity =DglMdProdCat.class)
+    @ManyToOne(optional = false,cascade = CascadeType.MERGE,fetch = FetchType.LAZY,targetEntity =DglMdProdCat.class)
  //   @NotNull
     @JoinColumns({
     @JoinColumn(name = "REL_PROD_CAT", referencedColumnName = "prod_cat_id"),
