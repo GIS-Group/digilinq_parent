@@ -79,14 +79,19 @@ public class DglCatSolItems implements Serializable {
     @Column(name = "is_paid_provider", nullable = false)
     private Boolean isPaidProvider;
 
-    @ManyToOne(optional = false,cascade = CascadeType.ALL,fetch = FetchType.LAZY,targetEntity =DglCatSolInfo.class)
- //   @NotNull
-    @JsonIgnoreProperties(value = { "relProdCat" }, allowSetters = true)
-    @JoinColumns({
-    @JoinColumn(name = "SOL_ID", referencedColumnName = "sol_id"),
-    @JoinColumn(name = "sol_sol_id", referencedColumnName = "sol_id")
-    })
-    private DglCatSolInfo sol;
+	@ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.LAZY, targetEntity = DglCatSolInfo.class)
+	// @NotNull
+	@JsonIgnoreProperties(value = { "relProdCat" }, allowSetters = true)
+	@JoinColumns({ @JoinColumn(name = "SOL_ID", referencedColumnName = "sol_id"),
+			@JoinColumn(name = "sol_sol_id", referencedColumnName = "sol_id") })
+	private DglCatSolInfo sol;
+    
+	@ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.LAZY, targetEntity = DglCatItemsInfo.class)
+	// @NotNull
+	@JsonIgnoreProperties(value = { "catItems" }, allowSetters = true)
+	@JoinColumns({ @JoinColumn(name = "CAT_ITEM_ID", referencedColumnName = "item_id"),
+			@JoinColumn(name = "catitems_item_id", referencedColumnName = "item_id") })
+	private DglCatItemsInfo catItems;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
