@@ -1,9 +1,8 @@
 {
 	"info": {
-		"_postman_id": "f7ef4496-d183-4e9b-b438-dd9ba3d6daca",
+		"_postman_id": "7365ee69-c10d-4b6c-9e80-fba6cda95f91",
 		"name": "Cat-Items-info",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "1898287"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -14,7 +13,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsid2ViIl0sInVzZXJfbmFtZSI6ImFkbWluLmFkbWluIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MTY4MjE5NDM1NSwiYXV0aG9yaXRpZXMiOlsiU1RBTkRBUkRfVVNFUiIsIkFETUlOX1VTRVIiXSwianRpIjoiMzcyNDkyZTUtNDllMy00NzcwLWE5NTItYzM5Njg3YThmZTY5IiwiY2xpZW50X2lkIjoiOTNlZDQ1M2UtYjdhYy00MTkyLWE2ZDQtYzQ1ZmFlMGQ5OWFjIn0.0Vic3uGHZ6IBzPHY7wRe_ivdJ03uzVlZMggSshVxS9bC8IP0DpRmFl5Be0ii1jsrYFA9bsGRCKng3ifo-DhYFq5nt7yfdgv_2QH77y5BOwKpXOqtCm4l1fxoi41mMeKSxnxuKkIsmgATrNroDUbjpm5NQfGchQ0HCdZZ1scMSJBz99nxhmyVqYSN1tPcC8M1RUaJzjHN0495zfMkBM3QSsJQ5pIJF1Uf0_X8_1wMsXohGqa5T6tdKsMg6M8xPSenGR3WWf5OHr74IT9_LGdIk_2ZRIllqU0-3rouyO8CZetbl9nl1GK5Dylk_WJsBfDepnGFFQaaVcm-uGAx4JFhJQ",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgyNjY5NzMwLCJpYXQiOjE2ODI2NjY3MzB9.uTgos1BWMIQkR2eiaY_BGoAgPVC83PgSTL-vO3Xjv2-cgdjW2Oa9OcOGM1K46rH0ylkPkW6Drph-7Z8Hlsj98fT4g_bYSxgOO103q6k-yt528v0WyxwqLf-yOPSNX6v7EKmLiiLS2boAaoUFDcyoQABEPM60pMkXCTRaIFlk9rJ9tkHOdXZJynLvLwWwMaoB-y0mOlEpnnKUtf_YVKpJTxkmpjNRM0hGu3eklbOmuVhgDAstBJewlqoverV7fo4yhWEfTL5D9BfljMTMvr6HC9QKwL25hjfyyjkDojE3TDN064gDzhgYZLN4wdUDBhmF12-xN-_bmA6B_X2eR6Cb6w",
 							"type": "string"
 						}
 					]
@@ -23,7 +22,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"relProdCat\":\"fs\",\r\n\"tpStrucInfo\":\"dg\",\r\n\"itemTitle\":\"data plan\",\r\n\"itemActualPrice\":500,\r\n\"itemType\":\"product\",\r\n\"itemStatus\":1,\r\n\"itemUnqId\":342,\r\n\"tp\":{\r\n    \"tpUnqId\":3,\r\n    \"relProdCat\":\"prod1\",\r\n    \"tpTitle\":\"tptile2\",\r\n    \"tpType\":\"tptype3\",\r\n    \"tpStruc\":\"tpStruc4\",\r\n    \"tpStatus\":2\r\n}\r\n}",
+					"raw": "{\r\n\"relProdCat\":\"fs\",\r\n\"tpStrucInfo\":\"dg\",\r\n\"itemTitle\":\"data plan\",\r\n\"itemActualPrice\":500,\r\n\"itemType\":\"product\",\r\n\"itemStatus\":1,\r\n\"itemUnqId\":342,\r\n\"tp\":{\r\n    \"id\": null,\r\n    \"tpId\": 8,\r\n    \"tpUnqId\": 3,\r\n    \"relProdCat\": \"prod1\",\r\n    \"tpTitle\": \"tptile2\",\r\n    \"tpType\": \"tptype3\",\r\n    \"tpDesc\": null,\r\n    \"tpStruc\": \"tpStruc4\",\r\n    \"tpStatus\": 1\r\n}\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -152,6 +151,39 @@
 						"21"
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "tpinfo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgyNjY5NzMwLCJpYXQiOjE2ODI2NjY3MzB9.uTgos1BWMIQkR2eiaY_BGoAgPVC83PgSTL-vO3Xjv2-cgdjW2Oa9OcOGM1K46rH0ylkPkW6Drph-7Z8Hlsj98fT4g_bYSxgOO103q6k-yt528v0WyxwqLf-yOPSNX6v7EKmLiiLS2boAaoUFDcyoQABEPM60pMkXCTRaIFlk9rJ9tkHOdXZJynLvLwWwMaoB-y0mOlEpnnKUtf_YVKpJTxkmpjNRM0hGu3eklbOmuVhgDAstBJewlqoverV7fo4yhWEfTL5D9BfljMTMvr6HC9QKwL25hjfyyjkDojE3TDN064gDzhgYZLN4wdUDBhmF12-xN-_bmA6B_X2eR6Cb6w",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tpUnqId\": 3,\r\n    \"relProdCat\": \"prod1\",\r\n    \"tpTitle\": \"tptile2\",\r\n    \"tpType\": \"tptype3\",\r\n    \"tpStruc\": \"tpStruc4\",\r\n    \"tpStatus\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{catalogServiceAPIGatewayUrl}}/dgl-cat-tp-infos",
+					"host": [
+						"{{catalogServiceAPIGatewayUrl}}"
+					],
+					"path": [
+						"dgl-cat-tp-infos"
+					]
+				},
+				"description": "tpinfo"
 			},
 			"response": []
 		}
