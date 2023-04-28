@@ -36,6 +36,9 @@ public class DglCatSolItemsDTO implements Serializable {
     private Boolean isPaidProvider;
 
     private DglCatSolInfoDTO sol;
+    
+    private DglCatItemsInfoDTO catItems;
+    
 
     public Long getId() {
         return id;
@@ -109,7 +112,15 @@ public class DglCatSolItemsDTO implements Serializable {
         this.sol = sol;
     }
 
-    @Override
+    public DglCatItemsInfoDTO getCatItems() {
+		return catItems;
+	}
+
+	public void setCatItems(DglCatItemsInfoDTO catItems) {
+		this.catItems = catItems;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
