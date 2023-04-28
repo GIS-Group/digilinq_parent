@@ -3,15 +3,11 @@ package com.mfino.digilinq.domain;
 import java.io.Serializable;
 import java.time.Instant;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -36,15 +32,14 @@ public class DglAccMno implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-//    @Id
+    //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    @Column(name = "id")
 //    private Long id;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "acc_id", nullable = false)
-    private Integer accId;
+    private Long accId;
 
     @NotNull
     @Size(max = 255)
@@ -169,6 +164,12 @@ public class DglAccMno implements Serializable {
     @Column(name = "acc_status", length = 255, nullable = false)
     private String accStatus;
 
+    @Column(name = "acc_parent_id")
+    private Integer accParentId;
+
+    @Column(name = "acc_mno_parent_id")
+    private Integer accMnoParentId;
+
     @NotNull
     @Column(name = "acc_unq_id", nullable = false, unique = true)
     private Integer accUnqId;
@@ -221,15 +222,15 @@ public class DglAccMno implements Serializable {
     @Column(name = "acc_type", length = 255, nullable = false)
     private String accType;
 
-    //@ManyToOne
-    //@JsonIgnoreProperties(value = { "accParent", "accMnoParent" }, allowSetters = true)
-    @Column(name="acc_parent",length = 255, nullable = false)
-    private String accParent;
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "accParent", "accMnoParent" }, allowSetters = true)
+    @JoinColumn(name="acc_parent", referencedColumnName = "acc_id")
+    private DglAccMno accParent;
 
-    //@ManyToOne
-    //@JsonIgnoreProperties(value = { "accParent", "accMnoParent" }, allowSetters = true)
-    @Column(name="acc_mno_parent",length = 255, nullable = false)
-    private String accMnoParent;
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "accParent", "accMnoParent" }, allowSetters = true)
+    @JoinColumn(name="acc_mno_parent", referencedColumnName = "acc_id")
+    private DglAccMno accMnoParent;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 

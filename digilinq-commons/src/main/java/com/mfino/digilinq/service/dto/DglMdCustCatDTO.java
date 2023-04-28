@@ -24,7 +24,7 @@ public class DglMdCustCatDTO implements Serializable {
     @Size(max = 255)
     private String custCatType;
 
-    @NotNull
+    //@NotNull
     private Integer custCatId;
 
     @NotNull
