@@ -3,13 +3,7 @@ package com.mfino.digilinq.domain;
 import java.io.Serializable;
 import java.time.Instant;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -39,13 +33,12 @@ public class DglCustContracts implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-//    @Id
+    //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    @Column(name = "id")
 //    private Long id;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "contract_id", nullable = false)
     private Integer contractId;
 
@@ -58,7 +51,6 @@ public class DglCustContracts implements Serializable {
     @Column(name = "status", nullable = false)
     private Integer status;
 
-    @NotNull
     @Column(name = "contract_unq_id", nullable = false, unique = true)
     private Integer contractUnqId;
 
@@ -68,8 +60,13 @@ public class DglCustContracts implements Serializable {
     private String contractFile;
 
     @NotNull
-    @Column(name = "signed_date", nullable = false)
+    //@Column(name = "SIGNED-DATE", nullable = false)
+    @Transient
     private Instant signedDate;
+
+    @Transient
+    //@Column(name = "signed-date", nullable = false)
+    private Instant signedInstantDate;
 
     @NotNull
     @Column(name = "enforce_date", nullable = false)
@@ -90,12 +87,22 @@ public class DglCustContracts implements Serializable {
 
     @ManyToOne(optional = false)
     @NotNull
-    @JsonIgnoreProperties(value = { "accParent", "accMnoParent" }, allowSetters = true)
+    @JoinColumn(name = "ACC_MNO_ID", nullable = false)
     private DglAccMno accMno;
 
     @ManyToOne(optional = false)
     @NotNull
-    @JsonIgnoreProperties(value = { "custParent", "accMnoParent" }, allowSetters = true)
+    @JoinColumn(name = "accMno_acc_id", nullable = false)
+    private DglAccMno accMnoAcc;
+
+    @ManyToOne(optional = false)
+    @NotNull
+    @JoinColumn(name = "RECEIVING_PARTY", nullable = false)
+    private DglCustomer customerReceivingParty;
+
+    @ManyToOne(optional = false)
+    @NotNull
+    @JoinColumn(name = "receivingParty_customer_id", nullable = false)
     private DglCustomer receivingParty;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
