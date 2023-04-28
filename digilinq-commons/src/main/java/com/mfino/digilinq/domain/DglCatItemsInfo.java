@@ -97,7 +97,7 @@ public class DglCatItemsInfo implements Serializable {
     @Column(name = "time_period", length = 255)
     private String timePeriod;
 
-    @ManyToOne(optional = false,cascade=CascadeType.ALL,fetch=FetchType.LAZY,targetEntity = DglCatTpInfo.class)
+    @ManyToOne(optional = false,cascade=CascadeType.MERGE,fetch=FetchType.LAZY,targetEntity = DglCatTpInfo.class)
     @JoinColumn(name = "TP_ID", referencedColumnName = "TP_ID")
     @JoinColumn(name = "tp_tp_id", referencedColumnName = "TP_ID")
     @NotNull
