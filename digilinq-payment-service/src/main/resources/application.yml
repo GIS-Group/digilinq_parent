@@ -75,7 +75,7 @@ spring:
     open-in-view: true
     generate-ddl: true
     hibernate:
-      ddl-auto: validate
+  #    ddl-auto: validate
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     properties:
@@ -85,9 +85,9 @@ spring:
         format_sql: true
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://gis-iot123.mysql.database.azure.com:3306/digilinq_dev?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: Iot_admin
-    password: Admin..@123
+    url: jdbc:mysql://localhost:3306/digilinq_dev?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: pass
 
 ---
 
