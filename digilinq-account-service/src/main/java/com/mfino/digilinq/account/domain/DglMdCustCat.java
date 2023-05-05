@@ -2,6 +2,7 @@ package com.mfino.digilinq.account.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,6 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.Parameter;
+
+import com.mfino.digilinq.account.enumeration.CustomerType;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -41,12 +47,14 @@ public class DglMdCustCat implements Serializable {
     private String custCatDesc;
 
     @Column(name = "cust_cat_type")
-    private String custCatType;
+    @Type(type = "com.mfino.digilinq.commons.enumeration.EnumUserType", parameters = {
+			@Parameter(name = "Enum", value = "com.mfino.digilinq.account.enumeration.CustomerType"), })
+    private CustomerType custCatType;
 
     @Column(name = "md_cus_status")
     private String mdCusStatus;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "acc_id")
     private DglAccMno acc;
 
