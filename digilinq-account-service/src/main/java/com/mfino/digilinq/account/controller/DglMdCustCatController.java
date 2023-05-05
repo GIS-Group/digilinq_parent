@@ -1,13 +1,18 @@
 package com.mfino.digilinq.account.controller;
 
 import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.apache.tomcat.util.http.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -113,11 +118,11 @@ public class DglMdCustCatController {
      *
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of dglMdCustCats in body.
      */
-//    @GetMapping("/dgl-md-cust-cats")
-//    public List<DglMdCustCatDTO> getAllDglMdCustCats() {
-//        log.debug("REST request to get all DglMdCustCats");
-//        return dglMdCustCatService.findAll();
-//    }
+    @GetMapping("/cust-cats")
+    public List<DglMdCustCatDTO> getAllDglMdCustCats() {
+        log.debug("REST request to get all DglMdCustCats");
+        return dglMdCustCatService.findAll();
+    }
 
     /**
      * {@code GET  /dgl-md-cust-cats/:id} : get the "id" dglMdCustCat.
@@ -125,12 +130,12 @@ public class DglMdCustCatController {
      * @param id the id of the dglMdCustCatDTO to retrieve.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the dglMdCustCatDTO, or with status {@code 404 (Not Found)}.
      */
-//    @GetMapping("/dgl-md-cust-cats/{id}")
-//    public ResponseEntity<DglMdCustCatDTO> getDglMdCustCat(@PathVariable Long id) {
-//        log.debug("REST request to get DglMdCustCat : {}", id);
-//        Optional<DglMdCustCatDTO> dglMdCustCatDTO = dglMdCustCatService.findOne(id);
-//        return ResponseUtil.wrapOrNotFound(dglMdCustCatDTO);
-//    }
+    @GetMapping("/cust-cats/{id}")
+    public ResponseEntity<?> getDglMdCustCat(@PathVariable Long id) {
+        log.debug("REST request to get DglMdCustCat : {}", id);
+        Optional<DglMdCustCatDTO> dglMdCustCatDTO = dglMdCustCatService.findOne(id);
+        return ResponseEntity.ok(new ApiReponse<>(dglMdCustCatDTO, true, "Operation Completed Successfully"));
+    }
 
     /**
      * {@code DELETE  /dgl-md-cust-cats/:id} : delete the "id" dglMdCustCat.
@@ -138,15 +143,12 @@ public class DglMdCustCatController {
      * @param id the id of the dglMdCustCatDTO to delete.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
-//    @DeleteMapping("/dgl-md-cust-cats/{id}")
-//    public ResponseEntity<Void> deleteDglMdCustCat(@PathVariable Long id) {
-//        log.debug("REST request to delete DglMdCustCat : {}", id);
-//        dglMdCustCatService.delete(id);
-//        return ResponseEntity
-//            .noContent()
-//            .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
-//            .build();
-//    }
+    @DeleteMapping("/cust-cats/{id}")
+    public ResponseEntity<?> deleteDglMdCustCat(@PathVariable Long id) {
+        log.debug("REST request to delete DglMdCustCat : {}", id);
+        dglMdCustCatService.delete(id);
+        return ResponseEntity.ok(new ApiReponse<>(true, "Customer Category Deleted Successfully"));
+    }
     
 	public class ApiReponse<T> {
 

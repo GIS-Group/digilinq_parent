@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mfino.digilinq.account.enumeration.CustomerType;
 
 public class DglMdCustCatDTO implements Serializable {
@@ -21,6 +22,7 @@ public class DglMdCustCatDTO implements Serializable {
 	@NotNull
 	private CustomerType custCatType;
 	private String mdCusStatus;
+	@JsonIgnore
 	private DglAccMnoDTO acc;
 	
 	
