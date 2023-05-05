@@ -49,6 +49,8 @@ public class GlobalSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .httpBasic()
                 .and()
+//                .cors()
+//                .disable()
                 .csrf()
                 .disable();
     }

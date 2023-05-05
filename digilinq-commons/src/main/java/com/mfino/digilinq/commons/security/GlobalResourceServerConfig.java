@@ -34,6 +34,7 @@ public class GlobalResourceServerConfig extends ResourceServerConfigurerAdapter 
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http
+        //.cors().disable().csrf().disable()
                 .headers()
                 .frameOptions()
                 .disable()
