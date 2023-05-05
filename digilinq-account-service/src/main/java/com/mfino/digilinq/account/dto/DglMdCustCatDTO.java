@@ -13,53 +13,79 @@ public class DglMdCustCatDTO implements Serializable {
 	 */
 	private static final long serialVersionUID = 2091201166769851970L;
 	
+	private Long id;
 	@NotNull
-	private String customer_category_name;
+	private String custCatTitle;
 	@NotNull
-	private String description;
+	private String custCatDesc;
 	@NotNull
-	private CustomerType customer_type;
-	private String status;
-	private Long acc_id;
-
-	public String getCustomer_category_name() {
-		return customer_category_name;
+	private CustomerType custCatType;
+	private String mdCusStatus;
+	private DglAccMnoDTO acc;
+	
+	
+	public DglMdCustCatDTO() {
+		super();
 	}
 
-	public void setCustomer_category_name(String customer_category_name) {
-		this.customer_category_name = customer_category_name;
+
+	public Long getId() {
+		return id;
 	}
 
-	public String getDescription() {
-		return description;
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+
+	public String getCustCatTitle() {
+		return custCatTitle;
 	}
 
-	public CustomerType getCustomer_type() {
-		return customer_type;
+
+	public void setCustCatTitle(String custCatTitle) {
+		this.custCatTitle = custCatTitle;
 	}
 
-	public void setCustomer_type(CustomerType customer_type) {
-		this.customer_type = customer_type;
+
+	public String getCustCatDesc() {
+		return custCatDesc;
 	}
 
-	public String getStatus() {
-		return status;
+
+	public void setCustCatDesc(String custCatDesc) {
+		this.custCatDesc = custCatDesc;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+
+	public CustomerType getCustCatType() {
+		return custCatType;
 	}
 
-	public Long getAcc_id() {
-		return acc_id;
+
+	public void setCustCatType(CustomerType custCatType) {
+		this.custCatType = custCatType;
 	}
 
-	public void setAcc_id(Long acc_id) {
-		this.acc_id = acc_id;
+
+	public String getMdCusStatus() {
+		return mdCusStatus;
 	}
 
+
+	public void setMdCusStatus(String mdCusStatus) {
+		this.mdCusStatus = mdCusStatus;
+	}
+
+
+	public DglAccMnoDTO getAcc() {
+		return acc;
+	}
+
+
+	public void setAcc(DglAccMnoDTO acc) {
+		this.acc = acc;
+	}
+	
 }
