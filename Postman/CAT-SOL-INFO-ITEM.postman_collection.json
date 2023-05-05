@@ -1,9 +1,8 @@
 {
 	"info": {
-		"_postman_id": "992705a4-23e9-4422-aa5a-f6e8a5b11fcf",
+		"_postman_id": "d314128e-1288-4b68-893c-312eee3c0ef2",
 		"name": "CAT-SOL-INFO/ITEM",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "9224995"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -170,15 +169,21 @@
 					"name": "Fetch-dgl-cat-sol-infos-By(ID)",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgyNjY5NzMwLCJpYXQiOjE2ODI2NjY3MzB9.uTgos1BWMIQkR2eiaY_BGoAgPVC83PgSTL-vO3Xjv2-cgdjW2Oa9OcOGM1K46rH0ylkPkW6Drph-7Z8Hlsj98fT4g_bYSxgOO103q6k-yt528v0WyxwqLf-yOPSNX6v7EKmLiiLS2boAaoUFDcyoQABEPM60pMkXCTRaIFlk9rJ9tkHOdXZJynLvLwWwMaoB-y0mOlEpnnKUtf_YVKpJTxkmpjNRM0hGu3eklbOmuVhgDAstBJewlqoverV7fo4yhWEfTL5D9BfljMTMvr6HC9QKwL25hjfyyjkDojE3TDN064gDzhgYZLN4wdUDBhmF12-xN-_bmA6B_X2eR6Cb6w",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{catalogServiceAPIGatewayUrl}}/dgl-cat-sol-infos/5",
+							"raw": "{{catalogServiceAPIGatewayUrl}}/dgl-cat-sol-infos/6",
 							"host": [
 								"{{catalogServiceAPIGatewayUrl}}"
 							],
 							"path": [
 								"dgl-cat-sol-infos",
-								"5"
+								"6"
 							]
 						}
 					},
@@ -206,7 +211,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"solItemType\":\"solItemType00002\",\"solItemTitle\":\"solItemTitle00002\",\"solDisplayItemPrice\":100.04,\"solItemParentItem\":\"solItemParentItem00002\",\"solItemIsDep\":true,\"isPaidProvider\":true,\"sol\":{\"solUnqId\":\"00002\",\"solTitle\":\"TESTING-SOL00002\",\"solDesc\":\"TestingDesc00002\",\"solKeywords\":\"Keywords00002\",\"solTextBanner\":\"banner00002\",\"solImgUrl\":\"/app/digilink/image-0.00002.jpeg\",\"solGeoTag\":\"tag00002\",\"solThumbnail\":\"YES\",\"solStatus\":\"COMPLETED\",\"relProdCat\":{\"prodCatTitle\":\"Prod-Catalog00001\",\"prodCatDesc\":\"Testing ProdCatalog00002\",\"prodCatImgUrl\":\"/app/digilink/image-0.00002.jpeg\",\"mdProCatStatus\":\"COMPLETED\"}}}",
+							"raw": "{\r\n    \"solItemType\": \"solItemType00002\",\r\n    \"solItemTitle\": \"solItemTitle00002\",\r\n    \"solDisplayItemPrice\": 100.04,\r\n    \"solItemParentItem\": \"solItemParentItem00002\",\r\n    \"solItemIsDep\": true,\r\n    \"isPaidProvider\": true,\r\n    \"catItems\": {\r\n        \"id\": null,\r\n        \"itemId\": 9,\r\n        \"itemUnqId\": 342,\r\n        \"relProdCat\": \"fs\",\r\n        \"itemType\": \"product\",\r\n        \"itemTitle\": \"data plan\",\r\n        \"itemActualPrice\": \"500\",\r\n        \"itemDesc\": null,\r\n        \"itemSopUrl\": null,\r\n        \"tpStrucInfo\": \"dg\",\r\n        \"itemStatus\": 1,\r\n        \"relApiConfigId\": null,\r\n        \"timePeriod\": null,\r\n        \"tp\": {\r\n            \"id\": null,\r\n            \"tpId\": 8,\r\n            \"tpUnqId\": 3,\r\n            \"relProdCat\": \"prod1\",\r\n            \"tpTitle\": \"tptile2\",\r\n            \"tpType\": \"tptype3\",\r\n            \"tpDesc\": null,\r\n            \"tpStruc\": \"tpStruc4\",\r\n            \"tpStatus\": 1\r\n        }\r\n    },\r\n    \"sol\":{\r\n        \"id\": null,\r\n        \"solId\": 6,\r\n        \"solUnqId\": 7896,\r\n        \"solTitle\": \"update-SOL55\",\r\n        \"solDesc\": \"TestingDesc55\",\r\n        \"solKeywords\": \"Keywords555\",\r\n        \"solTextBanner\": \"banner555\",\r\n        \"solImgUrl\": \"/app/digilink/image-0.0555.jpeg\",\r\n        \"solGeoTag\": \"tag3\",\r\n        \"solThumbnail\": \"YES\",\r\n        \"solStatus\": \"SUCCESS\",\r\n        \"relProdCat\": {\r\n            \"id\": null,\r\n            \"prodCatTitle\": \"Prod-Catalog55\",\r\n            \"prodCatDesc\": \"Testing ProdCatalog55\",\r\n            \"prodCatImgUrl\": \"/app/digilink/image-0.0555.jpeg\",\r\n            \"prodCatId\": 5,\r\n            \"mdProCatStatus\": \"SUCSESS\"\r\n        }\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -247,7 +252,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"id\":null,\"solItemsId\":14,\"solItemType\":\"solItemType00001\",\"solItemTitle\":\"solItemTitle00001\",\"solDisplayItemPrice\":90.04,\"solItemParentItem\":\"solItemParentItem000014\",\"solItemIsDep\":true,\"isPaidProvider\":true,\"sol\":{\"id\":null,\"solId\":15,\"solUnqId\":1,\"solTitle\":\"TESTING-SOL00001\",\"solDesc\":\"TestingDesc00001\",\"solKeywords\":\"Keywords00001\",\"solTextBanner\":\"banner00001\",\"solImgUrl\":\"/app/digilink/image-0.03.jpeg\",\"solGeoTag\":\"tag000015\",\"solThumbnail\":\"YES\",\"solStatus\":\"SUCCESS\",\"relProdCat\":{\"id\":null,\"prodCatTitle\":\"Prod-Catalog00001\",\"prodCatDesc\":\"Testing ProdCatalog000016\",\"prodCatImgUrl\":\"/app/digilink/image-0.03.jpeg\",\"prodCatId\":16,\"mdProCatStatus\":\"SUCCESS\"}}}",
+							"raw": "{\r\n    \"id\": null,\r\n    \"solItemsId\": 12,\r\n    \"solItemType\": \"solItemType00003\",\r\n    \"solItemTitle\": \"solItemTitle00003\",\r\n    \"solDisplayItemPrice\": 100.04,\r\n    \"solItemParentItem\": \"solItemParentItem00003\",\r\n    \"solItemIsDep\": true,\r\n    \"isPaidProvider\": true,\r\n    \"sol\": {\r\n        \"id\": null,\r\n        \"solId\": 6,\r\n        \"solUnqId\": 7896,\r\n        \"solTitle\": \"update-SOL55\",\r\n        \"solDesc\": \"TestingDesc56\",\r\n        \"solKeywords\": \"Keywords555\",\r\n        \"solTextBanner\": \"banner555\",\r\n        \"solImgUrl\": \"/app/digilink/image-0.0555.jpeg\",\r\n        \"solGeoTag\": \"tag3\",\r\n        \"solThumbnail\": \"YES\",\r\n        \"solStatus\": \"SUCCESS\",\r\n        \"relProdCat\": {\r\n            \"id\": null,\r\n            \"prodCatTitle\": \"Prod-Catalog56\",\r\n            \"prodCatDesc\": \"Testing ProdCatalog55\",\r\n            \"prodCatImgUrl\": \"/app/digilink/image-0.0555.jpeg\",\r\n            \"prodCatId\": 5,\r\n            \"mdProCatStatus\": \"SUCSESS\"\r\n        }\r\n    },\r\n    \"catItems\": {\r\n        \"id\": null,\r\n        \"itemId\": 9,\r\n        \"itemUnqId\": 342,\r\n        \"relProdCat\": \"fs\",\r\n        \"itemType\": \"product\",\r\n        \"itemTitle\": \"data plan\",\r\n        \"itemActualPrice\": \"500\",\r\n        \"itemDesc\": null,\r\n        \"itemSopUrl\": null,\r\n        \"tpStrucInfo\": \"dg\",\r\n        \"itemStatus\": 1,\r\n        \"relApiConfigId\": null,\r\n        \"timePeriod\": null,\r\n        \"tp\": {\r\n            \"id\": null,\r\n            \"tpId\": 8,\r\n            \"tpUnqId\": 3,\r\n            \"relProdCat\": \"prod1\",\r\n            \"tpTitle\": \"tptile2\",\r\n            \"tpType\": \"tptype3\",\r\n            \"tpDesc\": null,\r\n            \"tpStruc\": \"tpStruc4\",\r\n            \"tpStatus\": 1\r\n        }\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -255,13 +260,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{catalogServiceAPIGatewayUrl}}/dgl-cat-sol-items/14",
+							"raw": "{{catalogServiceAPIGatewayUrl}}/dgl-cat-sol-items/12",
 							"host": [
 								"{{catalogServiceAPIGatewayUrl}}"
 							],
 							"path": [
 								"dgl-cat-sol-items",
-								"14"
+								"12"
 							]
 						}
 					},
@@ -362,13 +367,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{catalogServiceAPIGatewayUrl}}/dgl-cat-sol-items/14",
+							"raw": "{{catalogServiceAPIGatewayUrl}}/dgl-cat-sol-items/12",
 							"host": [
 								"{{catalogServiceAPIGatewayUrl}}"
 							],
 							"path": [
 								"dgl-cat-sol-items",
-								"14"
+								"12"
 							]
 						}
 					},
