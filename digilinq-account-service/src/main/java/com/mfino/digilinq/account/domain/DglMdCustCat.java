@@ -54,7 +54,7 @@ public class DglMdCustCat implements Serializable {
     @Column(name = "md_cus_status")
     private String mdCusStatus;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "acc_id")
     private DglAccMno acc;
 
