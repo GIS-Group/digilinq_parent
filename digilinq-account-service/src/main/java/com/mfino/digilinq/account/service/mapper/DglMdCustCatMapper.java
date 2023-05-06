@@ -5,7 +5,6 @@ import org.modelmapper.config.Configuration;
 
 import com.mfino.digilinq.account.domain.DglAccMno;
 import com.mfino.digilinq.account.domain.DglMdCustCat;
-import com.mfino.digilinq.account.dto.DglAccMnoDTO;
 import com.mfino.digilinq.account.dto.DglMdCustCatDTO;
 
 public class DglMdCustCatMapper {
@@ -13,9 +12,8 @@ public class DglMdCustCatMapper {
 	public DglMdCustCatDTO toDTO(DglMdCustCat dglMdCustCat) {
 		ModelMapper mapper = new ModelMapper();
 		mapper.getConfiguration().setFieldMatchingEnabled(true).setFieldAccessLevel(Configuration.AccessLevel.PRIVATE);
-		DglAccMnoDTO accMnoDTO = mapper.map(dglMdCustCat.getAcc(), DglAccMnoDTO.class);
 		DglMdCustCatDTO dto = mapper.map(dglMdCustCat, DglMdCustCatDTO.class);
-		dto.setAcc(accMnoDTO);
+		dto.setAcc(null);
 		return dto;
 	}
 
