@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.mfino.digilinq.account.domain.DglMdCustCat;
 import com.mfino.digilinq.account.dto.DglMdCustCatDTO;
+import com.mfino.digilinq.account.enumeration.StatusType;
 import com.mfino.digilinq.account.repository.DglMdCustCatRepository;
 import com.mfino.digilinq.account.service.DglMdCustCatService;
 import com.mfino.digilinq.account.service.mapper.DglMdCustCatMapper;
@@ -46,7 +47,7 @@ public class DglMdCustCatServiceImpl implements DglMdCustCatService {
 	public void updateStatus(Long id, String mdCusStatus) {
 		Optional<DglMdCustCat> dglMdCustCat = dglMdCustCatRepository.findById(id);
 		DglMdCustCat entity = dglMdCustCat.get();
-		entity.setMdCusStatus(mdCusStatus);
+		entity.setMdCusStatus(StatusType.valueOf(mdCusStatus));
 		dglMdCustCatRepository.save(entity);
 
 	}
