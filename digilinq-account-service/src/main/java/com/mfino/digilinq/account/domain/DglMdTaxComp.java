@@ -12,6 +12,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Parameter;
+import org.hibernate.annotations.Type;
+
+import com.mfino.digilinq.account.enumeration.StatusType;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -50,7 +55,9 @@ public class DglMdTaxComp implements Serializable {
     private String taxValue;
 
     @Column(name = "md_tax_status")
-    private String mdTaxStatus;
+    @Type(type = "com.mfino.digilinq.commons.enumeration.EnumUserType", parameters = {
+			@Parameter(name = "Enum", value = "com.mfino.digilinq.account.enumeration.StatusType")})
+    private StatusType mdTaxStatus;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "acc_id")

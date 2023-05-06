@@ -4,8 +4,10 @@ import java.io.Serializable;
 
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.mfino.digilinq.account.enumeration.CustomerType;
+import com.mfino.digilinq.account.enumeration.StatusType;
 
 public class DglMdCustCatDTO implements Serializable {
 
@@ -21,8 +23,9 @@ public class DglMdCustCatDTO implements Serializable {
 	private String custCatDesc;
 	@NotNull
 	private CustomerType custCatType;
-	private String mdCusStatus;
-	@JsonIgnore
+	@NotNull
+	private StatusType mdCusStatus;
+	@JsonInclude(content = Include.NON_NULL)
 	private DglAccMnoDTO acc;
 	
 	
@@ -71,12 +74,12 @@ public class DglMdCustCatDTO implements Serializable {
 	}
 
 
-	public String getMdCusStatus() {
+	public StatusType getMdCusStatus() {
 		return mdCusStatus;
 	}
 
 
-	public void setMdCusStatus(String mdCusStatus) {
+	public void setMdCusStatus(StatusType mdCusStatus) {
 		this.mdCusStatus = mdCusStatus;
 	}
 
