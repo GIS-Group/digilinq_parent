@@ -10,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,7 +26,7 @@ import com.mfino.digilinq.account.service.DglMdCustCatService;
  * @author Krishna
  */
 @RestController
-public class DglMdCustCatController {
+public class DglMdCustCatController extends BaseAPIController {
 
 	private final Logger log = LoggerFactory.getLogger(DglMdCustCatController.class);
 
@@ -47,8 +46,8 @@ public class DglMdCustCatController {
 	public ResponseEntity<?> createDglMdCustCat(@Valid @RequestBody DglMdCustCatDTO dglMdCustCatDTO)
 			throws URISyntaxException {
 		log.debug("REST request to save DglMdCustCat : {}", dglMdCustCatDTO);
-		DglMdCustCatDTO result = dglMdCustCatService.save(dglMdCustCatDTO);
-		return ResponseEntity.ok(new ApiReponse<>(true, "Operation Completed Successfully"));
+		dglMdCustCatService.save(dglMdCustCatDTO);
+		return ResponseEntity.ok(getSucessResponse(new BaseRestApiResponse()));
 	}
 
 	/**
@@ -67,8 +66,8 @@ public class DglMdCustCatController {
 	public ResponseEntity<?> updateDglMdCustCat(@PathVariable(value = "id", required = false) final Long id,
 			@Valid @RequestBody DglMdCustCatDTO dglMdCustCatDTO) throws URISyntaxException {
 		log.debug("REST request to update DglMdCustCat : {}, {}", id, dglMdCustCatDTO);
-		DglMdCustCatDTO result = dglMdCustCatService.update(dglMdCustCatDTO);
-		return ResponseEntity.ok(new ApiReponse<>(true, "Updated Successfully"));
+		dglMdCustCatService.update(dglMdCustCatDTO);
+		return ResponseEntity.ok(getSucessResponse(new BaseRestApiResponse()));
 	}
 
 	/**
@@ -91,7 +90,7 @@ public class DglMdCustCatController {
 			throws URISyntaxException {
 		log.debug("REST request to partial update DglMdCustCat partially : {}, {}", id, mdCusStatus);
 		dglMdCustCatService.updateStatus(id, mdCusStatus);
-		return ResponseEntity.ok(new ApiReponse<>(true, "Status Updated Successfully"));
+		return ResponseEntity.ok(getSucessResponse(new BaseRestApiResponse()));
 	}
 
 	/**
@@ -101,8 +100,7 @@ public class DglMdCustCatController {
 	 *         of dglMdCustCats in body.
 	 */
 	@GetMapping("/cust-cats")
-	public List<DglMdCustCatDTO> getAllDglMdCustCats(
-			@RequestParam(value = "page_no", required = false) int pageNo,
+	public List<DglMdCustCatDTO> getAllDglMdCustCats(@RequestParam(value = "page_no", required = false) int pageNo,
 			@RequestParam(value = "page_size", required = false) int pageSize,
 			@RequestParam(value = "sort_field", required = false) String sortField) {
 		log.debug("REST request to get all DglMdCustCats");
@@ -120,63 +118,7 @@ public class DglMdCustCatController {
 	public ResponseEntity<?> getDglMdCustCat(@PathVariable Long id) {
 		log.debug("REST request to get DglMdCustCat : {}", id);
 		Optional<DglMdCustCatDTO> dglMdCustCatDTO = dglMdCustCatService.findOne(id);
-		return ResponseEntity.ok(new ApiReponse<>(dglMdCustCatDTO, true, "Operation Completed Successfully"));
+		return ResponseEntity.ok(getSucessResponse("Operation Completed Successfully", dglMdCustCatDTO));
 	}
 
-	/**
-	 * {@code DELETE  /cust-cats/:id} : delete the "id" dglMdCustCat.
-	 *
-	 * @param id the id of the dglMdCustCatDTO to delete.
-	 * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
-	 */
-	@DeleteMapping("/cust-cats/{id}")
-	public ResponseEntity<?> deleteDglMdCustCat(@PathVariable Long id) {
-		log.debug("REST request to delete DglMdCustCat : {}", id);
-		dglMdCustCatService.delete(id);
-		return ResponseEntity.ok(new ApiReponse<>(true, "Customer Category Deleted Successfully"));
-	}
-
-	public class ApiReponse<T> {
-
-		private T response;
-
-		private boolean success = true;
-
-		private String message;
-
-		public T getResponse() {
-			return response;
-		}
-
-		public void setResponse(T response) {
-			this.response = response;
-		}
-
-		public boolean isSuccess() {
-			return success;
-		}
-
-		public void setSuccess(boolean success) {
-			this.success = success;
-		}
-
-		public String getMessage() {
-			return message;
-		}
-
-		public void setMessage(String message) {
-			this.message = message;
-		}
-
-		public ApiReponse(boolean success, String message) {
-			this.success = success;
-			this.message = message;
-		}
-
-		public ApiReponse(T response, boolean success, String message) {
-			this.response = response;
-			this.success = success;
-			this.message = message;
-		}
-	}
 }
