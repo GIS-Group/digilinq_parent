@@ -10,7 +10,7 @@ public interface DglMdCustCatService {
 	public DglMdCustCatDTO save(DglMdCustCatDTO dglMdCustCatDTO);
 	public DglMdCustCatDTO update(DglMdCustCatDTO dglMdCustCatDTO);
 	public void updateStatus(Long id, String mdCusStatus);
-	public List<DglMdCustCatDTO> findAll();
+	public List<DglMdCustCatDTO> findAll(int pageNo, int pageSize, String sortField);
 	public Optional<DglMdCustCatDTO> findOne(Long id);
 	public void delete(Long id);
 }

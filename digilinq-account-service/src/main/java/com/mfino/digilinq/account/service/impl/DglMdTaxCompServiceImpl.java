@@ -8,6 +8,9 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.mfino.digilinq.account.domain.DglMdTaxComp;
@@ -19,9 +22,9 @@ import com.mfino.digilinq.account.service.mapper.DglMdTaxCompMapper;
 
 @Service
 public class DglMdTaxCompServiceImpl implements DglMdTaxCompService {
-	
+
 	private final Logger log = LoggerFactory.getLogger(DglMdTaxCompServiceImpl.class);
-	
+
 	@Autowired
 	private DglMdTaxCompRepository dglMdTaxCompRepository;
 
@@ -29,18 +32,18 @@ public class DglMdTaxCompServiceImpl implements DglMdTaxCompService {
 	public DglMdTaxCompDTO save(DglMdTaxCompDTO dglMdTaxCompDTO) {
 		log.debug("Request to save DglMdTaxComp : {}", dglMdTaxCompDTO);
 		DglMdTaxCompMapper dglMdTaxCompMapper = new DglMdTaxCompMapper();
-        DglMdTaxComp dglMdTaxComp = dglMdTaxCompMapper.toEntity(dglMdTaxCompDTO);
-        dglMdTaxComp = dglMdTaxCompRepository.save(dglMdTaxComp);
-        return dglMdTaxCompMapper.toDTO(dglMdTaxComp);
+		DglMdTaxComp dglMdTaxComp = dglMdTaxCompMapper.toEntity(dglMdTaxCompDTO);
+		dglMdTaxComp = dglMdTaxCompRepository.save(dglMdTaxComp);
+		return dglMdTaxCompMapper.toDTO(dglMdTaxComp);
 	}
 
 	@Override
 	public DglMdTaxCompDTO update(DglMdTaxCompDTO dglMdTaxCompDTO) {
 		log.debug("Request to update DglMdTaxComp : {}", dglMdTaxCompDTO);
 		DglMdTaxCompMapper dglMdTaxCompMapper = new DglMdTaxCompMapper();
-        DglMdTaxComp dglMdTaxComp = dglMdTaxCompMapper.toEntity(dglMdTaxCompDTO);
-        dglMdTaxComp = dglMdTaxCompRepository.save(dglMdTaxComp);
-        return dglMdTaxCompMapper.toDTO(dglMdTaxComp);
+		DglMdTaxComp dglMdTaxComp = dglMdTaxCompMapper.toEntity(dglMdTaxCompDTO);
+		dglMdTaxComp = dglMdTaxCompRepository.save(dglMdTaxComp);
+		return dglMdTaxCompMapper.toDTO(dglMdTaxComp);
 	}
 
 	@Override
@@ -52,9 +55,11 @@ public class DglMdTaxCompServiceImpl implements DglMdTaxCompService {
 	}
 
 	@Override
-	public List<DglMdTaxCompDTO> findAll() {
+	public List<DglMdTaxCompDTO> findAll(int pageNo, int pageSize, String sortField) {
 		DglMdTaxCompMapper dglMdTaxCompMapper = new DglMdTaxCompMapper();
-		return dglMdTaxCompRepository.findAll().stream().map(dglMdTaxCompMapper::toDTO)
+		Pageable pageable = PageRequest.of(pageNo != 0 ? pageNo : 0, pageSize != 0 ? pageSize : 10,
+				sortField != null ? Sort.by(sortField) : Sort.by("id"));
+		return dglMdTaxCompRepository.findAll(pageable).stream().map(dglMdTaxCompMapper::toDTO)
 				.collect(Collectors.toCollection(LinkedList::new));
 	}
 

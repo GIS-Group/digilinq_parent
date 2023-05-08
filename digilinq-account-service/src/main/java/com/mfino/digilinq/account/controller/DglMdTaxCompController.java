@@ -10,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,11 +23,13 @@ import com.mfino.digilinq.account.dto.DglMdTaxCompDTO;
 import com.mfino.digilinq.account.service.DglMdTaxCompService;
 
 /**
- * @author Krishna 
- * REST controller for managing {@link com.mfino.digilinq.domain.DglMdTaxComp}.
+ * @author Krishna
+ * 
+ * REST controller for managing
+ *         {@link com.mfino.digilinq.domain.DglMdTaxComp}.
  */
 @RestController
-public class DglMdTaxCompController {
+public class DglMdTaxCompController extends BaseAPIController {
 
 	private final Logger log = LoggerFactory.getLogger(DglMdTaxCompController.class);
 
@@ -48,8 +49,8 @@ public class DglMdTaxCompController {
 	public ResponseEntity<?> createDglMdTaxComp(@Valid @RequestBody DglMdTaxCompDTO dglMdTaxCompDTO)
 			throws URISyntaxException {
 		log.debug("REST request to save DglMdTaxComp : {}", dglMdTaxCompDTO);
-		DglMdTaxCompDTO result = dglMdTaxCompService.save(dglMdTaxCompDTO);
-		return ResponseEntity.ok(new ApiReponse<>(true, "Operation Completed Successfully"));
+		dglMdTaxCompService.save(dglMdTaxCompDTO);
+		return ResponseEntity.ok(getSucessResponse(new BaseRestApiResponse()));
 	}
 
 	/**
@@ -68,8 +69,8 @@ public class DglMdTaxCompController {
 	public ResponseEntity<?> updateDglMdTaxComp(@PathVariable(value = "id", required = true) final Long id,
 			@Valid @RequestBody DglMdTaxCompDTO dglMdTaxCompDTO) throws URISyntaxException {
 		log.debug("REST request to update DglMdTaxComp : {}, {}", id, dglMdTaxCompDTO);
-		DglMdTaxCompDTO result = dglMdTaxCompService.update(dglMdTaxCompDTO);
-		return ResponseEntity.ok(new ApiReponse<>(true, "Updated Successfully"));
+		dglMdTaxCompService.update(dglMdTaxCompDTO);
+		return ResponseEntity.ok(getSucessResponse(new BaseRestApiResponse()));
 	}
 
 	/**
@@ -88,10 +89,11 @@ public class DglMdTaxCompController {
 	 */
 	@PatchMapping(value = "/tax-comp")
 	public ResponseEntity<?> partialUpdateDglMdTaxComp(@RequestParam(value = "id", required = true) final Long id,
-			@RequestParam(value = "mdTaxStatus", required = true) final String mdTaxStatus) throws URISyntaxException {
+			@RequestParam(value = "md_tax_status", required = true) final String mdTaxStatus)
+			throws URISyntaxException {
 		log.debug("REST request to partial update DglMdTaxComp partially : {}, {}", id, mdTaxStatus);
 		dglMdTaxCompService.updateStatus(id, mdTaxStatus);
-		return ResponseEntity.ok(new ApiReponse<>(true, "Status Updated Successfully"));
+		return ResponseEntity.ok(getSucessResponse(new BaseRestApiResponse()));
 	}
 
 	/**
@@ -101,9 +103,11 @@ public class DglMdTaxCompController {
 	 *         of dglMdTaxComps in body.
 	 */
 	@GetMapping("/tax-comps")
-	public List<DglMdTaxCompDTO> getAllDglMdTaxComps() {
+	public List<DglMdTaxCompDTO> getAllDglMdTaxComps(@RequestParam(value = "page_no", required = false) int pageNo,
+			@RequestParam(value = "page_size", required = false) int pageSize,
+			@RequestParam(value = "sort_field", required = false) String sortField) {
 		log.debug("REST request to get all DglMdTaxComps");
-		return dglMdTaxCompService.findAll();
+		return dglMdTaxCompService.findAll(pageNo, pageSize, sortField);
 	}
 
 	/**
@@ -117,63 +121,7 @@ public class DglMdTaxCompController {
 	public ResponseEntity<?> getDglMdTaxComp(@PathVariable Long id) {
 		log.debug("REST request to get DglMdTaxComp : {}", id);
 		Optional<DglMdTaxCompDTO> dglMdTaxCompDTO = dglMdTaxCompService.findOne(id);
-		return ResponseEntity.ok(new ApiReponse<>(dglMdTaxCompDTO, true, "Operation Completed Successfully"));
+		return ResponseEntity.ok(getSucessResponse("Operation Completed Successfully", dglMdTaxCompDTO));
 	}
 
-	/**
-	 * {@code DELETE  /tax-comp/:id} : delete the "id" dglMdTaxComp.
-	 *
-	 * @param id the id of the dglMdTaxCompDTO to delete.
-	 * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
-	 */
-	@DeleteMapping("/tax-comp/{id}")
-	public ResponseEntity<?> deleteDglMdTaxComp(@PathVariable Long id) {
-		log.debug("REST request to delete DglMdTaxComp : {}", id);
-		dglMdTaxCompService.delete(id);
-		return ResponseEntity.ok(new ApiReponse<>(true, "TaxComponent Deleted Successfully"));
-	}
-
-	public class ApiReponse<T> {
-
-		private T response;
-
-		private boolean success = true;
-
-		private String message;
-
-		public T getResponse() {
-			return response;
-		}
-
-		public void setResponse(T response) {
-			this.response = response;
-		}
-
-		public boolean isSuccess() {
-			return success;
-		}
-
-		public void setSuccess(boolean success) {
-			this.success = success;
-		}
-
-		public String getMessage() {
-			return message;
-		}
-
-		public void setMessage(String message) {
-			this.message = message;
-		}
-
-		public ApiReponse(boolean success, String message) {
-			this.success = success;
-			this.message = message;
-		}
-
-		public ApiReponse(T response, boolean success, String message) {
-			this.response = response;
-			this.success = success;
-			this.message = message;
-		}
-	}
 }

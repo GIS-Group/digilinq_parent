@@ -8,6 +8,9 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.mfino.digilinq.account.domain.DglMdCustCat;
@@ -53,9 +56,11 @@ public class DglMdCustCatServiceImpl implements DglMdCustCatService {
 	}
 
 	@Override
-	public List<DglMdCustCatDTO> findAll() {
+	public List<DglMdCustCatDTO> findAll(int pageNo, int pageSize, String sortField) {
 		DglMdCustCatMapper mapper = new DglMdCustCatMapper();
-		return dglMdCustCatRepository.findAll().stream().map(mapper::toDTO)
+		Pageable pageable = PageRequest.of(pageNo != 0 ? pageNo : 0, pageSize != 0 ? pageSize : 10,
+				sortField != null ? Sort.by(sortField) : Sort.by("id"));
+		return dglMdCustCatRepository.findAll(pageable).stream().map(mapper::toDTO)
 				.collect(Collectors.toCollection(LinkedList::new));
 	}
 
