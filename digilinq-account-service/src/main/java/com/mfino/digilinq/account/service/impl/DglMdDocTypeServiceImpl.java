@@ -8,20 +8,24 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mfino.digilinq.account.domain.DglMdDocType;
 import com.mfino.digilinq.account.dto.DglMdDocTypeDTO;
 import com.mfino.digilinq.account.repository.DglMdDocTypeRepository;
+import com.mfino.digilinq.account.service.DglMdDocTypeService;
 import com.mfino.digilinq.account.service.mapper.DglMdDocTypeMapper;
 
 
 @Service
-public class DglMdDocTypeService {
+public class DglMdDocTypeServiceImpl implements DglMdDocTypeService{
 
 
-    private final Logger log = LoggerFactory.getLogger(DglMdDocTypeService.class);
+    private final Logger log = LoggerFactory.getLogger(DglMdDocTypeServiceImpl.class);
 
     @Autowired
     private DglMdDocTypeRepository dglMdDocTypeRepository;
@@ -75,10 +79,11 @@ public class DglMdDocTypeService {
      * @return the list of entities.
      */
     @Transactional(readOnly = true)
-	public List<DglMdDocTypeDTO> findAll() {
+	public List<DglMdDocTypeDTO> findAll(int pageNo, int pageSize, String sortField) { 	
 		log.debug("Request to get all DglMdDocTypes");
 		DglMdDocTypeMapper dglMdDocTypeMapper = new DglMdDocTypeMapper();
-		return dglMdDocTypeRepository.findAll().stream().map(dglMdDocTypeMapper::toDTO)
+		Pageable pageable = PageRequest.of(pageNo!=0?pageNo:0, pageSize!=0?pageSize:10, sortField!=null? Sort.by(sortField):Sort.by("id"));
+		return dglMdDocTypeRepository.findAll(pageable).stream().map(dglMdDocTypeMapper::toDTO)
 				.collect(Collectors.toCollection(LinkedList::new));
 	}
 

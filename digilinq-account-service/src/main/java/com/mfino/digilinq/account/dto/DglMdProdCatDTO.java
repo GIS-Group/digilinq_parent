@@ -1,14 +1,22 @@
 package com.mfino.digilinq.account.dto;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 public class DglMdProdCatDTO {
 
     private static final long serialVersionUID = 7282800539529289265L;
-  
-
+    
     private Long id;
    
+    @NotNull(message = "Title cant be null")
+    @Size(max = 255,message = "Title name not exced more than 225 charecter")
+    @Pattern(regexp = "^[a-zA-Z0-9.\\-\\/+=@_ ]*$")
     private String prodCatTitle;
 
     private String prodCatDesc;
@@ -17,10 +25,6 @@ public class DglMdProdCatDTO {
 
     private String mdProCatStatus;
 
-	public DglMdProdCatDTO() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 	@JsonInclude(JsonInclude.Include.NON_NULL)
     private DglAccMnoDTO acc;
 
@@ -80,6 +84,11 @@ public class DglMdProdCatDTO {
 			this.prodCatImgUrl = prodCatImgUrl;
 			this.mdProCatStatus = mdProCatStatus;
 			this.acc = acc;
+		}
+	 
+	 public DglMdProdCatDTO() {
+			super();
+			// TODO Auto-generated constructor stub
 		}
 
 }

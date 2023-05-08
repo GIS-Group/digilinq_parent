@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mfino.digilinq.account.dto.DglMdDocTypeDTO;
-import com.mfino.digilinq.account.service.impl.DglMdDocTypeService;
+import com.mfino.digilinq.account.service.DglMdDocTypeService;
 
 @RestController
-public class DglMdDocTypeController {
+public class DglMdDocTypeController extends BaseAPIController  {
 
 	private final Logger log = LoggerFactory.getLogger(DglMdDocTypeController.class);
 
@@ -43,8 +43,8 @@ public class DglMdDocTypeController {
 	public ResponseEntity<?> createDglMdDocType(@Valid @RequestBody DglMdDocTypeDTO dglMdDocTypeDTO)
 			throws URISyntaxException {
 		log.debug("REST request to save DglMdDocType : {}", dglMdDocTypeDTO);
-		DglMdDocTypeDTO result = dglMdDocTypeService.save(dglMdDocTypeDTO);
-		return ResponseEntity.ok(new ApiReponse<DglMdDocTypeDTO>(result, true, "Operation completed succussfully"));
+		dglMdDocTypeService.save(dglMdDocTypeDTO);
+		return ResponseEntity.ok(new BaseRestApiResponse());
 	}
 
 	/**
@@ -64,8 +64,8 @@ public class DglMdDocTypeController {
 			@PathVariable(value = "id", required = false) final Integer id,
 			@Valid @RequestBody DglMdDocTypeDTO dglMdDocTypeDTO) throws URISyntaxException {
 		log.debug("REST request to update DglMdDocType : {}, {}", id, dglMdDocTypeDTO);
-		DglMdDocTypeDTO result = dglMdDocTypeService.update(dglMdDocTypeDTO);
-		return ResponseEntity.ok(new ApiReponse<>(true, "Updated Successfully"));
+		dglMdDocTypeService.update(dglMdDocTypeDTO);
+		return ResponseEntity.ok(getSucessResponse(new BaseRestApiResponse()));
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class DglMdDocTypeController {
 		    ) throws URISyntaxException {
 		        log.debug("REST request to partial update DglMdCustCat partially : {}, {}", id, mdDocTypeStatus);
 		        dglMdDocTypeService.updateStatus(id, mdDocTypeStatus);
-		        return ResponseEntity.ok(new ApiReponse<>(true, "Status Updated Successfully"));
+		        return ResponseEntity.ok(getSucessResponse(new BaseRestApiResponse()));
 		    }
 
 	/**
@@ -99,9 +99,12 @@ public class DglMdDocTypeController {
 	 *         of dglMdDocTypes in body.
 	 */
 	@GetMapping("/doc-types")
-	public List<DglMdDocTypeDTO> getAllDglMdDocTypes() {
+	public List<DglMdDocTypeDTO> getAllDglMdDocTypes(
+			@RequestParam(value = "page_no", required = false)int pageNo,
+	        @RequestParam(value = "page_size", required = false) int pageSize,
+	        @RequestParam(value = "sort_feild", required = false) String sortFeild) {
 		log.debug("REST request to get all DglMdDocTypes");
-		return dglMdDocTypeService.findAll();
+		return dglMdDocTypeService.findAll(pageNo , pageSize,sortFeild);
 	}
 
 	/**
@@ -115,64 +118,7 @@ public class DglMdDocTypeController {
 	public ResponseEntity<?> getDglMdDocType(@PathVariable Long id) {
 		log.debug("REST request to get DglMdDocType : {}", id);
 		Optional<DglMdDocTypeDTO> dglMdDocTypeDTO = dglMdDocTypeService.findOne(id);
-		return ResponseEntity.ok(new ApiReponse<DglMdDocTypeDTO>(dglMdDocTypeDTO.get(), true, "Operation completed succussfully"));
+		return ResponseEntity.ok(getSucessResponse("Operation completed succussfully",dglMdDocTypeDTO));
 	}
 
-	/**
-	 * {@code DELETE  /dgl-md-doc-types/:id} : delete the "id" dglMdDocType.
-	 *
-	 * @param id the id of the dglMdDocTypeDTO to delete.
-	 * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
-	 */
-//	@DeleteMapping("/doc-types/{id}")
-	public ResponseEntity<?> deleteDglMdDocType(@PathVariable Long id) {
-		log.debug("REST request to delete DglMdDocType : {}", id);
-		dglMdDocTypeService.delete(id);
-		return ResponseEntity.ok(new ApiReponse<>(true, "Deleted Successfully"));
-	}
-
-	public class ApiReponse<T> {
-
-		private T response;
-
-		private boolean success = true;
-
-		private String message;
-
-		public T getResponse() {
-			return response;
-		}
-
-		public void setResponse(T response) {
-			this.response = response;
-		}
-
-		public boolean isSuccess() {
-			return success;
-		}
-
-		public void setSuccess(boolean success) {
-			this.success = success;
-		}
-
-		public String getMessage() {
-			return message;
-		}
-
-		public void setMessage(String message) {
-			this.message = message;
-		}
-
-		public ApiReponse(T response, boolean success, String message) {
-			super();
-			this.response = response;
-			this.success = success;
-			this.message = message;
-		}
-		public ApiReponse(boolean success, String message) {
-			this.success = success;
-			this.message = message;
-		}
-
-	}
 }
