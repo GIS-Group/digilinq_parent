@@ -47,7 +47,7 @@ public class DglMdCustCatController extends BaseAPIController {
 			throws URISyntaxException {
 		log.debug("REST request to save DglMdCustCat : {}", dglMdCustCatDTO);
 		dglMdCustCatService.save(dglMdCustCatDTO);
-		return ResponseEntity.ok(getSucessResponse(new BaseRestApiResponse()));
+		return ResponseEntity.ok(new BaseRestApiResponse());
 	}
 
 	/**
@@ -67,7 +67,7 @@ public class DglMdCustCatController extends BaseAPIController {
 			@Valid @RequestBody DglMdCustCatDTO dglMdCustCatDTO) throws URISyntaxException {
 		log.debug("REST request to update DglMdCustCat : {}, {}", id, dglMdCustCatDTO);
 		dglMdCustCatService.update(dglMdCustCatDTO);
-		return ResponseEntity.ok(getSucessResponse(new BaseRestApiResponse()));
+		return ResponseEntity.ok(new BaseRestApiResponse());
 	}
 
 	/**
@@ -90,7 +90,7 @@ public class DglMdCustCatController extends BaseAPIController {
 			throws URISyntaxException {
 		log.debug("REST request to partial update DglMdCustCat partially : {}, {}", id, mdCusStatus);
 		dglMdCustCatService.updateStatus(id, mdCusStatus);
-		return ResponseEntity.ok(getSucessResponse(new BaseRestApiResponse()));
+		return ResponseEntity.ok(new BaseRestApiResponse());
 	}
 
 	/**
