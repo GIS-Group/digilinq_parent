@@ -25,6 +25,7 @@ import com.mfino.digilinq.account.service.DglMdTaxCompService;
 
 /**
  * @author Krishna 
+ * 
  * REST controller for managing {@link com.mfino.digilinq.domain.DglMdTaxComp}.
  */
 @RestController
@@ -88,7 +89,7 @@ public class DglMdTaxCompController {
 	 */
 	@PatchMapping(value = "/tax-comp")
 	public ResponseEntity<?> partialUpdateDglMdTaxComp(@RequestParam(value = "id", required = true) final Long id,
-			@RequestParam(value = "mdTaxStatus", required = true) final String mdTaxStatus) throws URISyntaxException {
+			@RequestParam(value = "md_tax_status", required = true) final String mdTaxStatus) throws URISyntaxException {
 		log.debug("REST request to partial update DglMdTaxComp partially : {}, {}", id, mdTaxStatus);
 		dglMdTaxCompService.updateStatus(id, mdTaxStatus);
 		return ResponseEntity.ok(new ApiReponse<>(true, "Status Updated Successfully"));
@@ -101,9 +102,12 @@ public class DglMdTaxCompController {
 	 *         of dglMdTaxComps in body.
 	 */
 	@GetMapping("/tax-comps")
-	public List<DglMdTaxCompDTO> getAllDglMdTaxComps() {
+	public List<DglMdTaxCompDTO> getAllDglMdTaxComps(
+			@RequestParam(value = "page_no", required = false) Integer pageNo,
+			@RequestParam(value = "page_size", required = false) Integer pageSize,
+			@RequestParam(value = "sort_field", required = false) String sortField) {
 		log.debug("REST request to get all DglMdTaxComps");
-		return dglMdTaxCompService.findAll();
+		return dglMdTaxCompService.findAll(pageNo, pageSize, sortField);
 	}
 
 	/**

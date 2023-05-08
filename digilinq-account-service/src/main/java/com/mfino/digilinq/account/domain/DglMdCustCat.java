@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
@@ -32,7 +33,8 @@ import lombok.ToString;
 @Setter
 @ToString(onlyExplicitlyIncluded = true)
 @Entity
-@Table(name = "dgl_md_cust_cat", schema = "digilinq_dev_new")
+@Table(name = "dgl_md_cust_cat", schema = "digilinq_dev_new", uniqueConstraints = {
+		@UniqueConstraint(columnNames = { "cust_cat_title" }) })
 public class DglMdCustCat implements Serializable {
     private static final long serialVersionUID = 1455327136665705986L;
     @Id

@@ -8,6 +8,9 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.mfino.digilinq.account.domain.DglMdTaxComp;
@@ -52,9 +55,14 @@ public class DglMdTaxCompServiceImpl implements DglMdTaxCompService {
 	}
 
 	@Override
-	public List<DglMdTaxCompDTO> findAll() {
+	public List<DglMdTaxCompDTO> findAll(Integer pageNo, Integer pageSize, String sortField) {
 		DglMdTaxCompMapper dglMdTaxCompMapper = new DglMdTaxCompMapper();
-		return dglMdTaxCompRepository.findAll().stream().map(dglMdTaxCompMapper::toDTO)
+		Pageable pageable;
+		if (pageNo == null || pageSize == null || sortField == null)
+			pageable = PageRequest.of(0, 10, Sort.by("id"));
+		else
+			pageable = PageRequest.of(pageNo, pageSize, Sort.by(sortField));
+		return dglMdTaxCompRepository.findAll(pageable).stream().map(dglMdTaxCompMapper::toDTO)
 				.collect(Collectors.toCollection(LinkedList::new));
 	}
 
