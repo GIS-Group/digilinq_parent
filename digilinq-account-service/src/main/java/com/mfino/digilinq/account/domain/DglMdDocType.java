@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -46,7 +48,7 @@ public class DglMdDocType implements Serializable {
     @Column(name = "md_doc_status")
     private String mdDocStatus;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,optional = true)
     @JoinColumn(name = "acc_id")
     private DglAccMno acc;
 
