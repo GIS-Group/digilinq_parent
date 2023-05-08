@@ -9,6 +9,8 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -20,11 +22,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mfino.digilinq.account.dto.DglMdProdCatDTO;
-import com.mfino.digilinq.account.service.impl.DglMdProdCatService;
+import com.mfino.digilinq.account.service.DglMdProdCatService;
 
 
 @RestController
-public class DglMdProdCatController {
+public class DglMdProdCatController extends BaseAPIController  {
 
 	private final Logger log = LoggerFactory.getLogger(DglMdProdCatController.class);
 	
@@ -44,8 +46,8 @@ public class DglMdProdCatController {
 	public ResponseEntity<?> createDglMdProdCat(@Valid @RequestBody DglMdProdCatDTO dglMdProdCatDTO)
 			throws URISyntaxException {
 		log.debug("REST request to save DglMdProdCat : {}", dglMdProdCatDTO);
-		DglMdProdCatDTO result = dglMdProdCatService.save(dglMdProdCatDTO);
-		return ResponseEntity.ok(new ApiReponse<DglMdProdCatDTO>(result, true, "Operation completed succussfully"));
+		dglMdProdCatService.save(dglMdProdCatDTO);
+		return ResponseEntity.ok(new BaseRestApiResponse());
 	}
 
 	/**
@@ -65,8 +67,8 @@ public class DglMdProdCatController {
 			@PathVariable(value = "id", required = false) final Integer id,
 			@Valid @RequestBody DglMdProdCatDTO dglMdProdCatDTO) throws URISyntaxException {
 		log.debug("REST request to update DglMdProdCat : {}, {}", id, dglMdProdCatDTO);
-		DglMdProdCatDTO result = dglMdProdCatService.update(dglMdProdCatDTO);
-		return ResponseEntity.ok(new ApiReponse<DglMdProdCatDTO>(result, true, "Operation completed succussfully"));
+	    dglMdProdCatService.update(dglMdProdCatDTO);
+		return ResponseEntity.ok(getSucessResponse(new BaseRestApiResponse()));
 	}
 
 	/**
@@ -90,7 +92,7 @@ public class DglMdProdCatController {
 	    ) throws URISyntaxException {
 	        log.debug("REST request to partial update DglMdCustCat partially : {}, {}", id, mdDocTypeStatus);
 	        dglMdProdCatService.updateStatus(id, mdDocTypeStatus);
-	        return ResponseEntity.ok(new ApiReponse<>(true, "Status Updated Successfully"));
+	        return ResponseEntity.ok(getSucessResponse(new BaseRestApiResponse()));
 	    }
 
 	/**
@@ -100,9 +102,11 @@ public class DglMdProdCatController {
 	 *         of dglMdProdCats in body.
 	 */
 	@GetMapping("/prod-cats")
-	public List<DglMdProdCatDTO> getAllDglMdProdCats() {
+	public List<DglMdProdCatDTO> getAllDglMdProdCats(@RequestParam(value = "page_no", required = false) final Integer pageNo,
+	        @RequestParam(value = "page_size", required = false) final Integer pageSize,
+	        @RequestParam(value = "sort_feild", required = false) String sortFeild) {
 		log.debug("REST request to get all DglMdProdCats");
-		return dglMdProdCatService.findAll();
+		return dglMdProdCatService.findAll(pageNo,pageSize,sortFeild);
 	}
 
 	/**
@@ -116,71 +120,7 @@ public class DglMdProdCatController {
 	public ResponseEntity<?> getDglMdProdCat(@PathVariable Long id) {
 		log.debug("REST request to get DglMdProdCat : {}", id);
 		Optional<DglMdProdCatDTO> dglMdProdCatDTO = dglMdProdCatService.findOne(id);
-		// return ResponseUtil.wrapOrNotFound(dglMdProdCatDTO);
-		return ResponseEntity.ok(new ApiReponse<DglMdProdCatDTO>(dglMdProdCatDTO.get(), true, "Operation completed succussfully"));
-	}
-
-	/**
-	 * {@code DELETE  /dgl-md-prod-cats/:id} : delete the "id" dglMdProdCat.
-	 *
-	 * @param id the id of the dglMdProdCatDTO to delete.
-	 * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
-	 */
-//	@DeleteMapping("/dgl-md-prod-cats/{id}")
-//	public ResponseEntity<Void> deleteDglMdProdCat(@PathVariable Integer id) {
-//		log.debug("REST request to delete DglMdProdCat : {}", id);
-//		dglMdProdCatService.delete(id);
-////        return ResponseEntity
-////            .noContent()
-////            .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
-////            .build();
-//		return null;
-//	}
-	
-	public class ApiReponse<T> {
-
-		private T response;
-
-		private boolean success = true;
-
-		private String message;
-
-		public T getResponse() {
-			return response;
-		}
-
-		public void setResponse(T response) {
-			this.response = response;
-		}
-
-		public boolean isSuccess() {
-			return success;
-		}
-
-		public void setSuccess(boolean success) {
-			this.success = success;
-		}
-
-		public String getMessage() {
-			return message;
-		}
-
-		public void setMessage(String message) {
-			this.message = message;
-		}
-
-		public ApiReponse(T response, boolean success, String message) {
-			super();
-			this.response = response;
-			this.success = success;
-			this.message = message;
-		}
-		
-		public ApiReponse(boolean success, String message) {
-			this.success = success;
-			this.message = message;
-		}
-
+		return ResponseEntity.ok(getSucessResponse("Operation completed succussfully",dglMdProdCatDTO));
 	}
 
 }
