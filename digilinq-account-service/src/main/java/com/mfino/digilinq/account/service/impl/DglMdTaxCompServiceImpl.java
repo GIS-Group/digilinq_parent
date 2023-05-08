@@ -22,9 +22,9 @@ import com.mfino.digilinq.account.service.mapper.DglMdTaxCompMapper;
 
 @Service
 public class DglMdTaxCompServiceImpl implements DglMdTaxCompService {
-	
+
 	private final Logger log = LoggerFactory.getLogger(DglMdTaxCompServiceImpl.class);
-	
+
 	@Autowired
 	private DglMdTaxCompRepository dglMdTaxCompRepository;
 
@@ -32,18 +32,18 @@ public class DglMdTaxCompServiceImpl implements DglMdTaxCompService {
 	public DglMdTaxCompDTO save(DglMdTaxCompDTO dglMdTaxCompDTO) {
 		log.debug("Request to save DglMdTaxComp : {}", dglMdTaxCompDTO);
 		DglMdTaxCompMapper dglMdTaxCompMapper = new DglMdTaxCompMapper();
-        DglMdTaxComp dglMdTaxComp = dglMdTaxCompMapper.toEntity(dglMdTaxCompDTO);
-        dglMdTaxComp = dglMdTaxCompRepository.save(dglMdTaxComp);
-        return dglMdTaxCompMapper.toDTO(dglMdTaxComp);
+		DglMdTaxComp dglMdTaxComp = dglMdTaxCompMapper.toEntity(dglMdTaxCompDTO);
+		dglMdTaxComp = dglMdTaxCompRepository.save(dglMdTaxComp);
+		return dglMdTaxCompMapper.toDTO(dglMdTaxComp);
 	}
 
 	@Override
 	public DglMdTaxCompDTO update(DglMdTaxCompDTO dglMdTaxCompDTO) {
 		log.debug("Request to update DglMdTaxComp : {}", dglMdTaxCompDTO);
 		DglMdTaxCompMapper dglMdTaxCompMapper = new DglMdTaxCompMapper();
-        DglMdTaxComp dglMdTaxComp = dglMdTaxCompMapper.toEntity(dglMdTaxCompDTO);
-        dglMdTaxComp = dglMdTaxCompRepository.save(dglMdTaxComp);
-        return dglMdTaxCompMapper.toDTO(dglMdTaxComp);
+		DglMdTaxComp dglMdTaxComp = dglMdTaxCompMapper.toEntity(dglMdTaxCompDTO);
+		dglMdTaxComp = dglMdTaxCompRepository.save(dglMdTaxComp);
+		return dglMdTaxCompMapper.toDTO(dglMdTaxComp);
 	}
 
 	@Override
@@ -55,13 +55,10 @@ public class DglMdTaxCompServiceImpl implements DglMdTaxCompService {
 	}
 
 	@Override
-	public List<DglMdTaxCompDTO> findAll(Integer pageNo, Integer pageSize, String sortField) {
+	public List<DglMdTaxCompDTO> findAll(int pageNo, int pageSize, String sortField) {
 		DglMdTaxCompMapper dglMdTaxCompMapper = new DglMdTaxCompMapper();
-		Pageable pageable;
-		if (pageNo == null || pageSize == null || sortField == null)
-			pageable = PageRequest.of(0, 10, Sort.by("id"));
-		else
-			pageable = PageRequest.of(pageNo, pageSize, Sort.by(sortField));
+		Pageable pageable = PageRequest.of(pageNo != 0 ? pageNo : 0, pageSize != 0 ? pageSize : 10,
+				sortField != null ? Sort.by(sortField) : Sort.by("id"));
 		return dglMdTaxCompRepository.findAll(pageable).stream().map(dglMdTaxCompMapper::toDTO)
 				.collect(Collectors.toCollection(LinkedList::new));
 	}

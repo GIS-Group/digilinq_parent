@@ -102,8 +102,8 @@ public class DglMdCustCatController {
 	 */
 	@GetMapping("/cust-cats")
 	public List<DglMdCustCatDTO> getAllDglMdCustCats(
-			@RequestParam(value = "page_no", required = false) Integer pageNo,
-			@RequestParam(value = "page_size", required = false) Integer pageSize,
+			@RequestParam(value = "page_no", required = false) int pageNo,
+			@RequestParam(value = "page_size", required = false) int pageSize,
 			@RequestParam(value = "sort_field", required = false) String sortField) {
 		log.debug("REST request to get all DglMdCustCats");
 		return dglMdCustCatService.findAll(pageNo, pageSize, sortField);

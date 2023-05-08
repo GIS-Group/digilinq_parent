@@ -56,14 +56,10 @@ public class DglMdCustCatServiceImpl implements DglMdCustCatService {
 	}
 
 	@Override
-	public List<DglMdCustCatDTO> findAll(Integer pageNo, Integer pageSize, String sortField) {
+	public List<DglMdCustCatDTO> findAll(int pageNo, int pageSize, String sortField) {
 		DglMdCustCatMapper mapper = new DglMdCustCatMapper();
-		Pageable pageable;
-		if (pageNo == null || pageSize == null || sortField == null)
-			pageable = PageRequest.of(0, 10, Sort.by("id"));
-		else
-			pageable = PageRequest.of(pageNo, pageSize, Sort.by(sortField));
-		System.out.println(pageable);
+		Pageable pageable = PageRequest.of(pageNo != 0 ? pageNo : 0, pageSize != 0 ? pageSize : 10,
+				sortField != null ? Sort.by(sortField) : Sort.by("id"));
 		return dglMdCustCatRepository.findAll(pageable).stream().map(mapper::toDTO)
 				.collect(Collectors.toCollection(LinkedList::new));
 	}

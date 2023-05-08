@@ -103,8 +103,8 @@ public class DglMdTaxCompController {
 	 */
 	@GetMapping("/tax-comps")
 	public List<DglMdTaxCompDTO> getAllDglMdTaxComps(
-			@RequestParam(value = "page_no", required = false) Integer pageNo,
-			@RequestParam(value = "page_size", required = false) Integer pageSize,
+			@RequestParam(value = "page_no", required = false) int pageNo,
+			@RequestParam(value = "page_size", required = false) int pageSize,
 			@RequestParam(value = "sort_field", required = false) String sortField) {
 		log.debug("REST request to get all DglMdTaxComps");
 		return dglMdTaxCompService.findAll(pageNo, pageSize, sortField);
