@@ -87,7 +87,8 @@ public class DglMdCustCatController {
 	 */
 	@PatchMapping(value = "/cust-cats")
 	public ResponseEntity<?> partialUpdateDglMdCustCat(@RequestParam(value = "id", required = true) final Long id,
-			@RequestParam(value = "mdCusStatus", required = true) final String mdCusStatus) throws URISyntaxException {
+			@RequestParam(value = "md_cus_status", required = true) final String mdCusStatus)
+			throws URISyntaxException {
 		log.debug("REST request to partial update DglMdCustCat partially : {}, {}", id, mdCusStatus);
 		dglMdCustCatService.updateStatus(id, mdCusStatus);
 		return ResponseEntity.ok(new ApiReponse<>(true, "Status Updated Successfully"));
@@ -100,9 +101,12 @@ public class DglMdCustCatController {
 	 *         of dglMdCustCats in body.
 	 */
 	@GetMapping("/cust-cats")
-	public List<DglMdCustCatDTO> getAllDglMdCustCats() {
+	public List<DglMdCustCatDTO> getAllDglMdCustCats(
+			@RequestParam(value = "page_no", required = false) Integer pageNo,
+			@RequestParam(value = "page_size", required = false) Integer pageSize,
+			@RequestParam(value = "sort_field", required = false) String sortField) {
 		log.debug("REST request to get all DglMdCustCats");
-		return dglMdCustCatService.findAll();
+		return dglMdCustCatService.findAll(pageNo, pageSize, sortField);
 	}
 
 	/**

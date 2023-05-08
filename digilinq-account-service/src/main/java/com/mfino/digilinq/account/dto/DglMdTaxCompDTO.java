@@ -3,6 +3,8 @@ package com.mfino.digilinq.account.dto;
 import java.io.Serializable;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -14,14 +16,25 @@ public class DglMdTaxCompDTO implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 2305834058164760525L;
+
 	private Long id;
+
+	@NotNull(message = "TaxComponent Title Cannot be null")
+	@Pattern(regexp = "^[a-zA-Z0-9.\\-\\/+=@_ ]*$", message = "pattern is not allowed.")
+	@Size(max = 255, message = "TaxComponent Title Max characters allowed is 255")
 	private String taxCompTitle;
+
 	private String taxCompDedType;
+
 	private String taxCompDesc;
+
+	@NotNull(message = "Tax Component ApplicableModules Cannot be null")
 	private String appModules;
+
 	private String taxValue;
-	@NotNull
+
 	private StatusType mdTaxStatus;
+
 	@JsonInclude(content = Include.NON_NULL)
 	private DglAccMnoDTO acc;
 

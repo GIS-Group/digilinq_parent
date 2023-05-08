@@ -33,34 +33,34 @@ import lombok.ToString;
 @Entity
 @Table(name = "dgl_md_tax_comp", schema = "digilinq_dev_new")
 public class DglMdTaxComp implements Serializable {
-    private static final long serialVersionUID = -2467529330463950809L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tax_id", nullable = false)
-    private Long id;
+	private static final long serialVersionUID = -2467529330463950809L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "tax_id", nullable = false)
+	private Long id;
 
-    @Column(name = "tax_comp_title")
-    private String taxCompTitle;
+	@Column(name = "tax_comp_title", unique = true)
+	private String taxCompTitle;
 
-    @Column(name = "tax_comp_ded_type")
-    private String taxCompDedType;
+	@Column(name = "tax_comp_ded_type")
+	private String taxCompDedType;
 
-    @Column(name = "tax_comp_desc")
-    private String taxCompDesc;
+	@Column(name = "tax_comp_desc")
+	private String taxCompDesc;
 
-    @Column(name = "app_modules")
-    private String appModules;
+	@Column(name = "app_modules")
+	private String appModules;
 
-    @Column(name = "tax_value", length = 50)
-    private String taxValue;
+	@Column(name = "tax_value", length = 50)
+	private String taxValue;
 
-    @Column(name = "md_tax_status")
-    @Type(type = "com.mfino.digilinq.commons.enumeration.EnumUserType", parameters = {
-			@Parameter(name = "Enum", value = "com.mfino.digilinq.account.enumeration.StatusType")})
-    private StatusType mdTaxStatus;
+	@Column(name = "md_tax_status")
+	@Type(type = "com.mfino.digilinq.commons.enumeration.EnumUserType", parameters = {
+			@Parameter(name = "Enum", value = "com.mfino.digilinq.account.enumeration.StatusType") })
+	private StatusType mdTaxStatus;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "acc_id")
-    private DglAccMno acc;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "acc_id")
+	private DglAccMno acc;
 
 }
