@@ -2,121 +2,121 @@ package com.mfino.digilinq.account.dto;
 
 import java.io.Serializable;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.mfino.digilinq.account.enumeration.StatusType;
-
+/**
+ * A DTO for the {@link com.mfino.digilinq.domain.DglMdTaxComp} entity.
+ */
 public class DglMdTaxCompDTO implements Serializable {
+    
+    private Long id;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2305834058164760525L;
+    private String taxCompTitle;
 
-	private Long id;
+    private String taxCompDedType;
 
-	@NotNull(message = "TaxComponent Title Cannot be null")
-	@Pattern(regexp = "^[a-zA-Z0-9.\\-\\/+=@_ ]*$", message = "pattern is not allowed.")
-	@Size(max = 255, message = "TaxComponent Title Max characters allowed is 255")
-	private String taxCompTitle;
+    private String taxCompDesc;
 
-	private String taxCompDedType;
+    private String appModules;
 
-	private String taxCompDesc;
+    private String taxValue;
 
-	@NotNull(message = "Tax Component ApplicableModules Cannot be null")
-	private String appModules;
+    private String mdTaxStatus;
 
-	private String taxValue;
 
-	private StatusType mdTaxStatus;
+    private Long dglAccMnoId;
+    
+    public Long getId() {
+        return id;
+    }
 
-	@JsonInclude(content = Include.NON_NULL)
-	private DglAccMnoDTO acc;
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public DglMdTaxCompDTO() {
-		super();
-	}
+    public String getTaxCompTitle() {
+        return taxCompTitle;
+    }
 
-	public DglMdTaxCompDTO(Long id, String taxCompTitle, String taxCompDedType, String taxCompDesc, String appModules,
-			String taxValue, StatusType mdTaxStatus, DglAccMnoDTO acc) {
-		super();
-		this.id = id;
-		this.taxCompTitle = taxCompTitle;
-		this.taxCompDedType = taxCompDedType;
-		this.taxCompDesc = taxCompDesc;
-		this.appModules = appModules;
-		this.taxValue = taxValue;
-		this.mdTaxStatus = mdTaxStatus;
-		this.acc = acc;
-	}
+    public void setTaxCompTitle(String taxCompTitle) {
+        this.taxCompTitle = taxCompTitle;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public String getTaxCompDedType() {
+        return taxCompDedType;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setTaxCompDedType(String taxCompDedType) {
+        this.taxCompDedType = taxCompDedType;
+    }
 
-	public String getTaxCompTitle() {
-		return taxCompTitle;
-	}
+    public String getTaxCompDesc() {
+        return taxCompDesc;
+    }
 
-	public void setTaxCompTitle(String taxCompTitle) {
-		this.taxCompTitle = taxCompTitle;
-	}
+    public void setTaxCompDesc(String taxCompDesc) {
+        this.taxCompDesc = taxCompDesc;
+    }
 
-	public String getTaxCompDedType() {
-		return taxCompDedType;
-	}
+    public String getAppModules() {
+        return appModules;
+    }
 
-	public void setTaxCompDedType(String taxCompDedType) {
-		this.taxCompDedType = taxCompDedType;
-	}
+    public void setAppModules(String appModules) {
+        this.appModules = appModules;
+    }
 
-	public String getTaxCompDesc() {
-		return taxCompDesc;
-	}
+    public String getTaxValue() {
+        return taxValue;
+    }
 
-	public void setTaxCompDesc(String taxCompDesc) {
-		this.taxCompDesc = taxCompDesc;
-	}
+    public void setTaxValue(String taxValue) {
+        this.taxValue = taxValue;
+    }
 
-	public String getAppModules() {
-		return appModules;
-	}
+    public String getMdTaxStatus() {
+        return mdTaxStatus;
+    }
 
-	public void setAppModules(String appModules) {
-		this.appModules = appModules;
-	}
+    public void setMdTaxStatus(String mdTaxStatus) {
+        this.mdTaxStatus = mdTaxStatus;
+    }
 
-	public String getTaxValue() {
-		return taxValue;
-	}
+    public Long getDglAccMnoId() {
+        return dglAccMnoId;
+    }
 
-	public void setTaxValue(String taxValue) {
-		this.taxValue = taxValue;
-	}
+    public void setDglAccMnoId(Long dglAccMnoId) {
+        this.dglAccMnoId = dglAccMnoId;
+    }
 
-	public StatusType getMdTaxStatus() {
-		return mdTaxStatus;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof DglMdTaxCompDTO)) {
+            return false;
+        }
 
-	public void setMdTaxStatus(StatusType mdTaxStatus) {
-		this.mdTaxStatus = mdTaxStatus;
-	}
+        return id != null && id.equals(((DglMdTaxCompDTO) o).id);
+    }
 
-	public DglAccMnoDTO getAcc() {
-		return acc;
-	}
+    @Override
+    public int hashCode() {
+        return 31;
+    }
 
-	public void setAcc(DglAccMnoDTO acc) {
-		this.acc = acc;
-	}
-
+    // prettier-ignore
+    @Override
+    public String toString() {
+        return "DglMdTaxCompDTO{" +
+            "id=" + getId() +
+            ", taxCompTitle='" + getTaxCompTitle() + "'" +
+            ", taxCompDedType='" + getTaxCompDedType() + "'" +
+            ", taxCompDesc='" + getTaxCompDesc() + "'" +
+            ", appModules='" + getAppModules() + "'" +
+            ", taxValue='" + getTaxValue() + "'" +
+            ", mdTaxStatus='" + getMdTaxStatus() + "'" +
+            ", dglAccMnoId=" + getDglAccMnoId() +
+            "}";
+    }
 }

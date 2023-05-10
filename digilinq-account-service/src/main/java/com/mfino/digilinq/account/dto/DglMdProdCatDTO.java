@@ -1,22 +1,14 @@
 package com.mfino.digilinq.account.dto;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import java.io.Serializable;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-
-public class DglMdProdCatDTO {
-
-    private static final long serialVersionUID = 7282800539529289265L;
+/**
+ * A DTO for the {@link com.mfino.digilinq.domain.DglMdProdCat} entity.
+ */
+public class DglMdProdCatDTO implements Serializable {
     
     private Long id;
-   
-    @NotNull(message = "Title cant be null")
-    @Size(max = 255,message = "Title name not exced more than 225 charecter")
-    @Pattern(regexp = "^[a-zA-Z0-9.\\-\\/+=@_ ]*$")
+
     private String prodCatTitle;
 
     private String prodCatDesc;
@@ -25,70 +17,84 @@ public class DglMdProdCatDTO {
 
     private String mdProCatStatus;
 
-	@JsonInclude(JsonInclude.Include.NON_NULL)
-    private DglAccMnoDTO acc;
 
-	public Long getId() {
-		return id;
-	}
+    private Long dglAccMnoId;
+    
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getProdCatTitle() {
-		return prodCatTitle;
-	}
+    public String getProdCatTitle() {
+        return prodCatTitle;
+    }
 
-	public void setProdCatTitle(String prodCatTitle) {
-		this.prodCatTitle = prodCatTitle;
-	}
+    public void setProdCatTitle(String prodCatTitle) {
+        this.prodCatTitle = prodCatTitle;
+    }
 
-	public String getProdCatDesc() {
-		return prodCatDesc;
-	}
+    public String getProdCatDesc() {
+        return prodCatDesc;
+    }
 
-	public void setProdCatDesc(String prodCatDesc) {
-		this.prodCatDesc = prodCatDesc;
-	}
+    public void setProdCatDesc(String prodCatDesc) {
+        this.prodCatDesc = prodCatDesc;
+    }
 
-	public String getProdCatImgUrl() {
-		return prodCatImgUrl;
-	}
+    public String getProdCatImgUrl() {
+        return prodCatImgUrl;
+    }
 
-	public void setProdCatImgUrl(String prodCatImgUrl) {
-		this.prodCatImgUrl = prodCatImgUrl;
-	}
+    public void setProdCatImgUrl(String prodCatImgUrl) {
+        this.prodCatImgUrl = prodCatImgUrl;
+    }
 
-	public String getMdProCatStatus() {
-		return mdProCatStatus;
-	}
+    public String getMdProCatStatus() {
+        return mdProCatStatus;
+    }
 
-	public void setMdProCatStatus(String mdProCatStatus) {
-		this.mdProCatStatus = mdProCatStatus;
-	}
+    public void setMdProCatStatus(String mdProCatStatus) {
+        this.mdProCatStatus = mdProCatStatus;
+    }
 
-	public DglAccMnoDTO getAcc() {
-		return acc;
-	}
+    public Long getDglAccMnoId() {
+        return dglAccMnoId;
+    }
 
-	public void setAcc(DglAccMnoDTO acc) {
-		this.acc = acc;
-	}
-	 public DglMdProdCatDTO(Long id, String prodCatTitle, String prodCatDesc, String prodCatImgUrl,
-				String mdProCatStatus, DglAccMnoDTO acc) {
-			super();
-			this.id = id;
-			this.prodCatTitle = prodCatTitle;
-			this.prodCatDesc = prodCatDesc;
-			this.prodCatImgUrl = prodCatImgUrl;
-			this.mdProCatStatus = mdProCatStatus;
-			this.acc = acc;
-		}
-	 
-	 public DglMdProdCatDTO() {
-			super();
-			// TODO Auto-generated constructor stub
-		}
+    public void setDglAccMnoId(Long dglAccMnoId) {
+        this.dglAccMnoId = dglAccMnoId;
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof DglMdProdCatDTO)) {
+            return false;
+        }
+
+        return id != null && id.equals(((DglMdProdCatDTO) o).id);
+    }
+
+    @Override
+    public int hashCode() {
+        return 31;
+    }
+
+    // prettier-ignore
+    @Override
+    public String toString() {
+        return "DglMdProdCatDTO{" +
+            "id=" + getId() +
+            ", prodCatTitle='" + getProdCatTitle() + "'" +
+            ", prodCatDesc='" + getProdCatDesc() + "'" +
+            ", prodCatImgUrl='" + getProdCatImgUrl() + "'" +
+            ", mdProCatStatus='" + getMdProCatStatus() + "'" +
+            ", dglAccMnoId=" + getDglAccMnoId() +
+            "}";
+    }
 }

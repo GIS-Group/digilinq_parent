@@ -2,88 +2,99 @@ package com.mfino.digilinq.account.dto;
 
 import java.io.Serializable;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.mfino.digilinq.account.enumeration.CustomerType;
-import com.mfino.digilinq.account.enumeration.StatusType;
-
+/**
+ * A DTO for the {@link com.mfino.digilinq.domain.DglMdCustCat} entity.
+ */
 public class DglMdCustCatDTO implements Serializable {
+    
+    private Long id;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2091201166769851970L;
+    private String custCatTitle;
 
-	private Long id;
+    private String custCatDesc;
 
-	@NotNull(message = "CastomerCategory Title Cannot be null")
-	@Pattern(regexp = "^[a-zA-Z0-9.\\-\\/+=@_ ]*$", message = "pattern is not allowed.")
-	@Size(max = 255, message = "Title Max characters allowed is 255")
-	private String custCatTitle;
+    private String custCatType;
 
-	private String custCatDesc;
+    private String mdCusStatus;
 
-	private CustomerType custCatType;
 
-	private StatusType mdCusStatus;
+    private Long dglAccMnoId;
+    
+    public Long getId() {
+        return id;
+    }
 
-	@JsonInclude(content = Include.NON_NULL)
-	private DglAccMnoDTO acc;
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public DglMdCustCatDTO() {
-		super();
-	}
+    public String getCustCatTitle() {
+        return custCatTitle;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public void setCustCatTitle(String custCatTitle) {
+        this.custCatTitle = custCatTitle;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public String getCustCatDesc() {
+        return custCatDesc;
+    }
 
-	public String getCustCatTitle() {
-		return custCatTitle;
-	}
+    public void setCustCatDesc(String custCatDesc) {
+        this.custCatDesc = custCatDesc;
+    }
 
-	public void setCustCatTitle(String custCatTitle) {
-		this.custCatTitle = custCatTitle;
-	}
+    public String getCustCatType() {
+        return custCatType;
+    }
 
-	public String getCustCatDesc() {
-		return custCatDesc;
-	}
+    public void setCustCatType(String custCatType) {
+        this.custCatType = custCatType;
+    }
 
-	public void setCustCatDesc(String custCatDesc) {
-		this.custCatDesc = custCatDesc;
-	}
+    public String getMdCusStatus() {
+        return mdCusStatus;
+    }
 
-	public CustomerType getCustCatType() {
-		return custCatType;
-	}
+    public void setMdCusStatus(String mdCusStatus) {
+        this.mdCusStatus = mdCusStatus;
+    }
 
-	public void setCustCatType(CustomerType custCatType) {
-		this.custCatType = custCatType;
-	}
+    public Long getDglAccMnoId() {
+        return dglAccMnoId;
+    }
 
-	public StatusType getMdCusStatus() {
-		return mdCusStatus;
-	}
+    public void setDglAccMnoId(Long dglAccMnoId) {
+        this.dglAccMnoId = dglAccMnoId;
+    }
 
-	public void setMdCusStatus(StatusType mdCusStatus) {
-		this.mdCusStatus = mdCusStatus;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof DglMdCustCatDTO)) {
+            return false;
+        }
 
-	public DglAccMnoDTO getAcc() {
-		return acc;
-	}
+        return id != null && id.equals(((DglMdCustCatDTO) o).id);
+    }
 
-	public void setAcc(DglAccMnoDTO acc) {
-		this.acc = acc;
-	}
+    @Override
+    public int hashCode() {
+        return 31;
+    }
 
+    // prettier-ignore
+    @Override
+    public String toString() {
+        return "DglMdCustCatDTO{" +
+            "id=" + getId() +
+            ", custCatTitle='" + getCustCatTitle() + "'" +
+            ", custCatDesc='" + getCustCatDesc() + "'" +
+            ", custCatType='" + getCustCatType() + "'" +
+            ", mdCusStatus='" + getMdCusStatus() + "'" +
+            ", dglAccMnoId=" + getDglAccMnoId() +
+            "}";
+    }
 }

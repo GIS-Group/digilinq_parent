@@ -1,110 +1,66 @@
 package com.mfino.digilinq.account.service.impl;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mfino.digilinq.account.domain.DglMdProdCat;
 import com.mfino.digilinq.account.dto.DglMdProdCatDTO;
+import com.mfino.digilinq.account.mapper.DglMdProdCatMapper;
 import com.mfino.digilinq.account.repository.DglMdProdCatRepository;
 import com.mfino.digilinq.account.service.DglMdProdCatService;
-import com.mfino.digilinq.account.service.mapper.DglMdProdCatMapper;
 
-
-
+/**
+ * Service Implementation for managing {@link DglMdProdCat}.
+ */
 @Service
-public class DglMdProdCatServiceImpl implements DglMdProdCatService{
-    private final Logger log = org.slf4j.LoggerFactory.getLogger(DglMdProdCatServiceImpl.class);
-    
-    @Autowired
-    private  DglMdProdCatRepository dglMdProdCatRepository;
+@Transactional
+public class DglMdProdCatServiceImpl implements DglMdProdCatService {
 
+    private final Logger log = LoggerFactory.getLogger(DglMdProdCatServiceImpl.class);
 
-    /**
-     * Save a dglMdProdCat.
-     *
-     * @param dglMdProdCatDTO the entity to save.
-     * @return the persisted entity.
-     */
+    private final DglMdProdCatRepository dglMdProdCatRepository;
+
+    private final DglMdProdCatMapper dglMdProdCatMapper;
+
+    public DglMdProdCatServiceImpl(DglMdProdCatRepository dglMdProdCatRepository, DglMdProdCatMapper dglMdProdCatMapper) {
+        this.dglMdProdCatRepository = dglMdProdCatRepository;
+        this.dglMdProdCatMapper = dglMdProdCatMapper;
+    }
+
+    @Override
     public DglMdProdCatDTO save(DglMdProdCatDTO dglMdProdCatDTO) {
         log.debug("Request to save DglMdProdCat : {}", dglMdProdCatDTO);
-        DglMdProdCatMapper dglMdProdCatMapper= new DglMdProdCatMapper();
         DglMdProdCat dglMdProdCat = dglMdProdCatMapper.toEntity(dglMdProdCatDTO);
         dglMdProdCat = dglMdProdCatRepository.save(dglMdProdCat);
-        return dglMdProdCatMapper.toDTO(dglMdProdCat);
+        return dglMdProdCatMapper.toDto(dglMdProdCat);
     }
 
-    /**
-     * Update a dglMdProdCat.
-     *
-     * @param dglMdProdCatDTO the entity to save.
-     * @return the persisted entity.
-     */
-    public DglMdProdCatDTO update(DglMdProdCatDTO dglMdProdCatDTO) {
-        log.debug("Request to update DglMdProdCat : {}", dglMdProdCatDTO);
-        DglMdProdCatMapper dglMdProdCatMapper= new DglMdProdCatMapper();
-        DglMdProdCat dglMdProdCat = dglMdProdCatMapper.toEntity(dglMdProdCatDTO);
-        dglMdProdCat = dglMdProdCatRepository.save(dglMdProdCat);
-        return dglMdProdCatMapper.toDTO(dglMdProdCat);
-    }
-
-    /**
-     * Partially update a dglMdProdCat.
-     *
-     * @param dglMdProdCatDTO the entity to update partially.
-     * @return the persisted entity.
-     */
-    public void updateStatus(Long id, String mdProdCatStatus) {
-		Optional<DglMdProdCat> dglMdProdCat = dglMdProdCatRepository.findById(id);
-		DglMdProdCat entity = dglMdProdCat.get();
-		entity.setMdProCatStatus(mdProdCatStatus);
-		dglMdProdCatRepository.save(entity);
-
-	}
-
-    /**
-     * Get all the dglMdProdCats.
-     *
-     * @return the list of entities.
-     */
+    @Override
     @Transactional(readOnly = true)
-    public List<DglMdProdCatDTO> findAll(int pageNo, int pageSize, String sortField) {
+    public Page<DglMdProdCatDTO> findAll(Pageable pageable) {
         log.debug("Request to get all DglMdProdCats");
-        DglMdProdCatMapper dglMdProdCatMapper= new DglMdProdCatMapper();
-		Pageable pageable = PageRequest.of(pageNo!=0?pageNo:0, pageSize!=0?pageSize:10, sortField!=null? Sort.by(sortField):Sort.by("id"));
-        return dglMdProdCatRepository.findAll(pageable).stream().map(dglMdProdCatMapper::toDTO).collect(Collectors.toCollection(LinkedList::new));
+        return dglMdProdCatRepository.findAll(pageable)
+            .map(dglMdProdCatMapper::toDto);
     }
 
-    /**
-     * Get one dglMdProdCat by id.
-     *
-     * @param id the id of the entity.
-     * @return the entity.
-     */
+
+    @Override
     @Transactional(readOnly = true)
     public Optional<DglMdProdCatDTO> findOne(Long id) {
         log.debug("Request to get DglMdProdCat : {}", id);
-        DglMdProdCatMapper dglMdProdCatMapper= new DglMdProdCatMapper();
-        return dglMdProdCatRepository.findById(id).map(dglMdProdCatMapper::toDTO);
+        return dglMdProdCatRepository.findById(id)
+            .map(dglMdProdCatMapper::toDto);
     }
 
-    /**
-     * Delete the dglMdProdCat by id.
-     *
-     * @param id the id of the entity.
-     */
+    @Override
     public void delete(Long id) {
         log.debug("Request to delete DglMdProdCat : {}", id);
         dglMdProdCatRepository.deleteById(id);
     }
-
 }
