@@ -6,8 +6,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * This class represents BaseRestApiResponse.java
- * 
- * @author Krishna 
+ *
+ * @author Krishna
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BaseRestApiResponse implements Serializable {

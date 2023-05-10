@@ -1,7 +1,6 @@
 package com.mfino.digilinq.account.controller;
 
 import java.net.URISyntaxException;
-import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -24,9 +23,9 @@ import com.mfino.digilinq.account.service.DglMdTaxCompService;
 
 /**
  * @author Krishna
- * 
+ *
  * REST controller for managing
- *         {@link com.mfino.digilinq.domain.DglMdTaxComp}.
+ *         {@link com.mfino.digilinq.account.domain.domain.DglMdTaxComp}.
  */
 @RestController
 public class DglMdTaxCompController extends BaseAPIController {
@@ -69,7 +68,8 @@ public class DglMdTaxCompController extends BaseAPIController {
 	public ResponseEntity<?> updateDglMdTaxComp(@PathVariable(value = "id", required = true) final Long id,
 			@Valid @RequestBody DglMdTaxCompDTO dglMdTaxCompDTO) throws URISyntaxException {
 		log.debug("REST request to update DglMdTaxComp : {}, {}", id, dglMdTaxCompDTO);
-		dglMdTaxCompService.update(dglMdTaxCompDTO);
+//		dglMdTaxCompService.update(dglMdTaxCompDTO);
+		dglMdTaxCompService.save(dglMdTaxCompDTO);
 		return ResponseEntity.ok(new BaseRestApiResponse());
 	}
 
@@ -92,7 +92,7 @@ public class DglMdTaxCompController extends BaseAPIController {
 			@RequestParam(value = "md_tax_status", required = true) final String mdTaxStatus)
 			throws URISyntaxException {
 		log.debug("REST request to partial update DglMdTaxComp partially : {}, {}", id, mdTaxStatus);
-		dglMdTaxCompService.updateStatus(id, mdTaxStatus);
+//		dglMdTaxCompService.updateStatus(id, mdTaxStatus);
 		return ResponseEntity.ok(new BaseRestApiResponse());
 	}
 
@@ -102,13 +102,13 @@ public class DglMdTaxCompController extends BaseAPIController {
 	 * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list
 	 *         of dglMdTaxComps in body.
 	 */
-	@GetMapping("/tax-comps")
-	public List<DglMdTaxCompDTO> getAllDglMdTaxComps(@RequestParam(value = "page_no", required = false) int pageNo,
-			@RequestParam(value = "page_size", required = false) int pageSize,
-			@RequestParam(value = "sort_field", required = false) String sortField) {
-		log.debug("REST request to get all DglMdTaxComps");
-		return dglMdTaxCompService.findAll(pageNo, pageSize, sortField);
-	}
+//	@GetMapping("/tax-comps")
+//	public List<DglMdTaxCompDTO> getAllDglMdTaxComps(@RequestParam(value = "page_no", required = false) int pageNo,
+//			@RequestParam(value = "page_size", required = false) int pageSize,
+//			@RequestParam(value = "sort_field", required = false) String sortField) {
+//		log.debug("REST request to get all DglMdTaxComps");
+//		return dglMdTaxCompService.findAll(pageNo, pageSize, sortField);
+//	}
 
 	/**
 	 * {@code GET  /tax-comp/:id} : get the "id" dglMdTaxComp.

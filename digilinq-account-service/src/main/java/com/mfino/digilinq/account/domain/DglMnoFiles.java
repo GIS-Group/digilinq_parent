@@ -4,34 +4,29 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
-@ToString(onlyExplicitlyIncluded = true)
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+/**
+ * A DglMnoFiles.
+ */
 @Entity
-@Table(name = "dgl_mno_files", schema = "digilinq_dev_new")
+@Table(name = "dgl_mno_files")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class DglMnoFiles implements Serializable {
-    private static final long serialVersionUID = 2732756989404588739L;
+
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "file_id", nullable = false)
     private Long id;
 
     @Column(name = "file_name")
@@ -40,8 +35,82 @@ public class DglMnoFiles implements Serializable {
     @Column(name = "file_url")
     private String fileUrl;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "acc_id")
-    private DglAccMno acc;
+    @ManyToOne
+    @JsonIgnoreProperties(value = "dglMnoFiles", allowSetters = true)
+    private DglAccMno dglAccMno;
 
+    // jhipster-needle-entity-add-field - JHipster will add fields here
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public DglMnoFiles fileName(String fileName) {
+        this.fileName = fileName;
+        return this;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public String getFileUrl() {
+        return fileUrl;
+    }
+
+    public DglMnoFiles fileUrl(String fileUrl) {
+        this.fileUrl = fileUrl;
+        return this;
+    }
+
+    public void setFileUrl(String fileUrl) {
+        this.fileUrl = fileUrl;
+    }
+
+    public DglAccMno getDglAccMno() {
+        return dglAccMno;
+    }
+
+    public DglMnoFiles dglAccMno(DglAccMno dglAccMno) {
+        this.dglAccMno = dglAccMno;
+        return this;
+    }
+
+    public void setDglAccMno(DglAccMno dglAccMno) {
+        this.dglAccMno = dglAccMno;
+    }
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof DglMnoFiles)) {
+            return false;
+        }
+        return id != null && id.equals(((DglMnoFiles) o).id);
+    }
+
+    @Override
+    public int hashCode() {
+        return 31;
+    }
+
+    // prettier-ignore
+    @Override
+    public String toString() {
+        return "DglMnoFiles{" +
+            "id=" + getId() +
+            ", fileName='" + getFileName() + "'" +
+            ", fileUrl='" + getFileUrl() + "'" +
+            "}";
+    }
 }

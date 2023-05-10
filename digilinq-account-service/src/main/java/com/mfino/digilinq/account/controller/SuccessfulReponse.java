@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * This class represents SuccessfulReponse.java
- * 
+ *
  * @author Krishna
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)

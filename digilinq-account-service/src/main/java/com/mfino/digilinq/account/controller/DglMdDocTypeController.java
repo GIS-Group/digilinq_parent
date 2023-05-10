@@ -64,7 +64,7 @@ public class DglMdDocTypeController extends BaseAPIController  {
 			@PathVariable(value = "id", required = false) final Integer id,
 			@Valid @RequestBody DglMdDocTypeDTO dglMdDocTypeDTO) throws URISyntaxException {
 		log.debug("REST request to update DglMdDocType : {}, {}", id, dglMdDocTypeDTO);
-		dglMdDocTypeService.update(dglMdDocTypeDTO);
+//		dglMdDocTypeService.update(dglMdDocTypeDTO);
 		return ResponseEntity.ok(getSucessResponse(new BaseRestApiResponse()));
 	}
 
@@ -88,7 +88,7 @@ public class DglMdDocTypeController extends BaseAPIController  {
 		        @RequestParam(value = "mdDocTypeStatus", required = true) final String mdDocTypeStatus
 		    ) throws URISyntaxException {
 		        log.debug("REST request to partial update DglMdCustCat partially : {}, {}", id, mdDocTypeStatus);
-		        dglMdDocTypeService.updateStatus(id, mdDocTypeStatus);
+//		        dglMdDocTypeService.updateStatus(id, mdDocTypeStatus);
 		        return ResponseEntity.ok(getSucessResponse(new BaseRestApiResponse()));
 		    }
 
@@ -98,14 +98,14 @@ public class DglMdDocTypeController extends BaseAPIController  {
 	 * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list
 	 *         of dglMdDocTypes in body.
 	 */
-	@GetMapping("/doc-types")
-	public List<DglMdDocTypeDTO> getAllDglMdDocTypes(
-			@RequestParam(value = "page_no", required = false)int pageNo,
-	        @RequestParam(value = "page_size", required = false) int pageSize,
-	        @RequestParam(value = "sort_feild", required = false) String sortFeild) {
-		log.debug("REST request to get all DglMdDocTypes");
-		return dglMdDocTypeService.findAll(pageNo , pageSize,sortFeild);
-	}
+//	@GetMapping("/doc-types")
+//	public List<DglMdDocTypeDTO> getAllDglMdDocTypes(
+//			@RequestParam(value = "page_no", required = false)int pageNo,
+//	        @RequestParam(value = "page_size", required = false) int pageSize,
+//	        @RequestParam(value = "sort_feild", required = false) String sortFeild) {
+//		log.debug("REST request to get all DglMdDocTypes");
+//		return dglMdDocTypeService.findAll(pageNo , pageSize,sortFeild);
+//	}
 
 	/**
 	 * {@code GET  /dgl-md-doc-types/:id} : get the "id" dglMdDocType.

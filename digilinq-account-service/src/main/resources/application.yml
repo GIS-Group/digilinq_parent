@@ -78,7 +78,7 @@ spring:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     database: mysql
     open-in-view: true
-    generate-ddl: true
+    generate-ddl: false
     hibernate:
       ddl-auto: none
       naming:
