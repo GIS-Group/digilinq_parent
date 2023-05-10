@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -27,7 +28,8 @@ public class DglNotificationsLog implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="ntf_log_id")
     private Long id;
 
     @Column(name = "ntf_tp_sent_users")
@@ -43,10 +45,10 @@ public class DglNotificationsLog implements Serializable {
     private String ntfStatus;
 
     @ManyToOne
+    @JoinColumn(name = "ntf_id")
     @JsonIgnoreProperties(value = "dglNotificationsLogs", allowSetters = true)
     private DglNotifications dglNotifications;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
     }

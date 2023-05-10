@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -30,7 +31,8 @@ public class DglContracts implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="contract_id")
     private Long id;
 
     @Column(name = "contract_name")
@@ -62,18 +64,20 @@ public class DglContracts implements Serializable {
     private Set<DglContractConfig> dglContractConfigs = new HashSet<>();
 
     @ManyToOne
+    @JoinColumn(name = "acc_id",insertable = false,updatable = false)
     @JsonIgnoreProperties(value = "dglContracts", allowSetters = true)
     private DglAccMno dglAccMno;
 
-    @ManyToOne
+    @ManyToOne()
+    @JoinColumn(name = "acc_id",insertable = false,updatable = false)
     @JsonIgnoreProperties(value = "dglContracts", allowSetters = true)
     private DglAccMno dglContractsReceivingParties;
 
     @ManyToOne
+    @JoinColumn(name = "contract_type_id")
     @JsonIgnoreProperties(value = "dglContracts", allowSetters = true)
     private DglMdContractType dglMdContractType;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
     }

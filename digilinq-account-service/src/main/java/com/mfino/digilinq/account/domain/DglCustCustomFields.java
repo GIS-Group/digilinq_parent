@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -26,7 +27,8 @@ public class DglCustCustomFields implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="mno_cf_id")
     private Long id;
 
     @Column(name = "field_title")
@@ -36,10 +38,10 @@ public class DglCustCustomFields implements Serializable {
     private String fieldValue;
 
     @ManyToOne
+    @JoinColumn(name = "customer_id")
     @JsonIgnoreProperties(value = "dglCustCustomFields", allowSetters = true)
     private DglCustomer dglCustomer;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
     }

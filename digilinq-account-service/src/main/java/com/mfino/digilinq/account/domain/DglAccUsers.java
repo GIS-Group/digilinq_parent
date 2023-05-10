@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -26,7 +27,8 @@ public class DglAccUsers implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="acc_user_id")
     private Long id;
 
     @Column(name = "acc_user_unq_id")
@@ -47,10 +49,10 @@ public class DglAccUsers implements Serializable {
     @Column(name = "profile_img")
     private String profileImg;
 
-    @Column(name = "add_line_1")
+    @Column(name = "add_line1")
     private String addLine1;
 
-    @Column(name = "add_line_2")
+    @Column(name = "add_line2")
     private String addLine2;
 
     @Column(name = "city")
@@ -69,14 +71,15 @@ public class DglAccUsers implements Serializable {
     private String status;
 
     @ManyToOne
+    @JoinColumn(name = "acc_id")
     @JsonIgnoreProperties(value = "dglAccUsers", allowSetters = true)
     private DglAccMno dglAccMno;
 
     @ManyToOne
+    @JoinColumn(name = "role_id")
     @JsonIgnoreProperties(value = "dglAccUsers", allowSetters = true)
     private DglRoles dglRoles;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
     }

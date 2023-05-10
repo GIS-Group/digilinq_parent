@@ -8,7 +8,9 @@ import java.time.Instant;
  */
 public class DglAccMnoDTO implements Serializable {
 
-    private Long id;
+    private static final long serialVersionUID = 6571148620056993370L;
+
+	private Long id;
 
     private String accName;
 
