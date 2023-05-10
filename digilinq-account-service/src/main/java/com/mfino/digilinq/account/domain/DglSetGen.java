@@ -1,13 +1,14 @@
 package com.mfino.digilinq.account.domain;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.sql.Time;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -27,7 +28,8 @@ public class DglSetGen implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="settings_id")
     private Long id;
 
     @Column(name = "gen_set_rndoff_val")
@@ -58,22 +60,22 @@ public class DglSetGen implements Serializable {
     private Float genSetTokenvalue;
 
     @Column(name = "pre_ent_cust_wait")
-    private Instant preEntCustWait;
+    private Time preEntCustWait;
 
     @Column(name = "post_ent_cust_wait")
-    private Instant postEntCustWait;
+    private Time postEntCustWait;
 
     @Column(name = "sales_exec_wait")
-    private Instant salesExecWait;
+    private Time salesExecWait;
 
     @Column(name = "retail_cust_wait")
-    private Instant retailCustWait;
+    private Time retailCustWait;
 
     @ManyToOne
+    @JoinColumn(name = "acc_id")
     @JsonIgnoreProperties(value = "dglSetGens", allowSetters = true)
     private DglAccMno dglAccMno;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
     }
@@ -199,55 +201,55 @@ public class DglSetGen implements Serializable {
         this.genSetTokenvalue = genSetTokenvalue;
     }
 
-    public Instant getPreEntCustWait() {
+    public Time getPreEntCustWait() {
         return preEntCustWait;
     }
 
-    public DglSetGen preEntCustWait(Instant preEntCustWait) {
+    public DglSetGen preEntCustWait(Time preEntCustWait) {
         this.preEntCustWait = preEntCustWait;
         return this;
     }
 
-    public void setPreEntCustWait(Instant preEntCustWait) {
+    public void setPreEntCustWait(Time preEntCustWait) {
         this.preEntCustWait = preEntCustWait;
     }
 
-    public Instant getPostEntCustWait() {
+    public Time getPostEntCustWait() {
         return postEntCustWait;
     }
 
-    public DglSetGen postEntCustWait(Instant postEntCustWait) {
+    public DglSetGen postEntCustWait(Time postEntCustWait) {
         this.postEntCustWait = postEntCustWait;
         return this;
     }
 
-    public void setPostEntCustWait(Instant postEntCustWait) {
+    public void setPostEntCustWait(Time postEntCustWait) {
         this.postEntCustWait = postEntCustWait;
     }
 
-    public Instant getSalesExecWait() {
+    public Time getSalesExecWait() {
         return salesExecWait;
     }
 
-    public DglSetGen salesExecWait(Instant salesExecWait) {
+    public DglSetGen salesExecWait(Time salesExecWait) {
         this.salesExecWait = salesExecWait;
         return this;
     }
 
-    public void setSalesExecWait(Instant salesExecWait) {
+    public void setSalesExecWait(Time salesExecWait) {
         this.salesExecWait = salesExecWait;
     }
 
-    public Instant getRetailCustWait() {
+    public Time getRetailCustWait() {
         return retailCustWait;
     }
 
-    public DglSetGen retailCustWait(Instant retailCustWait) {
+    public DglSetGen retailCustWait(Time retailCustWait) {
         this.retailCustWait = retailCustWait;
         return this;
     }
 
-    public void setRetailCustWait(Instant retailCustWait) {
+    public void setRetailCustWait(Time retailCustWait) {
         this.retailCustWait = retailCustWait;
     }
 

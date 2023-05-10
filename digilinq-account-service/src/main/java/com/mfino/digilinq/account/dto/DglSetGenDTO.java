@@ -1,7 +1,7 @@
 package com.mfino.digilinq.account.dto;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.sql.Time;
 
 /**
  * A DTO for the {@link com.mfino.digilinq.account.domain.domain.DglSetGen} entity.
@@ -28,13 +28,13 @@ public class DglSetGenDTO implements Serializable {
 
     private Float genSetTokenvalue;
 
-    private Instant preEntCustWait;
+    private Time preEntCustWait;
 
-    private Instant postEntCustWait;
+    private Time postEntCustWait;
 
-    private Instant salesExecWait;
+    private Time salesExecWait;
 
-    private Instant retailCustWait;
+    private Time retailCustWait;
 
 
     private Long dglAccMnoId;
@@ -119,35 +119,35 @@ public class DglSetGenDTO implements Serializable {
         this.genSetTokenvalue = genSetTokenvalue;
     }
 
-    public Instant getPreEntCustWait() {
+    public Time getPreEntCustWait() {
         return preEntCustWait;
     }
 
-    public void setPreEntCustWait(Instant preEntCustWait) {
+    public void setPreEntCustWait(Time preEntCustWait) {
         this.preEntCustWait = preEntCustWait;
     }
 
-    public Instant getPostEntCustWait() {
+    public Time getPostEntCustWait() {
         return postEntCustWait;
     }
 
-    public void setPostEntCustWait(Instant postEntCustWait) {
+    public void setPostEntCustWait(Time postEntCustWait) {
         this.postEntCustWait = postEntCustWait;
     }
 
-    public Instant getSalesExecWait() {
+    public Time getSalesExecWait() {
         return salesExecWait;
     }
 
-    public void setSalesExecWait(Instant salesExecWait) {
+    public void setSalesExecWait(Time salesExecWait) {
         this.salesExecWait = salesExecWait;
     }
 
-    public Instant getRetailCustWait() {
+    public Time getRetailCustWait() {
         return retailCustWait;
     }
 
-    public void setRetailCustWait(Instant retailCustWait) {
+    public void setRetailCustWait(Time retailCustWait) {
         this.retailCustWait = retailCustWait;
     }
 
