@@ -13,247 +13,250 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Parameter;
+import org.hibernate.annotations.Type;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.mfino.digilinq.account.enumeration.StatusType;
 
 /**
  * A DglMdContractType.
  */
 @Entity
-@Table(name = "dgl_md_contract_type")
+@Table(name = "dgl_md_contract_type", uniqueConstraints = {
+		@UniqueConstraint(columnNames = { "contract_type_title" }) })
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class DglMdContractType implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="contract_type_id")
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "contract_type_id")
+	private Long id;
 
-    @Column(name = "cust_cat")
-    private String custCat;
+	@Column(name = "cust_cat")
+	private String custCat;
 
-    @Column(name = "contract_type_title")
-    private String contractTypeTitle;
+	@Column(name = "contract_type_title")
+	private String contractTypeTitle;
 
-    @Column(name = "contract_type_desc")
-    private String contractTypeDesc;
+	@Column(name = "contract_type_desc")
+	private String contractTypeDesc;
 
-    @Column(name = "md_contr_status")
-    private String mdContrStatus;
+	@Column(name = "md_contr_status")
+	@Type(type = "com.mfino.digilinq.commons.enumeration.EnumUserType", parameters = {
+			@Parameter(name = "Enum", value = "com.mfino.digilinq.account.enumeration.StatusType") })
+	private StatusType mdContrStatus;
 
-    @Column(name = "is_event")
-    private Boolean isEvent;
+	@Column(name = "is_event")
+	private Boolean isEvent;
 
-    @OneToMany(mappedBy = "dglMdContractType")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Set<DglMdContractTypeConfig> dglMdContractTypeConfigs = new HashSet<>();
+	@OneToMany(mappedBy = "dglMdContractType")
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+	private Set<DglMdContractTypeConfig> dglMdContractTypeConfigs = new HashSet<>();
 
-    @OneToMany(mappedBy = "dglMdContractType")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Set<DglContracts> dglContracts = new HashSet<>();
+	@OneToMany(mappedBy = "dglMdContractType")
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+	private Set<DglContracts> dglContracts = new HashSet<>();
 
-    @OneToMany(mappedBy = "dglMdContractType")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Set<DglCustContracts> dglCustContracts = new HashSet<>();
+	@OneToMany(mappedBy = "dglMdContractType")
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+	private Set<DglCustContracts> dglCustContracts = new HashSet<>();
 
-    @ManyToOne
-    @JoinColumn(name = "acc_id")
-    @JsonIgnoreProperties(value = "dglMdContractTypes", allowSetters = true)
-    private DglAccMno dglAccMno;
+	@ManyToOne
+	@JoinColumn(name = "acc_id")
+	@JsonIgnoreProperties(value = "dglMdContractTypes", allowSetters = true)
+	private DglAccMno dglAccMno;
 
-    public Long getId() {
-        return id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getCustCat() {
-        return custCat;
-    }
+	public String getCustCat() {
+		return custCat;
+	}
 
-    public DglMdContractType custCat(String custCat) {
-        this.custCat = custCat;
-        return this;
-    }
+	public DglMdContractType custCat(String custCat) {
+		this.custCat = custCat;
+		return this;
+	}
 
-    public void setCustCat(String custCat) {
-        this.custCat = custCat;
-    }
+	public void setCustCat(String custCat) {
+		this.custCat = custCat;
+	}
 
-    public String getContractTypeTitle() {
-        return contractTypeTitle;
-    }
+	public String getContractTypeTitle() {
+		return contractTypeTitle;
+	}
 
-    public DglMdContractType contractTypeTitle(String contractTypeTitle) {
-        this.contractTypeTitle = contractTypeTitle;
-        return this;
-    }
+	public DglMdContractType contractTypeTitle(String contractTypeTitle) {
+		this.contractTypeTitle = contractTypeTitle;
+		return this;
+	}
 
-    public void setContractTypeTitle(String contractTypeTitle) {
-        this.contractTypeTitle = contractTypeTitle;
-    }
+	public void setContractTypeTitle(String contractTypeTitle) {
+		this.contractTypeTitle = contractTypeTitle;
+	}
 
-    public String getContractTypeDesc() {
-        return contractTypeDesc;
-    }
+	public String getContractTypeDesc() {
+		return contractTypeDesc;
+	}
 
-    public DglMdContractType contractTypeDesc(String contractTypeDesc) {
-        this.contractTypeDesc = contractTypeDesc;
-        return this;
-    }
+	public DglMdContractType contractTypeDesc(String contractTypeDesc) {
+		this.contractTypeDesc = contractTypeDesc;
+		return this;
+	}
 
-    public void setContractTypeDesc(String contractTypeDesc) {
-        this.contractTypeDesc = contractTypeDesc;
-    }
+	public void setContractTypeDesc(String contractTypeDesc) {
+		this.contractTypeDesc = contractTypeDesc;
+	}
 
-    public String getMdContrStatus() {
-        return mdContrStatus;
-    }
+	public StatusType getMdContrStatus() {
+		return mdContrStatus;
+	}
 
-    public DglMdContractType mdContrStatus(String mdContrStatus) {
-        this.mdContrStatus = mdContrStatus;
-        return this;
-    }
+	public DglMdContractType mdContrStatus(StatusType mdContrStatus) {
+		this.mdContrStatus = mdContrStatus;
+		return this;
+	}
 
-    public void setMdContrStatus(String mdContrStatus) {
-        this.mdContrStatus = mdContrStatus;
-    }
+	public void setMdContrStatus(StatusType mdContrStatus) {
+		this.mdContrStatus = mdContrStatus;
+	}
 
-    public Boolean isIsEvent() {
-        return isEvent;
-    }
+	public Boolean isIsEvent() {
+		return isEvent;
+	}
 
-    public DglMdContractType isEvent(Boolean isEvent) {
-        this.isEvent = isEvent;
-        return this;
-    }
+	public DglMdContractType isEvent(Boolean isEvent) {
+		this.isEvent = isEvent;
+		return this;
+	}
 
-    public void setIsEvent(Boolean isEvent) {
-        this.isEvent = isEvent;
-    }
+	public void setIsEvent(Boolean isEvent) {
+		this.isEvent = isEvent;
+	}
 
-    public Set<DglMdContractTypeConfig> getDglMdContractTypeConfigs() {
-        return dglMdContractTypeConfigs;
-    }
+	public Set<DglMdContractTypeConfig> getDglMdContractTypeConfigs() {
+		return dglMdContractTypeConfigs;
+	}
 
-    public DglMdContractType dglMdContractTypeConfigs(Set<DglMdContractTypeConfig> dglMdContractTypeConfigs) {
-        this.dglMdContractTypeConfigs = dglMdContractTypeConfigs;
-        return this;
-    }
+	public DglMdContractType dglMdContractTypeConfigs(Set<DglMdContractTypeConfig> dglMdContractTypeConfigs) {
+		this.dglMdContractTypeConfigs = dglMdContractTypeConfigs;
+		return this;
+	}
 
-    public DglMdContractType addDglMdContractTypeConfigs(DglMdContractTypeConfig dglMdContractTypeConfig) {
-        this.dglMdContractTypeConfigs.add(dglMdContractTypeConfig);
-        dglMdContractTypeConfig.setDglMdContractType(this);
-        return this;
-    }
+	public DglMdContractType addDglMdContractTypeConfigs(DglMdContractTypeConfig dglMdContractTypeConfig) {
+		this.dglMdContractTypeConfigs.add(dglMdContractTypeConfig);
+		dglMdContractTypeConfig.setDglMdContractType(this);
+		return this;
+	}
 
-    public DglMdContractType removeDglMdContractTypeConfigs(DglMdContractTypeConfig dglMdContractTypeConfig) {
-        this.dglMdContractTypeConfigs.remove(dglMdContractTypeConfig);
-        dglMdContractTypeConfig.setDglMdContractType(null);
-        return this;
-    }
+	public DglMdContractType removeDglMdContractTypeConfigs(DglMdContractTypeConfig dglMdContractTypeConfig) {
+		this.dglMdContractTypeConfigs.remove(dglMdContractTypeConfig);
+		dglMdContractTypeConfig.setDglMdContractType(null);
+		return this;
+	}
 
-    public void setDglMdContractTypeConfigs(Set<DglMdContractTypeConfig> dglMdContractTypeConfigs) {
-        this.dglMdContractTypeConfigs = dglMdContractTypeConfigs;
-    }
+	public void setDglMdContractTypeConfigs(Set<DglMdContractTypeConfig> dglMdContractTypeConfigs) {
+		this.dglMdContractTypeConfigs = dglMdContractTypeConfigs;
+	}
 
-    public Set<DglContracts> getDglContracts() {
-        return dglContracts;
-    }
+	public Set<DglContracts> getDglContracts() {
+		return dglContracts;
+	}
 
-    public DglMdContractType dglContracts(Set<DglContracts> dglContracts) {
-        this.dglContracts = dglContracts;
-        return this;
-    }
+	public DglMdContractType dglContracts(Set<DglContracts> dglContracts) {
+		this.dglContracts = dglContracts;
+		return this;
+	}
 
-    public DglMdContractType addDglContracts(DglContracts dglContracts) {
-        this.dglContracts.add(dglContracts);
-        dglContracts.setDglMdContractType(this);
-        return this;
-    }
+	public DglMdContractType addDglContracts(DglContracts dglContracts) {
+		this.dglContracts.add(dglContracts);
+		dglContracts.setDglMdContractType(this);
+		return this;
+	}
 
-    public DglMdContractType removeDglContracts(DglContracts dglContracts) {
-        this.dglContracts.remove(dglContracts);
-        dglContracts.setDglMdContractType(null);
-        return this;
-    }
+	public DglMdContractType removeDglContracts(DglContracts dglContracts) {
+		this.dglContracts.remove(dglContracts);
+		dglContracts.setDglMdContractType(null);
+		return this;
+	}
 
-    public void setDglContracts(Set<DglContracts> dglContracts) {
-        this.dglContracts = dglContracts;
-    }
+	public void setDglContracts(Set<DglContracts> dglContracts) {
+		this.dglContracts = dglContracts;
+	}
 
-    public Set<DglCustContracts> getDglCustContracts() {
-        return dglCustContracts;
-    }
+	public Set<DglCustContracts> getDglCustContracts() {
+		return dglCustContracts;
+	}
 
-    public DglMdContractType dglCustContracts(Set<DglCustContracts> dglCustContracts) {
-        this.dglCustContracts = dglCustContracts;
-        return this;
-    }
+	public DglMdContractType dglCustContracts(Set<DglCustContracts> dglCustContracts) {
+		this.dglCustContracts = dglCustContracts;
+		return this;
+	}
 
-    public DglMdContractType addDglCustContracts(DglCustContracts dglCustContracts) {
-        this.dglCustContracts.add(dglCustContracts);
-        dglCustContracts.setDglMdContractType(this);
-        return this;
-    }
+	public DglMdContractType addDglCustContracts(DglCustContracts dglCustContracts) {
+		this.dglCustContracts.add(dglCustContracts);
+		dglCustContracts.setDglMdContractType(this);
+		return this;
+	}
 
-    public DglMdContractType removeDglCustContracts(DglCustContracts dglCustContracts) {
-        this.dglCustContracts.remove(dglCustContracts);
-        dglCustContracts.setDglMdContractType(null);
-        return this;
-    }
+	public DglMdContractType removeDglCustContracts(DglCustContracts dglCustContracts) {
+		this.dglCustContracts.remove(dglCustContracts);
+		dglCustContracts.setDglMdContractType(null);
+		return this;
+	}
 
-    public void setDglCustContracts(Set<DglCustContracts> dglCustContracts) {
-        this.dglCustContracts = dglCustContracts;
-    }
+	public void setDglCustContracts(Set<DglCustContracts> dglCustContracts) {
+		this.dglCustContracts = dglCustContracts;
+	}
 
-    public DglAccMno getDglAccMno() {
-        return dglAccMno;
-    }
+	public DglAccMno getDglAccMno() {
+		return dglAccMno;
+	}
 
-    public DglMdContractType dglAccMno(DglAccMno dglAccMno) {
-        this.dglAccMno = dglAccMno;
-        return this;
-    }
+	public DglMdContractType dglAccMno(DglAccMno dglAccMno) {
+		this.dglAccMno = dglAccMno;
+		return this;
+	}
 
-    public void setDglAccMno(DglAccMno dglAccMno) {
-        this.dglAccMno = dglAccMno;
-    }
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+	public void setDglAccMno(DglAccMno dglAccMno) {
+		this.dglAccMno = dglAccMno;
+	}
+	// jhipster-needle-entity-add-getters-setters - JHipster will add getters and
+	// setters here
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof DglMdContractType)) {
-            return false;
-        }
-        return id != null && id.equals(((DglMdContractType) o).id);
-    }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (!(o instanceof DglMdContractType)) {
+			return false;
+		}
+		return id != null && id.equals(((DglMdContractType) o).id);
+	}
 
-    @Override
-    public int hashCode() {
-        return 31;
-    }
+	@Override
+	public int hashCode() {
+		return 31;
+	}
 
-    // prettier-ignore
-    @Override
-    public String toString() {
-        return "DglMdContractType{" +
-            "id=" + getId() +
-            ", custCat='" + getCustCat() + "'" +
-            ", contractTypeTitle='" + getContractTypeTitle() + "'" +
-            ", contractTypeDesc='" + getContractTypeDesc() + "'" +
-            ", mdContrStatus='" + getMdContrStatus() + "'" +
-            ", isEvent='" + isIsEvent() + "'" +
-            "}";
-    }
+	// prettier-ignore
+	@Override
+	public String toString() {
+		return "DglMdContractType{" + "id=" + getId() + ", custCat='" + getCustCat() + "'" + ", contractTypeTitle='"
+				+ getContractTypeTitle() + "'" + ", contractTypeDesc='" + getContractTypeDesc() + "'"
+				+ ", mdContrStatus='" + getMdContrStatus() + "'" + ", isEvent='" + isIsEvent() + "'" + "}";
+	}
 }
