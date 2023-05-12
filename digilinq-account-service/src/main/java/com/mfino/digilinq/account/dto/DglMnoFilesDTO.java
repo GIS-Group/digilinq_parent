@@ -12,7 +12,8 @@ public class DglMnoFilesDTO implements Serializable {
     private String fileName;
 
     private String fileUrl;
-
+    //need to add in DB
+    private String fileType;
 
     private Long dglAccMnoId;
 
@@ -40,7 +41,15 @@ public class DglMnoFilesDTO implements Serializable {
         this.fileUrl = fileUrl;
     }
 
-    public Long getDglAccMnoId() {
+    public String getFileType() {
+		return fileType;
+	}
+
+	public void setFileType(String fileType) {
+		this.fileType = fileType;
+	}
+
+	public Long getDglAccMnoId() {
         return dglAccMnoId;
     }
 
