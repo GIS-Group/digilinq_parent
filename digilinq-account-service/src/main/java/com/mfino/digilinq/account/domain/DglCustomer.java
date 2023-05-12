@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -137,6 +138,10 @@ public class DglCustomer implements Serializable {
     @JoinColumn(name = "acc_id")
     @JsonIgnoreProperties(value = "dglCustomers", allowSetters = true)
     private DglAccMno dglAccMno;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cust_parent_id")
+    private DglCustomer custParent;
 
     public Long getId() {
         return id;

@@ -18,7 +18,7 @@ public interface DglMdContractTypeMapper extends EntityMapper<DglMdContractTypeD
     DglMdContractTypeDTO toDto(DglMdContractType dglMdContractType);
 
     @Override
-	@Mapping(target = "dglMdContractTypeConfigs", ignore = true)
+	@Mapping(target = "dglMdContractTypeConfigs", source = "dglMdContractTypeConfigs")
     @Mapping(target = "removeDglMdContractTypeConfigs", ignore = true)
     @Mapping(target = "dglContracts", ignore = true)
     @Mapping(target = "removeDglContracts", ignore = true)

@@ -2,13 +2,22 @@ package com.mfino.digilinq.account.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 /**
  * A DTO for the {@link com.mfino.digilinq.account.domain.domain.DglMdContractTypeConfig} entity.
  */
 public class DglMdContractTypeConfigDTO implements Serializable {
 
-    private Long id;
+    private static final long serialVersionUID = -1351614894959211959L;
 
+	private Long id;
+
+    @NotNull(message = "Title Cannot be null")
+	@Pattern(regexp = "^[a-zA-Z0-9.\\-\\/+=@_ ]*$", message = "pattern is not allowed.")
+	@Size(max = 255, message = "Title Max characters allowed is 255")
     private String configTitle;
 
     private String configDetails;
