@@ -7,9 +7,12 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -27,7 +30,8 @@ public class DglAccMno implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="acc_id")
     private Long id;
 
     @Column(name = "acc_name")
@@ -69,10 +73,10 @@ public class DglAccMno implements Serializable {
     @Column(name = "acc_web_url")
     private String accWebUrl;
 
-    @Column(name = "acc_add_l_1")
+    @Column(name = "acc_add_l1")
     private String accAddL1;
 
-    @Column(name = "acc_add_l_2")
+    @Column(name = "acc_add_l2")
     private String accAddL2;
 
     @Column(name = "acc_city")
@@ -140,6 +144,14 @@ public class DglAccMno implements Serializable {
 
     @Column(name = "acc_type")
     private String accType;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "acc_parent_id")
+    private DglAccMno accParent;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "acc_mno_parent_id")
+    private DglAccMno accMnoParent;
 
     @OneToMany(mappedBy = "dglAccMno")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -229,7 +241,6 @@ public class DglAccMno implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<DglMdTaxComp> dglMdTaxComps = new HashSet<>();
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
     }
@@ -1270,7 +1281,23 @@ public class DglAccMno implements Serializable {
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
-    @Override
+    public DglAccMno getAccParent() {
+		return accParent;
+	}
+
+	public void setAccParent(DglAccMno accParent) {
+		this.accParent = accParent;
+	}
+
+	public DglAccMno getAccMnoParent() {
+		return accMnoParent;
+	}
+
+	public void setAccMnoParent(DglAccMno accMnoParent) {
+		this.accMnoParent = accMnoParent;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;

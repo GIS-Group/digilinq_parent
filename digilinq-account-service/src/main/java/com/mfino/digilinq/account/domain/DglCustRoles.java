@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -29,7 +30,8 @@ public class DglCustRoles implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="role_id")
     private Long id;
 
     @Column(name = "role_name")
@@ -52,10 +54,10 @@ public class DglCustRoles implements Serializable {
     private Set<DglCustUsers> dglCustUsers = new HashSet<>();
 
     @ManyToOne
+    @JoinColumn(name = "customer_id")
     @JsonIgnoreProperties(value = "dglCustRoles", allowSetters = true)
     private DglCustomer dglCustomer;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
     }
