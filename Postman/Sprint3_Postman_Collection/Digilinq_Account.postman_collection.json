@@ -343,13 +343,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgzODE4ODAyLCJpYXQiOjE2ODM4MTU4MDJ9.GN_OlS5pOtW7iInPsLVVAe6YvCPcGFsrJM5t8NhBO_sRNbhVDLxQJ0PS6fPJPFPx0SEU8ciyge8OEe5bD9OEQFMD4yORF-TcmqHwVcnre1b0QmDONT5Mlna-K8s13xuxBw29qavFBrukOO9Tzxxd4IIaxaqN2vuLJFRAsHtStGTWdh2siL5cbu7AUHYSaj5dQrUr0U3Dhhz62bWOJ-DxJBrNtfWZXw0MLYwOOY7XyGni8ANzlkAnstggTICDyaO8iGO1MTgXlGpc_VIbS6xCH0Lr8Cnw2-8cZL_1YidAy36SUxPjYpB_3YI_t5cds0NoTwOJYHrHf9m-TwaawBtsBQ",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgzOTA2MDczLCJpYXQiOjE2ODM5MDMwNzR9.BxTeRSFfbENHd8JwKt4n9CplMS5-laLL2TdUrWpDOHg7VPVj76DDzEFe13Z6YtxfWSACbdSqLRmsDkhL0N0swuopaeT0s5sz7eG2hNa4BIrDGlIkitlkIq0-Dq_u7Sz7lIjLiGkhOOke6gmfIDOalpV5JgF6xsweiDbvoTU316opEG9f3iHjhMuv9wW0vPupmnqSPqL1Kl-1cWrzQuMiR2-TjQJ2AUd2exHCRa9ZIjdAcrQ6qUNJFCCWkirIX2r5o2yW0JszE9_9iorA8yOF4msRseldmFVRuZLPQUBZrBMZdlWnb99OX5RW7wU2by58VUJuheGD2ify4bW4Fpb18A",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"cust_parent\": {\r\n        \"id\": 1\r\n    },\r\n    \"acc_name\": \"New Operator\",\r\n    \"acc_parent\": {\r\n        \"id\": 1\r\n    },\r\n    \"acc_comp_name\": \"companyName\",\r\n    \"acc_incorp_dt\": \"2023-05-11T04:56:51.485Z\",\r\n    \"acc_tax_id\": \"1\",\r\n    \"acc_time_zone\": 0,\r\n    \"acc_currency\": 0,\r\n    \"acc_lang\": 0,\r\n    \"acc_orient\": true,\r\n    \"dgl_acc_mno_custom_fields\": [\r\n        {\r\n            \"field_title\": \"field_title\",\r\n            \"field_value\": \"field_value\"\r\n        },\r\n        {\r\n            \"field_title\": \"field_title1\",\r\n            \"field_value\": \"field_value1\"\r\n        }\r\n    ],\r\n    \"acc_prim_cont\": \"9882424925\",\r\n    \"acc_email_id\": \"teqsar@teqsar.com\",\r\n    \"acc_phone\": \"9882424926\",\r\n    \"acc_alt_cont\": \"9882424927\",\r\n    \"acc_fax\": \"342345\",\r\n    \"acc_web_url\": \"http://localhost:4000/\",\r\n    \"acc_add_l1\": \"Churchil Street\",\r\n    \"acc_add_l2\": \"Velacherry\",\r\n    \"acc_city\": \"NewYork\",\r\n    \"acc_state\": \"NewYork\",\r\n    \"acc_country\": \"USA\",\r\n    \"acc_zipcode\": \"345435\",\r\n    \"acc_is_billing_centre\": \"true\",\r\n    \"acc_end_point_url\": \"http://localhost:9887/\",\r\n    \"acc_csv_url\": \"http://cdnurl/\",\r\n    \"acc_sftp_add\": \"http://sftpadd.com/\",\r\n    \"acc_port_no\": \"587\",\r\n    \"acc_username\": \"sftp\",\r\n    \"acc_password\": \"teqsar\",\r\n    \"dgl_mno_files\": [\r\n        {\r\n            \"file_name\": \"file_name\",\r\n            \"file_url\": \"file_url\",\r\n            \"file_type\": \"upload or additional\"\r\n        }\r\n    ],\r\n    \"dgl_roles\": [\r\n        {\r\n            \"role_name\": \"role_name\",\r\n            \"role_desc\": \"role_desc\",\r\n            \"role_unq_id\":1235,\r\n            \"permissions\": \"json string\",\r\n            \"status\": 1\r\n        }\r\n    ],\r\n    \"dgl_acc_users\": [\r\n        {\r\n            \"first_name\": \"first_name\",\r\n            \"last_name\": \"last_name\",\r\n            \"email\": \"email\",\r\n            \"phone\": \"phone\",\r\n            \"acc_user_unq_id\":1236,\r\n            \"status\": \"Active\"\r\n        }\r\n    ],\r\n    \"acc_status\": \"Active\",\r\n    \"acc_type\": \"Operator\",\r\n    \"acc_unq_id\": \"1251\"\r\n}",
+							"raw": "{\r\n    \"acc_mno_parent\": {\r\n        \"id\": 1\r\n    },\r\n    \"acc_name\": \"New Operator\",\r\n    \"acc_parent\": {\r\n        \"id\": 38\r\n    },\r\n    \"acc_comp_name\": \"companyName\",\r\n    \"acc_incorp_dt\": \"2023-05-11T04:56:51.485Z\",\r\n    \"acc_tax_id\": \"1\",\r\n    \"acc_time_zone\": 0,\r\n    \"acc_currency\": 0,\r\n    \"acc_lang\": 0,\r\n    \"acc_orient\": true,\r\n    \"dgl_acc_mno_custom_fields\": [\r\n        {\r\n            \"field_title\": \"field_title\",\r\n            \"field_value\": \"field_value\"\r\n        },\r\n        {\r\n            \"field_title\": \"field_title1\",\r\n            \"field_value\": \"field_value1\"\r\n        }\r\n    ],\r\n    \"acc_prim_cont\": \"9882424925\",\r\n    \"acc_email_id\": \"teqsar@teqsar.com\",\r\n    \"acc_phone\": \"9882424926\",\r\n    \"acc_alt_cont\": \"9882424927\",\r\n    \"acc_fax\": \"342345\",\r\n    \"acc_web_url\": \"http://localhost:4000/\",\r\n    \"acc_add_l1\": \"Churchil Street\",\r\n    \"acc_add_l2\": \"Velacherry\",\r\n    \"acc_city\": \"NewYork\",\r\n    \"acc_state\": \"NewYork\",\r\n    \"acc_country\": \"USA\",\r\n    \"acc_zipcode\": \"345435\",\r\n    \"acc_is_billing_centre\": \"true\",\r\n    \"acc_end_point_url\": \"http://localhost:9887/\",\r\n    \"acc_csv_url\": \"http://cdnurl/\",\r\n    \"acc_sftp_add\": \"http://sftpadd.com/\",\r\n    \"acc_port_no\": \"587\",\r\n    \"acc_username\": \"sftp\",\r\n    \"acc_password\": \"teqsar\",\r\n    \"dgl_mno_files\": [\r\n        {\r\n            \"file_name\": \"file_name\",\r\n            \"file_url\": \"file_url\",\r\n            \"file_type\": \"upload or additional\"\r\n        }\r\n    ],\r\n    \"dgl_roles\": [\r\n        {\r\n            \"role_name\": \"role_name\",\r\n            \"role_desc\": \"role_desc\",\r\n            \"role_unq_id\":1237,\r\n            \"permissions\": \"json string\",\r\n            \"status\": 1\r\n        }\r\n    ],\r\n    \"dgl_acc_users\": [\r\n        {\r\n            \"first_name\": \"first_name\",\r\n            \"last_name\": \"last_name\",\r\n            \"email\": \"email\",\r\n            \"phone\": \"phone\",\r\n            \"acc_user_unq_id\":1237,\r\n            \"status\": \"Active\"\r\n        }\r\n    ],\r\n    \"acc_status\": \"Active\",\r\n    \"acc_type\": \"Operator\",\r\n    \"acc_unq_id\": \"1252\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -372,7 +372,40 @@
 		},
 		{
 			"name": "EnterpriseCustomer",
-			"item": []
+			"item": [
+				{
+					"name": "CreateEnterpriseCustomer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgzOTA5MTAyLCJpYXQiOjE2ODM5MDYxMDJ9.zkQ-ENUxybkWa3eSyh64fU4wLdNsxexfisKhSmkvtVLm6VrsN5YXKzhbXnOrUg4yVO7nJdMKg5yG2v8DQ1aTAxX1A4iVdjU1gz2eO0YzNYtBHrq6xAQY-R6XzmNbmHQujYRw7F6sbQkFCrdbC-8FOSEeALVdjuAcZCbNZkliOB6N_4WdfKuxCTNh02fq9MAvA9URlLkStr3wBOAkluQr0qeqemroPsWonEb1K_yrDn3hf42J64mAK9Pz8n7VsPDTelUFT3PmDJBsGwIj4f0VNpJmZApMhCZBlETv2EClGCteLR_ZN4cuLQttRNHeH5my-2oKoj-OMo6CaoaElF5eWw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dgl_acc_mno_id\": 1,\r\n    \"cust_name\": \"EnterpriseCustomer\",\r\n    \"cust_parent\": {\r\n        \"id\": 15\r\n    },\r\n    \"cust_comp_name\": \"Teqsar\",\r\n    \"cust_incorp_dt\": \"2023-05-12T12:52:19.121Z\",\r\n    \"cust_tax_id\": \"1\",\r\n    \"cust_time_zone\": 0,\r\n    \"cust_currency\": 0,\r\n    \"cust_lang\": 0,\r\n    \"cust_orient\": true,\r\n    \"custCategory\": \"1\",\r\n    \"dgl_cust_custom_fields\": [\r\n        {\r\n            \"field_title\": \"string\",\r\n            \"field_value\": \"string\"\r\n        }\r\n    ],\r\n    \"cust_prim_cont\": \"string\",\r\n    \"cust_email_id\": \"string\",\r\n    \"cust_phone_number\": \"string\",\r\n    \"cust_alt_cont\": \"string\",\r\n    \"cust_fax\": \"string\",\r\n    \"cust_web_url\": \"string\",\r\n    \"cust_order_approver_email_id\": \"string\",\r\n    \"cust_add_l1\": \"string\",\r\n    \"cust_add_l2\": \"string\",\r\n    \"cust_city\": \"string\",\r\n    \"cust_state\": \"string\",\r\n    \"cust_country\": \"string\",\r\n    \"cust_zipcode\": \"string\",\r\n    \"cust_is_business_unit\": true,\r\n    \"cust_pref_pg\": 1,\r\n    \"bill_cycle\": \"string\",\r\n    \"bill_date\": \"2023-05-12T12:52:19.120Z\",\r\n    \"bill_due_tenor\": \"string\",\r\n    \"credit_limit\": 0,\r\n    \"cust_status\": \"ACTIVE\",\r\n    \"cust_unq_id\": \"1240\",\r\n    \"dgl_cust_files\": [\r\n        {\r\n            \"file_name\": \"string\",\r\n            \"file_url\": \"string\"\r\n        },\r\n        {\r\n            \"file_name\": \"string1\",\r\n            \"file_url\": \"string1\"\r\n        }\r\n    ],\r\n    \"dgl_cust_roles\": [\r\n        {\r\n            \"role_name\": \"role_name\",\r\n            \"role_desc\": \"role_desc\",\r\n            \"role_unq_id\": 1240,\r\n            \"permissions\": \"json string\",\r\n            \"status\": 1\r\n        }\r\n    ],\r\n    \"dgl_cust_users\": [\r\n        {\r\n            \"first_name\": \"first_name\",\r\n            \"last_name\": \"last_name\",\r\n            \"email\": \"email\",\r\n            \"phone\": \"phone\",\r\n            \"cust_user_unq_id\": 1241,\r\n            \"status\": 1,\r\n            \"cust_type\": \"EnterpriseCustomer\"\r\n        }\r\n    ],\r\n    \"dgl_cust_contracts\": [\r\n        {\r\n            \"contract_name\": \"Customer Contract\",\r\n            \"contract_unq_id\": \"1238\",\r\n            \"contract_file\": \"http://Url\",\r\n            \"contr_desc\": \"Contract Description\",\r\n            \"enforce_date\": \"2023-05-12T12:52:19.121Z\",\r\n            \"signed_date\": \"2023-05-12T12:52:19.121Z\",\r\n            \"status\": \"ACTIVE\",\r\n            \"terminate_date\": \"2023-05-12T12:52:19.121Z\",\r\n            \"dgl_acc_mno_id\": 1,\r\n            \"dgl_md_contract_type_id\": 1\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/enterprise-customers",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"enterprise-customers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "ContractType",
