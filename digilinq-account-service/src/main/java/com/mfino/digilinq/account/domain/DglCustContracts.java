@@ -253,7 +253,6 @@ public class DglCustContracts implements Serializable {
     public void setDglMdContractType(DglMdContractType dglMdContractType) {
         this.dglMdContractType = dglMdContractType;
     }
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
     public boolean equals(Object o) {
