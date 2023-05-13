@@ -1,5 +1,6 @@
 package com.mfino.digilinq.account.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -26,7 +27,7 @@ public interface DglMdDocTypeService {
      * @param pageable the pagination information.
      * @return the list of entities.
      */
-    Page<DglMdDocTypeDTO> findAll(Pageable pageable);
+    List<DglMdDocTypeDTO> findAll(Integer pageNo, Integer pageSize, String sortField);
 
 
     /**
@@ -43,4 +44,8 @@ public interface DglMdDocTypeService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+    
+    public DglMdDocTypeDTO update(DglMdDocTypeDTO dglMdDocTypeDTO);
+    
+    public void updateStatus(Long id, String mdDocTypeStatus);
 }

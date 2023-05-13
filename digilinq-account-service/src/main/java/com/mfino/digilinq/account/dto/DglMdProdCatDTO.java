@@ -2,13 +2,20 @@ package com.mfino.digilinq.account.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 /**
  * A DTO for the {@link com.mfino.digilinq.domain.DglMdProdCat} entity.
  */
 public class DglMdProdCatDTO implements Serializable {
     
     private Long id;
-
+    
+    @NotNull(message = "Title cant be null")
+    @Min(value = 225,message = "Title name Should be 225 character")
+    @Pattern(regexp = "^[a-zA-Z0-9.\\-\\/+=@_ ]*$")
     private String prodCatTitle;
 
     private String prodCatDesc;
