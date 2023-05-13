@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.mfino.digilinq.account.enumeration;
 
@@ -10,7 +10,7 @@ package com.mfino.digilinq.account.enumeration;
 public enum CustomerType {
 
 	/** The Enterprise Customer. */
-	Enterprise_Customer("Enterprise Customer"), 
+	Enterprise_Customer("Enterprise Customer"),
 	/** The Retail Customer. */
 	Retail_Customer("Retail Customer");
 
@@ -34,7 +34,7 @@ public enum CustomerType {
 	public String getValue() {
 		return value;
 	}
-	
+
 	/**
 	 * To string.
 	 *

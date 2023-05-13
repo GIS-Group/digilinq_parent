@@ -1,80 +1,100 @@
 package com.mfino.digilinq.account.dto;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+import java.io.Serializable;
 
-
-import com.fasterxml.jackson.annotation.JsonInclude;
-
-public class DglMdDocTypeDTO {
-
-    private static final long serialVersionUID = -4557746338014451836L;
-   
-    private Long id;
-    @NotNull(message = "Title cant be null")
-    @Min(value = 225,message = "Title name not exced more than 225 charecter")
-    @Pattern(regexp = "^[a-zA-Z0-9.\\-\\/+=@_ ]*$")
-    private String docTypeTitle;
+/**
+ * A DTO for the {@link com.mfino.digilinq.domain.DglMdDocType} entity.
+ */
+public class DglMdDocTypeDTO implements Serializable {
     
-    @NotNull(message = "file cant be empty")
-	private String allowFileFormat;
+    private Long id;
+
+    private String docTypeTitle;
+
+    private String allowFileFormat;
 
     private String docTypeDesc;
 
-	private String mdDocStatus;
-	@JsonInclude(JsonInclude.Include.NON_NULL)
-    private DglAccMnoDTO acc;
+    private String mdDocStatus;
 
+
+    private Long dglAccMnoId;
+    
     public Long getId() {
-		return id;
-	}
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getDocTypeTitle() {
-		return docTypeTitle;
-	}
+    public String getDocTypeTitle() {
+        return docTypeTitle;
+    }
 
-	public void setDocTypeTitle(String docTypeTitle) {
-		this.docTypeTitle = docTypeTitle;
-	}
+    public void setDocTypeTitle(String docTypeTitle) {
+        this.docTypeTitle = docTypeTitle;
+    }
 
-	public String getAllowFileFormat() {
-		return allowFileFormat;
-	}
+    public String getAllowFileFormat() {
+        return allowFileFormat;
+    }
 
-	public void setAllowFileFormat(String allowFileFormat) {
-		this.allowFileFormat = allowFileFormat;
-	}
+    public void setAllowFileFormat(String allowFileFormat) {
+        this.allowFileFormat = allowFileFormat;
+    }
 
-	public String getDocTypeDesc() {
-		return docTypeDesc;
-	}
+    public String getDocTypeDesc() {
+        return docTypeDesc;
+    }
 
-	public void setDocTypeDesc(String docTypeDesc) {
-		this.docTypeDesc = docTypeDesc;
-	}
+    public void setDocTypeDesc(String docTypeDesc) {
+        this.docTypeDesc = docTypeDesc;
+    }
 
-	public String getMdDocStatus() {
-		return mdDocStatus;
-	}
+    public String getMdDocStatus() {
+        return mdDocStatus;
+    }
 
-	public void setMdDocStatus(String mdDocStatus) {
-		this.mdDocStatus = mdDocStatus;
-	}
+    public void setMdDocStatus(String mdDocStatus) {
+        this.mdDocStatus = mdDocStatus;
+    }
 
-	public DglAccMnoDTO getAcc() {
-		return acc;
-	}
+    public Long getDglAccMnoId() {
+        return dglAccMnoId;
+    }
 
-	public void setAcc(DglAccMnoDTO acc) {
-		this.acc = acc;
-	}
+    public void setDglAccMnoId(Long dglAccMnoId) {
+        this.dglAccMnoId = dglAccMnoId;
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof DglMdDocTypeDTO)) {
+            return false;
+        }
 
+        return id != null && id.equals(((DglMdDocTypeDTO) o).id);
+    }
 
+    @Override
+    public int hashCode() {
+        return 31;
+    }
+
+    // prettier-ignore
+    @Override
+    public String toString() {
+        return "DglMdDocTypeDTO{" +
+            "id=" + getId() +
+            ", docTypeTitle='" + getDocTypeTitle() + "'" +
+            ", allowFileFormat='" + getAllowFileFormat() + "'" +
+            ", docTypeDesc='" + getDocTypeDesc() + "'" +
+            ", mdDocStatus='" + getMdDocStatus() + "'" +
+            ", dglAccMnoId=" + getDglAccMnoId() +
+            "}";
+    }
 }

@@ -4,42 +4,31 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
-import org.hibernate.annotations.Parameter;
-import org.hibernate.annotations.Type;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-import com.mfino.digilinq.account.enumeration.CustomerType;
-import com.mfino.digilinq.account.enumeration.StatusType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
-@ToString(onlyExplicitlyIncluded = true)
+/**
+ * A DglMdCustCat.
+ */
 @Entity
-@Table(name = "dgl_md_cust_cat", schema = "digilinq_dev_new", uniqueConstraints = {
-		@UniqueConstraint(columnNames = { "cust_cat_title" }) })
+@Table(name = "dgl_md_cust_cat")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class DglMdCustCat implements Serializable {
-    private static final long serialVersionUID = 1455327136665705986L;
+
+    private static final long serialVersionUID = 1L;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cust_cat_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="cust_cat_id")
     private Long id;
 
     @Column(name = "cust_cat_title")
@@ -49,17 +38,115 @@ public class DglMdCustCat implements Serializable {
     private String custCatDesc;
 
     @Column(name = "cust_cat_type")
-    @Type(type = "com.mfino.digilinq.commons.enumeration.EnumUserType", parameters = {
-			@Parameter(name = "Enum", value = "com.mfino.digilinq.account.enumeration.CustomerType")})
-    private CustomerType custCatType;
+    private String custCatType;
 
     @Column(name = "md_cus_status")
-    @Type(type = "com.mfino.digilinq.commons.enumeration.EnumUserType", parameters = {
-			@Parameter(name = "Enum", value = "com.mfino.digilinq.account.enumeration.StatusType")})
-    private StatusType mdCusStatus;
+    private String mdCusStatus;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "acc_id")
-    private DglAccMno acc;
+    @JsonIgnoreProperties(value = "dglMdCustCats", allowSetters = true)
+    private DglAccMno dglAccMno;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCustCatTitle() {
+        return custCatTitle;
+    }
+
+    public DglMdCustCat custCatTitle(String custCatTitle) {
+        this.custCatTitle = custCatTitle;
+        return this;
+    }
+
+    public void setCustCatTitle(String custCatTitle) {
+        this.custCatTitle = custCatTitle;
+    }
+
+    public String getCustCatDesc() {
+        return custCatDesc;
+    }
+
+    public DglMdCustCat custCatDesc(String custCatDesc) {
+        this.custCatDesc = custCatDesc;
+        return this;
+    }
+
+    public void setCustCatDesc(String custCatDesc) {
+        this.custCatDesc = custCatDesc;
+    }
+
+    public String getCustCatType() {
+        return custCatType;
+    }
+
+    public DglMdCustCat custCatType(String custCatType) {
+        this.custCatType = custCatType;
+        return this;
+    }
+
+    public void setCustCatType(String custCatType) {
+        this.custCatType = custCatType;
+    }
+
+    public String getMdCusStatus() {
+        return mdCusStatus;
+    }
+
+    public DglMdCustCat mdCusStatus(String mdCusStatus) {
+        this.mdCusStatus = mdCusStatus;
+        return this;
+    }
+
+    public void setMdCusStatus(String mdCusStatus) {
+        this.mdCusStatus = mdCusStatus;
+    }
+
+    public DglAccMno getDglAccMno() {
+        return dglAccMno;
+    }
+
+    public DglMdCustCat dglAccMno(DglAccMno dglAccMno) {
+        this.dglAccMno = dglAccMno;
+        return this;
+    }
+
+    public void setDglAccMno(DglAccMno dglAccMno) {
+        this.dglAccMno = dglAccMno;
+    }
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof DglMdCustCat)) {
+            return false;
+        }
+        return id != null && id.equals(((DglMdCustCat) o).id);
+    }
+
+    @Override
+    public int hashCode() {
+        return 31;
+    }
+
+    // prettier-ignore
+    @Override
+    public String toString() {
+        return "DglMdCustCat{" +
+            "id=" + getId() +
+            ", custCatTitle='" + getCustCatTitle() + "'" +
+            ", custCatDesc='" + getCustCatDesc() + "'" +
+            ", custCatType='" + getCustCatType() + "'" +
+            ", mdCusStatus='" + getMdCusStatus() + "'" +
+            "}";
+    }
 }

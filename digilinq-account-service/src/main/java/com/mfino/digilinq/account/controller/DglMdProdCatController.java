@@ -67,7 +67,7 @@ public class DglMdProdCatController extends BaseAPIController  {
 			@PathVariable(value = "id", required = false) final Integer id,
 			@Valid @RequestBody DglMdProdCatDTO dglMdProdCatDTO) throws URISyntaxException {
 		log.debug("REST request to update DglMdProdCat : {}, {}", id, dglMdProdCatDTO);
-	    dglMdProdCatService.update(dglMdProdCatDTO);
+//	    dglMdProdCatService.update(dglMdProdCatDTO);
 		return ResponseEntity.ok(getSucessResponse(new BaseRestApiResponse()));
 	}
 
@@ -91,7 +91,7 @@ public class DglMdProdCatController extends BaseAPIController  {
 	        @RequestParam(value = "mdProdCatStatus", required = true) final String mdDocTypeStatus
 	    ) throws URISyntaxException {
 	        log.debug("REST request to partial update DglMdCustCat partially : {}, {}", id, mdDocTypeStatus);
-	        dglMdProdCatService.updateStatus(id, mdDocTypeStatus);
+//	        dglMdProdCatService.updateStatus(id, mdDocTypeStatus);
 	        return ResponseEntity.ok(getSucessResponse(new BaseRestApiResponse()));
 	    }
 
@@ -101,13 +101,13 @@ public class DglMdProdCatController extends BaseAPIController  {
 	 * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list
 	 *         of dglMdProdCats in body.
 	 */
-	@GetMapping("/prod-cats")
-	public List<DglMdProdCatDTO> getAllDglMdProdCats(@RequestParam(value = "page_no", required = false) final Integer pageNo,
-	        @RequestParam(value = "page_size", required = false) final Integer pageSize,
-	        @RequestParam(value = "sort_feild", required = false) String sortFeild) {
-		log.debug("REST request to get all DglMdProdCats");
-		return dglMdProdCatService.findAll(pageNo,pageSize,sortFeild);
-	}
+//	@GetMapping("/prod-cats")
+//	public List<DglMdProdCatDTO> getAllDglMdProdCats(@RequestParam(value = "page_no", required = false) final Integer pageNo,
+//	        @RequestParam(value = "page_size", required = false) final Integer pageSize,
+//	        @RequestParam(value = "sort_feild", required = false) String sortFeild) {
+//		log.debug("REST request to get all DglMdProdCats");
+//		return dglMdProdCatService.findAll(pageNo,pageSize,sortFeild);
+//	}
 
 	/**
 	 * {@code GET  /dgl-md-prod-cats/:id} : get the "id" dglMdProdCat.

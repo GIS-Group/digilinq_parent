@@ -3,7 +3,7 @@ package com.mfino.digilinq.account.enumeration;
 public enum StatusType {
 
 	/** The Active. */
-	ACTIVE("Active"), 
+	ACTIVE("Active"),
 	/** The InActive. */
 	IN_ACTIVE("InActive"),
 	/** The Pending Approval. */
@@ -29,7 +29,7 @@ public enum StatusType {
 	public String getValue() {
 		return value;
 	}
-	
+
 	/**
 	 * To string.
 	 *
