@@ -20,6 +20,8 @@ public interface DglEnterpriseCustomerService {
      * @return the persisted entity.
      */
     DglEnterpriseCustomerDTO save(DglEnterpriseCustomerDTO dglEnterpriseCustomerDTO);
+    
+    DglEnterpriseCustomerDTO update(DglEnterpriseCustomerDTO dglCustomerDTO);
 
     /**
      * Get all the dglCustomers.
