@@ -64,12 +64,12 @@ public class DglContracts implements Serializable {
     private Set<DglContractConfig> dglContractConfigs = new HashSet<>();
 
     @ManyToOne
-    @JoinColumn(name = "acc_id",insertable = false,updatable = false)
+    @JoinColumn(name = "acc_id")
     @JsonIgnoreProperties(value = "dglContracts", allowSetters = true)
     private DglAccMno dglAccMno;
 
-    @ManyToOne()
-    @JoinColumn(name = "acc_id",insertable = false,updatable = false)
+    @ManyToOne
+    @JoinColumn(name = "receiving_party")
     @JsonIgnoreProperties(value = "dglContracts", allowSetters = true)
     private DglAccMno dglContractsReceivingParties;
 
