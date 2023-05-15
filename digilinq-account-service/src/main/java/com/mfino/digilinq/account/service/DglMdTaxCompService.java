@@ -1,5 +1,6 @@
 package com.mfino.digilinq.account.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -43,4 +44,8 @@ public interface DglMdTaxCompService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+    
+	public DglMdTaxCompDTO update(DglMdTaxCompDTO dglMdTaxCompDTO);
+	public void updateStatus(Long id, String mdTaxStatus);
+	public List<DglMdTaxCompDTO> findAll(int pageNo, int pageSize, String sortField);
 }
