@@ -22,6 +22,8 @@ public interface DglEnterpriseCustomerService {
     DglEnterpriseCustomerDTO save(DglEnterpriseCustomerDTO dglEnterpriseCustomerDTO);
     
     DglEnterpriseCustomerDTO update(DglEnterpriseCustomerDTO dglCustomerDTO);
+    
+    void updateStatus(Long id, String custStatus);
 
     /**
      * Get all the dglCustomers.

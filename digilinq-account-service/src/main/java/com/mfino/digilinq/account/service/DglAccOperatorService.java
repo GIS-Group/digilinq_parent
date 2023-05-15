@@ -19,6 +19,8 @@ public interface DglAccOperatorService {
     DglAccOperatorDTO save(DglAccOperatorDTO dglAccOperatorDTO);
     
     DglAccOperatorDTO update(DglAccOperatorDTO dglAccOperatorDTO);
+    
+    void updateStatus(Long id, String accStatus);
 
     /**
      * Get all the dglAccMnos.

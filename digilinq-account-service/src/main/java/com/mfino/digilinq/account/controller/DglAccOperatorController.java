@@ -1,5 +1,6 @@
 package com.mfino.digilinq.account.controller;
 
+import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,7 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -66,6 +69,13 @@ public class DglAccOperatorController extends BaseAPIController {
 		return ResponseEntity.ok(new BaseRestApiResponse());
 	}
 
+	@PatchMapping("/acc-operators")
+	public ResponseEntity<?> updateStatus(@RequestParam Long id,
+			@RequestParam(value = "acc_status", required = true) final String accStatus) throws URISyntaxException {
+		dglAccOperatorService.updateStatus(id, accStatus);
+		return ResponseEntity.ok(new BaseRestApiResponse());
+	}
+
 	/**
 	 * {@code GET  /acc-operators} : get all the dglAccOperators.
 	 *
@@ -101,10 +111,10 @@ public class DglAccOperatorController extends BaseAPIController {
 	 * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
 	 */
 //	@DeleteMapping("/acc-operators/{id}")
-//	public ResponseEntity<?> deleteDglAccOperator(@PathVariable Long id) {
-//		log.debug("REST request to delete DglAccMno : {}", id);
-//		dglAccOperatorService.delete(id);
-//		return ResponseEntity.ok(new BaseRestApiResponse());
-//	}
+	public ResponseEntity<?> deleteDglAccOperator(@PathVariable Long id) {
+		log.debug("REST request to delete DglAccMno : {}", id);
+		dglAccOperatorService.delete(id);
+		return ResponseEntity.ok(new BaseRestApiResponse());
+	}
 
 }
