@@ -1,11 +1,16 @@
 package com.mfino.digilinq.account.service.impl;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -63,4 +68,29 @@ public class DglMdTaxCompServiceImpl implements DglMdTaxCompService {
         log.debug("Request to delete DglMdTaxComp : {}", id);
         dglMdTaxCompRepository.deleteById(id);
     }
+    
+    @Override
+	public DglMdTaxCompDTO update(DglMdTaxCompDTO dglMdTaxCompDTO) {
+		log.debug("Request to update DglMdTaxComp : {}", dglMdTaxCompDTO);
+		DglMdTaxComp dglMdTaxComp = dglMdTaxCompMapper.toEntity(dglMdTaxCompDTO);
+		dglMdTaxComp = dglMdTaxCompRepository.save(dglMdTaxComp);
+		return dglMdTaxCompMapper.toDto(dglMdTaxComp);
+	}
+
+	@Override
+	public void updateStatus(Long id, String mdTaxStatus) {
+		Optional<DglMdTaxComp> dglMdTaxComp = dglMdTaxCompRepository.findById(id);
+		DglMdTaxComp entity = dglMdTaxComp.get();
+		entity.setMdTaxStatus(mdTaxStatus);
+		dglMdTaxCompRepository.save(entity);
+	}
+
+	@Override
+	public List<DglMdTaxCompDTO> findAll(int pageNo, int pageSize, String sortField) {
+		
+		Pageable pageable = PageRequest.of(pageNo != 0 ? pageNo : 0, pageSize != 0 ? pageSize : 10,
+				sortField != null ? Sort.by(sortField) : Sort.by("id"));
+		return dglMdTaxCompRepository.findAll(pageable).stream().map(dglMdTaxCompMapper::toDto)
+				.collect(Collectors.toCollection(LinkedList::new));
+	}
 }
