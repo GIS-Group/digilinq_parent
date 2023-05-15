@@ -3,6 +3,8 @@ package com.mfino.digilinq.account.dto;
 import java.io.Serializable;
 import java.time.Instant;
 
+import com.mfino.digilinq.account.domain.DglCustomer;
+
 /**
  * A DTO for the {@link com.mfino.digilinq.account.domain.domain.DglCustContracts} entity.
  */
@@ -32,6 +34,8 @@ public class DglCustContractsDTO implements Serializable {
     private Long dglAccMnoId;
 
     private Long dglMdContractTypeId;
+    
+    private Long receivingParty;
 
     public Long getId() {
         return id;
@@ -129,7 +133,15 @@ public class DglCustContractsDTO implements Serializable {
         this.dglMdContractTypeId = dglMdContractTypeId;
     }
 
-    @Override
+    public Long getReceivingParty() {
+		return receivingParty;
+	}
+
+	public void setReceivingParty(Long receivingParty) {
+		this.receivingParty = receivingParty;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;

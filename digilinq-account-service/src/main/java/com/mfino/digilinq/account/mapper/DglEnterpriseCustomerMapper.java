@@ -5,14 +5,13 @@ import org.mapstruct.Mapping;
 
 import com.mfino.digilinq.account.domain.DglCustomer;
 import com.mfino.digilinq.account.dto.DglEnterpriseCustomerDTO;
-import com.mfino.digilinq.account.service.DglEnterpriseCustomerService;
 
-@Mapper(componentModel = "spring", uses = {DglEnterpriseCustomerService.class, DglAccMnoMapper.class})
+@Mapper(componentModel = "spring", uses = {DglAccMnoMapper.class,DglCustContractsMapper.class})
 public interface DglEnterpriseCustomerMapper extends EntityMapper<DglEnterpriseCustomerDTO, DglCustomer> {
 
-//	@Override
-//	@Mapping(source = "dglAccMno.id", target = "dglAccMnoId")
-//	DglEnterpriseCustomerDTO toDto(DglCustomer dglCustomer);
+	@Override
+	@Mapping(source = "dglAccMno.id", target = "dglAccMnoId")
+	DglEnterpriseCustomerDTO toDto(DglCustomer dglCustomer);
 
     @Override
 	@Mapping(target = "dglCustRoles", source = "dglCustRoles")

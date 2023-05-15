@@ -17,6 +17,7 @@ public interface DglCustContractsMapper extends EntityMapper<DglCustContractsDTO
 	@Mapping(source = "dglCustomer.id", target = "dglCustomerId")
     @Mapping(source = "dglAccMno.id", target = "dglAccMnoId")
     @Mapping(source = "dglMdContractType.id", target = "dglMdContractTypeId")
+    @Mapping(source = "dglCustomer.id", target = "receivingParty")
     DglCustContractsDTO toDto(DglCustContracts dglCustContracts);
 
     @Override

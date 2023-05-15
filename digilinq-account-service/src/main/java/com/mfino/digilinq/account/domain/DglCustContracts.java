@@ -77,6 +77,11 @@ public class DglCustContracts implements Serializable {
     @JoinColumn(name = "contract_type_id")
     @JsonIgnoreProperties(value = "dglCustContracts", allowSetters = true)
     private DglMdContractType dglMdContractType;
+    
+    @ManyToOne
+    @JoinColumn(name = "receiving_party")
+    @JsonIgnoreProperties(value = "dglCustContracts", allowSetters = true)
+    private DglCustomer receivingParty;
 
     public Long getId() {
         return id;
@@ -254,7 +259,15 @@ public class DglCustContracts implements Serializable {
         this.dglMdContractType = dglMdContractType;
     }
 
-    @Override
+    public DglCustomer getReceivingParty() {
+		return receivingParty;
+	}
+
+	public void setReceivingParty(DglCustomer receivingParty) {
+		this.receivingParty = receivingParty;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
