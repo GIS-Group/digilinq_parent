@@ -61,7 +61,7 @@ public class DglEnterpriseCustomerController extends BaseAPIController {
         if (dglCustomerDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", "idnull");
         }
-        dglCustomerService.save(dglCustomerDTO);
+        dglCustomerService.update(dglCustomerDTO);
         return ResponseEntity.ok(new BaseRestApiResponse());
     }
 

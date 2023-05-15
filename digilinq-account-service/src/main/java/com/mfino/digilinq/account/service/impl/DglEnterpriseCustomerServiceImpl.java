@@ -21,8 +21,10 @@ import com.mfino.digilinq.account.domain.DglCustFiles;
 import com.mfino.digilinq.account.domain.DglCustRoles;
 import com.mfino.digilinq.account.domain.DglCustUsers;
 import com.mfino.digilinq.account.domain.DglCustomer;
+import com.mfino.digilinq.account.domain.DglMdContractType;
+import com.mfino.digilinq.account.dto.DglCustContractsDTO;
 import com.mfino.digilinq.account.dto.DglEnterpriseCustomerDTO;
-import com.mfino.digilinq.account.mapper.DglCustContractsMapper;
+import com.mfino.digilinq.account.mapper.DglCustCustomFieldsMapper;
 import com.mfino.digilinq.account.mapper.DglEnterpriseCustomerMapper;
 import com.mfino.digilinq.account.repository.DglCustContractsRepository;
 import com.mfino.digilinq.account.repository.DglCustCustomFieldsRepository;
@@ -30,6 +32,7 @@ import com.mfino.digilinq.account.repository.DglCustFilesRepository;
 import com.mfino.digilinq.account.repository.DglCustRolesRepository;
 import com.mfino.digilinq.account.repository.DglCustUsersRepository;
 import com.mfino.digilinq.account.repository.DglEnterpriseCustomerRepository;
+import com.mfino.digilinq.account.repository.DglMdContractTypeRepository;
 import com.mfino.digilinq.account.service.DglEnterpriseCustomerService;
 
 /**
@@ -62,6 +65,12 @@ public class DglEnterpriseCustomerServiceImpl implements DglEnterpriseCustomerSe
 	@Autowired
 	private DglCustContractsRepository dglCustContractsRepository;
 	
+	@Autowired
+	private DglMdContractTypeRepository dglMdContractTypeRepository;
+	
+	@Autowired
+	private DglCustCustomFieldsMapper dglCustCustomFieldsMapper;
+	
 	@Override
 	public DglEnterpriseCustomerDTO save(DglEnterpriseCustomerDTO dglCustomerDTO) {
 		log.debug("Request to save DglEnterpriseCustomers : {}", dglCustomerDTO);
@@ -87,13 +96,73 @@ public class DglEnterpriseCustomerServiceImpl implements DglEnterpriseCustomerSe
         	dglCustUsersRepository.save(dglCustUsers);
         }
 		
-		//TODO: need to check
-//		for(DglCustContracts dglCustContracts: dglCustomer.getDglCustContracts()) {
-//			dglCustContracts.setDglCustomer(dglCustomer);
-//			dglCustContracts.setDglAccMno(dglCustomer.getDglAccMno());
-//			dglCustContracts.setDglMdContractType(dglCustContracts.getDglMdContractType());
-//        	dglCustContractsRepository.save(dglCustContracts);
-//        }
+		for(DglCustContracts dglCustContracts: dglCustomer.getDglCustContracts()) {
+			dglCustContracts.setDglCustomer(dglCustomer);
+			dglCustContracts.setDglAccMno(dglCustomer.getDglAccMno());
+			dglCustContracts.setReceivingParty(dglCustomer);
+			List<DglCustContractsDTO> dglCustContractsList = new ArrayList<>(dglCustomerDTO.getDglCustContracts());
+			Optional<DglMdContractType> dglMdContractType = dglMdContractTypeRepository.findById(dglCustContractsList.get(0).getDglMdContractTypeId());
+			dglCustContracts.setDglMdContractType(dglMdContractType.get());
+        	dglCustContractsRepository.save(dglCustContracts);
+        }
+		return dglCustomerMapper.toDto(dglCustomer);
+	}
+	
+	@Override
+	public DglEnterpriseCustomerDTO update(DglEnterpriseCustomerDTO dglCustomerDTO) {
+		log.debug("Request to save DglEnterpriseCustomers : {}", dglCustomerDTO);
+		DglCustomer dglCustomer = dglCustomerMapper.toEntity(dglCustomerDTO);
+
+		DglCustCustomFields dglCustCustomFields;
+		for(DglCustCustomFields dglCustCustomField : dglCustomer.getDglCustCustomFields()) {
+			dglCustCustomFields = dglCustCustomFieldsRepository.findById(dglCustCustomField.getId()).get();
+			dglCustCustomFields.setFieldTitle(dglCustCustomField.getFieldTitle());
+			dglCustCustomFields.setFieldValue(dglCustCustomField.getFieldValue());
+			dglCustomer.addDglCustCustomFields(dglCustCustomFields);
+		}
+		
+		DglCustFiles dglCustFiles;
+		for(DglCustFiles dglCustFile: dglCustomer.getDglCustFiles()) {
+			dglCustFiles = dglCustFilesRepository.findById(dglCustFile.getId()).get();
+			dglCustFiles.setFileName(dglCustFile.getFileName());
+			dglCustFiles.setFileUrl(dglCustFile.getFileUrl());
+			dglCustomer.addDglCustFiles(dglCustFiles);
+		}
+		
+		DglCustRoles dglCustRoles;
+		for(DglCustRoles dglCustRole : dglCustomer.getDglCustRoles()) {
+			dglCustRoles = dglCustRolesRepository.findById(dglCustRole.getId()).get();
+			dglCustRoles.setPermissions(dglCustRole.getPermissions());
+			dglCustRoles.setRoleDesc(dglCustRole.getRoleDesc());
+			dglCustRoles.setRoleName(dglCustRole.getRoleName());
+			dglCustomer.addDglCustRoles(dglCustRoles);
+		}
+		
+		DglCustUsers dglCustUsers;
+		for(DglCustUsers dglCustUser: dglCustomer.getDglCustUsers()) {
+			dglCustUsers = dglCustUsersRepository.findById(dglCustUser.getId()).get();
+			dglCustUsers.setFirstName(dglCustUser.getFirstName());
+			dglCustUsers.setLastName(dglCustUser.getLastName());
+			dglCustUsers.setEmail(dglCustUser.getEmail());
+			dglCustUsers.setPhone(dglCustUser.getPhone());
+			dglCustomer.addDglCustUsers(dglCustUsers);
+        }
+		
+		DglCustContracts dglCustContracts;
+		for(DglCustContracts dglCustContract: dglCustomer.getDglCustContracts()) {
+			dglCustContracts = dglCustContractsRepository.findById(dglCustContract.getId()).get();
+			List<DglCustContractsDTO> dglCustContractsList = new ArrayList<>(dglCustomerDTO.getDglCustContracts());
+			Optional<DglMdContractType> dglMdContractType = dglMdContractTypeRepository.findById(dglCustContractsList.get(0).getDglMdContractTypeId());
+			dglCustContracts.setDglMdContractType(dglMdContractType.get());
+			dglCustContracts.setContractFile(dglCustContract.getContractFile());
+			dglCustContracts.setSignedDate(dglCustContract.getSignedDate());
+			dglCustContracts.setEnforceDate(dglCustContract.getEnforceDate());
+			dglCustContracts.terminateDate(dglCustContract.getTerminateDate());
+			dglCustContracts.status(dglCustContract.getStatus());
+			dglCustomer.addDglCustContracts(dglCustContracts);
+        }
+		
+		dglCustomer = dglCustomerRepository.save(dglCustomer);
 		return dglCustomerMapper.toDto(dglCustomer);
 	}
 
