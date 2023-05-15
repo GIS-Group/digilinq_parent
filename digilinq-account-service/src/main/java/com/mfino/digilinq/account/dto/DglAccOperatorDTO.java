@@ -312,20 +312,20 @@ public class DglAccOperatorDTO implements Serializable {
         this.accType = accType;
     }
 
-    public DglAccOperatorDTO getAccParent() {
-		return accParent;
-	}
-
-	public void setAccParent(DglAccOperatorDTO accParent) {
-		this.accParent = accParent;
-	}
-
 	public DglAccOperatorDTO getAccMnoParent() {
 		return accMnoParent;
 	}
 
 	public void setAccMnoParent(DglAccOperatorDTO accMnoParent) {
 		this.accMnoParent = accMnoParent;
+	}
+
+	public DglAccOperatorDTO getAccParent() {
+		return accParent;
+	}
+
+	public void setAccParent(DglAccOperatorDTO accParent) {
+		this.accParent = accParent;
 	}
 
 	public Set<DglAccMnoCustomFieldsDTO> getDglAccMnoCustomFields() {

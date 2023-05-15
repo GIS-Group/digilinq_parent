@@ -633,7 +633,15 @@ public class DglCustomer implements Serializable {
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
-    @Override
+    public DglCustomer getCustParent() {
+		return custParent;
+	}
+
+	public void setCustParent(DglCustomer custParent) {
+		this.custParent = custParent;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;

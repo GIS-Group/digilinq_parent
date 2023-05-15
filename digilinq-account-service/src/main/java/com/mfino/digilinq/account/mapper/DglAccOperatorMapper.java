@@ -5,9 +5,8 @@ import org.mapstruct.Mapping;
 
 import com.mfino.digilinq.account.domain.DglAccMno;
 import com.mfino.digilinq.account.dto.DglAccOperatorDTO;
-import com.mfino.digilinq.account.service.DglAccOperatorService;
 
-@Mapper(componentModel = "spring", uses = {DglAccOperatorService.class})
+@Mapper(componentModel = "spring", uses = {DglAccMnoMapper.class})
 public interface DglAccOperatorMapper extends EntityMapper<DglAccOperatorDTO, DglAccMno> {
 
 	@Mapping(target = "dglAccMnoCustomFields", source = "dglAccMnoCustomFields")
@@ -24,4 +23,18 @@ public interface DglAccOperatorMapper extends EntityMapper<DglAccOperatorDTO, Dg
         dglAccMno.setId(id);
         return dglAccMno;
     }
+    
+    @Override
+    @Mapping(target = "accParent" , source = "accParent" , ignore = true)
+    @Mapping(target = "accMnoParent" , source = "accMnoParent" ,ignore = true)
+    DglAccOperatorDTO toDto(DglAccMno entity);
+    
+//    @Override
+//    @Mapping(target = "accParent.id" , source = "accParent.id")
+//    default DglAccOperatorDTO toDto(DglAccMno entity) {
+//    	DglAccOperatorDTO accOperatorDTO = new DglAccOperatorDTO();
+//    	
+//    	return accOperatorDTO;
+//    }
+  
 }

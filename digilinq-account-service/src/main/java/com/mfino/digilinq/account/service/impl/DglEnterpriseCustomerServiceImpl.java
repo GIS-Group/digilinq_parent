@@ -24,7 +24,6 @@ import com.mfino.digilinq.account.domain.DglCustomer;
 import com.mfino.digilinq.account.domain.DglMdContractType;
 import com.mfino.digilinq.account.dto.DglCustContractsDTO;
 import com.mfino.digilinq.account.dto.DglEnterpriseCustomerDTO;
-import com.mfino.digilinq.account.mapper.DglCustCustomFieldsMapper;
 import com.mfino.digilinq.account.mapper.DglEnterpriseCustomerMapper;
 import com.mfino.digilinq.account.repository.DglCustContractsRepository;
 import com.mfino.digilinq.account.repository.DglCustCustomFieldsRepository;
@@ -67,9 +66,6 @@ public class DglEnterpriseCustomerServiceImpl implements DglEnterpriseCustomerSe
 	
 	@Autowired
 	private DglMdContractTypeRepository dglMdContractTypeRepository;
-	
-	@Autowired
-	private DglCustCustomFieldsMapper dglCustCustomFieldsMapper;
 	
 	@Override
 	public DglEnterpriseCustomerDTO save(DglEnterpriseCustomerDTO dglCustomerDTO) {

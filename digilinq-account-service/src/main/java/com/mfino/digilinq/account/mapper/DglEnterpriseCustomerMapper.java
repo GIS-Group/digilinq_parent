@@ -20,6 +20,7 @@ public interface DglEnterpriseCustomerMapper extends EntityMapper<DglEnterpriseC
     @Mapping(target = "dglCustFiles", source = "dglCustFiles")
     @Mapping(target = "dglCustCustomFields", source = "dglCustCustomFields")
     @Mapping(source = "dglAccMnoId", target = "dglAccMno")
+    @Mapping(source = "custParent", target = "custParent")
     DglCustomer toEntity(DglEnterpriseCustomerDTO dglEnterpriseCustomerDTO);
     
     default DglCustomer fromId(Long id) {
