@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,8 +18,11 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Parameter;
+import org.hibernate.annotations.Type;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.mfino.digilinq.account.enumeration.StatusType;
 
 /**
  * A DglCustomer.
@@ -96,7 +100,9 @@ public class DglCustomer implements Serializable {
     private Integer custPrefPg;
 
     @Column(name = "cust_status")
-    private String custStatus;
+    @Type(type = "com.mfino.digilinq.commons.enumeration.EnumUserType", parameters = {
+			@Parameter(name = "Enum", value = "com.mfino.digilinq.account.enumeration.StatusType") })
+    private StatusType custStatus;
 
     @Column(name = "cust_unq_id")
     private String custUnqId;
@@ -137,6 +143,10 @@ public class DglCustomer implements Serializable {
     @JoinColumn(name = "acc_id")
     @JsonIgnoreProperties(value = "dglCustomers", allowSetters = true)
     private DglAccMno dglAccMno;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cust_parent_id")
+    private DglCustomer custParent;
 
     public Long getId() {
         return id;
@@ -406,16 +416,16 @@ public class DglCustomer implements Serializable {
         this.custPrefPg = custPrefPg;
     }
 
-    public String getCustStatus() {
+    public StatusType getCustStatus() {
         return custStatus;
     }
 
-    public DglCustomer custStatus(String custStatus) {
+    public DglCustomer custStatus(StatusType custStatus) {
         this.custStatus = custStatus;
         return this;
     }
 
-    public void setCustStatus(String custStatus) {
+    public void setCustStatus(StatusType custStatus) {
         this.custStatus = custStatus;
     }
 

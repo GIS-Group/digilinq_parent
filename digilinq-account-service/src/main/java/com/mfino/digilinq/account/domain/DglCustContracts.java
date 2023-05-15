@@ -77,6 +77,11 @@ public class DglCustContracts implements Serializable {
     @JoinColumn(name = "contract_type_id")
     @JsonIgnoreProperties(value = "dglCustContracts", allowSetters = true)
     private DglMdContractType dglMdContractType;
+    
+    @ManyToOne
+    @JoinColumn(name = "receiving_party")
+    @JsonIgnoreProperties(value = "dglCustContracts", allowSetters = true)
+    private DglCustomer receivingParty;
 
     public Long getId() {
         return id;
@@ -253,9 +258,16 @@ public class DglCustContracts implements Serializable {
     public void setDglMdContractType(DglMdContractType dglMdContractType) {
         this.dglMdContractType = dglMdContractType;
     }
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
-    @Override
+    public DglCustomer getReceivingParty() {
+		return receivingParty;
+	}
+
+	public void setReceivingParty(DglCustomer receivingParty) {
+		this.receivingParty = receivingParty;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;

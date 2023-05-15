@@ -34,10 +34,10 @@ public class DglMdCur implements Serializable {
     @Column(name = "is_default")
     private Boolean isDefault;
 
-    @Column(name = "cur_title")
+    @Column(name = "cur_title",unique = true)
     private String curTitle;
 
-    @Column(name = "cur_symbol")
+    @Column(name = "cur_symbol",unique = true)
     private String curSymbol;
 
     @Column(name = "cur_conv_rate")

@@ -1,25 +1,40 @@
 package com.mfino.digilinq.account.dto;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import com.mfino.digilinq.account.enumeration.StatusType;
 
 /**
  * A DTO for the {@link com.mfino.digilinq.account.domain.domain.DglMdContractType} entity.
  */
 public class DglMdContractTypeDTO implements Serializable {
 
-    private Long id;
+    private static final long serialVersionUID = -7071192358799183366L;
 
+	private Long id;
+
+	@NotNull(message = "Category Cannot be null")
     private String custCat;
 
+    @NotNull(message = "Title Cannot be null")
+	@Pattern(regexp = "^[a-zA-Z0-9.\\-\\/+=@_ ]*$", message = "pattern is not allowed.")
+	@Size(max = 255, message = "Title Max characters allowed is 255")
     private String contractTypeTitle;
 
     private String contractTypeDesc;
 
-    private String mdContrStatus;
+    private StatusType mdContrStatus;
 
     private Boolean isEvent;
 
-
+    private Set<DglMdContractTypeConfigDTO> dglMdContractTypeConfigs = new HashSet<>();
+    
     private Long dglAccMnoId;
 
     public Long getId() {
@@ -54,11 +69,11 @@ public class DglMdContractTypeDTO implements Serializable {
         this.contractTypeDesc = contractTypeDesc;
     }
 
-    public String getMdContrStatus() {
+    public StatusType getMdContrStatus() {
         return mdContrStatus;
     }
 
-    public void setMdContrStatus(String mdContrStatus) {
+    public void setMdContrStatus(StatusType mdContrStatus) {
         this.mdContrStatus = mdContrStatus;
     }
 
@@ -70,15 +85,23 @@ public class DglMdContractTypeDTO implements Serializable {
         this.isEvent = isEvent;
     }
 
-    public Long getDglAccMnoId() {
-        return dglAccMnoId;
-    }
+    public Set<DglMdContractTypeConfigDTO> getDglMdContractTypeConfigs() {
+		return dglMdContractTypeConfigs;
+	}
 
-    public void setDglAccMnoId(Long dglAccMnoId) {
-        this.dglAccMnoId = dglAccMnoId;
-    }
+	public void setDglMdContractTypeConfigs(Set<DglMdContractTypeConfigDTO> dglMdContractTypeConfigs) {
+		this.dglMdContractTypeConfigs = dglMdContractTypeConfigs;
+	}
 
-    @Override
+	public Long getDglAccMnoId() {
+		return dglAccMnoId;
+	}
+
+	public void setDglAccMnoId(Long dglAccMnoId) {
+		this.dglAccMnoId = dglAccMnoId;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -105,7 +128,6 @@ public class DglMdContractTypeDTO implements Serializable {
             ", contractTypeDesc='" + getContractTypeDesc() + "'" +
             ", mdContrStatus='" + getMdContrStatus() + "'" +
             ", isEvent='" + isIsEvent() + "'" +
-            ", dglAccMnoId=" + getDglAccMnoId() +
             "}";
     }
 }

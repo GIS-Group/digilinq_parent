@@ -1,0 +1,574 @@
+{
+	"info": {
+		"_postman_id": "fe53d75f-4753-4120-a6f2-897ba117ffc5",
+		"name": "Digilinq_Account",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CustomerCategory",
+			"item": [
+				{
+					"name": "CreateCustCategory",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgzNTM4ODQ3LCJpYXQiOjE2ODM1MzU4NDd9.Tidp5UF0GfK3EvdvDETwzWiKEgPgwPur7pyUcdOrIHwxrJmy7ijvCF0XVvthlXnYUCm08ObadiyrFlK4dEeGtMXze3EzqRq0CTqm0I6cAjfsKIUXmC7qxqH6_pGBjMs6DRBDtZa5kbIpfxQ-XGoogUXN1e6FdGb_bnZYvHLcadAyUc9V4MUAewVtMvOEg2TzDeBl6iovj8bonGvWpmRWe9tB4c4Bz_fCy5h84C3krrYuoJyQuN70M7cCvFXWIsaCRxC52tCUV9dasFNBf2sVgsBIrmR0x-QodJfzSO6P3cPep4SR31bUHHXoVxu1ARSRh3b90CmX614ZntbJ1B3V0A",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cust_cat_type\": \"Enterprise_Customer\",\r\n    \"cust_cat_title\": \"Sample category17\",\r\n    \"cust_cat_desc\": \"This is the sample description describes about the customer category\",\r\n    \"md_cus_status\": \"ACTIVE\",\r\n    \"acc\": {\r\n        \"id\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/cust-cats",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"cust-cats"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateCustCategory",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgzMjk1ODIzLCJpYXQiOjE2ODMyOTI4MjN9.oxsrOXtkDTabVoQa3bZ3LUssnIWiDIH4NynlP-_4nnibS4kPXJLYnzV_5yJCT9zruAkkSbqBJ2ryuuXG3xIN3Yej0EI6GAgOSQHqxdZIuBAPrPPwzOqzxeNYmbfvXz-msWHVczaL8FB6bo9xkXY_sIgAHifOsM17bPZJyoGfixqvsEh8btCeHp6CRmU6r02qbUe6M6DuCh_YDV5E6HSWKDVjz6DGZwvi9N_lUg6f-BPCLm_dFkfyGCLCqKB8dGI3UrJ-aTwKuX4TlfBDItUsYHBhiGyp6vxtwiK2Uk94JzBZ5aiDQnetLWmL_orwAK4MyGSGx_7Fk2bTBFJzDig76w",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"cust_cat_type\": \"Retail_Customer\",\r\n    \"cust_cat_title\": \"Sample category\",\r\n    \"cust_cat_desc\": \"This is the sample description describes about the customer category\",\r\n    \"md_cus_status\": \"ACTIVE\",\r\n    \"acc\": {\r\n        \"id\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/cust-cats/1",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"cust-cats",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateCustCatStatus",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgzMzAwNDkyLCJpYXQiOjE2ODMyOTc0OTJ9.FM9-0ZJo4upDmEhH2DNnVvmAr-2-p_Z-mByU5qIRDQPC-BhizQHtnJ1AEOhD3z7WNoZv0s6_81DsbnMkHZmM1-imrPU8fRmqTunx7pvEWUgXJBXNlyTqpQRlvQvwyhO94YsfktoKEWO19l7aSzXgLaw4R7LKd3_3homuMhNhgjV6FUxWMSmA7g7fQpXU9k3P77Nzz1nZ0wl_PqbBeIY2zGGljrBq3kqiG1OYLqa14sYEDdyHHTTLVKWzEo-iEPqgmeDcBUzIHdiyxJpk0B1dqQvQeW80FgWjpeYlUzjoiHfzde8WuB_eKCvCaEvWOt4vcCcszpvz_KmkPE1rvdkGhw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/cust-cats?id=1&md_cus_status=IN_ACTIVE",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"cust-cats"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								},
+								{
+									"key": "md_cus_status",
+									"value": "IN_ACTIVE"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetCustCategoryById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgzMzAwNDkyLCJpYXQiOjE2ODMyOTc0OTJ9.FM9-0ZJo4upDmEhH2DNnVvmAr-2-p_Z-mByU5qIRDQPC-BhizQHtnJ1AEOhD3z7WNoZv0s6_81DsbnMkHZmM1-imrPU8fRmqTunx7pvEWUgXJBXNlyTqpQRlvQvwyhO94YsfktoKEWO19l7aSzXgLaw4R7LKd3_3homuMhNhgjV6FUxWMSmA7g7fQpXU9k3P77Nzz1nZ0wl_PqbBeIY2zGGljrBq3kqiG1OYLqa14sYEDdyHHTTLVKWzEo-iEPqgmeDcBUzIHdiyxJpk0B1dqQvQeW80FgWjpeYlUzjoiHfzde8WuB_eKCvCaEvWOt4vcCcszpvz_KmkPE1rvdkGhw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/cust-cats/1",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"cust-cats",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllCustCategories",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgzNTQxODU2LCJpYXQiOjE2ODM1Mzg4NTZ9.i52m22FZ56xdkoRZbjNr0NsB772sIViFEd1iEcw9i6jHtfNGdGX3orZqdnPTqLsJIGf6_GBuhIddtwYZB2DH4Cny6W45HBxopiIBp2-Q4xZrGnZxOvkfWiL5ylFVCQpMwYMsCiJVY_s7ZQ2PO6nmShIaxZYMlCLuQUbDW3alYc_WybSbDYw7OUXoESuLYR-MPdf5g1EkNngbuX_3w7xwbgtwpafjaDxkCunOmexltVk6sGO4cCGk7995DFgNoX6gaQ719OtNEBLKSO7yyUO9bHs0JAf-uoj1EzP5_7B5f_nwLUnOjF45r6B8lHpSLDN66FZhyUgGO6Yu6402OKHxeg"
+							}
+						],
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/cust-cats?page_no=1&page_size=4&sort_field=id",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"cust-cats"
+							],
+							"query": [
+								{
+									"key": "page_no",
+									"value": "1"
+								},
+								{
+									"key": "page_size",
+									"value": "4"
+								},
+								{
+									"key": "sort_field",
+									"value": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TaxComponent",
+			"item": [
+				{
+					"name": "CreateTaxComponent",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgzNTM4ODQ3LCJpYXQiOjE2ODM1MzU4NDd9.Tidp5UF0GfK3EvdvDETwzWiKEgPgwPur7pyUcdOrIHwxrJmy7ijvCF0XVvthlXnYUCm08ObadiyrFlK4dEeGtMXze3EzqRq0CTqm0I6cAjfsKIUXmC7qxqH6_pGBjMs6DRBDtZa5kbIpfxQ-XGoogUXN1e6FdGb_bnZYvHLcadAyUc9V4MUAewVtMvOEg2TzDeBl6iovj8bonGvWpmRWe9tB4c4Bz_fCy5h84C3krrYuoJyQuN70M7cCvFXWIsaCRxC52tCUV9dasFNBf2sVgsBIrmR0x-QodJfzSO6P3cPep4SR31bUHHXoVxu1ARSRh3b90CmX614ZntbJ1B3V0A",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tax_comp_title\": \"Sample taxcomponent13\",\r\n    \"tax_comp_ded_type\": \"Value\",\r\n    \"tax_comp_desc\": \"This is my description about the sample tax component\",\r\n    \"app_modules\": \"settlement\",\r\n    \"tax_value\": \"200\",\r\n    \"md_tax_status\": \"ACTIVE\",\r\n    \"acc\": {\r\n        \"id\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/tax-comp",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"tax-comp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateTaxComponent",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgzMzY0NDc3LCJpYXQiOjE2ODMzNjE0Nzd9.JSEXSu8rh_ugA3IzRtlYcTCNFwyPu07p80ZOEogi00_Cj42hS30Dl7RKal49LUit2fMPcmQ3JB5rrf2lFWKgvHjXJZRU9KDLyx34USd01muPuqYR9ygwNH5X0o16ygnGk-hCqoZ2OL7F0Uu66GMLUfRxcc0l9E4rVcPNAz4kNqNo_hMMQjptWHziLaHX7FIDW_bOW4FNI3E45GBAs5Iwuj1oBFd-WNqjiQyDOWB_fhmvHl8lmjo_XgAMBgFGFkKSAGXz9ou6GSr74_uK4v63Jrb4waJuScVJxwSOz6ddDrpkr8dRBRVk4TAzakVr7UTRjWp3gB_G7s-XtvWhOUqXEQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"tax_comp_title\": \"Sample taxcomponent\",\r\n    \"tax_comp_ded_type\": \"Percentage\",\r\n    \"tax_comp_desc\": \"This is my description about the sample tax component\",\r\n    \"app_modules\": \"settlement\",\r\n    \"tax_value\": \"30\",\r\n    \"md_tax_status\": \"IN_ACTIVE\",\r\n    \"acc\": {\r\n        \"id\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/tax-comp/1",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"tax-comp",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateTaxCompStatus",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgzMzY0NDc3LCJpYXQiOjE2ODMzNjE0Nzd9.JSEXSu8rh_ugA3IzRtlYcTCNFwyPu07p80ZOEogi00_Cj42hS30Dl7RKal49LUit2fMPcmQ3JB5rrf2lFWKgvHjXJZRU9KDLyx34USd01muPuqYR9ygwNH5X0o16ygnGk-hCqoZ2OL7F0Uu66GMLUfRxcc0l9E4rVcPNAz4kNqNo_hMMQjptWHziLaHX7FIDW_bOW4FNI3E45GBAs5Iwuj1oBFd-WNqjiQyDOWB_fhmvHl8lmjo_XgAMBgFGFkKSAGXz9ou6GSr74_uK4v63Jrb4waJuScVJxwSOz6ddDrpkr8dRBRVk4TAzakVr7UTRjWp3gB_G7s-XtvWhOUqXEQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/tax-comp?id=1&md_tax_status=ACTIVE",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"tax-comp"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								},
+								{
+									"key": "md_tax_status",
+									"value": "ACTIVE"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetTaxCompById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgzMzYwNzg3LCJpYXQiOjE2ODMzNTc3ODd9.MyX5nzE9Yz8bW13nTkLNoWlJTC7AMN7yGdplnMSjkT_-pVj39kXMSEhhRE1x7W_3QhhNeJZ9dPsn4odv55CmDEKdDyt2sb35hseTldBs8f01a5mpKMtVpwAtGvfFGejA4uhS9dXKG1a9cCfQpPPm-iuqSqe1cnSxvYVBYREpVkgYYX_sbjMohXtQBqqBesSCtA14kMszAnSU6m1yf2YLS-QidSCGpLfGrWPErCE_EMV48ZxPUbz90EfZymgllx3krcKuFQXeMOo14vwvk4SiNuV9VRdJZETuRP6VECwSP8CTNYOcFaa3QBp-1kys2ybIN6l30l6RTLhKGaVR9GZS2A",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/tax-comp/3",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"tax-comp",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllTaxComps",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgzNTQxODU2LCJpYXQiOjE2ODM1Mzg4NTZ9.i52m22FZ56xdkoRZbjNr0NsB772sIViFEd1iEcw9i6jHtfNGdGX3orZqdnPTqLsJIGf6_GBuhIddtwYZB2DH4Cny6W45HBxopiIBp2-Q4xZrGnZxOvkfWiL5ylFVCQpMwYMsCiJVY_s7ZQ2PO6nmShIaxZYMlCLuQUbDW3alYc_WybSbDYw7OUXoESuLYR-MPdf5g1EkNngbuX_3w7xwbgtwpafjaDxkCunOmexltVk6sGO4cCGk7995DFgNoX6gaQ719OtNEBLKSO7yyUO9bHs0JAf-uoj1EzP5_7B5f_nwLUnOjF45r6B8lHpSLDN66FZhyUgGO6Yu6402OKHxeg"
+							}
+						],
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/tax-comps?page_no=0&page_size=6&sort_field=taxValue",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"tax-comps"
+							],
+							"query": [
+								{
+									"key": "page_no",
+									"value": "0"
+								},
+								{
+									"key": "page_size",
+									"value": "6"
+								},
+								{
+									"key": "sort_field",
+									"value": "taxValue"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Operator",
+			"item": [
+				{
+					"name": "CreateOperator",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgzOTA2MDczLCJpYXQiOjE2ODM5MDMwNzR9.BxTeRSFfbENHd8JwKt4n9CplMS5-laLL2TdUrWpDOHg7VPVj76DDzEFe13Z6YtxfWSACbdSqLRmsDkhL0N0swuopaeT0s5sz7eG2hNa4BIrDGlIkitlkIq0-Dq_u7Sz7lIjLiGkhOOke6gmfIDOalpV5JgF6xsweiDbvoTU316opEG9f3iHjhMuv9wW0vPupmnqSPqL1Kl-1cWrzQuMiR2-TjQJ2AUd2exHCRa9ZIjdAcrQ6qUNJFCCWkirIX2r5o2yW0JszE9_9iorA8yOF4msRseldmFVRuZLPQUBZrBMZdlWnb99OX5RW7wU2by58VUJuheGD2ify4bW4Fpb18A",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"acc_mno_parent\": {\r\n        \"id\": 1\r\n    },\r\n    \"acc_name\": \"New Operator\",\r\n    \"acc_parent\": {\r\n        \"id\": 38\r\n    },\r\n    \"acc_comp_name\": \"companyName\",\r\n    \"acc_incorp_dt\": \"2023-05-11T04:56:51.485Z\",\r\n    \"acc_tax_id\": \"1\",\r\n    \"acc_time_zone\": 0,\r\n    \"acc_currency\": 0,\r\n    \"acc_lang\": 0,\r\n    \"acc_orient\": true,\r\n    \"dgl_acc_mno_custom_fields\": [\r\n        {\r\n            \"field_title\": \"field_title\",\r\n            \"field_value\": \"field_value\"\r\n        },\r\n        {\r\n            \"field_title\": \"field_title1\",\r\n            \"field_value\": \"field_value1\"\r\n        }\r\n    ],\r\n    \"acc_prim_cont\": \"9882424925\",\r\n    \"acc_email_id\": \"teqsar@teqsar.com\",\r\n    \"acc_phone\": \"9882424926\",\r\n    \"acc_alt_cont\": \"9882424927\",\r\n    \"acc_fax\": \"342345\",\r\n    \"acc_web_url\": \"http://localhost:4000/\",\r\n    \"acc_add_l1\": \"Churchil Street\",\r\n    \"acc_add_l2\": \"Velacherry\",\r\n    \"acc_city\": \"NewYork\",\r\n    \"acc_state\": \"NewYork\",\r\n    \"acc_country\": \"USA\",\r\n    \"acc_zipcode\": \"345435\",\r\n    \"acc_is_billing_centre\": \"true\",\r\n    \"acc_end_point_url\": \"http://localhost:9887/\",\r\n    \"acc_csv_url\": \"http://cdnurl/\",\r\n    \"acc_sftp_add\": \"http://sftpadd.com/\",\r\n    \"acc_port_no\": \"587\",\r\n    \"acc_username\": \"sftp\",\r\n    \"acc_password\": \"teqsar\",\r\n    \"dgl_mno_files\": [\r\n        {\r\n            \"file_name\": \"file_name\",\r\n            \"file_url\": \"file_url\",\r\n            \"file_type\": \"upload or additional\"\r\n        }\r\n    ],\r\n    \"dgl_roles\": [\r\n        {\r\n            \"role_name\": \"role_name\",\r\n            \"role_desc\": \"role_desc\",\r\n            \"role_unq_id\":1237,\r\n            \"permissions\": \"json string\",\r\n            \"status\": 1\r\n        }\r\n    ],\r\n    \"dgl_acc_users\": [\r\n        {\r\n            \"first_name\": \"first_name\",\r\n            \"last_name\": \"last_name\",\r\n            \"email\": \"email\",\r\n            \"phone\": \"phone\",\r\n            \"acc_user_unq_id\":1237,\r\n            \"status\": \"Active\"\r\n        }\r\n    ],\r\n    \"acc_status\": \"Active\",\r\n    \"acc_type\": \"Operator\",\r\n    \"acc_unq_id\": \"1252\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/acc-operators",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"acc-operators"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "EnterpriseCustomer",
+			"item": [
+				{
+					"name": "CreateEnterpriseCustomer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgzOTA5MTAyLCJpYXQiOjE2ODM5MDYxMDJ9.zkQ-ENUxybkWa3eSyh64fU4wLdNsxexfisKhSmkvtVLm6VrsN5YXKzhbXnOrUg4yVO7nJdMKg5yG2v8DQ1aTAxX1A4iVdjU1gz2eO0YzNYtBHrq6xAQY-R6XzmNbmHQujYRw7F6sbQkFCrdbC-8FOSEeALVdjuAcZCbNZkliOB6N_4WdfKuxCTNh02fq9MAvA9URlLkStr3wBOAkluQr0qeqemroPsWonEb1K_yrDn3hf42J64mAK9Pz8n7VsPDTelUFT3PmDJBsGwIj4f0VNpJmZApMhCZBlETv2EClGCteLR_ZN4cuLQttRNHeH5my-2oKoj-OMo6CaoaElF5eWw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dgl_acc_mno_id\": 1,\r\n    \"cust_name\": \"EnterpriseCustomer\",\r\n    \"cust_parent\": {\r\n        \"id\": 15\r\n    },\r\n    \"cust_comp_name\": \"Teqsar\",\r\n    \"cust_incorp_dt\": \"2023-05-12T12:52:19.121Z\",\r\n    \"cust_tax_id\": \"1\",\r\n    \"cust_time_zone\": 0,\r\n    \"cust_currency\": 0,\r\n    \"cust_lang\": 0,\r\n    \"cust_orient\": true,\r\n    \"custCategory\": \"1\",\r\n    \"dgl_cust_custom_fields\": [\r\n        {\r\n            \"field_title\": \"string\",\r\n            \"field_value\": \"string\"\r\n        }\r\n    ],\r\n    \"cust_prim_cont\": \"string\",\r\n    \"cust_email_id\": \"string\",\r\n    \"cust_phone_number\": \"string\",\r\n    \"cust_alt_cont\": \"string\",\r\n    \"cust_fax\": \"string\",\r\n    \"cust_web_url\": \"string\",\r\n    \"cust_order_approver_email_id\": \"string\",\r\n    \"cust_add_l1\": \"string\",\r\n    \"cust_add_l2\": \"string\",\r\n    \"cust_city\": \"string\",\r\n    \"cust_state\": \"string\",\r\n    \"cust_country\": \"string\",\r\n    \"cust_zipcode\": \"string\",\r\n    \"cust_is_business_unit\": true,\r\n    \"cust_pref_pg\": 1,\r\n    \"bill_cycle\": \"string\",\r\n    \"bill_date\": \"2023-05-12T12:52:19.120Z\",\r\n    \"bill_due_tenor\": \"string\",\r\n    \"credit_limit\": 0,\r\n    \"cust_status\": \"ACTIVE\",\r\n    \"cust_unq_id\": \"1240\",\r\n    \"dgl_cust_files\": [\r\n        {\r\n            \"file_name\": \"string\",\r\n            \"file_url\": \"string\"\r\n        },\r\n        {\r\n            \"file_name\": \"string1\",\r\n            \"file_url\": \"string1\"\r\n        }\r\n    ],\r\n    \"dgl_cust_roles\": [\r\n        {\r\n            \"role_name\": \"role_name\",\r\n            \"role_desc\": \"role_desc\",\r\n            \"role_unq_id\": 1240,\r\n            \"permissions\": \"json string\",\r\n            \"status\": 1\r\n        }\r\n    ],\r\n    \"dgl_cust_users\": [\r\n        {\r\n            \"first_name\": \"first_name\",\r\n            \"last_name\": \"last_name\",\r\n            \"email\": \"email\",\r\n            \"phone\": \"phone\",\r\n            \"cust_user_unq_id\": 1241,\r\n            \"status\": 1,\r\n            \"cust_type\": \"EnterpriseCustomer\"\r\n        }\r\n    ],\r\n    \"dgl_cust_contracts\": [\r\n        {\r\n            \"contract_name\": \"Customer Contract\",\r\n            \"contract_unq_id\": \"1238\",\r\n            \"contract_file\": \"http://Url\",\r\n            \"contr_desc\": \"Contract Description\",\r\n            \"enforce_date\": \"2023-05-12T12:52:19.121Z\",\r\n            \"signed_date\": \"2023-05-12T12:52:19.121Z\",\r\n            \"status\": \"ACTIVE\",\r\n            \"terminate_date\": \"2023-05-12T12:52:19.121Z\",\r\n            \"dgl_acc_mno_id\": 1,\r\n            \"dgl_md_contract_type_id\": 1\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/enterprise-customers",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"enterprise-customers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ContractType",
+			"item": [
+				{
+					"name": "CreateMdContrctType",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgzODg3OTM2LCJpYXQiOjE2ODM4ODQ5MzZ9.D8q6ZF7_nMkUDm8cs31pZfft6aPN3is_maCrPcAxITVbwBGff5C-CTtsRrI5x-ayvRNTtiEq6Pbzq2YQKJAxYSBnlaSIrgHoFwWmkc3w1FFmGrI91rtF56InGy3z8WLCnzC-thOyU8NOBHZK6xtxP6wKdQt1e0XbxoRDrDUpNTpVD9MJFS4HINbqDVOpKPwjKU6VPYWg6aIBfrLXcQd_bYdjBBlQ_aw2Q8Sk6d_dCtSyEgr3G5tiZda-L6r9iZ_z3ZiGCYGEgql_DEchIi0t7cYu1-g5b3_BFmKjqNsEi8Pug4pTx_7YoLbbFyhSheEaTUo2oyDjo0krSVcaNIgw6w",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cust_cat\": \"Operator\",\r\n    \"contract_type_title\": \"ContractType\",\r\n    \"contract_type_desc\": \"ContractTypeDesc\",\r\n    \"md_contr_status\": \"Active\",\r\n    \"is_event\": false,\r\n    \"dgl_acc_mno_id\": 38,\r\n    \"dgl_md_contract_type_configs\": [\r\n        {\r\n            \"config_title\": \"ContractTypeConfig\",\r\n            \"config_details\": \"json string\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/contract-types",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"contract-types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllMdContractTypes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgzODg3OTM2LCJpYXQiOjE2ODM4ODQ5MzZ9.D8q6ZF7_nMkUDm8cs31pZfft6aPN3is_maCrPcAxITVbwBGff5C-CTtsRrI5x-ayvRNTtiEq6Pbzq2YQKJAxYSBnlaSIrgHoFwWmkc3w1FFmGrI91rtF56InGy3z8WLCnzC-thOyU8NOBHZK6xtxP6wKdQt1e0XbxoRDrDUpNTpVD9MJFS4HINbqDVOpKPwjKU6VPYWg6aIBfrLXcQd_bYdjBBlQ_aw2Q8Sk6d_dCtSyEgr3G5tiZda-L6r9iZ_z3ZiGCYGEgql_DEchIi0t7cYu1-g5b3_BFmKjqNsEi8Pug4pTx_7YoLbbFyhSheEaTUo2oyDjo0krSVcaNIgw6w",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/contract-types?page_no=1&page_size=3&sort_field=id",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"contract-types"
+							],
+							"query": [
+								{
+									"key": "page_no",
+									"value": "1"
+								},
+								{
+									"key": "page_size",
+									"value": "3"
+								},
+								{
+									"key": "sort_field",
+									"value": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetMdContractTypeById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgzODg3OTM2LCJpYXQiOjE2ODM4ODQ5MzZ9.D8q6ZF7_nMkUDm8cs31pZfft6aPN3is_maCrPcAxITVbwBGff5C-CTtsRrI5x-ayvRNTtiEq6Pbzq2YQKJAxYSBnlaSIrgHoFwWmkc3w1FFmGrI91rtF56InGy3z8WLCnzC-thOyU8NOBHZK6xtxP6wKdQt1e0XbxoRDrDUpNTpVD9MJFS4HINbqDVOpKPwjKU6VPYWg6aIBfrLXcQd_bYdjBBlQ_aw2Q8Sk6d_dCtSyEgr3G5tiZda-L6r9iZ_z3ZiGCYGEgql_DEchIi0t7cYu1-g5b3_BFmKjqNsEi8Pug4pTx_7YoLbbFyhSheEaTUo2oyDjo0krSVcaNIgw6w",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/contract-types/6",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"contract-types",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateMdContractType",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgzODkxMDY4LCJpYXQiOjE2ODM4ODgwNjh9.vxII8k7QPTR_LO9-DG7YOcJ19GH4zkw-DcPNhQP9kxIQUQ3PCMoFJ5FjexrbtknUhvPYQhuVkk5697_t1R0OA_1tQ47lQSFoThu2nFFSOfvUDfx6y8zRw4TgRnPQioUuK4lzecBTdXgca3KksRYw7YYOaR-ZLfxkNbss9eNx6n2CuSoDdTpqqzNiswsR93zWQiflEQtzdcsMyZbwTpVra9Ob1NlcbFzXw5QIATMGlKPT9Wo5TjR6RXjjMQ2bXBhIWnD017QVDklGzwBt2Yo8PVQ4XaGPS1SKY9bWCx-kfzExM514s54GsBUyEU-ijyJWogusi79swEkbhDzZD44LEg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 6,\r\n    \"cust_cat\": \"Operator\",\r\n    \"contract_type_title\": \"ContractType\",\r\n    \"contract_type_desc\": \"ContractTypeDesc2\",\r\n    \"md_contr_status\": \"ACTIVE\",\r\n    \"is_event\": false,\r\n    \"dgl_md_contract_type_configs\": [\r\n        {\r\n            \"id\": 3,\r\n            \"config_title\": \"ContractTypeConfig2\",\r\n            \"config_details\": \"json string2\"\r\n        }\r\n    ],\r\n    \"dgl_acc_mno_id\": 38\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/contract-types",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"contract-types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateMdContractTypeStatus",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjgzODk0MjgyLCJpYXQiOjE2ODM4OTEyODJ9.zA93rx0J2BiENe5D44VODBH0OgCsu4tog8LFlAPoKJ43p0exbL8ZYonTaYEWSHv-KKmmdXOUiz1AUWLTht96Qy34UNffPLTeqcK6CrGuSFB7CMT_UWyQzja7MtJkbHFe00axYcdHB7_LLvdldeGfEtEtag5VELGh9bhfRbFcwhme5RrQbnJP8tXWqTazVNKhydbXloToD4y5igF74Ys-h-zubsTaqhUk4z9OT6MdHEnH55WjX3QqVJ-aEebAJTdTwCxCjDDNPyeE3yCHPink6HjQTW6wODFrSmOuHfblyAXJK9LUj1KDtSSBJy9pwyPte0HtoDLSq64zjz9RhuBmgA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/contract-types?id=1&md_contr_status=ACTIVE",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"contract-types"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								},
+								{
+									"key": "md_contr_status",
+									"value": "ACTIVE"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

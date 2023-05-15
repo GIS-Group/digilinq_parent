@@ -1,11 +1,16 @@
 package com.mfino.digilinq.account.service.impl;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -63,4 +68,30 @@ public class DglMdCustCatServiceImpl implements DglMdCustCatService {
         log.debug("Request to delete DglMdCustCat : {}", id);
         dglMdCustCatRepository.deleteById(id);
     }
+    
+    @Override
+	public DglMdCustCatDTO update(DglMdCustCatDTO dglMdCustCatDTO) {
+		log.debug("Request to update DglMdCustCat : {}", dglMdCustCatDTO);
+	
+		DglMdCustCat dglMdCustCat = dglMdCustCatMapper.toEntity(dglMdCustCatDTO);
+		dglMdCustCat = dglMdCustCatRepository.save(dglMdCustCat);
+		return dglMdCustCatMapper.toDto(dglMdCustCat);
+	}
+
+	@Override
+	public void updateStatus(Long id, String mdCusStatus) {
+		Optional<DglMdCustCat> dglMdCustCat = dglMdCustCatRepository.findById(id);
+		DglMdCustCat entity = dglMdCustCat.get();
+		entity.setMdCusStatus(mdCusStatus);
+		dglMdCustCatRepository.save(entity);
+
+	}
+
+	@Override
+	public List<DglMdCustCatDTO> findAll(int pageNo, int pageSize, String sortField) {
+		Pageable pageable = PageRequest.of(pageNo != 0 ? pageNo : 0, pageSize != 0 ? pageSize : 10,
+				sortField != null ? Sort.by(sortField) : Sort.by("id"));
+		return dglMdCustCatRepository.findAll(pageable).stream().map(dglMdCustCatMapper::toDto)
+				.collect(Collectors.toCollection(LinkedList::new));
+	}
 }

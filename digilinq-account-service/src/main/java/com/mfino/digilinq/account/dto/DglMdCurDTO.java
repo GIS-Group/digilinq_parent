@@ -2,17 +2,31 @@ package com.mfino.digilinq.account.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 /**
  * A DTO for the {@link com.mfino.digilinq.account.domain.domain.DglMdCur} entity.
  */
 public class DglMdCurDTO implements Serializable {
 
-    private Long id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private Long id;
 
     private Boolean isDefault;
-
+    
+    @NotNull(message = "Title cant be null")
+    @Min(value = 50,message = "Title name should be 50 charecter")
+    @Pattern(regexp = "^[a-zA-Z0-9.\\-\\/+=@_ ]*$")
     private String curTitle;
-
+    
+    @NotNull(message = "Title cant be null")
+    @Min(value = 10,message = "Title name should be 10 charecter")
     private String curSymbol;
 
     private String curConvRate;

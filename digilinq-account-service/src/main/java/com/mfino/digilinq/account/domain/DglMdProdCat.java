@@ -31,7 +31,7 @@ public class DglMdProdCat implements Serializable {
     @Column(name="prod_cat_id")
     private Long id;
 
-    @Column(name = "prod_cat_title")
+    @Column(name = "prod_cat_title",unique = true)
     private String prodCatTitle;
 
     @Column(name = "prod_cat_desc")

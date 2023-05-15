@@ -2,15 +2,23 @@ package com.mfino.digilinq.account.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 /**
  * A DTO for the {@link com.mfino.digilinq.domain.DglMdDocType} entity.
  */
 public class DglMdDocTypeDTO implements Serializable {
     
     private Long id;
-
+    
+    @NotNull(message = "Title cant be null")
+    @Min(value = 225,message = "Title name not exced more than 225 charecter")
+    @Pattern(regexp = "^[a-zA-Z0-9.\\-\\/+=@_ ]*$")
     private String docTypeTitle;
-
+    
+    @NotNull(message = "file cant be empty")
     private String allowFileFormat;
 
     private String docTypeDesc;
