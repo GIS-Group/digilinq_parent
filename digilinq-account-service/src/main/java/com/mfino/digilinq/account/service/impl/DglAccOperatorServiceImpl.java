@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.mfino.digilinq.account.domain.DglAccMno;
 import com.mfino.digilinq.account.domain.DglAccMnoCustomFields;
 import com.mfino.digilinq.account.domain.DglAccUsers;
+import com.mfino.digilinq.account.domain.DglMdCur;
 import com.mfino.digilinq.account.domain.DglMnoFiles;
 import com.mfino.digilinq.account.domain.DglRoles;
 import com.mfino.digilinq.account.dto.DglAccOperatorDTO;
@@ -137,6 +138,14 @@ public class DglAccOperatorServiceImpl implements DglAccOperatorService {
 	public void delete(Long id) {
 		log.debug("Request to delete DglAccOperator : {}", id);
 		dglAccOperatorRepository.deleteById(id);
+	}
+
+	@Override
+	public void updateStatus(Long id, String accStatus) {
+		Optional<DglAccMno> dglAccMno = dglAccOperatorRepository.findById(id);
+		DglAccMno entity = dglAccMno.get();
+		entity.setAccStatus(accStatus);
+		dglAccOperatorRepository.save(entity);
 	}
 
 }

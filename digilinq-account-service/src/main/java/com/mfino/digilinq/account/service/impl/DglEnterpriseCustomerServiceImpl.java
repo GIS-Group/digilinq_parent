@@ -15,6 +15,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.mfino.digilinq.account.domain.DglAccMno;
 import com.mfino.digilinq.account.domain.DglCustContracts;
 import com.mfino.digilinq.account.domain.DglCustCustomFields;
 import com.mfino.digilinq.account.domain.DglCustFiles;
@@ -24,6 +25,7 @@ import com.mfino.digilinq.account.domain.DglCustomer;
 import com.mfino.digilinq.account.domain.DglMdContractType;
 import com.mfino.digilinq.account.dto.DglCustContractsDTO;
 import com.mfino.digilinq.account.dto.DglEnterpriseCustomerDTO;
+import com.mfino.digilinq.account.enumeration.StatusType;
 import com.mfino.digilinq.account.mapper.DglEnterpriseCustomerMapper;
 import com.mfino.digilinq.account.repository.DglCustContractsRepository;
 import com.mfino.digilinq.account.repository.DglCustCustomFieldsRepository;
@@ -183,6 +185,14 @@ public class DglEnterpriseCustomerServiceImpl implements DglEnterpriseCustomerSe
 	public void delete(Long id) {
 		log.debug("Request to delete DglEnterpriseCustomers : {}", id);
 		dglCustomerRepository.deleteById(id);
+	}
+	
+	@Override
+	public void updateStatus(Long id, String custStatus) {
+		Optional<DglCustomer> dglCustomer = dglCustomerRepository.findById(id);
+		DglCustomer entity = dglCustomer.get();
+		entity.setCustStatus(StatusType.valueOf(custStatus));
+		dglCustomerRepository.save(entity);
 	}
 
 }
