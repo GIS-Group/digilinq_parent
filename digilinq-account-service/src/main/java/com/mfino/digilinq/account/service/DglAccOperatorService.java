@@ -1,9 +1,7 @@
 package com.mfino.digilinq.account.service;
 
+import java.util.List;
 import java.util.Optional;
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 import com.mfino.digilinq.account.dto.DglAccOperatorDTO;
 
@@ -19,6 +17,10 @@ public interface DglAccOperatorService {
      * @return the persisted entity.
      */
     DglAccOperatorDTO save(DglAccOperatorDTO dglAccOperatorDTO);
+    
+    DglAccOperatorDTO update(DglAccOperatorDTO dglAccOperatorDTO);
+    
+    void updateStatus(Long id, String accStatus);
 
     /**
      * Get all the dglAccMnos.
@@ -26,7 +28,7 @@ public interface DglAccOperatorService {
      * @param pageable the pagination information.
      * @return the list of entities.
      */
-    Page<DglAccOperatorDTO> findAll(Pageable pageable);
+    List<DglAccOperatorDTO> findAll(int pageNo, int pageSize, String sortField);
 
 
     /**
@@ -43,4 +45,5 @@ public interface DglAccOperatorService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
 }
