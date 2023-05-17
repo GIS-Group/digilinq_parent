@@ -3,6 +3,10 @@ package com.mfino.digilinq.account.dto;
 import java.io.Serializable;
 import java.time.Instant;
 
+import javax.validation.constraints.NotNull;
+
+import com.mfino.digilinq.account.enumeration.StatusType;
+
 /**
  * A DTO for the {@link com.mfino.digilinq.account.domain.domain.DglContracts} entity.
  */
@@ -11,17 +15,22 @@ public class DglContractsDTO implements Serializable {
     private Long id;
 
     private String contractName;
-
-    private String status;
+    
+    @NotNull(message = "status type cant be null")
+    private StatusType status;
 
     private Integer contractUnqId;
-
+    
+    @NotNull(message = "contractFile type cant be null")
     private String contractFile;
-
+    
+    @NotNull(message = "signedDate type cant be null")
     private Instant signedDate;
-
+    
+    @NotNull(message = "enforceDate type cant be null")
     private Instant enforceDate;
-
+    
+    @NotNull(message = "terminateDate type cant be null")
     private Instant terminateDate;
 
     private String contrDesc;
@@ -49,11 +58,11 @@ public class DglContractsDTO implements Serializable {
         this.contractName = contractName;
     }
 
-    public String getStatus() {
+    public StatusType getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(StatusType status) {
         this.status = status;
     }
 

@@ -4,6 +4,8 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +42,7 @@ public class DglEnterpriseCustomerController extends BaseAPIController {
 	 * @throws URISyntaxException if the Location URI syntax is incorrect.
 	 */
 	@PostMapping("/enterprise-customers")
-	public ResponseEntity<?> createDglCustomer(@RequestBody DglEnterpriseCustomerDTO dglEnterpriseCustomerDTO)
+	public ResponseEntity<?> createDglCustomer(@Valid @RequestBody DglEnterpriseCustomerDTO dglEnterpriseCustomerDTO)
 			throws URISyntaxException {
 		log.debug("REST request to save DglEnterpriseCustomer : {}", dglEnterpriseCustomerDTO);
 		if (dglEnterpriseCustomerDTO.getId() != null) {

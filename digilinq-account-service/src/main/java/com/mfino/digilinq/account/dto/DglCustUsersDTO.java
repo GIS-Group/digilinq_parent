@@ -2,6 +2,9 @@ package com.mfino.digilinq.account.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 /**
  * A DTO for the {@link com.mfino.digilinq.account.domain.domain.DglCustUsers} entity.
  */
@@ -10,13 +13,21 @@ public class DglCustUsersDTO implements Serializable {
     private Long id;
 
     private String custUserUnqId;
-
+    
+    @NotNull(message = "first name cant be null")
+	@Size(min = 3,max=100,message = "first name should have minimum 3 characters and Maximum 100 characters allowed")
     private String firstName;
-
+    
+    @NotNull(message = "last name cant be null")
+   	@Size(min = 3,max=100,message = "last name should have minimum 3 characters and Maximum 100 characters allowed")
     private String lastName;
-
+    
+    @NotNull(message = "email cant be null")
+   	@Size(min = 5,max=50,message = "email should have minimum 5 characters and Maximum 50 characters allowed")
     private String email;
-
+    
+    @NotNull(message = "phone number cant be null")
+   	@Size(min = 3,max=20,message = "phone number should have minimum 3 characters and Maximum 20 characters allowed")
     private String phone;
 
     private String profileImg;

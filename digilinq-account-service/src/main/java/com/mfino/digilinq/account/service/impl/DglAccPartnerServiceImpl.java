@@ -14,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.mfino.digilinq.account.domain.DglAccMno;
@@ -30,8 +33,6 @@ import com.mfino.digilinq.account.repository.DglAccMnoCustomFieldsRepository;
 import com.mfino.digilinq.account.repository.DglAccPartnerRepository;
 import com.mfino.digilinq.account.repository.DglAccUsersRepository;
 import com.mfino.digilinq.account.repository.DglContractsRepository;
-import com.mfino.digilinq.account.repository.DglCustContractsRepository;
-import com.mfino.digilinq.account.repository.DglCustCustomFieldsRepository;
 import com.mfino.digilinq.account.repository.DglMdContractTypeRepository;
 import com.mfino.digilinq.account.repository.DglMnoFilesRepository;
 import com.mfino.digilinq.account.repository.DglRolesRepository;
@@ -45,9 +46,6 @@ public class DglAccPartnerServiceImpl implements DglAccPartnerService {
 	private DglAccPartnerRepository dglaccPartnerRepository;
 	
 	@Autowired
-	private DglCustCustomFieldsRepository dglCustCustomFieldsRepository;
-	
-	@Autowired
 	private DglAccPartnerMapper dglAccPartnerMapper;
 	
 	@Autowired
@@ -55,9 +53,6 @@ public class DglAccPartnerServiceImpl implements DglAccPartnerService {
 	
 	@Autowired
 	private DglAccUsersRepository dglAccUsersRepository;
-	
-	@Autowired
-	private DglCustContractsRepository dglCustContractsRepository;
 	
 	@Autowired
 	private DglAccMnoCustomFieldsRepository dglAccMnoCustomFieldsRepository;
@@ -92,6 +87,8 @@ public class DglAccPartnerServiceImpl implements DglAccPartnerService {
         for(DglAccUsers dglAccUsers: dglAccMno.getDglAccUsers()) {
         	dglAccUsers.setDglAccMno(dglAccMno);
         	dglAccUsers.setDglRoles(dglRoles);
+        	PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+            dglAccUsers.setAccPassword(encoder.encode("secret"));
         	dglAccUsersRepository.save(dglAccUsers);
         }
         for(DglContracts dglContracts: dglAccMno.getDglContracts()) {
@@ -184,7 +181,5 @@ public class DglAccPartnerServiceImpl implements DglAccPartnerService {
 		 log.debug("Request to delete DglAccProvider : {}", id);
 		 dglaccPartnerRepository.deleteById(id);		
 	}
-
-	
 
 }

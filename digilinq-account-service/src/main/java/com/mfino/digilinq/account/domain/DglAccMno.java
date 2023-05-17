@@ -19,6 +19,9 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import com.mfino.digilinq.account.enumeration.DisplyOrientation;
+import com.mfino.digilinq.account.enumeration.SettlementType;
+
 /**
  * A DglAccMno.
  */
@@ -56,7 +59,7 @@ public class DglAccMno implements Serializable {
     private Integer accTimeZone;
 
     @Column(name = "acc_orient")
-    private Boolean accOrient;
+    private DisplyOrientation accOrient;
 
     @Column(name = "acc_prim_cont")
     private String accPrimCont;
@@ -116,7 +119,7 @@ public class DglAccMno implements Serializable {
     private String accUnqId;
 
     @Column(name = "pref_settle_type")
-    private Integer prefSettleType;
+    private SettlementType prefSettleType;
 
     @Column(name = "bill_cycle")
     private String billCycle;
@@ -340,16 +343,12 @@ public class DglAccMno implements Serializable {
         this.accTimeZone = accTimeZone;
     }
 
-    public Boolean isAccOrient() {
-        return accOrient;
-    }
-
-    public DglAccMno accOrient(Boolean accOrient) {
+    public DglAccMno accOrient(DisplyOrientation accOrient) {
         this.accOrient = accOrient;
         return this;
     }
 
-    public void setAccOrient(Boolean accOrient) {
+    public void setAccOrient(DisplyOrientation accOrient) {
         this.accOrient = accOrient;
     }
 
@@ -600,16 +599,16 @@ public class DglAccMno implements Serializable {
         this.accUnqId = accUnqId;
     }
 
-    public Integer getPrefSettleType() {
+    public SettlementType getPrefSettleType() {
         return prefSettleType;
     }
 
-    public DglAccMno prefSettleType(Integer prefSettleType) {
+    public DglAccMno prefSettleType(SettlementType prefSettleType) {
         this.prefSettleType = prefSettleType;
         return this;
     }
 
-    public void setPrefSettleType(Integer prefSettleType) {
+    public void setPrefSettleType(SettlementType prefSettleType) {
         this.prefSettleType = prefSettleType;
     }
 
@@ -1325,7 +1324,6 @@ public class DglAccMno implements Serializable {
             ", accCurrency=" + getAccCurrency() +
             ", accLang=" + getAccLang() +
             ", accTimeZone=" + getAccTimeZone() +
-            ", accOrient='" + isAccOrient() + "'" +
             ", accPrimCont='" + getAccPrimCont() + "'" +
             ", accEmailId='" + getAccEmailId() + "'" +
             ", accAltCont='" + getAccAltCont() + "'" +
