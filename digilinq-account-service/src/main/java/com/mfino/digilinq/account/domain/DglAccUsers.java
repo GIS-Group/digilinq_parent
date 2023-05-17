@@ -69,8 +69,11 @@ public class DglAccUsers implements Serializable {
 
     @Column(name = "status")
     private String status;
+    
+    @Column(name="acc_password")
+    private String accPassword;
 
-    @ManyToOne
+	@ManyToOne
     @JoinColumn(name = "acc_id")
     @JsonIgnoreProperties(value = "dglAccUsers", allowSetters = true)
     private DglAccMno dglAccMno;
@@ -269,6 +272,15 @@ public class DglAccUsers implements Serializable {
     public void setDglAccMno(DglAccMno dglAccMno) {
         this.dglAccMno = dglAccMno;
     }
+    
+    public String getAccPassword() {
+ 		return accPassword;
+ 	}
+
+ 	public void setAccPassword(String accPassword) {
+ 		this.accPassword = accPassword;
+ 	}
+
 
     public DglRoles getDglRoles() {
         return dglRoles;
@@ -299,25 +311,16 @@ public class DglAccUsers implements Serializable {
     public int hashCode() {
         return 31;
     }
-
     // prettier-ignore
-    @Override
-    public String toString() {
-        return "DglAccUsers{" +
-            "id=" + getId() +
-            ", accUserUnqId='" + getAccUserUnqId() + "'" +
-            ", firstName='" + getFirstName() + "'" +
-            ", lastName='" + getLastName() + "'" +
-            ", email='" + getEmail() + "'" +
-            ", phone='" + getPhone() + "'" +
-            ", profileImg='" + getProfileImg() + "'" +
-            ", addLine1='" + getAddLine1() + "'" +
-            ", addLine2='" + getAddLine2() + "'" +
-            ", city='" + getCity() + "'" +
-            ", state='" + getState() + "'" +
-            ", country='" + getCountry() + "'" +
-            ", zipcode='" + getZipcode() + "'" +
-            ", status='" + getStatus() + "'" +
-            "}";
-    }
+	@Override
+	public String toString() {
+		return "DglAccUsers [id=" + id + ", accUserUnqId=" + accUserUnqId + ", firstName=" + firstName + ", lastName="
+				+ lastName + ", email=" + email + ", phone=" + phone + ", profileImg=" + profileImg + ", addLine1="
+				+ addLine1 + ", addLine2=" + addLine2 + ", city=" + city + ", state=" + state + ", country=" + country
+				+ ", zipcode=" + zipcode + ", status=" + status + ", accPassword=" + accPassword + ", dglAccMno="
+				+ dglAccMno + ", dglRoles=" + dglRoles + "]";
+	}
+
+   
+    
 }

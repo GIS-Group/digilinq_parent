@@ -22,6 +22,7 @@ import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.mfino.digilinq.account.enumeration.DisplyOrientation;
 import com.mfino.digilinq.account.enumeration.StatusType;
 
 /**
@@ -61,7 +62,7 @@ public class DglCustomer implements Serializable {
     private Integer custTimeZone;
 
     @Column(name = "cust_orient")
-    private Boolean custOrient;
+    private DisplyOrientation custOrient;
 
     @Column(name = "cust_prim_cont")
     private String custPrimCont;
@@ -247,16 +248,16 @@ public class DglCustomer implements Serializable {
         this.custTimeZone = custTimeZone;
     }
 
-    public Boolean isCustOrient() {
+    public DisplyOrientation isCustOrient() {
         return custOrient;
     }
 
-    public DglCustomer custOrient(Boolean custOrient) {
+    public DglCustomer custOrient(DisplyOrientation custOrient) {
         this.custOrient = custOrient;
         return this;
     }
 
-    public void setCustOrient(Boolean custOrient) {
+    public void setCustOrient(DisplyOrientation custOrient) {
         this.custOrient = custOrient;
     }
 
