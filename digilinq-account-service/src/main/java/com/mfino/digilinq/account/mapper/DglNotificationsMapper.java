@@ -18,8 +18,8 @@ public interface DglNotificationsMapper extends EntityMapper<DglNotificationsDTO
     DglNotificationsDTO toDto(DglNotifications dglNotifications);
 
     @Override
-	@Mapping(target = "dglNotificationsLogs", ignore = true)
-    @Mapping(target = "removeDglNotificationsLogs", ignore = true)
+//	@Mapping(target = "dglNotificationsLogs", ignore = true)
+//    @Mapping(target = "removeDglNotificationsLogs", ignore = true)
     @Mapping(source = "dglAccMnoId", target = "dglAccMno")
     DglNotifications toEntity(DglNotificationsDTO dglNotificationsDTO);
 
