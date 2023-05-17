@@ -60,16 +60,16 @@ public class DglSetGen implements Serializable {
     private Float genSetTokenvalue;
 
     @Column(name = "pre_ent_cust_wait")
-    private String preEntCustWait;
+    private Integer preEntCustWait;
 
     @Column(name = "post_ent_cust_wait")
-    private String postEntCustWait;
+    private Integer postEntCustWait;
 
     @Column(name = "sales_exec_wait")
-    private String salesExecWait;
+    private Integer salesExecWait;
 
     @Column(name = "retail_cust_wait")
-    private String retailCustWait;
+    private Integer retailCustWait;
 
     @ManyToOne
     @JoinColumn(name = "acc_id")
@@ -201,35 +201,35 @@ public class DglSetGen implements Serializable {
         this.genSetTokenvalue = genSetTokenvalue;
     }
 
-    public String getPreEntCustWait() {
+    public Integer getPreEntCustWait() {
 		return preEntCustWait;
 	}
 
-	public void setPreEntCustWait(String preEntCustWait) {
+	public void setPreEntCustWait(Integer preEntCustWait) {
 		this.preEntCustWait = preEntCustWait;
 	}
 
-	public String getPostEntCustWait() {
+	public Integer getPostEntCustWait() {
 		return postEntCustWait;
 	}
 
-	public void setPostEntCustWait(String postEntCustWait) {
+	public void setPostEntCustWait(Integer postEntCustWait) {
 		this.postEntCustWait = postEntCustWait;
 	}
 
-	public String getSalesExecWait() {
+	public Integer getSalesExecWait() {
 		return salesExecWait;
 	}
 
-	public void setSalesExecWait(String salesExecWait) {
+	public void setSalesExecWait(Integer salesExecWait) {
 		this.salesExecWait = salesExecWait;
 	}
 
-	public String getRetailCustWait() {
+	public Integer getRetailCustWait() {
 		return retailCustWait;
 	}
 
-	public void setRetailCustWait(String retailCustWait) {
+	public void setRetailCustWait(Integer retailCustWait) {
 		this.retailCustWait = retailCustWait;
 	}
 

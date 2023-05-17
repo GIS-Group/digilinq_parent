@@ -4,6 +4,8 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +42,7 @@ public class DglNotificationsController extends BaseAPIController {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/notifications")
-    public ResponseEntity<?> createDglNotifications(@RequestBody DglNotificationsDTO dglNotificationsDTO) throws URISyntaxException {
+    public ResponseEntity<?> createDglNotifications(@Valid @RequestBody DglNotificationsDTO dglNotificationsDTO) throws URISyntaxException {
         log.debug("REST request to save DglNotifications : {}", dglNotificationsDTO);
         if (dglNotificationsDTO.getId() != null) {
             throw new BadRequestAlertException("A new dglNotifications cannot already have an ID", "idexists");
@@ -59,7 +61,7 @@ public class DglNotificationsController extends BaseAPIController {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/notifications")
-    public ResponseEntity<?> updateDglNotifications(@RequestBody DglNotificationsDTO dglNotificationsDTO) throws URISyntaxException {
+    public ResponseEntity<?> updateDglNotifications(@Valid @RequestBody DglNotificationsDTO dglNotificationsDTO) throws URISyntaxException {
         log.debug("REST request to update DglNotifications : {}", dglNotificationsDTO);
         if (dglNotificationsDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", "idnull");
@@ -84,9 +86,9 @@ public class DglNotificationsController extends BaseAPIController {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of dglNotifications in body.
      */
     @GetMapping("/notifications")
-    public List<DglNotificationsDTO> getAllDglNotifications(@RequestParam(value = "page_no", required = false) int pageNo,
-			@RequestParam(value = "page_size", required = false) int pageSize,
-			@RequestParam(value = "sort_field", required = false) String sortField) {
+    public List<DglNotificationsDTO> getAllDglNotifications(@RequestParam(value = "page_no", required = true) int pageNo,
+			@RequestParam(value = "page_size", required = true) int pageSize,
+			@RequestParam(value = "sort_field", required = true) String sortField) {
         log.debug("REST request to get a page of DglNotifications");
         return dglNotificationsService.findAll(pageNo, pageSize, sortField);
     }

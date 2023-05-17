@@ -4,6 +4,8 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +41,7 @@ public class DglMetaDataController extends BaseAPIController {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/meta-data")
-    public ResponseEntity<?> createDglMetaData(@RequestBody DglMetaDataDTO dglMetaDataDTO) throws URISyntaxException {
+    public ResponseEntity<?> createDglMetaData(@Valid @RequestBody DglMetaDataDTO dglMetaDataDTO) throws URISyntaxException {
         log.debug("REST request to save DglMetaData : {}", dglMetaDataDTO);
         if (dglMetaDataDTO.getId() != null) {
             throw new BadRequestAlertException("A new dglMetaData cannot already have an ID", "idexists");
@@ -58,7 +60,7 @@ public class DglMetaDataController extends BaseAPIController {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/meta-data")
-    public ResponseEntity<?> updateDglMetaData(@RequestBody DglMetaDataDTO dglMetaDataDTO) throws URISyntaxException {
+    public ResponseEntity<?> updateDglMetaData(@Valid @RequestBody DglMetaDataDTO dglMetaDataDTO) throws URISyntaxException {
         log.debug("REST request to update DglMetaData : {}", dglMetaDataDTO);
         if (dglMetaDataDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", "idnull");
@@ -74,9 +76,9 @@ public class DglMetaDataController extends BaseAPIController {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of dglMetaData in body.
      */
     @GetMapping("/meta-data")
-    public List<DglMetaDataDTO> getAllDglMetaData(@RequestParam(value = "page_no", required = false) int pageNo,
-			@RequestParam(value = "page_size", required = false) int pageSize,
-			@RequestParam(value = "sort_field", required = false) String sortField) {
+    public List<DglMetaDataDTO> getAllDglMetaData(@RequestParam(value = "page_no", required = true) int pageNo,
+			@RequestParam(value = "page_size", required = true) int pageSize,
+			@RequestParam(value = "sort_field", required = true) String sortField) {
         log.debug("REST request to get a page of DglMetaData");
         return dglMetaDataService.findAll(pageNo, pageSize, sortField);
     }
