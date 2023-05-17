@@ -36,12 +36,6 @@ public class DglNotificationsServiceImpl implements DglNotificationsService {
 	@Autowired
 	private DglNotificationsMapper dglNotificationsMapper;
 
-	public DglNotificationsServiceImpl(DglNotificationsRepository dglNotificationsRepository,
-			DglNotificationsMapper dglNotificationsMapper) {
-		this.dglNotificationsRepository = dglNotificationsRepository;
-		this.dglNotificationsMapper = dglNotificationsMapper;
-	}
-
 	@Override
 	public DglNotificationsDTO save(DglNotificationsDTO dglNotificationsDTO) {
 		log.debug("Request to save DglNotifications : {}", dglNotificationsDTO);

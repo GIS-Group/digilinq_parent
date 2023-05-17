@@ -984,6 +984,136 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "MetaData",
+			"item": [
+				{
+					"name": "CreateMetadata",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjg0MzE2MDEzLCJpYXQiOjE2ODQzMTMwMTN9.ArFjrArs8HFLx7ZgNPGoaUH1IjUAgTTANbRtBaZMQweiDRKAeXWTQGnL1lY8MDOjVLKEkwfMKpaDke8oK89JojWL7D4jsNtCBnaRf9kbAOpG1sHaoVQ5DNQp3dzrbp1P_8Bh4icxWdw2LjR7DH65NuZl_WX5JL7Nn1vXIe2j37x5o__kHghXY_N_bO7PRPh5mpV5rkNpMDqxDw-mn3KbM7DBT8TbDjtCDINxg0bMam0hSXz9w5lAx_yVhZ7ghnT30spembIQaHHJVa-tjIlMLkRZSWN2yBkQ3Ei0_rSShaIibv1lOUfjdjV2pLQNTwzfOaDdO2F47kX-sUMcBYgLaA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"site_name\": \"prweb.com\",\r\n    \"brand_logo_url\": \"http://url/img.jpeg\",\r\n    \"meta_title\": \"Meta Title\",\r\n    \"meta_desc\":\"This is the sample description describes about the MetaData\",\r\n    \"meta_tags\":\"Tag1,Tag2,Tag3\",\r\n    \"dgl_acc_mno_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/meta-data",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"meta-data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateMetadata",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjg0MzE2MDEzLCJpYXQiOjE2ODQzMTMwMTN9.ArFjrArs8HFLx7ZgNPGoaUH1IjUAgTTANbRtBaZMQweiDRKAeXWTQGnL1lY8MDOjVLKEkwfMKpaDke8oK89JojWL7D4jsNtCBnaRf9kbAOpG1sHaoVQ5DNQp3dzrbp1P_8Bh4icxWdw2LjR7DH65NuZl_WX5JL7Nn1vXIe2j37x5o__kHghXY_N_bO7PRPh5mpV5rkNpMDqxDw-mn3KbM7DBT8TbDjtCDINxg0bMam0hSXz9w5lAx_yVhZ7ghnT30spembIQaHHJVa-tjIlMLkRZSWN2yBkQ3Ei0_rSShaIibv1lOUfjdjV2pLQNTwzfOaDdO2F47kX-sUMcBYgLaA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \"site_name\": \"prweb.com\",\r\n    \"brand_logo_url\": \"http://url/img.jpeg\",\r\n    \"meta_title\": \"Meta Data\",\r\n    \"meta_desc\":\"This is the sample description describes about the MetaData Desc\",\r\n    \"meta_tags\":\"Tag2,Tag3,Tag4\",\r\n    \"dgl_acc_mno_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/meta-data",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"meta-data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllMetadata",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjg0MzE2MDEzLCJpYXQiOjE2ODQzMTMwMTN9.ArFjrArs8HFLx7ZgNPGoaUH1IjUAgTTANbRtBaZMQweiDRKAeXWTQGnL1lY8MDOjVLKEkwfMKpaDke8oK89JojWL7D4jsNtCBnaRf9kbAOpG1sHaoVQ5DNQp3dzrbp1P_8Bh4icxWdw2LjR7DH65NuZl_WX5JL7Nn1vXIe2j37x5o__kHghXY_N_bO7PRPh5mpV5rkNpMDqxDw-mn3KbM7DBT8TbDjtCDINxg0bMam0hSXz9w5lAx_yVhZ7ghnT30spembIQaHHJVa-tjIlMLkRZSWN2yBkQ3Ei0_rSShaIibv1lOUfjdjV2pLQNTwzfOaDdO2F47kX-sUMcBYgLaA"
+							}
+						],
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/meta-data?page_no=0&page_size=2&sort_field=id",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"meta-data"
+							],
+							"query": [
+								{
+									"key": "page_no",
+									"value": "0"
+								},
+								{
+									"key": "page_size",
+									"value": "2"
+								},
+								{
+									"key": "sort_field",
+									"value": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetMetadataById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjg0MzE2MDEzLCJpYXQiOjE2ODQzMTMwMTN9.ArFjrArs8HFLx7ZgNPGoaUH1IjUAgTTANbRtBaZMQweiDRKAeXWTQGnL1lY8MDOjVLKEkwfMKpaDke8oK89JojWL7D4jsNtCBnaRf9kbAOpG1sHaoVQ5DNQp3dzrbp1P_8Bh4icxWdw2LjR7DH65NuZl_WX5JL7Nn1vXIe2j37x5o__kHghXY_N_bO7PRPh5mpV5rkNpMDqxDw-mn3KbM7DBT8TbDjtCDINxg0bMam0hSXz9w5lAx_yVhZ7ghnT30spembIQaHHJVa-tjIlMLkRZSWN2yBkQ3Ei0_rSShaIibv1lOUfjdjV2pLQNTwzfOaDdO2F47kX-sUMcBYgLaA"
+							}
+						],
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/meta-data/1",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"meta-data",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

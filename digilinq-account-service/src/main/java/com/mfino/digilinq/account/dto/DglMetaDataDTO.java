@@ -7,7 +7,9 @@ import java.io.Serializable;
  */
 public class DglMetaDataDTO implements Serializable {
 
-    private Long id;
+    private static final long serialVersionUID = -3288557058328218815L;
+
+	private Long id;
 
     private String siteName;
 
