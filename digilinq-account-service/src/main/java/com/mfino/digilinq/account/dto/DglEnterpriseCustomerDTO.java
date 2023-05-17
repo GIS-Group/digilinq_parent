@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.mfino.digilinq.account.enumeration.DisplyOrientation;
+import com.mfino.digilinq.account.enumeration.SettlementCycle;
 import com.mfino.digilinq.account.enumeration.StatusType;
 
 public class DglEnterpriseCustomerDTO implements Serializable {
@@ -122,7 +123,7 @@ public class DglEnterpriseCustomerDTO implements Serializable {
     private Float creditLimit;
    
     @NotNull(message = "bill cycle  cant be null")
-    private String billCycle;
+    private SettlementCycle billCycle;
     
     @NotNull(message = "bill date  cant be null")
     private Instant billDate;
@@ -332,11 +333,11 @@ public class DglEnterpriseCustomerDTO implements Serializable {
         this.custUnqId = custUnqId;
     }
 
-    public String getBillCycle() {
+    public SettlementCycle getBillCycle() {
         return billCycle;
     }
 
-    public void setBillCycle(String billCycle) {
+    public void setBillCycle(SettlementCycle billCycle) {
         this.billCycle = billCycle;
     }
 
