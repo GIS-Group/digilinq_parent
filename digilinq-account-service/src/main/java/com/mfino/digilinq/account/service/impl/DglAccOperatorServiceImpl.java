@@ -22,6 +22,7 @@ import com.mfino.digilinq.account.domain.DglMdCur;
 import com.mfino.digilinq.account.domain.DglMnoFiles;
 import com.mfino.digilinq.account.domain.DglRoles;
 import com.mfino.digilinq.account.dto.DglAccOperatorDTO;
+import com.mfino.digilinq.account.enumeration.StatusType;
 import com.mfino.digilinq.account.mapper.DglAccOperatorMapper;
 import com.mfino.digilinq.account.repository.DglAccMnoCustomFieldsRepository;
 import com.mfino.digilinq.account.repository.DglAccOperatorRepository;
@@ -144,7 +145,7 @@ public class DglAccOperatorServiceImpl implements DglAccOperatorService {
 	public void updateStatus(Long id, String accStatus) {
 		Optional<DglAccMno> dglAccMno = dglAccOperatorRepository.findById(id);
 		DglAccMno entity = dglAccMno.get();
-		entity.setAccStatus(accStatus);
+		entity.setAccStatus(StatusType.valueOf(accStatus));
 		dglAccOperatorRepository.save(entity);
 	}
 
