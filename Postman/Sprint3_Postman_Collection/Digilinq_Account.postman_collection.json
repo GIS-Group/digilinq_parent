@@ -821,6 +821,169 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Notifications",
+			"item": [
+				{
+					"name": "CreateNotification",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjg0MzEyMjg4LCJpYXQiOjE2ODQzMDkyODh9.iAFWneji9LAbPchN9SyuAdzDfQWzJ6xxfVcJP1_EqZqL07gTSO4bO70hkGQgaSCXZToSmJ9eRiLebn1n0ZGT4azZ85e_2bR4WA3iz9Wwnn4Eb_dwSKbkaSioCs-tF8tUA8dEcEIryV7PHmuius4la-PG4Y9dVlYVooyg77W3kJK3fbp6EoD8zxEnE71v8OBByO3EbwR-Vh9NKwzhoVENJutoyiruI0-ysIXKsshc_tTO0WrPWacootAF2xMMQre-BndsPGLP5R1iA5qk7mqAKpH-YVtiJ8fyT4rqKmlaPn3os97_MzQ_kyW37_Z4ke5Mo0xtrd1_zKTlic7HbvFNuw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ntf_tp_type\": \"EMAIL\",\r\n    \"ntf_tp_name\": \"Email Template\",\r\n    \"ntf_tp_info\": \"This is the sample description describes about the Notifications\",\r\n    \"ntf_status\": \"ACTIVE\",\r\n    \"dgl_acc_mno_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/notifications",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"notifications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateNotification",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjg0MzEyMjg4LCJpYXQiOjE2ODQzMDkyODh9.iAFWneji9LAbPchN9SyuAdzDfQWzJ6xxfVcJP1_EqZqL07gTSO4bO70hkGQgaSCXZToSmJ9eRiLebn1n0ZGT4azZ85e_2bR4WA3iz9Wwnn4Eb_dwSKbkaSioCs-tF8tUA8dEcEIryV7PHmuius4la-PG4Y9dVlYVooyg77W3kJK3fbp6EoD8zxEnE71v8OBByO3EbwR-Vh9NKwzhoVENJutoyiruI0-ysIXKsshc_tTO0WrPWacootAF2xMMQre-BndsPGLP5R1iA5qk7mqAKpH-YVtiJ8fyT4rqKmlaPn3os97_MzQ_kyW37_Z4ke5Mo0xtrd1_zKTlic7HbvFNuw"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \"ntf_tp_type\": \"EMAIL\",\r\n    \"ntf_tp_name\": \"Email Template\",\r\n    \"ntf_tp_info\": \"Your OTP : 494837\",\r\n    \"ntf_status\": \"ACTIVE\",\r\n    \"dgl_acc_mno_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/notifications",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"notifications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateNotificationStatus",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjg0MzEyMjg4LCJpYXQiOjE2ODQzMDkyODh9.iAFWneji9LAbPchN9SyuAdzDfQWzJ6xxfVcJP1_EqZqL07gTSO4bO70hkGQgaSCXZToSmJ9eRiLebn1n0ZGT4azZ85e_2bR4WA3iz9Wwnn4Eb_dwSKbkaSioCs-tF8tUA8dEcEIryV7PHmuius4la-PG4Y9dVlYVooyg77W3kJK3fbp6EoD8zxEnE71v8OBByO3EbwR-Vh9NKwzhoVENJutoyiruI0-ysIXKsshc_tTO0WrPWacootAF2xMMQre-BndsPGLP5R1iA5qk7mqAKpH-YVtiJ8fyT4rqKmlaPn3os97_MzQ_kyW37_Z4ke5Mo0xtrd1_zKTlic7HbvFNuw"
+							}
+						],
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/notifications?id=1&ntf_status=IN_ACTIVE",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"notifications"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								},
+								{
+									"key": "ntf_status",
+									"value": "IN_ACTIVE"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllNotifications",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjg0MzEyMjg4LCJpYXQiOjE2ODQzMDkyODh9.iAFWneji9LAbPchN9SyuAdzDfQWzJ6xxfVcJP1_EqZqL07gTSO4bO70hkGQgaSCXZToSmJ9eRiLebn1n0ZGT4azZ85e_2bR4WA3iz9Wwnn4Eb_dwSKbkaSioCs-tF8tUA8dEcEIryV7PHmuius4la-PG4Y9dVlYVooyg77W3kJK3fbp6EoD8zxEnE71v8OBByO3EbwR-Vh9NKwzhoVENJutoyiruI0-ysIXKsshc_tTO0WrPWacootAF2xMMQre-BndsPGLP5R1iA5qk7mqAKpH-YVtiJ8fyT4rqKmlaPn3os97_MzQ_kyW37_Z4ke5Mo0xtrd1_zKTlic7HbvFNuw"
+							}
+						],
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/notifications?page_no=0&page_size=2&sort_field=id",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"notifications"
+							],
+							"query": [
+								{
+									"key": "page_no",
+									"value": "0"
+								},
+								{
+									"key": "page_size",
+									"value": "2"
+								},
+								{
+									"key": "sort_field",
+									"value": "id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllNotificationsById",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjg0MzEyMjg4LCJpYXQiOjE2ODQzMDkyODh9.iAFWneji9LAbPchN9SyuAdzDfQWzJ6xxfVcJP1_EqZqL07gTSO4bO70hkGQgaSCXZToSmJ9eRiLebn1n0ZGT4azZ85e_2bR4WA3iz9Wwnn4Eb_dwSKbkaSioCs-tF8tUA8dEcEIryV7PHmuius4la-PG4Y9dVlYVooyg77W3kJK3fbp6EoD8zxEnE71v8OBByO3EbwR-Vh9NKwzhoVENJutoyiruI0-ysIXKsshc_tTO0WrPWacootAF2xMMQre-BndsPGLP5R1iA5qk7mqAKpH-YVtiJ8fyT4rqKmlaPn3os97_MzQ_kyW37_Z4ke5Mo0xtrd1_zKTlic7HbvFNuw"
+							}
+						],
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/notifications/1",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"notifications",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

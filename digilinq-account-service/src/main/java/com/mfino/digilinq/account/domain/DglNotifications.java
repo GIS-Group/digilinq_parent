@@ -16,8 +16,11 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Parameter;
+import org.hibernate.annotations.Type;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.mfino.digilinq.account.enumeration.StatusType;
 
 /**
  * A DglNotifications.
@@ -27,175 +30,175 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class DglNotifications implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="ntf_id")
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ntf_id")
+	private Long id;
 
-    @Column(name = "ntf_tp_type")
-    private String ntfTpType;
+	@Column(name = "ntf_tp_type")
+	private String ntfTpType;
 
-    @Column(name = "ntf_tp_name")
-    private String ntfTpName;
+	@Column(name = "ntf_tp_name")
+	private String ntfTpName;
 
-    @Column(name = "ntf_tp_info")
-    private String ntfTpInfo;
+	@Column(name = "ntf_tp_info")
+	private String ntfTpInfo;
 
-    @Column(name = "ntf_status")
-    private String ntfStatus;
+	@Column(name = "ntf_status")
+	@Type(type = "com.mfino.digilinq.commons.enumeration.EnumUserType", parameters = {
+			@Parameter(name = "Enum", value = "com.mfino.digilinq.account.enumeration.StatusType") })
+	private StatusType ntfStatus;
 
-    @Column(name = "nft_id")
-    private Long nftId;
+//    @Column(name = "nft_id")
+//    private Long nftId;
 
-    @OneToMany(mappedBy = "dglNotifications")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Set<DglNotificationsLog> dglNotificationsLogs = new HashSet<>();
+	@OneToMany(mappedBy = "dglNotifications")
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+	private Set<DglNotificationsLog> dglNotificationsLogs = new HashSet<>();
 
-    @ManyToOne
-    @JoinColumn(name = "acc_id")
-    @JsonIgnoreProperties(value = "dglNotifications", allowSetters = true)
-    private DglAccMno dglAccMno;
+	@ManyToOne
+	@JoinColumn(name = "acc_id")
+	@JsonIgnoreProperties(value = "dglNotifications", allowSetters = true)
+	private DglAccMno dglAccMno;
 
-    public Long getId() {
-        return id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getNtfTpType() {
-        return ntfTpType;
-    }
+	public String getNtfTpType() {
+		return ntfTpType;
+	}
 
-    public DglNotifications ntfTpType(String ntfTpType) {
-        this.ntfTpType = ntfTpType;
-        return this;
-    }
+	public DglNotifications ntfTpType(String ntfTpType) {
+		this.ntfTpType = ntfTpType;
+		return this;
+	}
 
-    public void setNtfTpType(String ntfTpType) {
-        this.ntfTpType = ntfTpType;
-    }
+	public void setNtfTpType(String ntfTpType) {
+		this.ntfTpType = ntfTpType;
+	}
 
-    public String getNtfTpName() {
-        return ntfTpName;
-    }
+	public String getNtfTpName() {
+		return ntfTpName;
+	}
 
-    public DglNotifications ntfTpName(String ntfTpName) {
-        this.ntfTpName = ntfTpName;
-        return this;
-    }
+	public DglNotifications ntfTpName(String ntfTpName) {
+		this.ntfTpName = ntfTpName;
+		return this;
+	}
 
-    public void setNtfTpName(String ntfTpName) {
-        this.ntfTpName = ntfTpName;
-    }
+	public void setNtfTpName(String ntfTpName) {
+		this.ntfTpName = ntfTpName;
+	}
 
-    public String getNtfTpInfo() {
-        return ntfTpInfo;
-    }
+	public String getNtfTpInfo() {
+		return ntfTpInfo;
+	}
 
-    public DglNotifications ntfTpInfo(String ntfTpInfo) {
-        this.ntfTpInfo = ntfTpInfo;
-        return this;
-    }
+	public DglNotifications ntfTpInfo(String ntfTpInfo) {
+		this.ntfTpInfo = ntfTpInfo;
+		return this;
+	}
 
-    public void setNtfTpInfo(String ntfTpInfo) {
-        this.ntfTpInfo = ntfTpInfo;
-    }
+	public void setNtfTpInfo(String ntfTpInfo) {
+		this.ntfTpInfo = ntfTpInfo;
+	}
 
-    public String getNtfStatus() {
-        return ntfStatus;
-    }
+	public StatusType getNtfStatus() {
+		return ntfStatus;
+	}
 
-    public DglNotifications ntfStatus(String ntfStatus) {
-        this.ntfStatus = ntfStatus;
-        return this;
-    }
+	public DglNotifications ntfStatus(StatusType ntfStatus) {
+		this.ntfStatus = ntfStatus;
+		return this;
+	}
 
-    public void setNtfStatus(String ntfStatus) {
-        this.ntfStatus = ntfStatus;
-    }
+	public void setNtfStatus(StatusType ntfStatus) {
+		this.ntfStatus = ntfStatus;
+	}
 
-    public Long getNftId() {
-        return nftId;
-    }
+//    public Long getNftId() {
+//        return nftId;
+//    }
+//
+//    public DglNotifications nftId(Long nftId) {
+//        this.nftId = nftId;
+//        return this;
+//    }
+//
+//    public void setNftId(Long nftId) {
+//        this.nftId = nftId;
+//    }
 
-    public DglNotifications nftId(Long nftId) {
-        this.nftId = nftId;
-        return this;
-    }
+	public Set<DglNotificationsLog> getDglNotificationsLogs() {
+		return dglNotificationsLogs;
+	}
 
-    public void setNftId(Long nftId) {
-        this.nftId = nftId;
-    }
+	public DglNotifications dglNotificationsLogs(Set<DglNotificationsLog> dglNotificationsLogs) {
+		this.dglNotificationsLogs = dglNotificationsLogs;
+		return this;
+	}
 
-    public Set<DglNotificationsLog> getDglNotificationsLogs() {
-        return dglNotificationsLogs;
-    }
+	public DglNotifications addDglNotificationsLogs(DglNotificationsLog dglNotificationsLog) {
+		this.dglNotificationsLogs.add(dglNotificationsLog);
+		dglNotificationsLog.setDglNotifications(this);
+		return this;
+	}
 
-    public DglNotifications dglNotificationsLogs(Set<DglNotificationsLog> dglNotificationsLogs) {
-        this.dglNotificationsLogs = dglNotificationsLogs;
-        return this;
-    }
+	public DglNotifications removeDglNotificationsLogs(DglNotificationsLog dglNotificationsLog) {
+		this.dglNotificationsLogs.remove(dglNotificationsLog);
+		dglNotificationsLog.setDglNotifications(null);
+		return this;
+	}
 
-    public DglNotifications addDglNotificationsLogs(DglNotificationsLog dglNotificationsLog) {
-        this.dglNotificationsLogs.add(dglNotificationsLog);
-        dglNotificationsLog.setDglNotifications(this);
-        return this;
-    }
+	public void setDglNotificationsLogs(Set<DglNotificationsLog> dglNotificationsLogs) {
+		this.dglNotificationsLogs = dglNotificationsLogs;
+	}
 
-    public DglNotifications removeDglNotificationsLogs(DglNotificationsLog dglNotificationsLog) {
-        this.dglNotificationsLogs.remove(dglNotificationsLog);
-        dglNotificationsLog.setDglNotifications(null);
-        return this;
-    }
+	public DglAccMno getDglAccMno() {
+		return dglAccMno;
+	}
 
-    public void setDglNotificationsLogs(Set<DglNotificationsLog> dglNotificationsLogs) {
-        this.dglNotificationsLogs = dglNotificationsLogs;
-    }
+	public DglNotifications dglAccMno(DglAccMno dglAccMno) {
+		this.dglAccMno = dglAccMno;
+		return this;
+	}
 
-    public DglAccMno getDglAccMno() {
-        return dglAccMno;
-    }
+	public void setDglAccMno(DglAccMno dglAccMno) {
+		this.dglAccMno = dglAccMno;
+	}
+	// jhipster-needle-entity-add-getters-setters - JHipster will add getters and
+	// setters here
 
-    public DglNotifications dglAccMno(DglAccMno dglAccMno) {
-        this.dglAccMno = dglAccMno;
-        return this;
-    }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (!(o instanceof DglNotifications)) {
+			return false;
+		}
+		return id != null && id.equals(((DglNotifications) o).id);
+	}
 
-    public void setDglAccMno(DglAccMno dglAccMno) {
-        this.dglAccMno = dglAccMno;
-    }
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+	@Override
+	public int hashCode() {
+		return 31;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof DglNotifications)) {
-            return false;
-        }
-        return id != null && id.equals(((DglNotifications) o).id);
-    }
-
-    @Override
-    public int hashCode() {
-        return 31;
-    }
-
-    // prettier-ignore
-    @Override
-    public String toString() {
-        return "DglNotifications{" +
-            "id=" + getId() +
-            ", ntfTpType='" + getNtfTpType() + "'" +
-            ", ntfTpName='" + getNtfTpName() + "'" +
-            ", ntfTpInfo='" + getNtfTpInfo() + "'" +
-            ", ntfStatus='" + getNtfStatus() + "'" +
-            ", nftId=" + getNftId() +
-            "}";
-    }
+	// prettier-ignore
+	@Override
+	public String toString() {
+		return "DglNotifications{" + "id=" + getId() + ", ntfTpType='" + getNtfTpType() + "'" + ", ntfTpName='"
+				+ getNtfTpName() + "'" + ", ntfTpInfo='" + getNtfTpInfo() + "'" + ", ntfStatus='" + getNtfStatus() + "'"
+				+
+//            ", nftId=" + getNftId() +
+				"}";
+	}
 }
