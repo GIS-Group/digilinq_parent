@@ -4,6 +4,8 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +41,7 @@ public class DglAccOperatorController extends BaseAPIController {
 	 * @throws Exception
 	 */
 	@PostMapping("/acc-operators")
-	public ResponseEntity<?> createDglAccOperator(@RequestBody DglAccOperatorDTO dglAccOperatorDTO) throws Exception {
+	public ResponseEntity<?> createDglAccOperator(@Valid @RequestBody DglAccOperatorDTO dglAccOperatorDTO) throws Exception {
 		log.debug("REST request to save DglAccOperator : {}", dglAccOperatorDTO);
 		if (dglAccOperatorDTO.getId() != null) {
 			throw new Exception("A new dglAccOperator cannot already have an ID");

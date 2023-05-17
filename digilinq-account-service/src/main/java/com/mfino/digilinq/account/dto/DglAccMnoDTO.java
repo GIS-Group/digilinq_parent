@@ -3,6 +3,9 @@ package com.mfino.digilinq.account.dto;
 import java.io.Serializable;
 import java.time.Instant;
 
+import com.mfino.digilinq.account.enumeration.DisplyOrientation;
+import com.mfino.digilinq.account.enumeration.SettlementType;
+
 /**
  * A DTO for the {@link com.mfino.digilinq.account.domain.DglAccMno} entity.
  */
@@ -26,7 +29,7 @@ public class DglAccMnoDTO implements Serializable {
 
     private Integer accTimeZone;
 
-    private Boolean accOrient;
+    private DisplyOrientation accOrient;
 
     private String accPrimCont;
 
@@ -66,7 +69,7 @@ public class DglAccMnoDTO implements Serializable {
 
     private String accUnqId;
 
-    private Integer prefSettleType;
+    private SettlementType prefSettleType;
 
     private String billCycle;
 
@@ -155,11 +158,11 @@ public class DglAccMnoDTO implements Serializable {
         this.accTimeZone = accTimeZone;
     }
 
-    public Boolean isAccOrient() {
+    public DisplyOrientation isAccOrient() {
         return accOrient;
     }
 
-    public void setAccOrient(Boolean accOrient) {
+    public void setAccOrient(DisplyOrientation accOrient) {
         this.accOrient = accOrient;
     }
 
@@ -315,11 +318,11 @@ public class DglAccMnoDTO implements Serializable {
         this.accUnqId = accUnqId;
     }
 
-    public Integer getPrefSettleType() {
+    public SettlementType getPrefSettleType() {
         return prefSettleType;
     }
 
-    public void setPrefSettleType(Integer prefSettleType) {
+    public void setPrefSettleType(SettlementType prefSettleType) {
         this.prefSettleType = prefSettleType;
     }
 

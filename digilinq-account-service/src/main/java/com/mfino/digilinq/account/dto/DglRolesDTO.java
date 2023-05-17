@@ -2,19 +2,26 @@ package com.mfino.digilinq.account.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 /**
  * A DTO for the {@link com.mfino.digilinq.account.domain.domain.DglRoles} entity.
  */
 public class DglRolesDTO implements Serializable {
 
     private Long id;
-
+    
+    @NotNull(message = "roleName cant be null")
+    @Size(min = 2, max = 225, message = "roleName should have minimum 2 characters and Maximum 225 characters allowed")
     private String roleName;
 
     private Integer status;
 
     private Integer roleUnqId;
-
+   
+    @NotNull(message = "roleDesc cant be null")
+    @Size(min = 2, max = 225, message = "roleDesc should have minimum 2 characters and Maximum 225 characters allowed")
     private String roleDesc;
 
     private String permissions;

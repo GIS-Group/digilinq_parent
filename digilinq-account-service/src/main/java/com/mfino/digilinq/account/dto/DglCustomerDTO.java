@@ -3,6 +3,8 @@ package com.mfino.digilinq.account.dto;
 import java.io.Serializable;
 import java.time.Instant;
 
+import com.mfino.digilinq.account.enumeration.DisplyOrientation;
+
 /**
  * A DTO for the {@link com.mfino.digilinq.account.domain.domain.DglCustomer} entity.
  */
@@ -24,7 +26,7 @@ public class DglCustomerDTO implements Serializable {
 
     private Integer custTimeZone;
 
-    private Boolean custOrient;
+    private DisplyOrientation custOrient;
 
     private String custPrimCont;
 
@@ -129,11 +131,11 @@ public class DglCustomerDTO implements Serializable {
         this.custTimeZone = custTimeZone;
     }
 
-    public Boolean isCustOrient() {
+    public DisplyOrientation isCustOrient() {
         return custOrient;
     }
 
-    public void setCustOrient(Boolean custOrient) {
+    public void setCustOrient(DisplyOrientation custOrient) {
         this.custOrient = custOrient;
     }
 
