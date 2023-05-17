@@ -1,0 +1,156 @@
+{
+	"info": {
+		"_postman_id": "6074d711-b608-4c8f-bce2-0fabf792c047",
+		"name": "digilinq-catalog-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26519668",
+		"_collection_link": "https://orange-resonance-992761.postman.co/workspace/My-Workspace~591763c4-efc8-479c-8084-49101e71b5ee/collection/26519668-6074d711-b608-4c8f-bce2-0fabf792c047?action=share&creator=26519668&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "DGL-711 : GET ALL API",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tpUnqId\": 1,\r\n    \"relProdCat\": \"\",\r\n    \"tpTitle\": \"\",\r\n    \"tpType\": \"\",\r\n    \"tpDesc\": \"\",\r\n    \"tpStruc\": \"\",\r\n    \"tpStatus\": 1,\r\n    \"accId\": 1234\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:6001/v1/dglCatTpInfos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6001",
+					"path": [
+						"v1",
+						"dglCatTpInfos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DGL-843 : GET BY ID API",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tpUnqId\": 1,\r\n    \"relProdCat\": \"\",\r\n    \"tpTitle\": \"\",\r\n    \"tpType\": \"\",\r\n    \"tpDesc\": \"\",\r\n    \"tpStruc\": \"\",\r\n    \"tpStatus\": 1,\r\n    \"accId\": 1234\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:6001/v1/dglCatTpInfos/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6001",
+					"path": [
+						"v1",
+						"dglCatTpInfos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DGL-712 : POST API",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tpUnqId\": 1,\r\n    \"relProdCat\": \"\",\r\n    \"tpTitle\": \"\",\r\n    \"tpType\": \"\",\r\n    \"tpDesc\": \"\",\r\n    \"tpStruc\": \"\",\r\n    \"tpStatus\": 1,\r\n    \"accId\": 1234\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:6001/v1/dglCatTpInfos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6001",
+					"path": [
+						"v1",
+						"dglCatTpInfos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DGL-713: PUT API",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"tpUnqId\": 1,\r\n    \"relProdCat\": \"Some relProdCat\",\r\n    \"tpTitle\": \"Some tpTitle\",\r\n    \"tpType\": \"Some tpType\",\r\n    \"tpDesc\": \"Some tpDesc\",\r\n    \"tpStruc\": \"Some tpStruc\",\r\n    \"tpStatus\": 1,\r\n    \"accId\": 1234\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:6001/v1/dglCatTpInfos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6001",
+					"path": [
+						"v1",
+						"dglCatTpInfos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DGL-714: UPDATE STATUS API",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:6001/v1/dglCatTpInfos/1/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6001",
+					"path": [
+						"v1",
+						"dglCatTpInfos",
+						"1",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
