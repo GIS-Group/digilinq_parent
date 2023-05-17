@@ -60,16 +60,16 @@ public class DglSetGen implements Serializable {
     private Float genSetTokenvalue;
 
     @Column(name = "pre_ent_cust_wait")
-    private Time preEntCustWait;
+    private String preEntCustWait;
 
     @Column(name = "post_ent_cust_wait")
-    private Time postEntCustWait;
+    private String postEntCustWait;
 
     @Column(name = "sales_exec_wait")
-    private Time salesExecWait;
+    private String salesExecWait;
 
     @Column(name = "retail_cust_wait")
-    private Time retailCustWait;
+    private String retailCustWait;
 
     @ManyToOne
     @JoinColumn(name = "acc_id")
@@ -201,59 +201,51 @@ public class DglSetGen implements Serializable {
         this.genSetTokenvalue = genSetTokenvalue;
     }
 
-    public Time getPreEntCustWait() {
-        return preEntCustWait;
-    }
+    public String getPreEntCustWait() {
+		return preEntCustWait;
+	}
 
-    public DglSetGen preEntCustWait(Time preEntCustWait) {
-        this.preEntCustWait = preEntCustWait;
-        return this;
-    }
+	public void setPreEntCustWait(String preEntCustWait) {
+		this.preEntCustWait = preEntCustWait;
+	}
 
-    public void setPreEntCustWait(Time preEntCustWait) {
-        this.preEntCustWait = preEntCustWait;
-    }
+	public String getPostEntCustWait() {
+		return postEntCustWait;
+	}
 
-    public Time getPostEntCustWait() {
-        return postEntCustWait;
-    }
+	public void setPostEntCustWait(String postEntCustWait) {
+		this.postEntCustWait = postEntCustWait;
+	}
 
-    public DglSetGen postEntCustWait(Time postEntCustWait) {
-        this.postEntCustWait = postEntCustWait;
-        return this;
-    }
+	public String getSalesExecWait() {
+		return salesExecWait;
+	}
 
-    public void setPostEntCustWait(Time postEntCustWait) {
-        this.postEntCustWait = postEntCustWait;
-    }
+	public void setSalesExecWait(String salesExecWait) {
+		this.salesExecWait = salesExecWait;
+	}
 
-    public Time getSalesExecWait() {
-        return salesExecWait;
-    }
+	public String getRetailCustWait() {
+		return retailCustWait;
+	}
 
-    public DglSetGen salesExecWait(Time salesExecWait) {
-        this.salesExecWait = salesExecWait;
-        return this;
-    }
+	public void setRetailCustWait(String retailCustWait) {
+		this.retailCustWait = retailCustWait;
+	}
 
-    public void setSalesExecWait(Time salesExecWait) {
-        this.salesExecWait = salesExecWait;
-    }
+	public Boolean getGenSetRndoffVal() {
+		return genSetRndoffVal;
+	}
 
-    public Time getRetailCustWait() {
-        return retailCustWait;
-    }
+	public Boolean getGenSetTax() {
+		return genSetTax;
+	}
 
-    public DglSetGen retailCustWait(Time retailCustWait) {
-        this.retailCustWait = retailCustWait;
-        return this;
-    }
+	public Boolean getGenSetMeasrUnit() {
+		return genSetMeasrUnit;
+	}
 
-    public void setRetailCustWait(Time retailCustWait) {
-        this.retailCustWait = retailCustWait;
-    }
-
-    public DglAccMno getDglAccMno() {
+	public DglAccMno getDglAccMno() {
         return dglAccMno;
     }
 

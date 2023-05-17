@@ -1,6 +1,7 @@
 package com.mfino.digilinq.account.dto;
 
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * A DTO for the {@link com.mfino.digilinq.account.domain.domain.DglNotifications} entity.
@@ -17,7 +18,7 @@ public class DglNotificationsDTO implements Serializable {
 
     private String ntfStatus;
 
-    private Long nftId;
+    private Set<DglNotificationsLogDTO> nftId;
 
 
     private Long dglAccMnoId;
@@ -62,15 +63,15 @@ public class DglNotificationsDTO implements Serializable {
         this.ntfStatus = ntfStatus;
     }
 
-    public Long getNftId() {
-        return nftId;
-    }
+	public Set<DglNotificationsLogDTO> getNftId() {
+		return nftId;
+	}
 
-    public void setNftId(Long nftId) {
-        this.nftId = nftId;
-    }
+	public void setNftId(Set<DglNotificationsLogDTO> nftId) {
+		this.nftId = nftId;
+	}
 
-    public Long getDglAccMnoId() {
+	public Long getDglAccMnoId() {
         return dglAccMnoId;
     }
 

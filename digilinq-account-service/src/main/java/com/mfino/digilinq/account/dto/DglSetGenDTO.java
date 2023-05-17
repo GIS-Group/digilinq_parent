@@ -28,13 +28,13 @@ public class DglSetGenDTO implements Serializable {
 
     private Float genSetTokenvalue;
 
-    private Time preEntCustWait;
+    private String preEntCustWait;
 
-    private Time postEntCustWait;
+    private String postEntCustWait;
 
-    private Time salesExecWait;
+    private String salesExecWait;
 
-    private Time retailCustWait;
+    private String retailCustWait;
 
 
     private Long dglAccMnoId;
@@ -119,39 +119,51 @@ public class DglSetGenDTO implements Serializable {
         this.genSetTokenvalue = genSetTokenvalue;
     }
 
-    public Time getPreEntCustWait() {
-        return preEntCustWait;
-    }
+    public String getPreEntCustWait() {
+		return preEntCustWait;
+	}
 
-    public void setPreEntCustWait(Time preEntCustWait) {
-        this.preEntCustWait = preEntCustWait;
-    }
+	public void setPreEntCustWait(String preEntCustWait) {
+		this.preEntCustWait = preEntCustWait;
+	}
 
-    public Time getPostEntCustWait() {
-        return postEntCustWait;
-    }
+	public String getPostEntCustWait() {
+		return postEntCustWait;
+	}
 
-    public void setPostEntCustWait(Time postEntCustWait) {
-        this.postEntCustWait = postEntCustWait;
-    }
+	public void setPostEntCustWait(String postEntCustWait) {
+		this.postEntCustWait = postEntCustWait;
+	}
 
-    public Time getSalesExecWait() {
-        return salesExecWait;
-    }
+	public String getSalesExecWait() {
+		return salesExecWait;
+	}
 
-    public void setSalesExecWait(Time salesExecWait) {
-        this.salesExecWait = salesExecWait;
-    }
+	public void setSalesExecWait(String salesExecWait) {
+		this.salesExecWait = salesExecWait;
+	}
 
-    public Time getRetailCustWait() {
-        return retailCustWait;
-    }
+	public String getRetailCustWait() {
+		return retailCustWait;
+	}
 
-    public void setRetailCustWait(Time retailCustWait) {
-        this.retailCustWait = retailCustWait;
-    }
+	public void setRetailCustWait(String retailCustWait) {
+		this.retailCustWait = retailCustWait;
+	}
 
-    public Long getDglAccMnoId() {
+	public Boolean getGenSetRndoffVal() {
+		return genSetRndoffVal;
+	}
+
+	public Boolean getGenSetTax() {
+		return genSetTax;
+	}
+
+	public Boolean getGenSetMeasrUnit() {
+		return genSetMeasrUnit;
+	}
+
+	public Long getDglAccMnoId() {
         return dglAccMnoId;
     }
 
