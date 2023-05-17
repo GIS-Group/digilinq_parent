@@ -2,6 +2,11 @@ package com.mfino.digilinq.account.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import com.mfino.digilinq.account.enumeration.StatusType;
 
 /**
@@ -17,10 +22,15 @@ public class DglNotificationsDTO implements Serializable {
 
 	private Long id;
 
+	@NotNull(message = "Notification Type can not be null")
 	private String ntfTpType;
 
+	@NotNull(message = "TemplateName can not be null")
+	@Size(min = 2, max = 100, message = "TemplateName should not be lessthan 2 and should not be greaterthan 100 characters")
 	private String ntfTpName;
 
+	@NotNull(message = "Template can not be null")
+	@Size(min = 2, max = 500, message = "Template should not be lessthan 2 and should not be greaterthan 500 characters")
 	private String ntfTpInfo;
 
 	private StatusType ntfStatus;

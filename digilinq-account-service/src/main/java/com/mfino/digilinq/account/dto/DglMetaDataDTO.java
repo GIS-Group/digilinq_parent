@@ -2,6 +2,9 @@ package com.mfino.digilinq.account.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 /**
  * A DTO for the {@link com.mfino.digilinq.account.domain.domain.DglMetaData} entity.
  */
@@ -11,12 +14,18 @@ public class DglMetaDataDTO implements Serializable {
 
 	private Long id;
 
+	@NotNull(message = "Site Title can not be null")
+	@Size(min = 2,max = 100,message = "Site Title should be greater than 2 and lessthan 100 characters")
     private String siteName;
 
+	@NotNull(message = "Upload Image can not be null")
     private String brandLogoUrl;
 
+	@NotNull(message = "Site Title can not be null")
+	@Size(min = 2,max = 100,message = "Meta Title should be greater than 2 and lessthan 100 characters")
     private String metaTitle;
 
+	@Size(min = 3,max = 255,message = "Meta Description should be greater than 3 and lessthan 255 characters")
     private String metaDesc;
 
     private String metaTags;
