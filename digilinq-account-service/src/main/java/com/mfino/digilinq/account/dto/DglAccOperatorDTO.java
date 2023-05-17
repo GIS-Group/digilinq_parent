@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.mfino.digilinq.account.enumeration.DisplyOrientation;
+import com.mfino.digilinq.account.enumeration.StatusType;
 
 public class DglAccOperatorDTO implements Serializable {
 
@@ -141,7 +142,7 @@ public class DglAccOperatorDTO implements Serializable {
     private Set<DglAccUsersDTO> dglAccUsers = new HashSet<>();
 
     //Enum need to add 
-    private String accStatus;
+    private StatusType accStatus;
     //generate in setter method if null 
     private String accUnqId;
     private String accType;
@@ -346,11 +347,11 @@ public class DglAccOperatorDTO implements Serializable {
         this.accPassword = accPassword;
     }
 
-    public String getAccStatus() {
+    public StatusType getAccStatus() {
         return accStatus;
     }
 
-    public void setAccStatus(String accStatus) {
+    public void setAccStatus(StatusType accStatus) {
         this.accStatus = accStatus;
     }
 
