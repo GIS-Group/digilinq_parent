@@ -92,10 +92,17 @@ public class DglSetGenController extends BaseAPIController{
      * @param id the id of the dglSetGenDTO to retrieve.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the dglSetGenDTO, or with status {@code 404 (Not Found)}.
      */
-    @GetMapping("/set-gens/{id}")
+//    @GetMapping("/set-gens/{id}")
     public ResponseEntity<?> getDglSetGen(@PathVariable Long id) {
         log.debug("REST request to get DglSetGen : {}", id);
         Optional<DglSetGenDTO> dglSetGenDTO = dglSetGenService.findOne(id);
+        return ResponseEntity.ok(getSucessResponse(dglSetGenDTO));
+    }
+    
+    @GetMapping("/set-gens/unq-id/{unqid}")
+    public ResponseEntity<?> getDglSetGenUnq(@PathVariable String unqid) {
+        log.debug("REST request to get DglSetGen : {}", unqid);
+        Optional<DglSetGenDTO> dglSetGenDTO = dglSetGenService.findByUnqId(unqid);
         return ResponseEntity.ok(getSucessResponse(dglSetGenDTO));
     }
 

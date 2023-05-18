@@ -18,6 +18,7 @@ import com.mfino.digilinq.account.domain.DglMetaData;
 import com.mfino.digilinq.account.dto.DglMetaDataDTO;
 import com.mfino.digilinq.account.mapper.DglMetaDataMapper;
 import com.mfino.digilinq.account.repository.DglMetaDataRepository;
+import com.mfino.digilinq.account.service.DglAccMnoService;
 import com.mfino.digilinq.account.service.DglMetaDataService;
 
 /**
@@ -34,6 +35,9 @@ public class DglMetaDataServiceImpl implements DglMetaDataService {
 
 	@Autowired
 	private DglMetaDataMapper dglMetaDataMapper;
+	
+	@Autowired
+	private DglAccMnoService accMnoService;
 
 	@Override
 	public DglMetaDataDTO save(DglMetaDataDTO dglMetaDataDTO) {
@@ -57,6 +61,13 @@ public class DglMetaDataServiceImpl implements DglMetaDataService {
 	@Transactional(readOnly = true)
 	public Optional<DglMetaDataDTO> findOne(Long id) {
 		log.debug("Request to get DglMetaData : {}", id);
+		return dglMetaDataRepository.findById(id).map(dglMetaDataMapper::toDto);
+	}
+
+	@Override
+	public Optional<DglMetaDataDTO> findByUnqId(String unqid) {
+		log.debug("Request to get DglMetaData : {}", unqid);
+		Long id = accMnoService.findByUnqId(unqid);
 		return dglMetaDataRepository.findById(id).map(dglMetaDataMapper::toDto);
 	}
 

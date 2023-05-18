@@ -92,10 +92,17 @@ public class DglThmInfoController extends BaseAPIController {
      * @param id the id of the dglThmInfoDTO to retrieve.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the dglThmInfoDTO, or with status {@code 404 (Not Found)}.
      */
-    @GetMapping("/thm-infos/{id}")
+//    @GetMapping("/thm-infos/{id}")
     public ResponseEntity<?> getDglThmInfo(@PathVariable Long id) {
         log.debug("REST request to get DglThmInfo : {}", id);
         Optional<DglThmInfoDTO> dglThmInfoDTO = dglThmInfoService.findOne(id);
+        return ResponseEntity.ok(getSucessResponse(dglThmInfoDTO));
+    }
+    
+    @GetMapping("/thm-infos/unq-id/{unqid}")
+    public ResponseEntity<?> getDglThmInfoUnq(@PathVariable String unqid) {
+        log.debug("REST request to get DglThmInfo : {}", unqid);
+        Optional<DglThmInfoDTO> dglThmInfoDTO = dglThmInfoService.findByUnqId(unqid);
         return ResponseEntity.ok(getSucessResponse(dglThmInfoDTO));
     }
 

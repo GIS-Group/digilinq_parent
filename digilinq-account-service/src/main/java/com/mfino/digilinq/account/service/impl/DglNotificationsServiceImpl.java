@@ -15,10 +15,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mfino.digilinq.account.domain.DglNotifications;
+import com.mfino.digilinq.account.dto.DglMetaDataDTO;
 import com.mfino.digilinq.account.dto.DglNotificationsDTO;
 import com.mfino.digilinq.account.enumeration.StatusType;
 import com.mfino.digilinq.account.mapper.DglNotificationsMapper;
 import com.mfino.digilinq.account.repository.DglNotificationsRepository;
+import com.mfino.digilinq.account.service.DglAccMnoService;
 import com.mfino.digilinq.account.service.DglNotificationsService;
 
 /**
@@ -35,6 +37,9 @@ public class DglNotificationsServiceImpl implements DglNotificationsService {
 
 	@Autowired
 	private DglNotificationsMapper dglNotificationsMapper;
+	
+	@Autowired
+	private DglAccMnoService accMnoService;
 
 	@Override
 	public DglNotificationsDTO save(DglNotificationsDTO dglNotificationsDTO) {
@@ -66,6 +71,13 @@ public class DglNotificationsServiceImpl implements DglNotificationsService {
 	public Optional<DglNotificationsDTO> findOne(Long id) {
 		log.debug("Request to get DglNotifications : {}", id);
 		return dglNotificationsRepository.findById(id).map(dglNotificationsMapper::toDto);
+	}
+
+	@Override
+	public Optional<DglNotificationsDTO> findByUnqId(String unqid) {
+			log.debug("Request to get DglNotifications : {}", unqid);
+			Long id = accMnoService.findByUnqId(unqid);
+			return dglNotificationsRepository.findById(id).map(dglNotificationsMapper::toDto);
 	}
 
 }
