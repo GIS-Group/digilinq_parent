@@ -19,7 +19,7 @@ public class DglContractsDTO implements Serializable {
     @NotNull(message = "status type cant be null")
     private StatusType status;
 
-    private Integer contractUnqId;
+    private String contractUnqId;
     
     @NotNull(message = "contractFile type cant be null")
     private String contractFile;
@@ -66,11 +66,11 @@ public class DglContractsDTO implements Serializable {
         this.status = status;
     }
 
-    public Integer getContractUnqId() {
+    public String getContractUnqId() {
         return contractUnqId;
     }
 
-    public void setContractUnqId(Integer contractUnqId) {
+    public void setContractUnqId(String contractUnqId) {
         this.contractUnqId = contractUnqId;
     }
 
