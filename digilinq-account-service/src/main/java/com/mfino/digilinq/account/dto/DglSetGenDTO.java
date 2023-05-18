@@ -1,153 +1,175 @@
 package com.mfino.digilinq.account.dto;
 
 import java.io.Serializable;
-import java.sql.Time;
+
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 /**
- * A DTO for the {@link com.mfino.digilinq.account.domain.domain.DglSetGen} entity.
+ * A DTO for the {@link com.mfino.digilinq.account.domain.domain.DglSetGen}
+ * entity.
  */
 public class DglSetGenDTO implements Serializable {
 
-    private Long id;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2125278384943245468L;
 
-    private Boolean genSetRndoffVal;
+	private Long id;
 
-    private Boolean genSetTax;
+	@NotNull(message = "Round Of Value can not be null")
+	private Boolean genSetRndoffVal;
 
-    private String genSetLangPref;
+	@NotNull(message = "Solution Price can not be null")
+	private Boolean genSetTax;
 
-    private Integer relGenSetCurncyPref;
+	@NotNull(message = "Language Preferance can not be null")
+	private String genSetLangPref;
 
-    private Boolean genSetMeasrUnit;
+	@NotNull(message = "Currency Prefarence can not be null")
+	private Integer relGenSetCurncyPref;
 
-    private String genSetDateFormat;
+	@NotNull(message = "Measurement Unit can not be null")
+	private Boolean genSetMeasrUnit;
 
-    private String genSetTimeFormat;
+	@NotNull(message = "DateFormat can not be null")
+	private String genSetDateFormat;
 
-    private String genSetTimezone;
+	@NotNull(message = "TimeFormat can not be null")
+	private String genSetTimeFormat;
 
-    private Float genSetTokenvalue;
+	@NotNull(message = "TimeZone can not be null")
+	private String genSetTimezone;
 
-    private String preEntCustWait;
+	@NotNull(message = "One USD can not be null")
+	@DecimalMin(value = "0.01", inclusive = false, message = "One USD should be greater than ZERO.")
+	private Float genSetTokenvalue;
 
-    private String postEntCustWait;
+	@Min(value = 1, message = "Enterprise Pre-paid allowed min value is 1")
+	private Integer preEntCustWait;
 
-    private String salesExecWait;
+	@Min(value = 1, message = "Enterprise Post-paid allowed min value is 1")
+	private Integer postEntCustWait;
 
-    private String retailCustWait;
+	@Min(value = 1, message = "SalesExecutive allowed min value is 1")
+	private Integer salesExecWait;
 
+	@Min(value = 1, message = "Retail Pre-paid allowed min value is 1")
+	private Integer retailCustWait;
 
-    private Long dglAccMnoId;
+	private Long dglAccMnoId;
 
-    public Long getId() {
-        return id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public Boolean isGenSetRndoffVal() {
-        return genSetRndoffVal;
-    }
+	public Boolean isGenSetRndoffVal() {
+		return genSetRndoffVal;
+	}
 
-    public void setGenSetRndoffVal(Boolean genSetRndoffVal) {
-        this.genSetRndoffVal = genSetRndoffVal;
-    }
+	public void setGenSetRndoffVal(Boolean genSetRndoffVal) {
+		this.genSetRndoffVal = genSetRndoffVal;
+	}
 
-    public Boolean isGenSetTax() {
-        return genSetTax;
-    }
+	public Boolean isGenSetTax() {
+		return genSetTax;
+	}
 
-    public void setGenSetTax(Boolean genSetTax) {
-        this.genSetTax = genSetTax;
-    }
+	public void setGenSetTax(Boolean genSetTax) {
+		this.genSetTax = genSetTax;
+	}
 
-    public String getGenSetLangPref() {
-        return genSetLangPref;
-    }
+	public String getGenSetLangPref() {
+		return genSetLangPref;
+	}
 
-    public void setGenSetLangPref(String genSetLangPref) {
-        this.genSetLangPref = genSetLangPref;
-    }
+	public void setGenSetLangPref(String genSetLangPref) {
+		this.genSetLangPref = genSetLangPref;
+	}
 
-    public Integer getRelGenSetCurncyPref() {
-        return relGenSetCurncyPref;
-    }
+	public Integer getRelGenSetCurncyPref() {
+		return relGenSetCurncyPref;
+	}
 
-    public void setRelGenSetCurncyPref(Integer relGenSetCurncyPref) {
-        this.relGenSetCurncyPref = relGenSetCurncyPref;
-    }
+	public void setRelGenSetCurncyPref(Integer relGenSetCurncyPref) {
+		this.relGenSetCurncyPref = relGenSetCurncyPref;
+	}
 
-    public Boolean isGenSetMeasrUnit() {
-        return genSetMeasrUnit;
-    }
+	public Boolean isGenSetMeasrUnit() {
+		return genSetMeasrUnit;
+	}
 
-    public void setGenSetMeasrUnit(Boolean genSetMeasrUnit) {
-        this.genSetMeasrUnit = genSetMeasrUnit;
-    }
+	public void setGenSetMeasrUnit(Boolean genSetMeasrUnit) {
+		this.genSetMeasrUnit = genSetMeasrUnit;
+	}
 
-    public String getGenSetDateFormat() {
-        return genSetDateFormat;
-    }
+	public String getGenSetDateFormat() {
+		return genSetDateFormat;
+	}
 
-    public void setGenSetDateFormat(String genSetDateFormat) {
-        this.genSetDateFormat = genSetDateFormat;
-    }
+	public void setGenSetDateFormat(String genSetDateFormat) {
+		this.genSetDateFormat = genSetDateFormat;
+	}
 
-    public String getGenSetTimeFormat() {
-        return genSetTimeFormat;
-    }
+	public String getGenSetTimeFormat() {
+		return genSetTimeFormat;
+	}
 
-    public void setGenSetTimeFormat(String genSetTimeFormat) {
-        this.genSetTimeFormat = genSetTimeFormat;
-    }
+	public void setGenSetTimeFormat(String genSetTimeFormat) {
+		this.genSetTimeFormat = genSetTimeFormat;
+	}
 
-    public String getGenSetTimezone() {
-        return genSetTimezone;
-    }
+	public String getGenSetTimezone() {
+		return genSetTimezone;
+	}
 
-    public void setGenSetTimezone(String genSetTimezone) {
-        this.genSetTimezone = genSetTimezone;
-    }
+	public void setGenSetTimezone(String genSetTimezone) {
+		this.genSetTimezone = genSetTimezone;
+	}
 
-    public Float getGenSetTokenvalue() {
-        return genSetTokenvalue;
-    }
+	public Float getGenSetTokenvalue() {
+		return genSetTokenvalue;
+	}
 
-    public void setGenSetTokenvalue(Float genSetTokenvalue) {
-        this.genSetTokenvalue = genSetTokenvalue;
-    }
+	public void setGenSetTokenvalue(Float genSetTokenvalue) {
+		this.genSetTokenvalue = genSetTokenvalue;
+	}
 
-    public String getPreEntCustWait() {
+	public Integer getPreEntCustWait() {
 		return preEntCustWait;
 	}
 
-	public void setPreEntCustWait(String preEntCustWait) {
+	public void setPreEntCustWait(Integer preEntCustWait) {
 		this.preEntCustWait = preEntCustWait;
 	}
 
-	public String getPostEntCustWait() {
+	public Integer getPostEntCustWait() {
 		return postEntCustWait;
 	}
 
-	public void setPostEntCustWait(String postEntCustWait) {
+	public void setPostEntCustWait(Integer postEntCustWait) {
 		this.postEntCustWait = postEntCustWait;
 	}
 
-	public String getSalesExecWait() {
+	public Integer getSalesExecWait() {
 		return salesExecWait;
 	}
 
-	public void setSalesExecWait(String salesExecWait) {
+	public void setSalesExecWait(Integer salesExecWait) {
 		this.salesExecWait = salesExecWait;
 	}
 
-	public String getRetailCustWait() {
+	public Integer getRetailCustWait() {
 		return retailCustWait;
 	}
 
-	public void setRetailCustWait(String retailCustWait) {
+	public void setRetailCustWait(Integer retailCustWait) {
 		this.retailCustWait = retailCustWait;
 	}
 
@@ -164,49 +186,40 @@ public class DglSetGenDTO implements Serializable {
 	}
 
 	public Long getDglAccMnoId() {
-        return dglAccMnoId;
-    }
+		return dglAccMnoId;
+	}
 
-    public void setDglAccMnoId(Long dglAccMnoId) {
-        this.dglAccMnoId = dglAccMnoId;
-    }
+	public void setDglAccMnoId(Long dglAccMnoId) {
+		this.dglAccMnoId = dglAccMnoId;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof DglSetGenDTO)) {
-            return false;
-        }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (!(o instanceof DglSetGenDTO)) {
+			return false;
+		}
 
-        return id != null && id.equals(((DglSetGenDTO) o).id);
-    }
+		return id != null && id.equals(((DglSetGenDTO) o).id);
+	}
 
-    @Override
-    public int hashCode() {
-        return 31;
-    }
+	@Override
+	public int hashCode() {
+		return 31;
+	}
 
-    // prettier-ignore
-    @Override
-    public String toString() {
-        return "DglSetGenDTO{" +
-            "id=" + getId() +
-            ", genSetRndoffVal='" + isGenSetRndoffVal() + "'" +
-            ", genSetTax='" + isGenSetTax() + "'" +
-            ", genSetLangPref='" + getGenSetLangPref() + "'" +
-            ", relGenSetCurncyPref=" + getRelGenSetCurncyPref() +
-            ", genSetMeasrUnit='" + isGenSetMeasrUnit() + "'" +
-            ", genSetDateFormat='" + getGenSetDateFormat() + "'" +
-            ", genSetTimeFormat='" + getGenSetTimeFormat() + "'" +
-            ", genSetTimezone='" + getGenSetTimezone() + "'" +
-            ", genSetTokenvalue=" + getGenSetTokenvalue() +
-            ", preEntCustWait='" + getPreEntCustWait() + "'" +
-            ", postEntCustWait='" + getPostEntCustWait() + "'" +
-            ", salesExecWait='" + getSalesExecWait() + "'" +
-            ", retailCustWait='" + getRetailCustWait() + "'" +
-            ", dglAccMnoId=" + getDglAccMnoId() +
-            "}";
-    }
+	// prettier-ignore
+	@Override
+	public String toString() {
+		return "DglSetGenDTO{" + "id=" + getId() + ", genSetRndoffVal='" + isGenSetRndoffVal() + "'" + ", genSetTax='"
+				+ isGenSetTax() + "'" + ", genSetLangPref='" + getGenSetLangPref() + "'" + ", relGenSetCurncyPref="
+				+ getRelGenSetCurncyPref() + ", genSetMeasrUnit='" + isGenSetMeasrUnit() + "'" + ", genSetDateFormat='"
+				+ getGenSetDateFormat() + "'" + ", genSetTimeFormat='" + getGenSetTimeFormat() + "'"
+				+ ", genSetTimezone='" + getGenSetTimezone() + "'" + ", genSetTokenvalue=" + getGenSetTokenvalue()
+				+ ", preEntCustWait='" + getPreEntCustWait() + "'" + ", postEntCustWait='" + getPostEntCustWait() + "'"
+				+ ", salesExecWait='" + getSalesExecWait() + "'" + ", retailCustWait='" + getRetailCustWait() + "'"
+				+ ", dglAccMnoId=" + getDglAccMnoId() + "}";
+	}
 }
