@@ -18,7 +18,7 @@ public class DglRolesDTO implements Serializable {
 
     private Integer status;
 
-    private Integer roleUnqId;
+    private String roleUnqId;
    
     @NotNull(message = "roleDesc cant be null")
     @Size(min = 2, max = 225, message = "roleDesc should have minimum 2 characters and Maximum 225 characters allowed")
@@ -53,11 +53,11 @@ public class DglRolesDTO implements Serializable {
         this.status = status;
     }
 
-    public Integer getRoleUnqId() {
+    public String getRoleUnqId() {
         return roleUnqId;
     }
 
-    public void setRoleUnqId(Integer roleUnqId) {
+    public void setRoleUnqId(String roleUnqId) {
         this.roleUnqId = roleUnqId;
     }
 
