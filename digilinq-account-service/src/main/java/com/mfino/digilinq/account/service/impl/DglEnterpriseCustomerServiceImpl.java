@@ -15,7 +15,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.mfino.digilinq.account.domain.DglAccMno;
+import com.mfino.digilinq.account.domain.DglAccUniqueFeilds;
 import com.mfino.digilinq.account.domain.DglCustContracts;
 import com.mfino.digilinq.account.domain.DglCustCustomFields;
 import com.mfino.digilinq.account.domain.DglCustFiles;
@@ -27,6 +27,7 @@ import com.mfino.digilinq.account.dto.DglCustContractsDTO;
 import com.mfino.digilinq.account.dto.DglEnterpriseCustomerDTO;
 import com.mfino.digilinq.account.enumeration.StatusType;
 import com.mfino.digilinq.account.mapper.DglEnterpriseCustomerMapper;
+import com.mfino.digilinq.account.repository.DglAccUniqueFeildsRepository;
 import com.mfino.digilinq.account.repository.DglCustContractsRepository;
 import com.mfino.digilinq.account.repository.DglCustCustomFieldsRepository;
 import com.mfino.digilinq.account.repository.DglCustFilesRepository;
@@ -69,9 +70,19 @@ public class DglEnterpriseCustomerServiceImpl implements DglEnterpriseCustomerSe
 	@Autowired
 	private DglMdContractTypeRepository dglMdContractTypeRepository;
 	
+	@Autowired
+	private DglAccUniqueFeildsRepository dglAccUniqueFeildsRepository;
+	
 	@Override
 	public DglEnterpriseCustomerDTO save(DglEnterpriseCustomerDTO dglCustomerDTO) {
 		log.debug("Request to save DglEnterpriseCustomers : {}", dglCustomerDTO);
+		DglAccUniqueFeilds accUniqueFeilds = dglAccUniqueFeildsRepository.findByName("EnterPrice Customer");
+		if(accUniqueFeilds==null) {
+			System.out.println(accUniqueFeilds);
+			return null;
+		} 
+		dglCustomerDTO.setCustUnqId(accUniqueFeilds.getPrefix()+accUniqueFeilds.getSerial());
+		accUniqueFeilds.setSerial(accUniqueFeilds.getSerial()+1);
 		DglCustomer dglCustomer = dglCustomerMapper.toEntity(dglCustomerDTO);
 		dglCustomer = dglCustomerRepository.save(dglCustomer);
 		for(DglCustCustomFields dglCustCustomFields: dglCustomer.getDglCustCustomFields()) {
@@ -85,12 +96,18 @@ public class DglEnterpriseCustomerServiceImpl implements DglEnterpriseCustomerSe
 		List<DglCustRoles> dglCustRolesList = new ArrayList<>(dglCustomer.getDglCustRoles());
 		DglCustRoles dglCustRoles = dglCustRolesList.get(0);
 		dglCustRoles.setDglCustomer(dglCustomer);
+		accUniqueFeilds = dglAccUniqueFeildsRepository.findByName("Roles");
+		dglCustRoles.setRoleUnqId(accUniqueFeilds.getPrefix()+accUniqueFeilds.getSerial());
+		accUniqueFeilds.setSerial(accUniqueFeilds.getSerial()+1);
 		dglCustRoles = dglCustRolesRepository.save(dglCustRoles);
 		
 		for(DglCustUsers dglCustUsers: dglCustomer.getDglCustUsers()) {
 			dglCustUsers.setDglCustomer(dglCustomer);
 			dglCustUsers.setDglCustRoles(dglCustRoles);
 			dglCustUsers.setDglAccMno(dglCustomer.getDglAccMno());
+			accUniqueFeilds = dglAccUniqueFeildsRepository.findByName("Users");
+			dglCustomer.setCustUnqId(accUniqueFeilds.getPrefix()+accUniqueFeilds.getSerial());
+			accUniqueFeilds.setSerial(accUniqueFeilds.getSerial()+1);
         	dglCustUsersRepository.save(dglCustUsers);
         }
 		
@@ -98,6 +115,9 @@ public class DglEnterpriseCustomerServiceImpl implements DglEnterpriseCustomerSe
 			dglCustContracts.setDglCustomer(dglCustomer);
 			dglCustContracts.setDglAccMno(dglCustomer.getDglAccMno());
 			dglCustContracts.setReceivingParty(dglCustomer);
+			accUniqueFeilds = dglAccUniqueFeildsRepository.findByName("Contracts");
+			dglCustContracts.setContractUnqId(accUniqueFeilds.getPrefix()+accUniqueFeilds.getSerial());
+			accUniqueFeilds.setSerial(accUniqueFeilds.getSerial()+1);
 			List<DglCustContractsDTO> dglCustContractsList = new ArrayList<>(dglCustomerDTO.getDglCustContracts());
 			Optional<DglMdContractType> dglMdContractType = dglMdContractTypeRepository.findById(dglCustContractsList.get(0).getDglMdContractTypeId());
 			dglCustContracts.setDglMdContractType(dglMdContractType.get());
