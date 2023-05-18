@@ -22,45 +22,51 @@ import com.mfino.digilinq.account.service.DglAccMnoService;
 @Transactional
 public class DglAccMnoServiceImpl implements DglAccMnoService {
 
-    private final Logger log = LoggerFactory.getLogger(DglAccMnoServiceImpl.class);
+	private final Logger log = LoggerFactory.getLogger(DglAccMnoServiceImpl.class);
 
-    private final DglAccMnoRepository dglAccMnoRepository;
+	private final DglAccMnoRepository dglAccMnoRepository;
 
-    private final DglAccMnoMapper dglAccMnoMapper;
+	private final DglAccMnoMapper dglAccMnoMapper;
 
-    public DglAccMnoServiceImpl(DglAccMnoRepository dglAccMnoRepository, DglAccMnoMapper dglAccMnoMapper) {
-        this.dglAccMnoRepository = dglAccMnoRepository;
-        this.dglAccMnoMapper = dglAccMnoMapper;
-    }
+	public DglAccMnoServiceImpl(DglAccMnoRepository dglAccMnoRepository, DglAccMnoMapper dglAccMnoMapper) {
+		this.dglAccMnoRepository = dglAccMnoRepository;
+		this.dglAccMnoMapper = dglAccMnoMapper;
+	}
 
-    @Override
-    public DglAccMnoDTO save(DglAccMnoDTO dglAccMnoDTO) {
-        log.debug("Request to save DglAccMno : {}", dglAccMnoDTO);
-        DglAccMno dglAccMno = dglAccMnoMapper.toEntity(dglAccMnoDTO);
-        dglAccMno = dglAccMnoRepository.save(dglAccMno);
-        return dglAccMnoMapper.toDto(dglAccMno);
-    }
+	@Override
+	public DglAccMnoDTO save(DglAccMnoDTO dglAccMnoDTO) {
+		log.debug("Request to save DglAccMno : {}", dglAccMnoDTO);
+		DglAccMno dglAccMno = dglAccMnoMapper.toEntity(dglAccMnoDTO);
+		dglAccMno = dglAccMnoRepository.save(dglAccMno);
+		return dglAccMnoMapper.toDto(dglAccMno);
+	}
 
-    @Override
-    @Transactional(readOnly = true)
-    public Page<DglAccMnoDTO> findAll(Pageable pageable) {
-        log.debug("Request to get all DglAccMnos");
-        return dglAccMnoRepository.findAll(pageable)
-            .map(dglAccMnoMapper::toDto);
-    }
+	@Override
+	@Transactional(readOnly = true)
+	public Page<DglAccMnoDTO> findAll(Pageable pageable) {
+		log.debug("Request to get all DglAccMnos");
+		return dglAccMnoRepository.findAll(pageable).map(dglAccMnoMapper::toDto);
+	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public Optional<DglAccMnoDTO> findOne(Long id) {
+		log.debug("Request to get DglAccMno : {}", id);
+//        DglAccMno dto = findByUnqId("PR5");
+//        System.out.println(dto.getAccCompName());
+		return dglAccMnoRepository.findById(id).map(dglAccMnoMapper::toDto);
+	}
 
-    @Override
-    @Transactional(readOnly = true)
-    public Optional<DglAccMnoDTO> findOne(Long id) {
-        log.debug("Request to get DglAccMno : {}", id);
-        return dglAccMnoRepository.findById(id)
-            .map(dglAccMnoMapper::toDto);
-    }
+	@Override
+	public Long findByUnqId(String accUnqId) {
+		log.debug("Request to get DglAccMno : {}", accUnqId);
+		return dglAccMnoRepository.findByAccUnqId(accUnqId).getId();
+	}
 
-    @Override
-    public void delete(Long id) {
-        log.debug("Request to delete DglAccMno : {}", id);
-        dglAccMnoRepository.deleteById(id);
-    }
+	@Override
+	public void delete(Long id) {
+		log.debug("Request to delete DglAccMno : {}", id);
+		dglAccMnoRepository.deleteById(id);
+	}
+
 }

@@ -18,6 +18,7 @@ import com.mfino.digilinq.account.domain.DglThmInfo;
 import com.mfino.digilinq.account.dto.DglThmInfoDTO;
 import com.mfino.digilinq.account.mapper.DglThmInfoMapper;
 import com.mfino.digilinq.account.repository.DglThmInfoRepository;
+import com.mfino.digilinq.account.service.DglAccMnoService;
 import com.mfino.digilinq.account.service.DglThmInfoService;
 
 /**
@@ -27,39 +28,47 @@ import com.mfino.digilinq.account.service.DglThmInfoService;
 @Transactional
 public class DglThmInfoServiceImpl implements DglThmInfoService {
 
-    private final Logger log = LoggerFactory.getLogger(DglThmInfoServiceImpl.class);
+	private final Logger log = LoggerFactory.getLogger(DglThmInfoServiceImpl.class);
 
-    @Autowired
-    private DglThmInfoRepository dglThmInfoRepository;
+	@Autowired
+	private DglThmInfoRepository dglThmInfoRepository;
 
-    @Autowired
-    private DglThmInfoMapper dglThmInfoMapper;
+	@Autowired
+	private DglThmInfoMapper dglThmInfoMapper;
 
-    @Override
-    public DglThmInfoDTO save(DglThmInfoDTO dglThmInfoDTO) {
-        log.debug("Request to save DglThmInfo : {}", dglThmInfoDTO);
-        DglThmInfo dglThmInfo = dglThmInfoMapper.toEntity(dglThmInfoDTO);
-        dglThmInfo = dglThmInfoRepository.save(dglThmInfo);
-        return dglThmInfoMapper.toDto(dglThmInfo);
-    }
+	@Autowired
+	private DglAccMnoService accMnoService;
 
-    @Override
-    @Transactional(readOnly = true)
-    public List<DglThmInfoDTO> findAll(int pageNo, int pageSize, String sortField) {
-    	log.debug("Request to get all DglThmInfos");
+	@Override
+	public DglThmInfoDTO save(DglThmInfoDTO dglThmInfoDTO) {
+		log.debug("Request to save DglThmInfo : {}", dglThmInfoDTO);
+		DglThmInfo dglThmInfo = dglThmInfoMapper.toEntity(dglThmInfoDTO);
+		dglThmInfo = dglThmInfoRepository.save(dglThmInfo);
+		return dglThmInfoMapper.toDto(dglThmInfo);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<DglThmInfoDTO> findAll(int pageNo, int pageSize, String sortField) {
+		log.debug("Request to get all DglThmInfos");
 		Pageable pageable = PageRequest.of(pageNo != 0 ? pageNo : 0, pageSize != 0 ? pageSize : 10,
 				sortField != null ? Sort.by(sortField) : Sort.by("id"));
 		return dglThmInfoRepository.findAll(pageable).stream().map(dglThmInfoMapper::toDto)
 				.collect(Collectors.toCollection(LinkedList::new));
-    }
+	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public Optional<DglThmInfoDTO> findOne(Long id) {
+		log.debug("Request to get DglThmInfo : {}", id);
+		return dglThmInfoRepository.findById(id).map(dglThmInfoMapper::toDto);
+	}
 
-    @Override
-    @Transactional(readOnly = true)
-    public Optional<DglThmInfoDTO> findOne(Long id) {
-        log.debug("Request to get DglThmInfo : {}", id);
-        return dglThmInfoRepository.findById(id)
-            .map(dglThmInfoMapper::toDto);
-    }
+	@Override
+	public Optional<DglThmInfoDTO> findByUnqId(String unqid) {
+		log.debug("Request to get dglThmInfo : {}", unqid);
+		Long id = accMnoService.findByUnqId(unqid);
+		return dglThmInfoRepository.findById(id).map(dglThmInfoMapper::toDto);
+	}
 
 }

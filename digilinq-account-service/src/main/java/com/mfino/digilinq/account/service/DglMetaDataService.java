@@ -35,4 +35,6 @@ public interface DglMetaDataService {
      */
     Optional<DglMetaDataDTO> findOne(Long id);
 
+	Optional<DglMetaDataDTO> findByUnqId(String unqid);
+
 }

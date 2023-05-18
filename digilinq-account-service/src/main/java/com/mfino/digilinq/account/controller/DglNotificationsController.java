@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mfino.digilinq.account.dto.DglMetaDataDTO;
 import com.mfino.digilinq.account.dto.DglNotificationsDTO;
 import com.mfino.digilinq.account.exception.BadRequestAlertException;
 import com.mfino.digilinq.account.service.DglNotificationsService;
@@ -99,10 +100,17 @@ public class DglNotificationsController extends BaseAPIController {
      * @param id the id of the dglNotificationsDTO to retrieve.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the dglNotificationsDTO, or with status {@code 404 (Not Found)}.
      */
-    @GetMapping("/notifications/{id}")
+//    @GetMapping("/notifications/{id}")
     public ResponseEntity<?> getDglNotifications(@PathVariable Long id) {
         log.debug("REST request to get DglNotifications : {}", id);
         Optional<DglNotificationsDTO> dglNotificationsDTO = dglNotificationsService.findOne(id);
+        return ResponseEntity.ok(getSucessResponse("Operation Completed Successfully", dglNotificationsDTO));
+    }
+    
+    @GetMapping("/notifications/unq-id/{unqid}")
+    public ResponseEntity<?> getDglNotificationUnq(@PathVariable String unqid) {
+        log.debug("REST request to get DglNotifications : {}", unqid);
+        Optional<DglNotificationsDTO> dglNotificationsDTO = dglNotificationsService.findByUnqId(unqid);
         return ResponseEntity.ok(getSucessResponse("Operation Completed Successfully", dglNotificationsDTO));
     }
 
