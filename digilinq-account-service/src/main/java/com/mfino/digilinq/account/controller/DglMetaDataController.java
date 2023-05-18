@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mfino.digilinq.account.dto.DglMetaDataDTO;
 import com.mfino.digilinq.account.exception.BadRequestAlertException;
+import com.mfino.digilinq.account.service.DglAccMnoService;
 import com.mfino.digilinq.account.service.DglMetaDataService;
 
 /**
@@ -89,10 +90,17 @@ public class DglMetaDataController extends BaseAPIController {
      * @param id the id of the dglMetaDataDTO to retrieve.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the dglMetaDataDTO, or with status {@code 404 (Not Found)}.
      */
-    @GetMapping("/meta-data/{id}")
+//    @GetMapping("/meta-data/{id}")
     public ResponseEntity<?> getDglMetaData(@PathVariable Long id) {
         log.debug("REST request to get DglMetaData : {}", id);
         Optional<DglMetaDataDTO> dglMetaDataDTO = dglMetaDataService.findOne(id);
+        return ResponseEntity.ok(getSucessResponse("Operation Completed Successfully", dglMetaDataDTO));
+    }
+    
+    @GetMapping("/meta-data/unq-id/{unqid}")
+    public ResponseEntity<?> getDglMetaDataUnq(@PathVariable String unqid) {
+        log.debug("REST request to get DglMetaData : {}", unqid);
+        Optional<DglMetaDataDTO> dglMetaDataDTO = dglMetaDataService.findByUnqId(unqid);
         return ResponseEntity.ok(getSucessResponse("Operation Completed Successfully", dglMetaDataDTO));
     }
 

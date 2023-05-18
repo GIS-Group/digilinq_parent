@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -17,6 +18,7 @@ import com.mfino.digilinq.account.domain.DglSetGen;
 import com.mfino.digilinq.account.dto.DglSetGenDTO;
 import com.mfino.digilinq.account.mapper.DglSetGenMapper;
 import com.mfino.digilinq.account.repository.DglSetGenRepository;
+import com.mfino.digilinq.account.service.DglAccMnoService;
 import com.mfino.digilinq.account.service.DglSetGenService;
 
 /**
@@ -31,6 +33,9 @@ public class DglSetGenServiceImpl implements DglSetGenService {
 	private final DglSetGenRepository dglSetGenRepository;
 
 	private final DglSetGenMapper dglSetGenMapper;
+
+	@Autowired
+	private DglAccMnoService accMnoService;
 
 	public DglSetGenServiceImpl(DglSetGenRepository dglSetGenRepository, DglSetGenMapper dglSetGenMapper) {
 		this.dglSetGenRepository = dglSetGenRepository;
@@ -66,5 +71,13 @@ public class DglSetGenServiceImpl implements DglSetGenService {
 	public void delete(Long id) {
 		log.debug("Request to delete DglSetGen : {}", id);
 		dglSetGenRepository.deleteById(id);
+	}
+
+	@Override
+	public Optional<DglSetGenDTO> findByUnqId(String unqid) {
+		log.debug("Request to get DglSetGen : {}", unqid);
+		Long id = accMnoService.findByUnqId(unqid);
+		return dglSetGenRepository.findById(id).map(dglSetGenMapper::toDto);
+
 	}
 }

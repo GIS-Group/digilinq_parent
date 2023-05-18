@@ -37,4 +37,6 @@ public interface DglNotificationsService {
 
 	void updateStatus(Long id, String ntfStatus);
 
+	Optional<DglNotificationsDTO> findByUnqId(String unqid);
+
 }

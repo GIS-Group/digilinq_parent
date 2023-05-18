@@ -46,4 +46,6 @@ public interface DglSetGenService {
      */
     void delete(Long id);
 
+	Optional<DglSetGenDTO> findByUnqId(String unqid);
+
 }

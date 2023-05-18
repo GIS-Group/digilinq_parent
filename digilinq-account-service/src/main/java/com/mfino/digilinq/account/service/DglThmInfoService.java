@@ -38,4 +38,6 @@ public interface DglThmInfoService {
      */
     Optional<DglThmInfoDTO> findOne(Long id);
 
+	Optional<DglThmInfoDTO> findByUnqId(String unqid);
+
 }
