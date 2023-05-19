@@ -133,6 +133,7 @@ public class DglAccOperatorServiceImpl implements DglAccOperatorService {
         	dglAccUsers.setLastName(dglAccUser.getLastName());
         	dglAccUsers.setEmail(dglAccUser.getEmail());
         	dglAccUsers.setPhone(dglAccUser.getPhone());
+        	dglAccUsers.setAccPassword(dglAccUser.getAccPassword());
         	dglAccMno.addDglAccUsers(dglAccUsers);
         }
         dglAccMno = dglAccOperatorRepository.save(dglAccMno);
