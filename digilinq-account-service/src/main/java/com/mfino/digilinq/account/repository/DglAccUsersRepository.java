@@ -3,6 +3,7 @@ package com.mfino.digilinq.account.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import com.mfino.digilinq.account.domain.DglAccMno;
 import com.mfino.digilinq.account.domain.DglAccUsers;
 
 /**
@@ -11,4 +12,8 @@ import com.mfino.digilinq.account.domain.DglAccUsers;
 @SuppressWarnings("unused")
 @Repository
 public interface DglAccUsersRepository extends JpaRepository<DglAccUsers, Long> {
+	
+	DglAccUsers findByAccUserUnqId(String userId);
+	
+	DglAccUsers findByEmail(String userId);
 }

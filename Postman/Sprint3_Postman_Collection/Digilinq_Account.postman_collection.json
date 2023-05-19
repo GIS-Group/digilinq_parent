@@ -436,13 +436,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjg0MTU0MDM5LCJpYXQiOjE2ODQxNTEwMzl9.MeDOh1-wKV4IYJkw3JqKKWD0EskQeLLCmDxOdJ3kmhQC_rcmoSvAvS4jVJgJpvChHfJOb1B73likwnMp2RbyjRKSRwT1o80jbkvoaZW5i9mc8y5H-TCE2Rs-1xmwc-mOMu5xorbyXd6amu-KS87xcecFO3p3PUpkhnvbSCAkf_rRjzxC_IqIjxjTynHWB4u9jfyDXFseVYUgr7fzz4SgfZ6M6V5O8rvDLpd1mymntDDmaTYjEtwjlMsCxs7WzB7VQMHExUzn5dMTkttbLr8qBD22hDDNt72oIYq6LNfRWTSwwhrFSyjeRqT8piyJPiVB17N5N2lnVE_ob6NzMONonQ",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjg0NDIwOTYwLCJpYXQiOjE2ODQ0MTc5NjB9.QGxbOzHdQD5WB4VZQ2_hgFNDt5-ruczxXoFyUTAQWJSQo0NmtxL4QxAjGDmA2qwCgWW3xA6yd4-z6aZ_u63OxXL5Pb1qOD3YoLow38cDSgsX2WoCqwswgU7QLbQkpB0zHCLgWDVM_Sw3aeNg9XOUSVa1dRICeSpj9GHBR3xq8fqmFAc9TjC9jDsFmHBBtpfvVr2k9b91RasKvAqSZL4xuKz-xnvcZiImmpTqCRlPeYNUum6mP7ZtfGkzrrfCAWqibSwNlsoJHXQdEsMMe9X7vkZgH4JxZhzzaSWhbL2yo9YoHfSpKMKKaslM-R5k8V1KqKOvUEsN3QdtljBLnDwubA",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\":40,\r\n    \"acc_mno_parent\": {\r\n        \"id\": 1\r\n    },\r\n    \"acc_name\": \"New Operator\",\r\n    \"acc_parent\": {\r\n        \"id\": 38\r\n    },\r\n    \"acc_comp_name\": \"companyName2\",\r\n    \"acc_incorp_dt\": \"2023-05-15T04:56:51.485Z\",\r\n    \"acc_tax_id\": \"1\",\r\n    \"acc_time_zone\": 0,\r\n    \"acc_currency\": 0,\r\n    \"acc_lang\": 0,\r\n    \"acc_orient\": true,\r\n    \"dgl_acc_mno_custom_fields\": [\r\n        {\r\n            \"id\":15,\r\n            \"field_title\": \"Custom Field\",\r\n            \"field_value\": \"field_value\"\r\n        },\r\n        {\r\n            \"id\":16,\r\n            \"field_title\": \"Custom Field1\",\r\n            \"field_value\": \"field_value1\"\r\n        }\r\n    ],\r\n    \"acc_prim_cont\": \"9882424925\",\r\n    \"acc_email_id\": \"teqsar@teqsar.com\",\r\n    \"acc_phone\": \"9882424926\",\r\n    \"acc_alt_cont\": \"9882424927\",\r\n    \"acc_fax\": \"342345\",\r\n    \"acc_web_url\": \"http://localhost:4000/\",\r\n    \"acc_add_l1\": \"Churchil Street\",\r\n    \"acc_add_l2\": \"Velacherry\",\r\n    \"acc_city\": \"NewYork\",\r\n    \"acc_state\": \"NewYork\",\r\n    \"acc_country\": \"USA\",\r\n    \"acc_zipcode\": \"345435\",\r\n    \"acc_is_billing_centre\": \"true\",\r\n    \"acc_end_point_url\": \"http://localhost:9887/\",\r\n    \"acc_csv_url\": \"http://cdnurl/\",\r\n    \"acc_sftp_add\": \"http://sftpadd.com/\",\r\n    \"acc_port_no\": \"587\",\r\n    \"acc_username\": \"sftp\",\r\n    \"acc_password\": \"teqsar\",\r\n    \"dgl_mno_files\": [\r\n        {\r\n            \"id\":8,\r\n            \"file_name\": \"file_name2\",\r\n            \"file_url\": \"file_url1\",\r\n            \"file_type\": \"upload or additional\"\r\n        }\r\n    ],\r\n    \"dgl_roles\": [\r\n        {\r\n            \"id\":4,\r\n            \"role_name\": \"role_name\",\r\n            \"role_desc\": \"role_desc\",\r\n            \"role_unq_id\": 1238,\r\n            \"permissions\": \"Permissions Json\",\r\n            \"status\": 1\r\n        }\r\n    ],\r\n    \"dgl_acc_users\": [\r\n        {\r\n            \"id\":4,\r\n            \"first_name\": \"Naveen\",\r\n            \"last_name\": \"Sedan\",\r\n            \"email\": \"naveen@teqsar.com\",\r\n            \"phone\": \"9885072634\",\r\n            \"acc_user_unq_id\": 1238,\r\n            \"status\": \"Active\"\r\n        }\r\n    ],\r\n    \"acc_status\": \"Active\",\r\n    \"acc_type\": \"Operator\",\r\n    \"acc_unq_id\": \"1253\"\r\n}",
+							"raw": "{\r\n    \"id\":40,\r\n    \"acc_mno_parent\": {\r\n        \"id\": 1\r\n    },\r\n    \"acc_name\": \"New Operator\",\r\n    \"acc_parent\": {\r\n        \"id\": 38\r\n    },\r\n    \"acc_comp_name\": \"companyName2\",\r\n    \"acc_incorp_dt\": \"2023-05-15T04:56:51.485Z\",\r\n    \"acc_tax_id\": \"1\",\r\n    \"acc_time_zone\": 0,\r\n    \"acc_currency\": 0,\r\n    \"acc_lang\": 0,\r\n    \"acc_orient\": \"LTR\",\r\n    \"dgl_acc_mno_custom_fields\": [\r\n        {\r\n            \"id\":15,\r\n            \"field_title\": \"Custom Field\",\r\n            \"field_value\": \"field_value\"\r\n        },\r\n        {\r\n            \"id\":16,\r\n            \"field_title\": \"Custom Field1\",\r\n            \"field_value\": \"field_value1\"\r\n        }\r\n    ],\r\n    \"acc_prim_cont\": \"9882424925\",\r\n    \"acc_email_id\": \"teqsar@teqsar.com\",\r\n    \"acc_phone\": \"9882424926\",\r\n    \"acc_alt_cont\": \"9882424927\",\r\n    \"acc_fax\": \"342345\",\r\n    \"acc_web_url\": \"http://localhost:4000/\",\r\n    \"acc_add_l1\": \"Churchil Street\",\r\n    \"acc_add_l2\": \"Velacherry\",\r\n    \"acc_city\": \"NewYork\",\r\n    \"acc_state\": \"NewYork\",\r\n    \"acc_country\": \"USA\",\r\n    \"acc_zipcode\": \"345435\",\r\n    \"acc_is_billing_centre\": \"true\",\r\n    \"acc_end_point_url\": \"http://localhost:9887/\",\r\n    \"acc_csv_url\": \"http://cdnurl/\",\r\n    \"acc_sftp_add\": \"http://sftpadd.com/\",\r\n    \"acc_port_no\": \"587\",\r\n    \"acc_username\": \"sftp\",\r\n    \"acc_password\": \"teqsar\",\r\n    \"dgl_mno_files\": [\r\n        {\r\n            \"id\":8,\r\n            \"file_name\": \"file_name2\",\r\n            \"file_url\": \"file_url1\",\r\n            \"file_type\": \"upload or additional\"\r\n        }\r\n    ],\r\n    \"dgl_roles\": [\r\n        {\r\n            \"id\":4,\r\n            \"role_name\": \"role_name\",\r\n            \"role_desc\": \"role_desc\",\r\n            \"role_unq_id\": 1238,\r\n            \"permissions\": \"Permissions Json\",\r\n            \"status\": 1\r\n        }\r\n    ],\r\n    \"dgl_acc_users\": [\r\n        {\r\n            \"id\":4,\r\n            \"first_name\": \"Naveen\",\r\n            \"last_name\": \"Sedan\",\r\n            \"email\": \"naveen@teqsar.com\",\r\n            \"phone\": \"9885072634\",\r\n            \"acc_user_unq_id\": 1238,\r\n            \"status\": \"ACTIVE\",\r\n            \"acc_password\":\"N@veen123\"\r\n        }\r\n    ],\r\n    \"acc_status\": \"ACTIVE\",\r\n    \"acc_type\": \"Operator\",\r\n    \"acc_unq_id\": \"1253\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1368,6 +1368,112 @@
 							"path": [
 								"thm-infos",
 								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PasswordChangeOrForgot",
+			"item": [
+				{
+					"name": "InitiateForgotPassword",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjg0NDIwOTYwLCJpYXQiOjE2ODQ0MTc5NjB9.QGxbOzHdQD5WB4VZQ2_hgFNDt5-ruczxXoFyUTAQWJSQo0NmtxL4QxAjGDmA2qwCgWW3xA6yd4-z6aZ_u63OxXL5Pb1qOD3YoLow38cDSgsX2WoCqwswgU7QLbQkpB0zHCLgWDVM_Sw3aeNg9XOUSVa1dRICeSpj9GHBR3xq8fqmFAc9TjC9jDsFmHBBtpfvVr2k9b91RasKvAqSZL4xuKz-xnvcZiImmpTqCRlPeYNUum6mP7ZtfGkzrrfCAWqibSwNlsoJHXQdEsMMe9X7vkZgH4JxZhzzaSWhbL2yo9YoHfSpKMKKaslM-R5k8V1KqKOvUEsN3QdtljBLnDwubA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": \"naveen@teqsar.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/acc-user/forgot-pwd/initiate",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"acc-user",
+								"forgot-pwd",
+								"initiate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ConfirmForgotPassword",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjg0NDIwOTYwLCJpYXQiOjE2ODQ0MTc5NjB9.QGxbOzHdQD5WB4VZQ2_hgFNDt5-ruczxXoFyUTAQWJSQo0NmtxL4QxAjGDmA2qwCgWW3xA6yd4-z6aZ_u63OxXL5Pb1qOD3YoLow38cDSgsX2WoCqwswgU7QLbQkpB0zHCLgWDVM_Sw3aeNg9XOUSVa1dRICeSpj9GHBR3xq8fqmFAc9TjC9jDsFmHBBtpfvVr2k9b91RasKvAqSZL4xuKz-xnvcZiImmpTqCRlPeYNUum6mP7ZtfGkzrrfCAWqibSwNlsoJHXQdEsMMe9X7vkZgH4JxZhzzaSWhbL2yo9YoHfSpKMKKaslM-R5k8V1KqKOvUEsN3QdtljBLnDwubA"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"otp\": \"806679\",\r\n    \"reference_id\": 87794531,\r\n    \"new_password\": \"Kri$hna123\",\r\n    \"confirm_password\": \"Kri$hna123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/acc-user/forgot-pwd/confirm",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"acc-user",
+								"forgot-pwd",
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ResetPassword",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX25hbWUiOiJhZG1pbi5hZG1pbiIsImF1dGhvcml0aWVzIjpbIkFETUlOX1VTRVIiLCJTVEFOREFSRF9VU0VSIl0sImF1ZCI6WyJ3ZWIiXSwiZXhwIjoxNjg0NDIwOTYwLCJpYXQiOjE2ODQ0MTc5NjB9.QGxbOzHdQD5WB4VZQ2_hgFNDt5-ruczxXoFyUTAQWJSQo0NmtxL4QxAjGDmA2qwCgWW3xA6yd4-z6aZ_u63OxXL5Pb1qOD3YoLow38cDSgsX2WoCqwswgU7QLbQkpB0zHCLgWDVM_Sw3aeNg9XOUSVa1dRICeSpj9GHBR3xq8fqmFAc9TjC9jDsFmHBBtpfvVr2k9b91RasKvAqSZL4xuKz-xnvcZiImmpTqCRlPeYNUum6mP7ZtfGkzrrfCAWqibSwNlsoJHXQdEsMMe9X7vkZgH4JxZhzzaSWhbL2yo9YoHfSpKMKKaslM-R5k8V1KqKOvUEsN3QdtljBLnDwubA"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"new_password\": \"Kri$hna123\",\r\n    \"old_password\": \"N@veen123\",\r\n    \"user_id\": \"naveen@teqsar.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{accountServiceAPIGatewayUrl}}/acc-user/reset-pwd",
+							"host": [
+								"{{accountServiceAPIGatewayUrl}}"
+							],
+							"path": [
+								"acc-user",
+								"reset-pwd"
 							]
 						}
 					},

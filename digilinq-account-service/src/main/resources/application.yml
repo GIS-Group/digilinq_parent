@@ -119,3 +119,8 @@ spring:
     url: jdbc:mysql://digilinq-mysql-db:3306/digilinq_db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: digilinqDBA
     password: PaSSworD
+    
+---
+
+otp-expire-time-sec: 90
+password-regex: ^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^\w\d\s:])(?!.*\s).{6,32}$

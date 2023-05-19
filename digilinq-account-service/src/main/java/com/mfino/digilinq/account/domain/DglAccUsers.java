@@ -13,6 +13,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -40,7 +42,7 @@ public class DglAccUsers implements Serializable {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     private String email;
 
     @Column(name = "phone")
@@ -278,7 +280,8 @@ public class DglAccUsers implements Serializable {
  	}
 
  	public void setAccPassword(String accPassword) {
- 		this.accPassword = accPassword;
+ 		PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+ 		this.accPassword = encoder.encode(accPassword);
  	}
 
 

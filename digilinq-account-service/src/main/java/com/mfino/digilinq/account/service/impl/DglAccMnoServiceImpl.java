@@ -4,15 +4,18 @@ import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mfino.digilinq.account.domain.DglAccMno;
+import com.mfino.digilinq.account.domain.DglAccUsers;
 import com.mfino.digilinq.account.dto.DglAccMnoDTO;
 import com.mfino.digilinq.account.mapper.DglAccMnoMapper;
 import com.mfino.digilinq.account.repository.DglAccMnoRepository;
+import com.mfino.digilinq.account.repository.DglAccUsersRepository;
 import com.mfino.digilinq.account.service.DglAccMnoService;
 
 /**
@@ -27,6 +30,9 @@ public class DglAccMnoServiceImpl implements DglAccMnoService {
 	private final DglAccMnoRepository dglAccMnoRepository;
 
 	private final DglAccMnoMapper dglAccMnoMapper;
+	
+	@Autowired
+	private DglAccUsersRepository dglAccUsersRepository;
 
 	public DglAccMnoServiceImpl(DglAccMnoRepository dglAccMnoRepository, DglAccMnoMapper dglAccMnoMapper) {
 		this.dglAccMnoRepository = dglAccMnoRepository;
@@ -67,6 +73,20 @@ public class DglAccMnoServiceImpl implements DglAccMnoService {
 	public void delete(Long id) {
 		log.debug("Request to delete DglAccMno : {}", id);
 		dglAccMnoRepository.deleteById(id);
+	}
+
+	@Override
+	public Long fetchUniqueIdByUserId(String userId) throws Exception {
+		DglAccUsers dglAccUsers = dglAccUsersRepository.findByAccUserUnqId(userId);
+		if (dglAccUsers != null) {
+			return Long.valueOf(dglAccUsers.getAccUserUnqId());
+		} else {
+			dglAccUsers = dglAccUsersRepository.findByEmail(userId);
+			if (dglAccUsers != null)
+				return Long.valueOf(dglAccUsers.getAccUserUnqId());
+			else
+				throw new Exception("User Not Registered with this UserId");
+		}
 	}
 
 }
