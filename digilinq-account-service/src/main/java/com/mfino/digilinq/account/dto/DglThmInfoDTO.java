@@ -2,16 +2,20 @@ package com.mfino.digilinq.account.dto;
 
 import java.io.Serializable;
 
+import com.mfino.digilinq.account.enumeration.DisplyOrientation;
+
 /**
  * A DTO for the {@link com.mfino.digilinq.account.domain.domain.DglThmInfo} entity.
  */
 public class DglThmInfoDTO implements Serializable {
 
-    private Long id;
+    private static final long serialVersionUID = -3248014173612434562L;
+
+	private Long id;
 
     private Boolean thmMode;
 
-    private Boolean thmOrientation;
+    private DisplyOrientation thmOrientation;
 
     private String thmColour;
 
@@ -34,14 +38,6 @@ public class DglThmInfoDTO implements Serializable {
 
     public void setThmMode(Boolean thmMode) {
         this.thmMode = thmMode;
-    }
-
-    public Boolean isThmOrientation() {
-        return thmOrientation;
-    }
-
-    public void setThmOrientation(Boolean thmOrientation) {
-        this.thmOrientation = thmOrientation;
     }
 
     public String getThmColour() {
@@ -68,7 +64,15 @@ public class DglThmInfoDTO implements Serializable {
         this.dglAccMnoId = dglAccMnoId;
     }
 
-    @Override
+    public DisplyOrientation getThmOrientation() {
+		return thmOrientation;
+	}
+
+	public void setThmOrientation(DisplyOrientation thmOrientation) {
+		this.thmOrientation = thmOrientation;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -91,7 +95,7 @@ public class DglThmInfoDTO implements Serializable {
         return "DglThmInfoDTO{" +
             "id=" + getId() +
             ", thmMode='" + isThmMode() + "'" +
-            ", thmOrientation='" + isThmOrientation() + "'" +
+            ", thmOrientation='" + getThmOrientation() + "'" +
             ", thmColour='" + getThmColour() + "'" +
             ", thmFontFamily='" + getThmFontFamily() + "'" +
             ", dglAccMnoId=" + getDglAccMnoId() +

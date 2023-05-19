@@ -22,6 +22,8 @@ import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.mfino.digilinq.account.enumeration.DisplyOrientation;
+import com.mfino.digilinq.account.enumeration.SettlementCycle;
 import com.mfino.digilinq.account.enumeration.StatusType;
 
 /**
@@ -61,7 +63,9 @@ public class DglCustomer implements Serializable {
     private Integer custTimeZone;
 
     @Column(name = "cust_orient")
-    private Boolean custOrient;
+    @Type(type = "com.mfino.digilinq.commons.enumeration.EnumUserType", parameters = {
+			@Parameter(name = "Enum", value = "com.mfino.digilinq.account.enumeration.DisplyOrientation") })
+    private DisplyOrientation custOrient;
 
     @Column(name = "cust_prim_cont")
     private String custPrimCont;
@@ -108,7 +112,9 @@ public class DglCustomer implements Serializable {
     private String custUnqId;
 
     @Column(name = "bill_cycle")
-    private String billCycle;
+    @Type(type = "com.mfino.digilinq.commons.enumeration.EnumUserType", parameters = {
+			@Parameter(name = "Enum", value = "com.mfino.digilinq.account.enumeration.SettlementCycle") })
+    private SettlementCycle billCycle;
 
     @Column(name = "bill_date")
     private Instant billDate;
@@ -247,16 +253,16 @@ public class DglCustomer implements Serializable {
         this.custTimeZone = custTimeZone;
     }
 
-    public Boolean isCustOrient() {
+    public DisplyOrientation isCustOrient() {
         return custOrient;
     }
 
-    public DglCustomer custOrient(Boolean custOrient) {
+    public DglCustomer custOrient(DisplyOrientation custOrient) {
         this.custOrient = custOrient;
         return this;
     }
 
-    public void setCustOrient(Boolean custOrient) {
+    public void setCustOrient(DisplyOrientation custOrient) {
         this.custOrient = custOrient;
     }
 
@@ -442,16 +448,16 @@ public class DglCustomer implements Serializable {
         this.custUnqId = custUnqId;
     }
 
-    public String getBillCycle() {
+    public SettlementCycle getBillCycle() {
         return billCycle;
     }
 
-    public DglCustomer billCycle(String billCycle) {
+    public DglCustomer billCycle(SettlementCycle billCycle) {
         this.billCycle = billCycle;
         return this;
     }
 
-    public void setBillCycle(String billCycle) {
+    public void setBillCycle(SettlementCycle billCycle) {
         this.billCycle = billCycle;
     }
 

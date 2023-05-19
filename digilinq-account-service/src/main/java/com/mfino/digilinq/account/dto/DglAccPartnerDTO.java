@@ -5,6 +5,13 @@ import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import com.mfino.digilinq.account.enumeration.DisplyOrientation;
+import com.mfino.digilinq.account.enumeration.SettlementCycle;
+import com.mfino.digilinq.account.enumeration.SettlementType;
+
 public class DglAccPartnerDTO implements Serializable {
 	/**
 	 * 
@@ -17,17 +24,41 @@ public class DglAccPartnerDTO implements Serializable {
 	 * Account Info Fields
 	 */
 	private DglAccProviderDTO accMnoParent;
+	
+	@NotNull(message = "Title cant be null")
+	@Size(min = 2, max = 100, message = "Title name should have minimum 2 characters and Maximum characters 100 allowed")
 	private String accName;
+	
+	@NotNull(message = "Title cant be null")
+	@Size(min = 2, max = 100, message = "Company name should have minimum 2 characters and Maximum characters 100 allowed")
 	private DglAccProviderDTO accParent;
+	
+	@NotNull(message = "Title cant be null")
+	@Size(min = 2, max = 100, message = "Company name should have minimum 2 characters and Maximum characters 100 allowed")
 	private String accCompName;
+	
+	@NotNull(message = "Incorporate Date cant be null")
 	private Instant accIncorpDt;
+	
+	@NotNull(message = "Title cant be null")
+	@Size(min = 1, max = 50, message = "tax id should have minimum 1 characters and Maximum 50 characters allowed")
 	private String accTaxId;
+	
+	@NotNull(message = "Time zone cant be null")
 	private Integer accTimeZone;
+	
+	@NotNull(message = "currency zone cant be null")
 	private Integer accCurrency;
+	
+	@NotNull(message = "Language cant be null")
 	private Integer accLang;
-	private Boolean accOrient;
+	
+	@NotNull(message = "orientation cant be null")
+	private DisplyOrientation accOrient;
 	//need to add db
 	private String accPartnerType;
+	
+	@NotNull(message = "ApiConfig cant be null")
 	private String accApiConfig;
 
 	/**
@@ -38,34 +69,75 @@ public class DglAccPartnerDTO implements Serializable {
 	/**
 	 * Contact Info Fields
 	 */
+	@NotNull(message = "Primary contact cant be null")
+	@Size(min = 2, max = 100, message = "primary contact should have minimum 2 characters and Maximum 50 characters allowed")
 	private String accPrimCont;
+	
+	@NotNull(message = "Email cant be null")
+	@Size(min = 5, max = 50, message = "mail id should have minimum 5 characters and Maximum 50 characters allowed")
 	private String accEmailId;
 	private String accAltCont;
 	private String accFax;
 	private String accWebUrl;
 	// need to add in DB
+	@NotNull(message = "Phone number cant be null")
+	@Size(min = 3, max = 20, message = "Phone number should have minimum 3 characters and Maximum 20 characters allowed")
 	private String accPhone;
 	/**
 	 * Address Info Fields
 	 */
+	@NotNull(message = "Address cant be null")
+	@Size(min = 5, max = 225, message = "adddress should have minimum 5 characters and Maximum 225 characters allowed")
 	private String accAddL1;
 	private String accAddL2;
+	
+	@NotNull(message = "city cant be null")
+	@Size(min = 3, max = 50, message = "city should have minimum 3 characters and Maximum 50 characters allowed")
 	private String accCity;
+
+	@NotNull(message = "State cant be null")
+	@Size(min = 3, max = 50, message = "State should have minimum 3 characters and Maximum 50 characters allowed")
 	private String accState;
+
+	@NotNull(message = "Country cant be null")
+	@Size(min = 3, max = 50, message = "country should have minimum 3 characters and Maximum 50 characters allowed")
 	private String accCountry;
 	private String accZipcode;
 
 	/**
 	 * Settlement Info Fields
 	 */
-	private Integer prefSettleType;
-	private String billCycle;
+	@NotNull(message = "Sttlement type  cant be null")
+	private SettlementType prefSettleType;
+	
+	@NotNull(message = "Sttlement cycle  cant be null")
+	private SettlementCycle billCycle;
+	
+	@NotNull(message = "Sttlement date  cant be null")
 	private Instant billDate;
+
+	@NotNull(message = "due tenor type cant be null")
+	@Size(min = 1, max = 2, message = "due tenor should have minimum 1 characters and Maximum 2 characters allowed")
 	private String billDueTenor;
+
+	@NotNull(message = "account number  cant be null")
+	@Size(min = 3, max = 20, message = "account number should have minimum 1 characters and Maximum 20 characters allowed")
 	private String bankAccNum;
+
+	@NotNull(message = "bank name  type cant be null")
+	@Size(min = 3, max = 100, message = "bank name should have minimum 3 characters and Maximum 100 characters allowed")
 	private String bankName;
+
+	@NotNull(message = "Branch name  type cant be null")
+	@Size(min = 3, max = 100, message = "Branch name should have minimum 3 characters and Maximum 100 characters allowed")
 	private String bankBranchName;
+
+	@NotNull(message = "ifsc code  type cant be null")
+	@Size(min = 3, max = 20, message = "ifsc code should have minimum 3 characters and Maximum 20 characters allowed")
 	private String ifscCode;
+
+	@NotNull(message = "micr code  type cant be null")
+	@Size(min = 3, max = 20, message = "micr code should have minimum 3 characters and Maximum 20 characters allowed")
 	private String micrCode;
 	// need to add in db
 	private String uploadCancelCheque;
@@ -176,11 +248,11 @@ public class DglAccPartnerDTO implements Serializable {
 		this.accLang = accLang;
 	}
 
-	public Boolean getAccOrient() {
+	public DisplyOrientation getAccOrient() {
 		return accOrient;
 	}
 
-	public void setAccOrient(Boolean accOrient) {
+	public void setAccOrient(DisplyOrientation accOrient) {
 		this.accOrient = accOrient;
 	}
 
@@ -304,19 +376,19 @@ public class DglAccPartnerDTO implements Serializable {
 		this.accZipcode = accZipcode;
 	}
 
-	public Integer getPrefSettleType() {
+	public SettlementType getPrefSettleType() {
 		return prefSettleType;
 	}
 
-	public void setPrefSettleType(Integer prefSettleType) {
+	public void setPrefSettleType(SettlementType prefSettleType) {
 		this.prefSettleType = prefSettleType;
 	}
 
-	public String getBillCycle() {
+	public SettlementCycle getBillCycle() {
 		return billCycle;
 	}
 
-	public void setBillCycle(String billCycle) {
+	public void setBillCycle(SettlementCycle billCycle) {
 		this.billCycle = billCycle;
 	}
 

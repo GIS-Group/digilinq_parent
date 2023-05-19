@@ -41,7 +41,7 @@ public class DglRoles implements Serializable {
     private Integer status;
 
     @Column(name = "role_unq_id")
-    private Integer roleUnqId;
+    private String roleUnqId;
 
     @Column(name = "role_desc")
     private String roleDesc;
@@ -92,16 +92,16 @@ public class DglRoles implements Serializable {
         this.status = status;
     }
 
-    public Integer getRoleUnqId() {
+    public String getRoleUnqId() {
         return roleUnqId;
     }
 
-    public DglRoles roleUnqId(Integer roleUnqId) {
+    public DglRoles roleUnqId(String roleUnqId) {
         this.roleUnqId = roleUnqId;
         return this;
     }
 
-    public void setRoleUnqId(Integer roleUnqId) {
+    public void setRoleUnqId(String roleUnqId) {
         this.roleUnqId = roleUnqId;
     }
 

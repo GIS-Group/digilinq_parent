@@ -42,7 +42,7 @@ public class DglContracts implements Serializable {
     private String status;
 
     @Column(name = "contract_unq_id")
-    private Integer contractUnqId;
+    private String contractUnqId;
 
     @Column(name = "contract_file")
     private String contractFile;
@@ -112,16 +112,16 @@ public class DglContracts implements Serializable {
         this.status = status;
     }
 
-    public Integer getContractUnqId() {
+    public String getContractUnqId() {
         return contractUnqId;
     }
 
-    public DglContracts contractUnqId(Integer contractUnqId) {
+    public DglContracts contractUnqId(String contractUnqId) {
         this.contractUnqId = contractUnqId;
         return this;
     }
 
-    public void setContractUnqId(Integer contractUnqId) {
+    public void setContractUnqId(String contractUnqId) {
         this.contractUnqId = contractUnqId;
     }
 

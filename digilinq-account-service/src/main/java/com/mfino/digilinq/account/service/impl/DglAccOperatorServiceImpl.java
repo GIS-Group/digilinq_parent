@@ -17,14 +17,17 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.mfino.digilinq.account.domain.DglAccMno;
 import com.mfino.digilinq.account.domain.DglAccMnoCustomFields;
+import com.mfino.digilinq.account.domain.DglAccUniqueFeilds;
 import com.mfino.digilinq.account.domain.DglAccUsers;
 import com.mfino.digilinq.account.domain.DglMdCur;
 import com.mfino.digilinq.account.domain.DglMnoFiles;
 import com.mfino.digilinq.account.domain.DglRoles;
 import com.mfino.digilinq.account.dto.DglAccOperatorDTO;
+import com.mfino.digilinq.account.enumeration.StatusType;
 import com.mfino.digilinq.account.mapper.DglAccOperatorMapper;
 import com.mfino.digilinq.account.repository.DglAccMnoCustomFieldsRepository;
 import com.mfino.digilinq.account.repository.DglAccOperatorRepository;
+import com.mfino.digilinq.account.repository.DglAccUniqueFeildsRepository;
 import com.mfino.digilinq.account.repository.DglAccUsersRepository;
 import com.mfino.digilinq.account.repository.DglMnoFilesRepository;
 import com.mfino.digilinq.account.repository.DglRolesRepository;
@@ -53,10 +56,21 @@ public class DglAccOperatorServiceImpl implements DglAccOperatorService {
 	@Autowired
 	private DglAccUsersRepository dglAccUsersRepository;
 	
+	@Autowired
+	private DglAccUniqueFeildsRepository dglAccUniqueFeildsRepository;
+	
 	@Override
 	@Transactional
 	public DglAccOperatorDTO save(DglAccOperatorDTO dglAccOperatorDTO) {
 		log.debug("Request to save DglAccOperator : {}", dglAccOperatorDTO);
+		DglAccUniqueFeilds accUniqueFeilds; 
+		accUniqueFeilds = dglAccUniqueFeildsRepository.findByName("Operator");
+		if(accUniqueFeilds==null) {
+			System.out.println(accUniqueFeilds);
+			return null;
+		} 
+		dglAccOperatorDTO.setAccUnqId(accUniqueFeilds.getPrefix()+accUniqueFeilds.getSerial());
+		accUniqueFeilds.setSerial(accUniqueFeilds.getSerial()+1);
         DglAccMno dglAccMno = dglAccOperatorMapper.toEntity(dglAccOperatorDTO);
         dglAccMno = dglAccOperatorRepository.save(dglAccMno);
         for(DglAccMnoCustomFields dglAccMnoCustomFields: dglAccMno.getDglAccMnoCustomFields()) {
@@ -70,10 +84,16 @@ public class DglAccOperatorServiceImpl implements DglAccOperatorService {
         List<DglRoles> dglRolesList = new ArrayList<>(dglAccMno.getDglRoles());
         DglRoles dglRoles = dglRolesList.get(0);
         dglRoles.setDglAccMno(dglAccMno);
+        accUniqueFeilds = dglAccUniqueFeildsRepository.findByName("Roles");
+        dglRoles.setRoleUnqId(accUniqueFeilds.getPrefix()+accUniqueFeilds.getSerial());
+        accUniqueFeilds.setSerial(accUniqueFeilds.getSerial()+1);
         dglRoles = dglRolesRepository.save(dglRoles);
         for(DglAccUsers dglAccUsers: dglAccMno.getDglAccUsers()) {
         	dglAccUsers.setDglAccMno(dglAccMno);
         	dglAccUsers.setDglRoles(dglRoles);
+        	accUniqueFeilds = dglAccUniqueFeildsRepository.findByName("Users");
+        	dglAccUsers.setAccUserUnqId(accUniqueFeilds.getPrefix()+accUniqueFeilds.getSerial());
+        	accUniqueFeilds.setSerial(accUniqueFeilds.getSerial()+1);
         	dglAccUsersRepository.save(dglAccUsers);
         }
         
@@ -144,7 +164,7 @@ public class DglAccOperatorServiceImpl implements DglAccOperatorService {
 	public void updateStatus(Long id, String accStatus) {
 		Optional<DglAccMno> dglAccMno = dglAccOperatorRepository.findById(id);
 		DglAccMno entity = dglAccMno.get();
-		entity.setAccStatus(accStatus);
+		entity.setAccStatus(StatusType.valueOf(accStatus));
 		dglAccOperatorRepository.save(entity);
 	}
 

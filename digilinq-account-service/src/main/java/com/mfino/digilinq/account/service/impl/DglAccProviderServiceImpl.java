@@ -18,24 +18,21 @@ import org.springframework.stereotype.Service;
 
 import com.mfino.digilinq.account.domain.DglAccMno;
 import com.mfino.digilinq.account.domain.DglAccMnoCustomFields;
+import com.mfino.digilinq.account.domain.DglAccUniqueFeilds;
 import com.mfino.digilinq.account.domain.DglAccUsers;
 import com.mfino.digilinq.account.domain.DglContracts;
-import com.mfino.digilinq.account.domain.DglCustContracts;
-import com.mfino.digilinq.account.domain.DglCustRoles;
-import com.mfino.digilinq.account.domain.DglCustUsers;
 import com.mfino.digilinq.account.domain.DglMdContractType;
 import com.mfino.digilinq.account.domain.DglMdProdCat;
 import com.mfino.digilinq.account.domain.DglMnoFiles;
 import com.mfino.digilinq.account.domain.DglRoles;
 import com.mfino.digilinq.account.dto.DglAccProviderDTO;
 import com.mfino.digilinq.account.dto.DglContractsDTO;
-import com.mfino.digilinq.account.dto.DglCustContractsDTO;
 import com.mfino.digilinq.account.mapper.DglAccProviderMapper;
 import com.mfino.digilinq.account.repository.DglAccMnoCustomFieldsRepository;
 import com.mfino.digilinq.account.repository.DglAccProviderRepository;
+import com.mfino.digilinq.account.repository.DglAccUniqueFeildsRepository;
 import com.mfino.digilinq.account.repository.DglAccUsersRepository;
 import com.mfino.digilinq.account.repository.DglContractsRepository;
-import com.mfino.digilinq.account.repository.DglCustCustomFieldsRepository;
 import com.mfino.digilinq.account.repository.DglMdContractTypeRepository;
 import com.mfino.digilinq.account.repository.DglMdProdCatRepository;
 import com.mfino.digilinq.account.repository.DglMnoFilesRepository;
@@ -48,9 +45,6 @@ public class DglAccProviderServiceImpl implements DglAccProviderService {
 	private final Logger log = LoggerFactory.getLogger(DglAccProviderServiceImpl.class);
 	@Autowired
 	private DglAccProviderRepository dglAccProviderRepository;
-	
-	@Autowired
-	private DglCustCustomFieldsRepository dglCustCustomFieldsRepository;
 	
 	@Autowired
 	private DglAccProviderMapper dglAccProviderMapper;
@@ -76,10 +70,21 @@ public class DglAccProviderServiceImpl implements DglAccProviderService {
 	@Autowired
 	private DglMdContractTypeRepository dglMdContractTypeRepository;
 	
+	@Autowired
+	private DglAccUniqueFeildsRepository dglAccUniqueFeildsRepository;
+	
 	@Override
 	@Transactional
 	public DglAccProviderDTO save(DglAccProviderDTO dglAccProviderDTO) {
 		log.debug("Request to save DglAccMno : {}", dglAccProviderDTO);
+		DglAccUniqueFeilds accUniqueFeilds;
+		accUniqueFeilds = dglAccUniqueFeildsRepository.findByName("Provider");
+		if(accUniqueFeilds==null) {
+			System.out.println(accUniqueFeilds);
+			return null;
+		} 
+		dglAccProviderDTO.setAccUnqId(accUniqueFeilds.getPrefix()+accUniqueFeilds.getSerial());
+		accUniqueFeilds.setSerial(accUniqueFeilds.getSerial()+1);
 		DglAccMno dglAccMno = dglAccProviderMapper.toEntity(dglAccProviderDTO);
         dglAccMno = dglAccProviderRepository.save(dglAccMno);
         for(DglMdProdCat dglMdProdCat:dglAccMno.getDglMdProdCats()) {
@@ -97,15 +102,24 @@ public class DglAccProviderServiceImpl implements DglAccProviderService {
         List<DglRoles> dglRolesList = new ArrayList<>(dglAccMno.getDglRoles());
         DglRoles dglRoles = dglRolesList.get(0);
         dglRoles.setDglAccMno(dglAccMno);
+        accUniqueFeilds= dglAccUniqueFeildsRepository.findByName("Roles");
+        dglRoles.setRoleUnqId(accUniqueFeilds.getPrefix()+accUniqueFeilds.getSerial());
+        accUniqueFeilds.setSerial(accUniqueFeilds.getSerial()+1);
         dglRoles = dglRolesRepository.save(dglRoles);
         for(DglAccUsers dglAccUsers: dglAccMno.getDglAccUsers()) {
         	dglAccUsers.setDglAccMno(dglAccMno);
         	dglAccUsers.setDglRoles(dglRoles);
+        	 accUniqueFeilds= dglAccUniqueFeildsRepository.findByName("Users");
+        	 dglAccUsers.setAccUserUnqId(accUniqueFeilds.getPrefix()+accUniqueFeilds.getSerial());
+        	 accUniqueFeilds.setSerial(accUniqueFeilds.getSerial()+1);
         	dglAccUsersRepository.save(dglAccUsers);
         }
         for(DglContracts dglContracts: dglAccMno.getDglContracts()) {
         	dglContracts.setDglAccMno(dglAccMno);
         	dglContracts.setDglContractsReceivingParties(dglAccMno);
+        	accUniqueFeilds= dglAccUniqueFeildsRepository.findByName("Contracts");
+        	dglContracts.setContractUnqId(accUniqueFeilds.getPrefix()+accUniqueFeilds.getSerial());
+        	accUniqueFeilds.setSerial(accUniqueFeilds.getSerial()+1);
 			List<DglContractsDTO> dglContractsList = new ArrayList<>(dglAccProviderDTO.getDglContracts());
 			Optional<DglMdContractType> dglMdContractType = dglMdContractTypeRepository.findById(dglContractsList.get(0).getDglMdContractTypeId());
 			dglContracts.setDglMdContractType(dglMdContractType.get());

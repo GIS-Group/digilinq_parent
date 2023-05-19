@@ -1,9 +1,7 @@
 package com.mfino.digilinq.account.service;
 
+import java.util.List;
 import java.util.Optional;
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 import com.mfino.digilinq.account.dto.DglNotificationsDTO;
 
@@ -26,7 +24,7 @@ public interface DglNotificationsService {
      * @param pageable the pagination information.
      * @return the list of entities.
      */
-    Page<DglNotificationsDTO> findAll(Pageable pageable);
+    List<DglNotificationsDTO> findAll(int pageNo, int pageSize, String sortField);
 
 
     /**
@@ -36,5 +34,9 @@ public interface DglNotificationsService {
      * @return the entity.
      */
     Optional<DglNotificationsDTO> findOne(Long id);
+
+	void updateStatus(Long id, String ntfStatus);
+
+	Optional<DglNotificationsDTO> findByUnqId(String unqid);
 
 }

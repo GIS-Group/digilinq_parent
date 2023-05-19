@@ -4,11 +4,12 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,7 +32,7 @@ public class DglAccPartnerController extends BaseAPIController{
 	private DglAccPartnerService dglAccPartnerService;
 	
 	@PostMapping("/partner")
-    public ResponseEntity<?> createDglProvider(@RequestBody DglAccPartnerDTO dglAccPartnerDTO) throws URISyntaxException {
+    public ResponseEntity<?> createDglProvider(@Valid @RequestBody DglAccPartnerDTO dglAccPartnerDTO) throws URISyntaxException {
         log.debug("REST request to save DglEnterpriseCustomer : {}", dglAccPartnerDTO);
         if (dglAccPartnerDTO.getId() != null) {
             throw new BadRequestAlertException("A new dglPartner cannot already have an ID", "idexists");

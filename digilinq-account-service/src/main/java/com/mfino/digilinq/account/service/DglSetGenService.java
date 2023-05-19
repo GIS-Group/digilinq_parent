@@ -1,9 +1,11 @@
 package com.mfino.digilinq.account.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 
 import com.mfino.digilinq.account.dto.DglSetGenDTO;
 
@@ -26,7 +28,7 @@ public interface DglSetGenService {
      * @param pageable the pagination information.
      * @return the list of entities.
      */
-    Page<DglSetGenDTO> findAll(Pageable pageable);
+    List<DglSetGenDTO> findAll(int pageNo, int pageSize, String sortField);
 
 
     /**
@@ -43,4 +45,7 @@ public interface DglSetGenService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+	Optional<DglSetGenDTO> findByUnqId(String unqid);
+
 }

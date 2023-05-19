@@ -13,8 +13,11 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Parameter;
+import org.hibernate.annotations.Type;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.mfino.digilinq.account.enumeration.DisplyOrientation;
 
 /**
  * A DglThmInfo.
@@ -35,7 +38,9 @@ public class DglThmInfo implements Serializable {
     private Boolean thmMode;
 
     @Column(name = "thm_orientation")
-    private Boolean thmOrientation;
+    @Type(type = "com.mfino.digilinq.commons.enumeration.EnumUserType", parameters = {
+			@Parameter(name = "Enum", value = "com.mfino.digilinq.account.enumeration.DisplyOrientation") })
+    private DisplyOrientation thmOrientation;
 
     @Column(name = "thm_colour")
     private String thmColour;
@@ -67,19 +72,6 @@ public class DglThmInfo implements Serializable {
 
     public void setThmMode(Boolean thmMode) {
         this.thmMode = thmMode;
-    }
-
-    public Boolean isThmOrientation() {
-        return thmOrientation;
-    }
-
-    public DglThmInfo thmOrientation(Boolean thmOrientation) {
-        this.thmOrientation = thmOrientation;
-        return this;
-    }
-
-    public void setThmOrientation(Boolean thmOrientation) {
-        this.thmOrientation = thmOrientation;
     }
 
     public String getThmColour() {
@@ -122,7 +114,15 @@ public class DglThmInfo implements Serializable {
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
-    @Override
+    public DisplyOrientation getThmOrientation() {
+		return thmOrientation;
+	}
+
+	public void setThmOrientation(DisplyOrientation thmOrientation) {
+		this.thmOrientation = thmOrientation;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -144,7 +144,7 @@ public class DglThmInfo implements Serializable {
         return "DglThmInfo{" +
             "id=" + getId() +
             ", thmMode='" + isThmMode() + "'" +
-            ", thmOrientation='" + isThmOrientation() + "'" +
+            ", thmOrientation='" + getThmOrientation() + "'" +
             ", thmColour='" + getThmColour() + "'" +
             ", thmFontFamily='" + getThmFontFamily() + "'" +
             "}";

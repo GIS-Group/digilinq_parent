@@ -2,23 +2,37 @@ package com.mfino.digilinq.account.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 /**
  * A DTO for the {@link com.mfino.digilinq.account.domain.domain.DglWebSet} entity.
  */
 public class DglWebSetDTO implements Serializable {
 
-    private Long id;
+    private static final long serialVersionUID = -7746680729472886353L;
+
+	private Long id;
 
     private String homePageInfo;
 
+    @NotNull(message = "About can not be null")
+    @Size(min = 5,max = 500,message = "About Should be lessthan 500 and greaterthan 5 characters")
     private String webAbout;
 
+    @NotNull(message = "Terms can not be null")
+    @Size(min = 5,max = 500,message = "Terms Should be lessthan 500 and greaterthan 5 characters")
     private String webTerms;
 
+    @NotNull(message = "PaymentPolicy can not be null")
+    @Size(min = 5,max = 500,message = "PaymentPolicy Should be lessthan 500 and greaterthan 5 characters")
     private String webPayPolicy;
 
+    @NotNull(message = "ReturnPolicy can not be null")
+    @Size(min = 5,max = 500,message = "ReturnPolicy Should be lessthan 500 and greaterthan 5 characters")
     private String webRetPolicy;
 
+    @NotNull
     private String webContactus;
 
     private String webManageSocMedLink;

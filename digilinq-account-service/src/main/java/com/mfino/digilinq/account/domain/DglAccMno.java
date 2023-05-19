@@ -18,6 +18,13 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Parameter;
+import org.hibernate.annotations.Type;
+
+import com.mfino.digilinq.account.enumeration.DisplyOrientation;
+import com.mfino.digilinq.account.enumeration.SettlementCycle;
+import com.mfino.digilinq.account.enumeration.SettlementType;
+import com.mfino.digilinq.account.enumeration.StatusType;
 
 /**
  * A DglAccMno.
@@ -56,7 +63,9 @@ public class DglAccMno implements Serializable {
     private Integer accTimeZone;
 
     @Column(name = "acc_orient")
-    private Boolean accOrient;
+    @Type(type = "com.mfino.digilinq.commons.enumeration.EnumUserType", parameters = {
+			@Parameter(name = "Enum", value = "com.mfino.digilinq.account.enumeration.DisplyOrientation") })
+    private DisplyOrientation accOrient;
 
     @Column(name = "acc_prim_cont")
     private String accPrimCont;
@@ -110,16 +119,22 @@ public class DglAccMno implements Serializable {
     private String accPassword;
 
     @Column(name = "acc_status")
-    private String accStatus;
+    @Type(type = "com.mfino.digilinq.commons.enumeration.EnumUserType", parameters = {
+			@Parameter(name = "Enum", value = "com.mfino.digilinq.account.enumeration.StatusType") })
+    private StatusType accStatus;
 
     @Column(name = "acc_unq_id")
     private String accUnqId;
 
     @Column(name = "pref_settle_type")
-    private Integer prefSettleType;
+    @Type(type = "com.mfino.digilinq.commons.enumeration.EnumUserType", parameters = {
+			@Parameter(name = "Enum", value = "com.mfino.digilinq.account.enumeration.SettlementType") })
+    private SettlementType prefSettleType;
 
     @Column(name = "bill_cycle")
-    private String billCycle;
+    @Type(type = "com.mfino.digilinq.commons.enumeration.EnumUserType", parameters = {
+			@Parameter(name = "Enum", value = "com.mfino.digilinq.account.enumeration.SettlementCycle") })
+    private SettlementCycle billCycle;
 
     @Column(name = "bill_date")
     private Instant billDate;
@@ -340,16 +355,12 @@ public class DglAccMno implements Serializable {
         this.accTimeZone = accTimeZone;
     }
 
-    public Boolean isAccOrient() {
-        return accOrient;
-    }
-
-    public DglAccMno accOrient(Boolean accOrient) {
+    public DglAccMno accOrient(DisplyOrientation accOrient) {
         this.accOrient = accOrient;
         return this;
     }
 
-    public void setAccOrient(Boolean accOrient) {
+    public void setAccOrient(DisplyOrientation accOrient) {
         this.accOrient = accOrient;
     }
 
@@ -574,16 +585,16 @@ public class DglAccMno implements Serializable {
         this.accPassword = accPassword;
     }
 
-    public String getAccStatus() {
+    public StatusType getAccStatus() {
         return accStatus;
     }
 
-    public DglAccMno accStatus(String accStatus) {
+    public DglAccMno accStatus(StatusType accStatus) {
         this.accStatus = accStatus;
         return this;
     }
 
-    public void setAccStatus(String accStatus) {
+    public void setAccStatus(StatusType accStatus) {
         this.accStatus = accStatus;
     }
 
@@ -600,29 +611,29 @@ public class DglAccMno implements Serializable {
         this.accUnqId = accUnqId;
     }
 
-    public Integer getPrefSettleType() {
+    public SettlementType getPrefSettleType() {
         return prefSettleType;
     }
 
-    public DglAccMno prefSettleType(Integer prefSettleType) {
+    public DglAccMno prefSettleType(SettlementType prefSettleType) {
         this.prefSettleType = prefSettleType;
         return this;
     }
 
-    public void setPrefSettleType(Integer prefSettleType) {
+    public void setPrefSettleType(SettlementType prefSettleType) {
         this.prefSettleType = prefSettleType;
     }
 
-    public String getBillCycle() {
+    public SettlementCycle getBillCycle() {
         return billCycle;
     }
 
-    public DglAccMno billCycle(String billCycle) {
+    public DglAccMno billCycle(SettlementCycle billCycle) {
         this.billCycle = billCycle;
         return this;
     }
 
-    public void setBillCycle(String billCycle) {
+    public void setBillCycle(SettlementCycle billCycle) {
         this.billCycle = billCycle;
     }
 
@@ -1325,7 +1336,6 @@ public class DglAccMno implements Serializable {
             ", accCurrency=" + getAccCurrency() +
             ", accLang=" + getAccLang() +
             ", accTimeZone=" + getAccTimeZone() +
-            ", accOrient='" + isAccOrient() + "'" +
             ", accPrimCont='" + getAccPrimCont() + "'" +
             ", accEmailId='" + getAccEmailId() + "'" +
             ", accAltCont='" + getAccAltCont() + "'" +

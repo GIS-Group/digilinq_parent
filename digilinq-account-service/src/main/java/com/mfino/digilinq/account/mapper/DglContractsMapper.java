@@ -14,15 +14,15 @@ import com.mfino.digilinq.account.dto.DglContractsDTO;
 public interface DglContractsMapper extends EntityMapper<DglContractsDTO, DglContracts> {
 
     @Mapping(source = "dglAccMno.id", target = "dglAccMnoId")
-    @Mapping(source = "dglAccMno.id", target = "dglContractsReceivingParties")
     @Mapping(source = "dglMdContractType.id", target = "dglMdContractTypeId")
+    @Mapping(source = "dglAccMno.id", target = "dglContractsReceivingParties")
     DglContractsDTO toDto(DglContracts dglContracts);
 
     @Mapping(target = "dglContractConfigs", ignore = true)
     @Mapping(target = "removeDglContractConfigs", ignore = true)
     @Mapping(source = "dglAccMnoId", target = "dglAccMno")
-    @Mapping(source = "dglAccMnoId", target = "dglContractsReceivingParties")
     @Mapping(source = "dglMdContractTypeId", target = "dglMdContractType")
+    @Mapping(source = "dglAccMnoId", target = "dglContractsReceivingParties")
     DglContracts toEntity(DglContractsDTO dglContractsDTO);
 
     default DglContracts fromId(Long id) {

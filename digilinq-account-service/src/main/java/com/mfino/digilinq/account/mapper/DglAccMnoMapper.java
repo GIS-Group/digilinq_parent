@@ -69,4 +69,7 @@ public interface DglAccMnoMapper extends EntityMapper<DglAccMnoDTO, DglAccMno> {
         dglAccMno.setId(id);
         return dglAccMno;
     }
+//    @Override
+//    @Mapping(target = "accUnqId", source = "accUnqId")
+//    DglAccMnoDTO toDto(DglAccMno entity);
 }

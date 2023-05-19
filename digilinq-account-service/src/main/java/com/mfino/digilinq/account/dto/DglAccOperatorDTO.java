@@ -5,6 +5,12 @@ import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import com.mfino.digilinq.account.enumeration.DisplyOrientation;
+import com.mfino.digilinq.account.enumeration.StatusType;
+
 public class DglAccOperatorDTO implements Serializable {
 
 	/**
@@ -18,15 +24,35 @@ public class DglAccOperatorDTO implements Serializable {
      * Account Info Fields
      */
 	private DglAccOperatorDTO accMnoParent;
+	
+	@NotNull(message = "Title cant be null")
+	@Size(min = 2, max = 100, message = "Title name should have minimum 2 characters and Maximum characters 100 allowed")
 	private String accName;
-    private DglAccOperatorDTO accParent;
+    
+	private DglAccOperatorDTO accParent;
+	
+	@NotNull(message = "Company name cant be null")
+	@Size(min = 2, max = 100, message = "Company name should have minimum 2 characters and Maximum characters 100 allowed")
     private String accCompName;
-    private Instant accIncorpDt;
-    private String accTaxId;
-    private Integer accTimeZone;
-    private Integer accCurrency;
-    private Integer accLang;
-    private Boolean accOrient;
+    
+	@NotNull(message = "Incorporate Date cant be null")
+	private Instant accIncorpDt;
+    
+	@NotNull(message = "Title cant be null")
+	@Size(min = 1, max = 50, message = "tax id should have minimum 1 characters and Maximum 50 characters allowed")
+	private String accTaxId;
+	
+	@NotNull(message = "Time zone cant be null")
+	private Integer accTimeZone;
+	
+	@NotNull(message = "currency zone cant be null")
+	private Integer accCurrency;
+	
+	@NotNull(message = "Language cant be null")
+	private Integer accLang;
+	
+	@NotNull(message = "orientation cant be null")
+	private DisplyOrientation accOrient;
     
     /**
      * Custom Fields
@@ -36,8 +62,14 @@ public class DglAccOperatorDTO implements Serializable {
     /**
      * Contact Info Fields
      */
+    @NotNull(message = "Primary contact cant be null")
+	@Size(min = 2, max = 100, message = "primary contact should have minimum 2 characters and Maximum 50 characters allowed")
     private String accPrimCont;
+    
+	@NotNull(message = "Email cant be null")
+	@Size(min = 5, max = 50, message = "mail id should have minimum 5 characters and Maximum 50 characters allowed")
     private String accEmailId;
+	
     //need to add in DB
     private String accCont;
     private String accAltCont;
@@ -47,11 +79,22 @@ public class DglAccOperatorDTO implements Serializable {
     /**
      * Address Info Fields
      */
+    @NotNull(message = "Address cant be null")
+	@Size(min = 5, max = 225, message = "adddress should have minimum 5 characters and Maximum 225 characters allowed")
     private String accAddL1;
     private String accAddL2;
-    private String accCity;
-    private String accState;
-    private String accCountry;
+    
+    @NotNull(message = "city cant be null")
+	@Size(min = 3, max = 50, message = "city should have minimum 3 characters and Maximum 50 characters allowed")
+	private String accCity;
+
+    @NotNull(message = "State cant be null")
+	@Size(min = 3, max = 50, message = "State should have minimum 3 characters and Maximum 50 characters allowed")
+	private String accState;
+
+	@NotNull(message = "Country cant be null")
+	@Size(min = 3, max = 50, message = "country should have minimum 3 characters and Maximum 50 characters allowed")
+	private String accCountry;
     private String accZipcode;
     
     /**
@@ -59,12 +102,28 @@ public class DglAccOperatorDTO implements Serializable {
      */
     //need to add in DB
     private Boolean accIsBillingCentre;
+    
+    @NotNull(message = "url cant be null")
+	@Size(min = 3, max = 100, message = "url should have minimum 3 characters and Maximum 100 characters allowed")
     private String accEndPointUrl;
     //need to add in DB
+    @NotNull(message = "csv cant be null")
     private String accCsvUrl;
+    
+    @NotNull(message = "accSftpAdd cant be null")
+    @Size(min = 1, max = 2, message = "accSftpAdd should have minimum 1 characters and Maximum 2 characters allowed")
     private String accSftpAdd;
+    
+    @NotNull(message = "accPortNo cant be null")
+    @Size(min = 3, max = 20, message = "accPortNo should have minimum 3 characters and Maximum 20 characters allowed")
     private String accPortNo;
+    
+    @NotNull(message = "accUsername cant be null")
+    @Size(min = 3, max = 100, message = "accUsername should have minimum 3 characters and Maximum 100 characters allowed")
     private String accUsername;
+    
+    @NotNull(message = "accPassword cant be null")
+    @Size(min = 3, max = 100, message = "accPassword should have minimum 3 characters and Maximum 100 characters allowed")
     private String accPassword;
 
     /**
@@ -83,7 +142,7 @@ public class DglAccOperatorDTO implements Serializable {
     private Set<DglAccUsersDTO> dglAccUsers = new HashSet<>();
 
     //Enum need to add 
-    private String accStatus;
+    private StatusType accStatus;
     //generate in setter method if null 
     private String accUnqId;
     private String accType;
@@ -152,11 +211,11 @@ public class DglAccOperatorDTO implements Serializable {
         this.accTimeZone = accTimeZone;
     }
 
-    public Boolean isAccOrient() {
+    public DisplyOrientation isAccOrient() {
         return accOrient;
     }
 
-    public void setAccOrient(Boolean accOrient) {
+    public void setAccOrient(DisplyOrientation accOrient) {
         this.accOrient = accOrient;
     }
 
@@ -288,11 +347,11 @@ public class DglAccOperatorDTO implements Serializable {
         this.accPassword = accPassword;
     }
 
-    public String getAccStatus() {
+    public StatusType getAccStatus() {
         return accStatus;
     }
 
-    public void setAccStatus(String accStatus) {
+    public void setAccStatus(StatusType accStatus) {
         this.accStatus = accStatus;
     }
 
@@ -368,7 +427,7 @@ public class DglAccOperatorDTO implements Serializable {
 		this.dglMnoFiles = dglMnoFiles;
 	}
 
-	public Boolean getAccOrient() {
+	public DisplyOrientation getAccOrient() {
 		return accOrient;
 	}
 

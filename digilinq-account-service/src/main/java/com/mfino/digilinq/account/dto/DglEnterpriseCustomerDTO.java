@@ -5,7 +5,11 @@ import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.mfino.digilinq.account.domain.DglCustomer;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import com.mfino.digilinq.account.enumeration.DisplyOrientation;
+import com.mfino.digilinq.account.enumeration.SettlementCycle;
 import com.mfino.digilinq.account.enumeration.StatusType;
 
 public class DglEnterpriseCustomerDTO implements Serializable {
@@ -21,16 +25,38 @@ public class DglEnterpriseCustomerDTO implements Serializable {
 	 * Customer Account Info
 	 */
 	private Long dglAccMnoId;
+	
+	@NotNull(message = "Title cant be null")
+	@Size(min = 2, max = 100, message = "Title name should have minimum 2 characters and Maximum characters 100 allowed")
 	private String custName;
-    private DglEnterpriseCustomerDTO custParent;
+    
+	private DglEnterpriseCustomerDTO custParent;
+	
+	@NotNull(message = "Title cant be null")
+	@Size(min = 2, max = 100, message = "Company name should have minimum 2 characters and Maximum characters 100 allowed")
     private String custCompName;
-    private Instant custIncorpDt;
+    
+	@NotNull(message = "Incorporate Date cant be null")
+	private Instant custIncorpDt;
+	
+	@NotNull(message = "Tax id cant be null")
+	@Size(min = 1, max = 50, message = "tax id should have minimum 1 characters and Maximum 50 characters allowed")
     private String custTaxId;
-    private Integer custCurrency;
+    
+	@NotNull(message = "currency cant be null")
+	private Integer custCurrency;
+	
+	@NotNull(message = "Language cant be null")
     private Integer custLang;
+	
+	@NotNull(message = "time zone cant be null")
     private Integer custTimeZone;
-    private Boolean custOrient;
+	
+	@NotNull(message = "orientation cant be null")
+    private DisplyOrientation custOrient;
     //need to add in DB
+	
+	@NotNull(message = "Category cant be null")
     private String custCategory;
     
     /**
@@ -41,23 +67,47 @@ public class DglEnterpriseCustomerDTO implements Serializable {
     /**
      * Contact Info
      */
+    
+    @NotNull(message = "Primary contact cant be null")
+	@Size(min = 2, max = 100, message = "primary contact should have minimum 2 characters and Maximum 50 characters allowed")
     private String custPrimCont;
+    
+    @NotNull(message = "Email id cant be null")
+	@Size(min = 2, max = 100, message = "Email id should have minimum 2 characters and Maximum 50 characters allowed")
     private String custEmailId;
+    
     //need to add in DB
+    @NotNull(message = "phone number cant be null")
+	@Size(min = 2, max = 20, message = "phone number should have minimum 2 characters and Maximum 20 characters allowed")
     private String custPhoneNumber;
+    
     private String custAltCont;
     private String custFax;
     private String custWebUrl;
     //need to add in DB
+    @NotNull(message = "EmailId cant be null")
+	@Size(min = 5, max = 50, message = "EmailId should have minimum 5 characters and Maximum 50 characters allowed")
     private String custOrderApproverEmailId;
 
     /**
      * Address Info
      */
+    @NotNull(message = "Address cant be null")
+	@Size(min = 5, max = 225, message = "adddress should have minimum 5 characters and Maximum 225 characters allowed")
     private String custAddL1;
+   
     private String custAddL2;
+    
+    @NotNull(message = "city cant be null")
+	@Size(min = 3, max = 50, message = "city should have minimum 3 characters and Maximum 50 characters allowed")
     private String custCity;
+    
+    @NotNull(message = "State cant be null")
+	@Size(min = 3, max = 50, message = "State should have minimum 3 characters and Maximum 50 characters allowed")
     private String custState;
+    
+    @NotNull(message = "Country cant be null")
+	@Size(min = 3, max = 50, message = "Country should have minimum 3 characters and Maximum 50 characters allowed")
     private String custCountry;
     private String custZipcode;
 
@@ -67,9 +117,19 @@ public class DglEnterpriseCustomerDTO implements Serializable {
     //need to add in DB
     private Boolean custIsBusinessUnit;
     private Integer custPrefPg;
+    
+    @NotNull(message = "creditLimit cant be null")
+	@Size(min = 3, max = 20, message = "creditLimit should have minimum 3 characters and Maximum 20 characters allowed")
     private Float creditLimit;
-    private String billCycle;
+   
+    @NotNull(message = "bill cycle  cant be null")
+    private SettlementCycle billCycle;
+    
+    @NotNull(message = "bill date  cant be null")
     private Instant billDate;
+    
+    @NotNull(message = "due tenor type cant be null")
+	@Size(min = 1, max = 2, message = "due tenor should have minimum 1 characters and Maximum 2 characters allowed")
     private String billDueTenor;
 
     private StatusType custStatus;
@@ -153,11 +213,11 @@ public class DglEnterpriseCustomerDTO implements Serializable {
         this.custTimeZone = custTimeZone;
     }
 
-    public Boolean isCustOrient() {
+    public DisplyOrientation isCustOrient() {
         return custOrient;
     }
 
-    public void setCustOrient(Boolean custOrient) {
+    public void setCustOrient(DisplyOrientation custOrient) {
         this.custOrient = custOrient;
     }
 
@@ -273,11 +333,11 @@ public class DglEnterpriseCustomerDTO implements Serializable {
         this.custUnqId = custUnqId;
     }
 
-    public String getBillCycle() {
+    public SettlementCycle getBillCycle() {
         return billCycle;
     }
 
-    public void setBillCycle(String billCycle) {
+    public void setBillCycle(SettlementCycle billCycle) {
         this.billCycle = billCycle;
     }
 

@@ -1,5 +1,6 @@
 package com.mfino.digilinq.account.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -26,7 +27,7 @@ public interface DglThmInfoService {
      * @param pageable the pagination information.
      * @return the list of entities.
      */
-    Page<DglThmInfoDTO> findAll(Pageable pageable);
+    List<DglThmInfoDTO> findAll(int pageNo, int pageSize, String sortField);
 
 
     /**
@@ -36,4 +37,7 @@ public interface DglThmInfoService {
      * @return the entity.
      */
     Optional<DglThmInfoDTO> findOne(Long id);
+
+	Optional<DglThmInfoDTO> findByUnqId(String unqid);
+
 }
