@@ -72,6 +72,9 @@ public class DglCustUsers implements Serializable {
 
     @Column(name = "cust_type")
     private String custType;
+    
+    @Column(name = "password")
+    private String password;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
@@ -355,4 +358,13 @@ public class DglCustUsers implements Serializable {
             ", custType='" + getCustType() + "'" +
             "}";
     }
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+    
 }

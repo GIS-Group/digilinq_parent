@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import com.mfino.digilinq.account.domain.DglAccMno;
 import com.mfino.digilinq.account.dto.DglAccMnoDTO;
 
 /**
@@ -47,4 +48,5 @@ public interface DglAccMnoService {
     void delete(Long id);
     
     Long fetchUniqueIdByUserId(String userId) throws Exception ;
+    DglAccMno findMnoByUnqId(String accUnqId);
 }

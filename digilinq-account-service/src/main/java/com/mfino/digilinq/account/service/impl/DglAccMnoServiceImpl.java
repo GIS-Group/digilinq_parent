@@ -88,5 +88,11 @@ public class DglAccMnoServiceImpl implements DglAccMnoService {
 				throw new Exception("User Not Registered with this UserId");
 		}
 	}
-
+    
+	@Override
+	public DglAccMno findMnoByUnqId(String accUnqId) {
+		log.debug("Request to get DglAccMno : {}", accUnqId);
+		return dglAccMnoRepository.findByAccUnqId(accUnqId);
+	}
+	
 }
